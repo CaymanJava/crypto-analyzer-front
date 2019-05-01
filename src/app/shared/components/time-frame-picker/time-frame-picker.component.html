@@ -1,0 +1,15 @@
+<div class="input-group">
+  <select class="form-control form-control-rounded time-frame" [(ngModel)]="timeFrame">
+    <option value="FIVE_MIN">5 Min</option>
+    <option value="FIFTEEN_MIN">15 Min</option>
+    <option value="THIRTY_MIN">30 Min</option>
+    <option value="ONE_HOUR">1 Hour</option>
+    <option value="FOUR_HOURS">4 Hours</option>
+    <option value="ONE_DAY">1 Day</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-secondary right-side-rounded" (click)="onTimeFrameChange()" type="button">
+      <i class="icon-regular i-Repeat-3"></i>
+    </button>
+  </div>
+</div>

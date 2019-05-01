@@ -1,0 +1,101 @@
+.chart-container {
+  width: 100%;
+  height: 600px;
+  margin-top: 5px;
+}
+
+.header {
+  height: 70px;
+  padding: 0 1.5rem;
+
+  .logo {
+    width: 60px;
+  }
+
+  .menu-toggle {
+    width: 60px;
+  }
+
+  .header-part-right {
+    .user {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.time-frame {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  position: relative;
+  width: 230px;
+
+  input {
+    background: transparent;
+    border: 0;
+    color: #212121;
+    font-size: .8rem;
+    line-height: 2;
+    height: 100%;
+    outline: initial !important;
+    padding: .5rem 1rem;
+    width: calc(100% - 32px);
+  }
+
+  .search-icon {
+    font-size: 18px;
+    width: 24px;
+    display: inline-block;
+  }
+}
+
+.rounded {
+  border-radius: 3.25rem;
+}
+
+.indicator-drop-down {
+  border-radius: 3.25rem !important;
+}
+
+.right-side-rounded {
+  border-top-right-radius: 3.25rem;
+  border-bottom-right-radius: 3.25rem;
+}
+
+.left-side-rounded {
+  border-top-left-radius: 3.25rem;
+  border-bottom-left-radius: 3.25rem;
+}
+
+.color-button {
+  border-radius: 3.25rem !important;
+  width: 3rem;
+}
+
+.scrollable-menu {
+  height: auto;
+  width: auto;
+  max-height: 400px;
+  overflow-x: hidden;
+}
+
+.ui-menuitem-text {
+  span {
+    font-size: 8px !important;
+  }
+}
+
+.ui-menuitem {
+
+    white-space: nowrap;
+    width: 550px !important;
+
+}
+
+.custom-tieredmenu {
+  min-width: 550px !important;
+}

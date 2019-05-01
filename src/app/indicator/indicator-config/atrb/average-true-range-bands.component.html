@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="period">Period</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input [class.form-control-danger]="!configForm.controls['period'].valid && configForm.controls['period'].touched"
+               [formControl]="configForm.get('period')"
+               class="form-control"
+               id="period" placeholder="5" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="shift">Shift</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input [class.form-control-danger]="!configForm.controls['shift'].valid && configForm.controls['shift'].touched"
+               [formControl]="configForm.get('shift')"
+               class="form-control"
+               id="shift" placeholder="3" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="priceType">Price type</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <select [class.form-control-danger]="!configForm.controls['priceType'].valid && configForm.controls['priceType'].touched"
+                [formControl]="configForm.get('priceType')" class="form-control col-form-label-sm custom-select"
+                id='priceType'>
+          <option value="HIGH">High</option>
+          <option value="LOW">Low</option>
+          <option value="OPEN">Open</option>
+          <option value="CLOSE">Close</option>
+        </select>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')" class="btn btn-outline-danger btn-rounded" type="button">Close</button>
+  <button (click)="onSubmit()" [disabled]="!configForm.valid" class="btn btn-outline-success btn-rounded" type="button">{{update ? 'Update' : 'Add'}}</button>
+</div>

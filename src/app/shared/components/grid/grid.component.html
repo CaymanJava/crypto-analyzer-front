@@ -1,0 +1,85 @@
+<div *ngIf="data && data.totalElements > 0">
+  <div class="row mt-1">
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th *ngFor="let column of columns">
+          <span class="bold" style="text-align: center; float: right">
+            <grid-header (changeSort)="onSortClick($event)" [column]="column" [sort]="sort"></grid-header>
+          </span>
+        </th>
+        <th *ngIf="actions.length > 0"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of data.content">
+        <td *ngFor="let column of columns">
+          <span *ngIf="!column.image">
+            <ng-template [ngIf]="column.clickAction">
+            <a (click)="onActionClick(column.key, row)" class="link">
+              {{getValue((column.valueFn ? column.valueFn(row) : row[column.key]), column.dataType)}}
+            </a>
+          </ng-template>
+
+          <ng-template [ngIf]="!column.clickAction && !column.arrow">
+             <span style="text-align: right; float: right">
+            {{ column.valueFn ? getValue(column.valueFn(row), column.dataType) : getValue(row[column.key], column.dataType)}}
+             </span>
+          </ng-template>
+
+          <ng-template [ngIf]="!column.clickAction && column.arrow">
+            <span [ngClass]="defineColor(row[column.key], column.dataType)" style="text-align: right; float: right">
+              {{ column.valueFn ? getValue(column.valueFn(row), column.dataType) : getValue(row[column.key], column.dataType)}}
+              <i *ngIf="column.arrow" [ngClass]="defineArrow(row[column.key], column.dataType)"></i>
+            </span>
+          </ng-template>
+          </span>
+
+          <span *ngIf="column.image">
+            <img *ngIf="row[column.key]" [src]="row[column.key]" alt="" height="32px" style="border-radius: 5.25rem" width="32px"/>
+            <img *ngIf="!row[column.key]" alt="" height="32px" src="./assets/images/no_image.png" style="border-radius: 5.25rem" width="32px"/>
+          </span>
+
+        </td>
+        <td *ngIf="actions.length > 0" class="text-right">
+          <div *ngIf="actions.length < 2">
+            <div *ngFor="let action of actions">
+              <button (click)="onActionClick(action.key, row)" *ngIf="!action.isDisabled(row)" [disabled]="action.isDisabled(row)"
+                      class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-rounded btn-sm" type="button">
+                {{action.title}}
+              </button>
+            </div>
+          </div>
+          <div *ngIf="actions.length > 1" class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">
+              Actions
+            </button>
+            <div class="dropdown-menu">
+              <button (click)="onActionClick(action.key, row)"
+                      *ngFor="let action of actions"
+                      [class.disabled]="action.isDisabled(row)"
+                      [disabled]="action.isDisabled(row)"
+                      class="dropdown-item">{{action.title}}
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row" style="margin-left: 1pt">
+    <div class="col-lg-6">
+      <span class="total-elements"> Showed {{data.numberOfElements}} | Total elements {{data.totalElements}} records</span>
+    </div>
+    <div *ngIf="data.totalElements > data.size" class="col-lg-6">
+      <ngb-pagination (pageChange)="onPageChange($event)" [page]="data.number" [collectionSize]="data.totalElements" [maxSize]="5"
+                      [pageSize]="data.size" size="md"></ngb-pagination>
+    </div>
+  </div>
+</div>
+<div *ngIf="data && data.totalElements === 0">
+  <hr>
+</div>

@@ -1,0 +1,80 @@
+<spinner *ngIf="!tickData"></spinner>
+
+<div *ngIf="tickData" class="row">
+  <div class="breadcrumb">
+    <a [routerLink]="['/market', 'list']" class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-rounded btn-sm" type="button">
+      Back to markets
+    </a>
+  </div>
+</div>
+
+<app-stock-market-header [tickData]="tickData"></app-stock-market-header>
+
+<div [hidden]="!tickData" class="separator-breadcrumb border-top"></div>
+
+
+<div *ngIf="tickData" class="row">
+  <div class="col-lg-auto col-md-4 col-sm-4">
+    <label>Date
+      <app-date-time-range (dateRangeChange)="onDataRangeChange($event)" [dateTimeRange]="dateTimeRange"></app-date-time-range>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-3 col-sm-3">
+    <label>TimeFrame
+      <app-time-frame-picker (onTimeFrameSelected)="onTimeFrameChange($event)" [timeFrame]="timeFrame"></app-time-frame-picker>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-2 col-sm-2">
+    <label>Indicators
+      <app-indicator-picker
+          (clearAll)="clearIndicators()"
+          (onIndicatorSelect)="onIndicatorSelected($event)">
+      </app-indicator-picker>
+    </label>
+  </div>
+
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Drawing
+      <div class="input-group">
+        <div class="input-group-append">
+          <button (click)="onDrawClick()" class="btn btn-primary btn-rounded dropdown-toggle" style="border-radius: 3.25rem;" type="button">
+            <i class="icon-regular i-Pen-4"></i>
+          </button>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Save
+      <app-saving-tools (onSave)="onSave($event)"></app-saving-tools>
+    </label>
+  </div>
+
+</div>
+
+<app-drawing-tools
+    (clearAll)="clear()"
+    (drawToolSelected)="startDrawing($event)"
+    (removeSelectedTool)="removeSelected()"
+    [hidden]="hideDrawingTools">
+</app-drawing-tools>
+
+
+<div class="row">
+  <div *ngFor='let indicatorConfigHandler of indicatorConfigurationHandlers' class="col-lg-auto">
+    <button (click)="onIndicatorConfigChange(indicatorConfigHandler)"
+            [disabled]="!indicatorConfigHandler.updatable"
+            class="btn btn-outline-success btn-rounded pt-2"
+            type="button">
+      {{indicatorConfigHandler.shortLabel}}
+    </button>
+  </div>
+</div>
+
+<div [hidden]="!tickData" class="row">
+  <div #chartContainer class="chart-container row card-body"></div>
+</div>

@@ -1,0 +1,27 @@
+<div [ngClass]="{open: navService.sidebarState.childNavOpen}" class="sidebar-left-secondary rtl-ps-none" [perfectScrollbar]="{suppressScrollX: true}">
+  <ng-container *ngTemplateOutlet="menuTemplate;context:{parentItem: selectedItem}"></ng-container>
+</div>
+
+<ng-template #menuTemplate let-parentItem="parentItem">
+  <ul class="childNav" appDropdown>
+    <li *ngFor="let item of parentItem?.sub" appDropdownLink class="nav-item">
+
+      <a routerLink="{{item.state}}" *ngIf="item.type === 'link'" class="" routerLinkActive=open>
+        <i *ngIf="item.icon" [class]="'nav-icon '+ item.icon "></i>
+        <span class="item-name lvl1">{{item.name}}</span>
+      </a>
+
+      <div *ngIf="item.type === 'dropDown'">
+        <a appDropdownToggle [ngClass]="{open: item.active}" routerLinkActive=open>
+          <i *ngIf="item.icon" [class]="'nav-icon '+ item.icon "></i>
+          <span class="item-name">{{item.name}}</span>
+          <i class="dd-arrow i-Arrow-Down"></i>
+        </a>
+        <ng-container *ngTemplateOutlet="menuTemplate;context:{parentItem: item}"></ng-container>
+      </div>
+
+    </li>
+  </ul>
+</ng-template>
+
+<div [ngClass]="{open: navService.sidebarState.childNavOpen}" class="sidebar-overlay" (click)="closeChildNav()"></div>

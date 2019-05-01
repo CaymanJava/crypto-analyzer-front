@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+.left-side-rounded {
+  border-top-left-radius: 3.25rem;
+  border-bottom-left-radius: 3.25rem;
+}
+
+.right-side-rounded {
+  border-top-right-radius: 3.25rem;
+  border-bottom-right-radius: 3.25rem;
+}
+
+.field-required:after {
+  content: ' *';
+  color: red;
+}
+
+.field-required-before:before {
+  content: '* ';
+  color: red;
+}
+
+.field-required-after:after {
+  content: ' *';
+  color: red;
+}
+
+.has-danger, .form-control-danger {
+  color: #f86c6b;
+  border-color: #f86c6b;
+}

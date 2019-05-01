@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-4" *ngFor="let market of dashboard.topVolumeMarkets">
+    <a [routerLink]="['/market', market.marketId]" style="cursor: pointer">
+      <div class="card card-profile-1 mb-4">
+        <div class="card-body text-center">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="avatar box-shadow-2 mb-3">
+                <img [src]="market.logoUrl === null ? './assets/images/no_image.png' : market.logoUrl" alt="">
+              </div>
+              <h5 class="m-0">{{market.marketCurrencyLong + '(' + market.marketCurrency + ')'}}</h5>
+            </div>
+            <div class="col-lg-7">
+              <div class="mb-3">
+                <p class="mt-0">Top Volume</p>
+                <h5 class="m-0">{{market.stock}}</h5>
+                <p class="mt-1">{{market.volume + ' ' + market.baseCurrency}}</p>
+                <p class="mt-0" [ngClass]="market.priceDiff >= 0 ? 'text-success' : 'text-danger'"> {{market.priceDiff}}
+                  <i *ngIf="market.priceDiff > 0" class="i-Up1 text-success"></i>
+                  <i *ngIf="market.priceDiff < 0" class="i-Down1 text-danger"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

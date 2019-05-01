@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-auto col-md-3 col-sm-3">
+    <label>Tools
+      <div class="input-group">
+        <select (change)="startDrawing()" [(ngModel)]="drawType" class="form-control form-control-rounded drawing-tools" id="typeSelect">
+          <option disabled selected value="default">Annotation Type</option>
+          <option value="andrews-pitchfork">Andrews' Pitchfork</option>
+          <option value="ellipse">Ellipse</option>
+          <option value="fibonacci-arc">Fibonacci Arc</option>
+          <option value="fibonacci-fan">Fibonacci Fan</option>
+          <option value="fibonacci-retracement">Fibonacci Retracement</option>
+          <option value="fibonacci-timezones">Fibonacci Time Zones</option>
+          <option value="horizontal-line">Horizontal Line</option>
+          <option value="infinite-line">Infinite Line</option>
+          <option value="line">Line Segment</option>
+          <option value="marker">Marker</option>
+          <option value="ray">Ray</option>
+          <option value="rectangle">Rectangle</option>
+          <option value="trend-channel">Trend Channel</option>
+          <option value="triangle">Triangle</option>
+          <option value="vertical-line">Vertical Line</option>
+        </select>
+      </div>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-3 col-sm-3">
+    <label>Color
+      <div class="input-group">
+        <div class="input-group-append">
+          <button [(colorPicker)]="color"
+                  [cpOutputFormat]="'hex'"
+                  [style.background]="color"
+                  class="btn color-button">
+          </button>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-3 col-sm-3">
+    <label>Remove
+      <div class="input-group">
+        <div class="input-group-append">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <div class="btn-group btn-group-toggle" style="cursor: pointer">
+              <label class="btn-outline-danger left-side-rounded" ngbButtonLabel>
+                <i (click)="removeSelected()" class="icon-regular i-Close"></i>
+              </label>
+              <label (click)="clear()" class="btn-outline-danger right-side-rounded" ngbButtonLabel>
+                Remove All
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </label>
+  </div>
+</div>

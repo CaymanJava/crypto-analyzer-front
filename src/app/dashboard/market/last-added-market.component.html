@@ -1,0 +1,21 @@
+<div class="card mb-4">
+  <div class="card-body last-added">
+    <div class="card-title">
+      Last added markets
+    </div>
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center mb-3" *ngFor="let market of dashboard.lastAddedMarkets">
+      <img class="avatar-lg mb-3 mb-sm-0 circle-image mr-sm-3"
+           [src]="market.logoUrl === null ? './assets/images/no_image.png' : market.logoUrl">
+      <div class="flex-grow-1">
+        <h5>
+          <a [routerLink]="['/market', market.marketId]">{{market.marketName + '(' + market.marketCurrency + ')'}}</a>
+        </h5>
+        <p class="m-0 text-small text-muted">{{market.stock}}</p>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-rounded btn-sm" [routerLink]="['/market', market.marketId]">View</button>
+      </div>
+    </div>
+  </div>
+</div>
+

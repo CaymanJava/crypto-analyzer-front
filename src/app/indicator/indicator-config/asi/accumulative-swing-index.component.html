@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="limitMoveValue">Limit move value</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input [class.form-control-danger]="!configForm.controls['limitMoveValue'].valid && configForm.controls['limitMoveValue'].touched"
+               [formControl]="configForm.get('limitMoveValue')"
+               class="form-control"
+               id="limitMoveValue" placeholder="0.5" type="number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="movingAverageType">Moving average type</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <select id='movingAverageType' [formControl]="configForm.get('movingAverageType')" class="form-control col-form-label-sm custom-select"
+                [class.form-control-danger]="!configForm.controls['movingAverageType'].valid && configForm.controls['movingAverageType'].touched">
+          <option value="SIMPLE_MOVING_AVERAGE">Simple moving average</option>
+          <option value="EXPONENTIAL_MOVING_AVERAGE">Exponential moving average</option>
+          <option value="DOUBLE_EXPONENTIAL_MOVING_AVERAGE">Double exponential moving average</option>
+          <option value="TRIPLE_EXPONENTIAL_MOVING_AVERAGE">Triple exponential moving average</option>
+          <option value="HULL_MOVING_AVERAGE">Hull moving average</option>
+          <option value="SMOOTHED_MOVING_AVERAGE">Smoothed moving average</option>
+          <option value="WEIGHTED_MOVING_AVERAGE">Weighted moving average</option>
+          <option value="MODIFIED_MOVING_AVERAGE">Modified moving average</option>
+          <option value="VARIABLE_INDEX_DYNAMIC_AVERAGE">Variable index dynamic average</option>
+          <option value="WELLES_WILDERS_MOVING_AVERAGE">Welles Wilders moving average</option>
+          <option value="TIME_SERIES_MOVING_AVERAGE">Time series moving average</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group mb-3">
+        <label for="movingAveragePeriod">Moving average period</label>
+      </div>
+      <div class="col-md-6 form-group mb-3">
+        <input [class.form-control-danger]="!configForm.controls['movingAveragePeriod'].valid && configForm.controls['movingAveragePeriod'].touched"
+               [formControl]="configForm.get('movingAveragePeriod')"
+               class="form-control"
+               id="movingAveragePeriod" placeholder="20" type="number">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')" class="btn btn-outline-danger btn-rounded" type="button">Close</button>
+  <button (click)="onSubmit()" [disabled]="!configForm.valid" class="btn btn-outline-success btn-rounded" type="button">{{update ? 'Update' : 'Add'}}</button>
+</div>

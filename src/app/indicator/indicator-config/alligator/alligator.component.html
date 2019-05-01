@@ -1,0 +1,87 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="jawPeriod">Jaw Period</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['jawPeriod'].valid && configForm.controls['jawPeriod'].touched"
+               [formControl]="configForm.get('jawPeriod')" id="jawPeriod" placeholder="13">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="jawOffset">Jaw Offset</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['jawOffset'].valid && configForm.controls['jawOffset'].touched"
+               [formControl]="configForm.get('jawOffset')" id="jawOffset" placeholder="8">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="teethPeriod">Teeth Period</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['teethPeriod'].valid && configForm.controls['teethPeriod'].touched"
+               [formControl]="configForm.get('teethPeriod')" id="teethPeriod" placeholder="8">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="teethOffset">Teeth Offset</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['teethOffset'].valid && configForm.controls['teethOffset'].touched"
+               [formControl]="configForm.get('teethOffset')" id="teethOffset" placeholder="5">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="lipsPeriod">Lips Period</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['lipsPeriod'].valid && configForm.controls['lipsPeriod'].touched"
+               [formControl]="configForm.get('lipsPeriod')" id="lipsPeriod" placeholder="5">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+        <label for="lipsOffset">Lips Offset</label>
+      </div>
+      <div class="col-6 form-group mb-3">
+        <input type="number"
+               class="form-control"
+               [class.form-control-danger]="!configForm.controls['lipsOffset'].valid && configForm.controls['lipsOffset'].touched"
+               [formControl]="configForm.get('lipsOffset')" id="lipsOffset" placeholder="3">
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('close')">Close</button>
+  <button type="button" class="btn btn-outline-success btn-rounded" [disabled]="!configForm.valid" (click)="onSubmit()">{{update ? 'Update' : 'Add'}}</button>
+</div>

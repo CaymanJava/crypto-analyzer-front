@@ -1,0 +1,18 @@
+<spinner *ngIf="!dashboard"></spinner>
+
+<div *ngIf="dashboard">
+  <div class="breadcrumb">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+  <app-statistic [dashboard]="dashboard"></app-statistic>
+  <app-volume-market [dashboard]="dashboard"></app-volume-market>
+  <div class="row">
+    <div class="col-lg-5 col-md-5">
+      <app-last-added-market [dashboard]="dashboard"></app-last-added-market>
+    </div>
+    <div class="col-lg-7 col-md-7">
+      <app-last-signals-data [lastSignalsData]="dashboard.lastSignalsData"></app-last-signals-data>
+    </div>
+  </div>
+</div>

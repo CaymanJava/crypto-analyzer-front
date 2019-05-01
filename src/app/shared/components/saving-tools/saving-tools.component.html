@@ -1,0 +1,25 @@
+<div ngbDropdown>
+  <button ngbDropdownToggle class="btn btn-primary btn-rounded">
+    <i class=" i-Memory-Card-3"></i>
+  </button>
+  <div ngbDropdownMenu class="p-3 text-center">
+    <div class="col">
+      <button type="button" class="btn btn-outline-primary btn-rounded m-1" (click)="save('svg')">SVG</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-secondary btn-rounded m-1" (click)="save('png')">PNG</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-success btn-rounded m-1" (click)="save('jpg')">JPG</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-danger btn-rounded m-1" (click)="save('pdf')">PDF</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-info btn-rounded m-1" (click)="save('csv')">CSV</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-warning btn-rounded m-1" (click)="save('xls')">XLS</button>
+    </div>
+  </div>
+</div>
