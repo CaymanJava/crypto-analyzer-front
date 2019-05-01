@@ -10,7 +10,7 @@ export class CommonDrawService {
     result.forEach(indicatorResult => indicatorData.push(
       [
         indicatorResult.time,
-        indicatorResult.indicatorValue == null ? 0 : this.convertValue(indicatorResult.indicatorValue)
+        indicatorResult.indicatorValue == null ? null : this.convertValue(indicatorResult.indicatorValue)
       ]
     ));
     return indicatorData;

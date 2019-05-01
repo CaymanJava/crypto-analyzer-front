@@ -26,6 +26,10 @@ export class IndicatorTypeRecognizerService {
         return 'AVERAGE_TRUE_RANGE_BANDS';
       case 'BB':
         return 'BOLLINGER_BANDS';
+      case 'BBW':
+        return 'BOLLINGER_BANDS_WIDTH';
+      case 'CC':
+        return 'COPPOCK_CURVE';
     }
   }
 

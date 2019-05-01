@@ -11,6 +11,7 @@ import { AroonComponent } from "../../indicator/indicator-config/aroon/aroon.com
 import { AccumulativeSwingIndexComponent } from "../../indicator/indicator-config/asi/accumulative-swing-index.component";
 import { AverageTrueRangeBandsComponent } from "../../indicator/indicator-config/atrb/average-true-range-bands.component";
 import { BollingerBandsComponent } from "../../indicator/indicator-config/bb/bollinger-bands.component";
+import { CoppockCurveComponent } from "../../indicator/indicator-config/cc/coppock-curve.component";
 
 @Injectable()
 export class IndicatorConfigProviderService {
@@ -52,7 +53,11 @@ export class IndicatorConfigProviderService {
         this.openModal(AverageTrueRangeBandsComponent, indicatorItem, true, update, configuration);
         break;
       case 'BB':
+      case 'BBW':
         this.openModal(BollingerBandsComponent, indicatorItem, true, update, configuration);
+        break;
+      case 'CC':
+        this.openModal(CoppockCurveComponent, indicatorItem, true, update, configuration);
         break;
     }
   }

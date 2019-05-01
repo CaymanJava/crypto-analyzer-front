@@ -11,6 +11,8 @@ import { AroonOscDrawService } from "./aroon-osc-draw.service";
 import { AsiDrawService } from "./asi-draw.service";
 import { AtrbDrawService } from "./atrb-draw.service";
 import { BbDrawService } from "./bb-draw.service";
+import { BbwDrawService } from "./bbw-draw.service";
+import { CcDrawService } from "./cc-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -27,7 +29,9 @@ export class IndicatorDrawService {
               private aroonOscDrawService: AroonOscDrawService,
               private asiDrawService: AsiDrawService,
               private atrbDrawService: AtrbDrawService,
-              private bbDrawService: BbDrawService) {
+              private bbDrawService: BbDrawService,
+              private bbwDrawService: BbwDrawService,
+              private ccDrawService: CcDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -62,6 +66,12 @@ export class IndicatorDrawService {
         return this.atrbDrawService.draw(settings, result, chart);
       case 'BB':
         return this.bbDrawService.draw(settings, result, chart);
+      case 'BBW':
+        this.increaseChartHeight(container);
+        return this.bbwDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'CC':
+        this.increaseChartHeight(container);
+        return this.ccDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -87,6 +97,10 @@ export class IndicatorDrawService {
         return this.atrbDrawService.update(settings, result, chart);
       case 'BB':
         return this.bbDrawService.update(settings, result, chart);
+      case 'BBW':
+        return this.bbwDrawService.update(settings, result, chart, plotNumber);
+      case 'CC':
+        return this.ccDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

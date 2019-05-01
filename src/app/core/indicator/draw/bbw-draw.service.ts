@@ -1,24 +1,24 @@
 import { Injectable } from "@angular/core";
+import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import * as AnyChart from "anychart";
-import { CommonDrawService } from "./common-draw.service";
 
 @Injectable({
   providedIn: "root"
 })
-export class AdlDrawService extends CommonDrawService {
+export class BbwDrawService extends CommonDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return this.drawADL(settings, result, chart, plotNumber);
+    return this.drawBBW(settings, result, chart, plotNumber);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     chart.plot(plotNumber).removeAllSeries();
-    return this.drawADL(settings, result, chart, plotNumber);
+    return this.drawBBW(settings, result, chart, plotNumber);
   }
 
-  private drawADL(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+  private drawBBW(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = super.prepareDefaultIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping);
@@ -45,7 +45,10 @@ export class AdlDrawService extends CommonDrawService {
   }
 
   private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title;
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ', ' +
+      settings.configuration.standardDeviationCoefficient + ', ' +
+      settings.configuration.priceType + ')';
   }
 
 }

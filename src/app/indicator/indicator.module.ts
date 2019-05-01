@@ -13,6 +13,7 @@ import { AroonComponent } from './indicator-config/aroon/aroon.component';
 import { AccumulativeSwingIndexComponent } from './indicator-config/asi/accumulative-swing-index.component';
 import { AverageTrueRangeBandsComponent } from './indicator-config/atrb/average-true-range-bands.component';
 import { BollingerBandsComponent } from './indicator-config/bb/bollinger-bands.component';
+import { CoppockCurveComponent } from './indicator-config/cc/coppock-curve.component';
 
 const components = [
   IndicatorPickerComponent
@@ -27,7 +28,8 @@ const modalConfig = [
   AroonComponent,
   AccumulativeSwingIndexComponent,
   AverageTrueRangeBandsComponent,
-  BollingerBandsComponent
+  BollingerBandsComponent,
+  CoppockCurveComponent
 ];
 
 @NgModule({

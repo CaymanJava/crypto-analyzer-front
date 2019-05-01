@@ -1,24 +1,24 @@
 import { Injectable } from "@angular/core";
+import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import * as AnyChart from "anychart";
-import { CommonDrawService } from "./common-draw.service";
 
 @Injectable({
   providedIn: "root"
 })
-export class AdlDrawService extends CommonDrawService {
+export class CcDrawService extends CommonDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return this.drawADL(settings, result, chart, plotNumber);
+    return this.drawCC(settings, result, chart, plotNumber);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     chart.plot(plotNumber).removeAllSeries();
-    return this.drawADL(settings, result, chart, plotNumber);
+    return this.drawCC(settings, result, chart, plotNumber);
   }
 
-  private drawADL(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+  private drawCC(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = super.prepareDefaultIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping);
@@ -35,6 +35,7 @@ export class AdlDrawService extends CommonDrawService {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
+    super.addHorizontalLine(indicatorPlot, 0);
     return indicatorPlot.line(indicatorMapping);
   }
 
@@ -45,7 +46,11 @@ export class AdlDrawService extends CommonDrawService {
   }
 
   private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title;
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ', ' +
+      settings.configuration.shortROCPeriod + ', ' +
+      settings.configuration.longROCPeriod + ', ' +
+      settings.configuration.priceType + ')';
   }
 
 }
