@@ -40,13 +40,13 @@
 
     <div class="row">
       <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="shift">Standard Deviation Coefficient</label>
+        <label for="standardDeviationCoefficient">Standard Deviation Coefficient</label>
       </div>
       <div class="col-6 form-group mb-3">
         <input [class.form-control-danger]="!configForm.controls['standardDeviationCoefficient'].valid && configForm.controls['standardDeviationCoefficient'].touched"
                [formControl]="configForm.get('standardDeviationCoefficient')"
                class="form-control"
-               id="shift"
+               id="standardDeviationCoefficient"
                placeholder="2"
                type="number">
       </div>

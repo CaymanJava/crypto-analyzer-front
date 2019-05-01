@@ -1,18 +1,20 @@
 import { ElementRef, Injectable } from "@angular/core";
-import { AcDrawService } from "./ac-draw.service";
-import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import { AdlDrawService } from "./adl-draw.service";
-import { AdxDrawService } from "./adx-draw.service";
-import { AlligatorDrawService } from "./alligator-draw.service";
-import { AoDrawService } from "./ao-draw.service";
-import { AtrDrawService } from "./atr-draw.service";
-import { AroonDrawService } from "./aroon-draw.service";
-import { AroonOscDrawService } from "./aroon-osc-draw.service";
-import { AsiDrawService } from "./asi-draw.service";
-import { AtrbDrawService } from "./atrb-draw.service";
-import { BbDrawService } from "./bb-draw.service";
-import { BbwDrawService } from "./bbw-draw.service";
-import { CcDrawService } from "./cc-draw.service";
+import { AcDrawService } from "./draw/ac-draw.service";
+import { IndicatorDrawResult, IndicatorSettings } from "./indicator.model";
+import { AdlDrawService } from "./draw/adl-draw.service";
+import { AdxDrawService } from "./draw/adx-draw.service";
+import { AlligatorDrawService } from "./draw/alligator-draw.service";
+import { AoDrawService } from "./draw/ao-draw.service";
+import { AtrDrawService } from "./draw/atr-draw.service";
+import { AroonDrawService } from "./draw/aroon-draw.service";
+import { AroonOscDrawService } from "./draw/aroon-osc-draw.service";
+import { AsiDrawService } from "./draw/asi-draw.service";
+import { AtrbDrawService } from "./draw/atrb-draw.service";
+import { BbDrawService } from "./draw/bb-draw.service";
+import { BbwDrawService } from "./draw/bbw-draw.service";
+import { CcDrawService } from "./draw/cc-draw.service";
+import { CciDrawService } from "./draw/cci-draw.service";
+import { CeDrawService } from "./draw/ce-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -31,7 +33,9 @@ export class IndicatorDrawService {
               private atrbDrawService: AtrbDrawService,
               private bbDrawService: BbDrawService,
               private bbwDrawService: BbwDrawService,
-              private ccDrawService: CcDrawService) {
+              private ccDrawService: CcDrawService,
+              private cciDrawService: CciDrawService,
+              private ceDrawService: CeDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -72,6 +76,11 @@ export class IndicatorDrawService {
       case 'CC':
         this.increaseChartHeight(container);
         return this.ccDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'CCI':
+        this.increaseChartHeight(container);
+        return this.cciDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'CE':
+        return this.ceDrawService.draw(settings, result, chart);
     }
   }
 
@@ -101,6 +110,10 @@ export class IndicatorDrawService {
         return this.bbwDrawService.update(settings, result, chart, plotNumber);
       case 'CC':
         return this.ccDrawService.update(settings, result, chart, plotNumber);
+      case 'CCI':
+        return this.cciDrawService.update(settings, result, chart, plotNumber);
+      case 'CE':
+        return this.ceDrawService.update(settings, result, chart);
     }
   }
 

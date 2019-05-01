@@ -9,7 +9,7 @@ import { IndicatorCalculationRequest, IndicatorConfigurationHandler, IndicatorDr
 import { IndicatorConfigProviderService } from "../../core/indicator/indicator-config-provider.service";
 import { ChartDrawerService } from "../../core/chart/chart-drawer.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
-import { IndicatorDrawService } from "../../core/indicator/draw/indicator-draw.service";
+import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
 import { IndicatorTypeRecognizerService } from "../../core/indicator/indicator-type-recognizer.service";
 
 @Component({

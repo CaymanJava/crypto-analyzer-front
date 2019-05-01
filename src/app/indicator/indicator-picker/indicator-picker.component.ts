@@ -42,7 +42,6 @@ export class IndicatorPickerComponent implements OnInit {
       this.indicatorItem('Chande Forecast Oscillator', 'CFO'),
       this.indicatorItem('Choppiness Index', 'CI'),
       this.indicatorItem('Chaikin Money Flow', 'CMF'),
-      this.indicatorItem('Chaikin Money Flow', 'CMF'),
       this.indicatorItem('Chande Momentum Oscillator', 'CMO'),
       this.indicatorItem('Chaikin Oscillator', 'CO'),
       this.indicatorItem('Center Of Gravity', 'COG'),

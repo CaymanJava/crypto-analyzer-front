@@ -30,6 +30,10 @@ export class IndicatorTypeRecognizerService {
         return 'BOLLINGER_BANDS_WIDTH';
       case 'CC':
         return 'COPPOCK_CURVE';
+      case 'CCI':
+        return 'COMMODITY_CHANNEL_INDEX';
+      case 'CE':
+        return 'CHANDELIER_EXIT';
     }
   }
 

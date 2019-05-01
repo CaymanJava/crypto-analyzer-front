@@ -12,6 +12,8 @@ import { AccumulativeSwingIndexComponent } from "../../indicator/indicator-confi
 import { AverageTrueRangeBandsComponent } from "../../indicator/indicator-config/atrb/average-true-range-bands.component";
 import { BollingerBandsComponent } from "../../indicator/indicator-config/bb/bollinger-bands.component";
 import { CoppockCurveComponent } from "../../indicator/indicator-config/cc/coppock-curve.component";
+import { CommodityChannelIndexComponent } from "../../indicator/indicator-config/cci/commodity-channel-index.component";
+import { ChandelierExitComponent } from "../../indicator/indicator-config/ce/chandelier-exit.component";
 
 @Injectable()
 export class IndicatorConfigProviderService {
@@ -58,6 +60,12 @@ export class IndicatorConfigProviderService {
         break;
       case 'CC':
         this.openModal(CoppockCurveComponent, indicatorItem, true, update, configuration);
+        break;
+      case 'CCI':
+        this.openModal(CommodityChannelIndexComponent, indicatorItem, true, update, configuration);
+        break;
+      case 'CE':
+        this.openModal(ChandelierExitComponent, indicatorItem, true, update, configuration);
         break;
     }
   }

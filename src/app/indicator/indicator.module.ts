@@ -14,6 +14,8 @@ import { AccumulativeSwingIndexComponent } from './indicator-config/asi/accumula
 import { AverageTrueRangeBandsComponent } from './indicator-config/atrb/average-true-range-bands.component';
 import { BollingerBandsComponent } from './indicator-config/bb/bollinger-bands.component';
 import { CoppockCurveComponent } from './indicator-config/cc/coppock-curve.component';
+import { CommodityChannelIndexComponent } from './indicator-config/cci/commodity-channel-index.component';
+import { ChandelierExitComponent } from './indicator-config/ce/chandelier-exit.component';
 
 const components = [
   IndicatorPickerComponent
@@ -29,7 +31,9 @@ const modalConfig = [
   AccumulativeSwingIndexComponent,
   AverageTrueRangeBandsComponent,
   BollingerBandsComponent,
-  CoppockCurveComponent
+  CoppockCurveComponent,
+  CommodityChannelIndexComponent,
+  ChandelierExitComponent
 ];
 
 @NgModule({
