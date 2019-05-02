@@ -14,6 +14,8 @@ import { BollingerBandsComponent } from "../../indicator/indicator-config/bb/bol
 import { CoppockCurveComponent } from "../../indicator/indicator-config/cc/coppock-curve.component";
 import { CommodityChannelIndexComponent } from "../../indicator/indicator-config/cci/commodity-channel-index.component";
 import { ChandelierExitComponent } from "../../indicator/indicator-config/ce/chandelier-exit.component";
+import { ChandeForecastOscillatorComponent } from "../../indicator/indicator-config/cfo/chande-forecast-oscillator.component";
+import { ChoppinessIndexComponent } from "../../indicator/indicator-config/chop/choppiness-index.component";
 
 @Injectable()
 export class IndicatorConfigProviderService {
@@ -66,6 +68,12 @@ export class IndicatorConfigProviderService {
         break;
       case 'CE':
         this.openModal(ChandelierExitComponent, indicatorItem, true, update, configuration);
+        break;
+      case 'CFO':
+        this.openModal(ChandeForecastOscillatorComponent, indicatorItem, true, update, configuration);
+        break;
+      case 'CHOP':
+        this.openModal(ChoppinessIndexComponent, indicatorItem, true, update, configuration);
         break;
     }
   }

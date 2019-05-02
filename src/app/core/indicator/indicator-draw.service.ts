@@ -15,6 +15,8 @@ import { BbwDrawService } from "./draw/bbw-draw.service";
 import { CcDrawService } from "./draw/cc-draw.service";
 import { CciDrawService } from "./draw/cci-draw.service";
 import { CeDrawService } from "./draw/ce-draw.service";
+import { CfoDrawService } from "./draw/cfo-draw.service";
+import { ChopDrawService } from "./draw/chop-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -35,7 +37,9 @@ export class IndicatorDrawService {
               private bbwDrawService: BbwDrawService,
               private ccDrawService: CcDrawService,
               private cciDrawService: CciDrawService,
-              private ceDrawService: CeDrawService) {
+              private ceDrawService: CeDrawService,
+              private cfoDrawService: CfoDrawService,
+              private chopDrawService: ChopDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -81,6 +85,12 @@ export class IndicatorDrawService {
         return this.cciDrawService.draw(settings, result, chart, currentPlotNumber);
       case 'CE':
         return this.ceDrawService.draw(settings, result, chart);
+      case 'CFO':
+        this.increaseChartHeight(container);
+        return this.cfoDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'CHOP':
+        this.increaseChartHeight(container);
+        return this.chopDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -114,6 +124,10 @@ export class IndicatorDrawService {
         return this.cciDrawService.update(settings, result, chart, plotNumber);
       case 'CE':
         return this.ceDrawService.update(settings, result, chart);
+      case 'CFO':
+        return this.cfoDrawService.update(settings, result, chart, plotNumber);
+      case 'CHOP':
+        return this.chopDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

@@ -16,6 +16,8 @@ import { BollingerBandsComponent } from './indicator-config/bb/bollinger-bands.c
 import { CoppockCurveComponent } from './indicator-config/cc/coppock-curve.component';
 import { CommodityChannelIndexComponent } from './indicator-config/cci/commodity-channel-index.component';
 import { ChandelierExitComponent } from './indicator-config/ce/chandelier-exit.component';
+import { ChandeForecastOscillatorComponent } from './indicator-config/cfo/chande-forecast-oscillator.component';
+import { ChoppinessIndexComponent } from './indicator-config/chop/choppiness-index.component';
 
 const components = [
   IndicatorPickerComponent
@@ -33,7 +35,9 @@ const modalConfig = [
   BollingerBandsComponent,
   CoppockCurveComponent,
   CommodityChannelIndexComponent,
-  ChandelierExitComponent
+  ChandelierExitComponent,
+  ChandeForecastOscillatorComponent,
+  ChoppinessIndexComponent
 ];
 
 @NgModule({

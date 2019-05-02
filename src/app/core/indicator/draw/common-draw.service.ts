@@ -16,6 +16,12 @@ export class CommonDrawService {
     return indicatorData;
   }
 
+  clearPlot(chart: any, plotNumber: number) {
+    const plot = chart.plot(plotNumber);
+    plot.removeAllSeries();
+    this.removeAnnotations(plot);
+  }
+
   configureColumns(computedLine, title) {
     computedLine.name(title);
     computedLine.risingFill('#3ba158');
@@ -26,9 +32,14 @@ export class CommonDrawService {
 
   addHorizontalLine(indicatorPlot, lineValue: number) {
     const controller = indicatorPlot.annotations();
-    controller.horizontalLine({
+    const line = controller.horizontalLine({
       valueAnchor: lineValue
     });
+    line.allowEdit(false);
+  }
+
+  removeAnnotations(indicatorPlot) {
+    indicatorPlot.annotations().removeAllAnnotations();
   }
 
   configureDateTimeFormat(indicatorPlot) {

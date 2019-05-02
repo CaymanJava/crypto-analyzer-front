@@ -40,7 +40,7 @@ export class IndicatorPickerComponent implements OnInit {
       this.indicatorItem('Commodity Channel Index', 'CCI'),
       this.indicatorItem('Chandelier Exit', 'CE'),
       this.indicatorItem('Chande Forecast Oscillator', 'CFO'),
-      this.indicatorItem('Choppiness Index', 'CI'),
+      this.indicatorItem('Choppiness Index', 'CHOP'),
       this.indicatorItem('Chaikin Money Flow', 'CMF'),
       this.indicatorItem('Chande Momentum Oscillator', 'CMO'),
       this.indicatorItem('Chaikin Oscillator', 'CO'),

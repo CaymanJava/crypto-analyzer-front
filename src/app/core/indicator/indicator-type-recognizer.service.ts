@@ -34,6 +34,10 @@ export class IndicatorTypeRecognizerService {
         return 'COMMODITY_CHANNEL_INDEX';
       case 'CE':
         return 'CHANDELIER_EXIT';
+      case 'CFO':
+        return 'CHANDE_FORECAST_OSCILLATOR';
+      case 'CHOP':
+        return 'CHOPPINESS_INDEX';
     }
   }
 

@@ -4,10 +4,10 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-commodity-channel-index',
-  templateUrl: './commodity-channel-index.component.html'
+  selector: 'app-choppiness-index',
+  templateUrl: './choppiness-index.component.html'
 })
-export class CommodityChannelIndexComponent implements OnInit {
+export class ChoppinessIndexComponent implements OnInit {
 
   @Input() name: string;
   @Input() configuration: any;
@@ -19,8 +19,8 @@ export class CommodityChannelIndexComponent implements OnInit {
               protected fb: FormBuilder) {
     this.configForm = fb.group({
       'period' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'overbought' : [100, [Validators.required, Validators.min(0)]],
-      'oversold' : [-100, [Validators.required, Validators.max(0)]]
+      'overbought' : [61.8, [Validators.required, Validators.min(0), Validators.max(100)]],
+      'oversold' : [38.2, [Validators.required, Validators.min(0), Validators.max(100)]]
     });
   }
 

@@ -4,10 +4,10 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-commodity-channel-index',
-  templateUrl: './commodity-channel-index.component.html'
+  selector: 'app-chande-forecast-oscillator',
+  templateUrl: './chande-forecast-oscillator.component.html'
 })
-export class CommodityChannelIndexComponent implements OnInit {
+export class ChandeForecastOscillatorComponent implements OnInit {
 
   @Input() name: string;
   @Input() configuration: any;
@@ -18,9 +18,10 @@ export class CommodityChannelIndexComponent implements OnInit {
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
     this.configForm = fb.group({
-      'period' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'overbought' : [100, [Validators.required, Validators.min(0)]],
-      'oversold' : [-100, [Validators.required, Validators.max(0)]]
+      'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'movingAveragePeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'movingAverageType': ['', [Validators.required]],
+      'priceType': ['', [Validators.required]]
     });
   }
 
@@ -31,8 +32,9 @@ export class CommodityChannelIndexComponent implements OnInit {
   onSubmit() {
     this.modal.close({
       period: this.configForm.get('period').value,
-      overbought: this.configForm.get('overbought').value,
-      oversold: this.configForm.get('oversold').value
+      movingAveragePeriod: this.configForm.get('movingAveragePeriod').value,
+      movingAverageType: this.configForm.get('movingAverageType').value,
+      priceType: this.configForm.get('priceType').value,
     });
   }
 
@@ -40,8 +42,9 @@ export class CommodityChannelIndexComponent implements OnInit {
     if (this.configuration !== null && typeof this.configuration !== 'undefined') {
       this.configForm.setValue({
         period: this.configuration.period,
-        overbought: this.configuration.overbought,
-        oversold: this.configuration.oversold
+        movingAveragePeriod: this.configuration.movingAveragePeriod,
+        movingAverageType: this.configuration.movingAverageType,
+        priceType: this.configuration.priceType
       });
     }
   }
