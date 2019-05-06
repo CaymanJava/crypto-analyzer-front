@@ -21,12 +21,13 @@ import { ChoppinessIndexComponent } from './indicator-config/chop/choppiness-ind
 import { AccumulationDistributionLineComponent } from './indicator-config/ac/accumulation-distribution-line.component';
 import { ColorPickerModule } from "ngx-color-picker";
 import { AroonOscillatorComponent } from './indicator-config/aroon-osc/aroon-oscillator.component';
-import { BollingerBandsWidthComponent } from './indicator-config/bollinger-bands-width/bollinger-bands-width.component';
+import { BollingerBandsWidthComponent } from './indicator-config/bbw/bollinger-bands-width.component';
 import { SharedComponentsModule } from "../shared/components/shared-components.module";
 import { ColorPickerComponent } from "./common/color-picker/color-picker.component";
 import { IndicatorInputComponent } from './common/indicator-input/indicator-input.component';
 import { MovingAverageShortPickerComponent } from './common/moving-average-short-picker/moving-average-short-picker.component';
 import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
+import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -37,6 +38,7 @@ const components = [
 ];
 
 const modalConfig = [
+  BaseIndicatorComponent,
   AccelerationDecelerationOscillatorComponent,
   AccumulationDistributionLineComponent,
   AverageDirectionalMovementIndexComponent,

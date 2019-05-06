@@ -1,28 +1,36 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   selector: 'app-accumulation-distribution-line',
   templateUrl: './accumulation-distribution-line.component.html'
 })
-export class AccumulationDistributionLineComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() drawConfiguration: any;
-  @Input() update: boolean = false;
-
-  drawConfigForm: FormGroup;
+export class AccumulationDistributionLineComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.drawConfigForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.drawConfigForm = this.fb.group({
       'indicatorLineColor': ['#2722d8', Validators.required]
     });
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
+  }
+
+  fillConfiguration() {
+    if (this.update) {
+      this.drawConfigForm.setValue({
+        indicatorLineColor: this.drawConfiguration.indicatorLineColor
+      });
+    }
   }
 
   onSubmit() {
@@ -32,18 +40,6 @@ export class AccumulationDistributionLineComponent implements OnInit {
         indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value
       }
     });
-  }
-
-  onColorPickerChange(color: string) {
-    this.drawConfigForm.get('indicatorLineColor').setValue(color);
-  }
-
-  private initForm() {
-    if (this.update) {
-      this.drawConfigForm.setValue({
-        indicatorLineColor: this.drawConfiguration.indicatorLineColor
-      });
-    }
   }
 
 }

@@ -1,23 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   moduleId: module.id,
   templateUrl: './acceleration-deceleration-oscillator.component.html'
 })
-export class AccelerationDecelerationOscillatorComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() configuration: any;
-  @Input() update: boolean = false;
-
-  configForm: FormGroup;
+export class AccelerationDecelerationOscillatorComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.configForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
       'slowPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'fastPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'smoothedPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]]
@@ -25,7 +25,7 @@ export class AccelerationDecelerationOscillatorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
   }
 
   onSubmit() {
@@ -38,7 +38,7 @@ export class AccelerationDecelerationOscillatorComponent implements OnInit {
     });
   }
 
-  private initForm() {
+  fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
         slowPeriod: this.configuration.slowPeriod,
@@ -47,4 +47,5 @@ export class AccelerationDecelerationOscillatorComponent implements OnInit {
       });
     }
   }
+
 }

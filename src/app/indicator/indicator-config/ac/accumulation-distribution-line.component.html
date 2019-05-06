@@ -9,7 +9,7 @@
     <app-color-picker
         [color]="drawConfigForm.get('indicatorLineColor').value"
         [label]="'Indicator line'"
-        (onColorChange)="onColorPickerChange($event)">
+        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')">
     </app-color-picker>
   </form>
 </div>

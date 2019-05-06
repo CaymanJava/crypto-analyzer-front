@@ -1,31 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 import { PositiveNumberValidator } from "../../../shared/validators/positive-number-validator";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   moduleId: module.id,
   templateUrl: './average-true-range-bands.component.html'
 })
-export class AverageTrueRangeBandsComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() configuration: any;
-  @Input() drawConfiguration: any;
-  @Input() update: boolean = false;
-
-  configForm: FormGroup;
-  drawConfigForm: FormGroup;
+export class AverageTrueRangeBandsComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.configForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
       'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'shift': ['', [Validators.required, PositiveNumberValidator.valid]],
       'priceType': ['', [Validators.required]]
     });
-    this.drawConfigForm = fb.group({
+    this.drawConfigForm = this.fb.group({
       'atrBandsTopColor': ['#0a2ecc', Validators.required],
       'atrBandsBottomColor': ['#0a2ecc', Validators.required],
       'atrBandsMiddleColor': ['#fa0f16', Validators.required],
@@ -34,7 +32,7 @@ export class AverageTrueRangeBandsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
   }
 
   onSubmit() {
@@ -53,11 +51,7 @@ export class AverageTrueRangeBandsComponent implements OnInit {
     });
   }
 
-  onColorPickerChange(color: string, line: string) {
-    this.drawConfigForm.get(line).setValue(color);
-  }
-
-  private initForm() {
+  fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period,

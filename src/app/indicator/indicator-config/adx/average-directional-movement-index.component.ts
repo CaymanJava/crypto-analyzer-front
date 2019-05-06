@@ -1,28 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   moduleId: module.id,
   templateUrl: './average-directional-movement-index.component.html'
 })
-export class AverageDirectionalMovementIndexComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() configuration: any;
-  @Input() drawConfiguration: any;
-  @Input() update: boolean = false;
-
-  configForm: FormGroup;
-  drawConfigForm: FormGroup;
+export class AverageDirectionalMovementIndexComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.configForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
       'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
     });
-    this.drawConfigForm = fb.group({
+    this.drawConfigForm = this.fb.group({
       'positiveDiLineColor': ['#3ba158', Validators.required],
       'negativeDiLineColor': ['#fa0f16', Validators.required],
       'indicatorLineColor': ['#1c1afa', Validators.required],
@@ -30,7 +28,7 @@ export class AverageDirectionalMovementIndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
   }
 
   onSubmit() {
@@ -46,11 +44,7 @@ export class AverageDirectionalMovementIndexComponent implements OnInit {
     });
   }
 
-  onColorPickerChange(color: string, line: string) {
-    this.drawConfigForm.get(line).setValue(color);
-  }
-
-  private initForm() {
+  fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period

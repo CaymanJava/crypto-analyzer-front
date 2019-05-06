@@ -1,37 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   selector: 'app-bollinger-bands-width',
   templateUrl: './bollinger-bands-width.component.html'
 })
-export class BollingerBandsWidthComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() configuration: any;
-  @Input() drawConfiguration: any;
-  @Input() update: boolean = false;
-
-  configForm: FormGroup;
-  drawConfigForm: FormGroup;
+export class BollingerBandsWidthComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.configForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
       'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'priceType': ['', [Validators.required]],
       'standardDeviationCoefficient': ['', [Validators.required, Validators.min(1.00001)]],
       'movingAverageType': ['', [Validators.required]]
     });
-    this.drawConfigForm = fb.group({
+    this.drawConfigForm = this.fb.group({
       'indicatorLineColor': ['#2722d8', Validators.required]
     });
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
   }
 
   onSubmit() {
@@ -48,11 +46,7 @@ export class BollingerBandsWidthComponent implements OnInit {
     });
   }
 
-  onColorPickerChange(color: string) {
-    this.drawConfigForm.get('indicatorLineColor').setValue(color);
-  }
-
-  private initForm() {
+  fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period,

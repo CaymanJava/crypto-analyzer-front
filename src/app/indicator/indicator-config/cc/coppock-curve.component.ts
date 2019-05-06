@@ -1,37 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
   selector: 'app-coppock-curve',
   templateUrl: './coppock-curve.component.html'
 })
-export class CoppockCurveComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() configuration: any;
-  @Input() drawConfiguration: any;
-  @Input() update: boolean = false;
-
-  configForm: FormGroup;
-  drawConfigForm: FormGroup;
+export class CoppockCurveComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
-    this.configForm = fb.group({
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
       'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'shortROCPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'longROCPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'priceType': ['', [Validators.required]]
     });
-    this.drawConfigForm = fb.group({
+    this.drawConfigForm = this.fb.group({
       'indicatorLineColor': ['#0a2ecc', Validators.required]
     });
   }
 
   ngOnInit() {
-    this.initForm();
+    this.fillConfiguration();
   }
 
   onSubmit() {
@@ -48,11 +46,7 @@ export class CoppockCurveComponent implements OnInit {
     });
   }
 
-  onColorPickerChange(color: string) {
-    this.drawConfigForm.get('indicatorLineColor').setValue(color);
-  }
-
-  private initForm() {
+  fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period,

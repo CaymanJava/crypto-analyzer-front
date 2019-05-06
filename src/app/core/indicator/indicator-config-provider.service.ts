@@ -18,7 +18,7 @@ import { ChandeForecastOscillatorComponent } from "../../indicator/indicator-con
 import { ChoppinessIndexComponent } from "../../indicator/indicator-config/chop/choppiness-index.component";
 import { AccumulationDistributionLineComponent } from "../../indicator/indicator-config/ac/accumulation-distribution-line.component";
 import { AroonOscillatorComponent } from "../../indicator/indicator-config/aroon-osc/aroon-oscillator.component";
-import { BollingerBandsWidthComponent } from "../../indicator/indicator-config/bollinger-bands-width/bollinger-bands-width.component";
+import { BollingerBandsWidthComponent } from "../../indicator/indicator-config/bbw/bollinger-bands-width.component";
 
 @Injectable()
 export class IndicatorConfigProviderService {

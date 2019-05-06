@@ -28,7 +28,7 @@
     </app-moving-average-short-picker>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event)"
+        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
         [color]="drawConfigForm.get('indicatorLineColor').value"
         [label]="'Indicator line'">
     </app-color-picker>
