@@ -18,23 +18,23 @@ export class AtrbDrawService extends CommonDrawService {
 
   private drawAtrb(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
-    this.preparePlot(chart, indicator);
+    this.preparePlot(settings.drawConfiguration, chart, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, 0);
   }
 
-  private preparePlot(chart: any, indicator) {
+  private preparePlot(drawConfiguration: any, chart: any, indicator) {
     const indicatorPlot = chart.plot(0);
-    this.configureArea(indicatorPlot, indicator);
-    this.configureMiddleBand(indicatorPlot, indicator);
+    this.configureArea(drawConfiguration, indicatorPlot, indicator);
+    this.configureMiddleBand(drawConfiguration.atrBandsMiddleColor, indicatorPlot, indicator);
   }
 
-  private configureArea(indicatorPlot, indicator) {
+  private configureArea(drawConfiguration, indicatorPlot, indicator) {
     const series = indicatorPlot.rangeArea(indicator.mapAs({low: 3, high: 1}));
     series.name("ATRB");
-    series.normal().fill('#7276cc', 0.3);
-    series.normal().lowStroke('#0a2ecc', 1.2, '10 5', 'round');
-    series.normal().highStroke('#0a2ecc', 1.2, '10 5', 'round');
+    series.normal().fill(drawConfiguration.atrBandsChannelColor, 0.3);
+    series.normal().lowStroke(drawConfiguration.atrBandsBottomColor, 1.2, '10 5', 'round');
+    series.normal().highStroke(drawConfiguration.atrBandsTopColor, 1.2, '10 5', 'round');
   }
 
   private prepareData(result: any[]) {
@@ -44,10 +44,10 @@ export class AtrbDrawService extends CommonDrawService {
     return table;
   }
 
-  private configureMiddleBand(indicatorPlot, indicator) {
+  private configureMiddleBand(color: string, indicatorPlot, indicator) {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    middleBand.stroke('red');
-    middleBand.name('Middle band');
+    middleBand.stroke(color);
+    middleBand.name('Middle');
   }
 
   private prepareTitle(settings: IndicatorSettings) {

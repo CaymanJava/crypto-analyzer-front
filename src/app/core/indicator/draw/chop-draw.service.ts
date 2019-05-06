@@ -21,22 +21,23 @@ export class ChopDrawService extends CommonDrawService {
   private drawChop(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = super.prepareDefaultIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
-    const computedLine = this.configurePlot(settings.configuration, chart, plotNumber, indicatorMapping);
+    const computedLine = this.configurePlot(settings.drawConfiguration, chart, plotNumber, indicatorMapping);
     const title = this.prepareTitle(settings);
-    this.configureComputedLine(computedLine, title);
+    this.configureComputedLine(settings.drawConfiguration, computedLine, title);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private configureComputedLine(computedLine, title) {
+  private configureComputedLine(drawConfiguration, computedLine, title) {
     computedLine.name(title);
+    computedLine.stroke(drawConfiguration.indicatorLineColor);
   }
 
-  private configurePlot(configuration: any, chart: any, plotNumber: number, indicatorMapping) {
+  private configurePlot(drawConfiguration: any, chart: any, plotNumber: number, indicatorMapping) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLine(indicatorPlot, configuration.overbought);
-    super.addHorizontalLine(indicatorPlot, configuration.oversold);
+    super.addHorizontalLine(indicatorPlot, drawConfiguration.overbought);
+    super.addHorizontalLine(indicatorPlot, drawConfiguration.oversold);
     return indicatorPlot.line(indicatorMapping);
   }
 

@@ -6,43 +6,36 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="slowPeriod">Slow period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['slowPeriod'].valid && configForm.controls['slowPeriod'].touched"
-               [formControl]="configForm.get('slowPeriod')" id="slowPeriod" placeholder="14">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 form-group mb-3">
-        <label for="fastPeriod">Fast period</label>
-      </div>
-      <div class="col-md-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['fastPeriod'].valid && configForm.controls['fastPeriod'].touched"
-               [formControl]="configForm.get('fastPeriod')" id="fastPeriod" placeholder="7">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 form-group mb-3">
-        <label for="smoothedPeriod">Smoothed period</label>
-      </div>
-      <div class="col-md-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['smoothedPeriod'].valid && configForm.controls['smoothedPeriod'].touched"
-               [formControl]="configForm.get('smoothedPeriod')" id="smoothedPeriod" placeholder="14">
-      </div>
-    </div>
+    <app-indicator-input
+        [form]="configForm"
+        key="slowPeriod"
+        label="Slow period"
+        placeholder="14">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="fastPeriod"
+        label="Fast period"
+        placeholder="7">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="smoothedPeriod"
+        label="Smoothed period"
+        placeholder="14">
+    </app-indicator-input>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('close')">Close</button>
-  <button type="button" class="btn btn-outline-success btn-rounded" [disabled]="!configForm.valid" (click)="onSubmit()">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

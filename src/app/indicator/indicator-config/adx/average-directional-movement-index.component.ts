@@ -11,14 +11,21 @@ export class AverageDirectionalMovementIndexComponent implements OnInit {
 
   @Input() name: string;
   @Input() configuration: any;
+  @Input() drawConfiguration: any;
   @Input() update: boolean = false;
 
   configForm: FormGroup;
+  drawConfigForm: FormGroup;
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
     this.configForm = fb.group({
-      'period' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+    });
+    this.drawConfigForm = fb.group({
+      'positiveDiLineColor': ['#3ba158', Validators.required],
+      'negativeDiLineColor': ['#fa0f16', Validators.required],
+      'indicatorLineColor': ['#1c1afa', Validators.required],
     });
   }
 
@@ -28,14 +35,30 @@ export class AverageDirectionalMovementIndexComponent implements OnInit {
 
   onSubmit() {
     this.modal.close({
-      period: this.configForm.get('period').value,
+      configuration: {
+        period: this.configForm.get('period').value
+      },
+      drawConfiguration: {
+        positiveDiLineColor: this.drawConfigForm.get('positiveDiLineColor').value,
+        negativeDiLineColor: this.drawConfigForm.get('negativeDiLineColor').value,
+        indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value
+      }
     });
   }
 
+  onColorPickerChange(color: string, line: string) {
+    this.drawConfigForm.get(line).setValue(color);
+  }
+
   private initForm() {
-    if (this.configuration !== null && typeof this.configuration !== 'undefined') {
+    if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period
+      });
+      this.drawConfigForm.setValue({
+        positiveDiLineColor: this.drawConfiguration.positiveDiLineColor,
+        negativeDiLineColor: this.drawConfiguration.negativeDiLineColor,
+        indicatorLineColor: this.drawConfiguration.indicatorLineColor
       });
     }
   }

@@ -18,15 +18,15 @@ export class CeDrawService extends CommonDrawService {
 
   private drawCE(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
-    this.preparePlot(chart, indicator);
+    this.preparePlot(settings.drawConfiguration, chart, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, 0);
   }
 
-  private preparePlot(chart: any, indicator) {
+  private preparePlot(drawConfiguration: any, chart: any, indicator) {
     const indicatorPlot = chart.plot(0);
-    this.configureLongChandelierExit(indicatorPlot, indicator);
-    this.configureShortChandelierExit(indicatorPlot, indicator);
+    this.configureLongChandelierExit(drawConfiguration.longExitLineColor, indicatorPlot, indicator);
+    this.configureShortChandelierExit(drawConfiguration.shortExitLineColor,indicatorPlot, indicator);
   }
 
   private prepareData(result: any[]) {
@@ -48,15 +48,15 @@ export class CeDrawService extends CommonDrawService {
     return indicatorData;
   }
 
-  private configureLongChandelierExit(indicatorPlot, indicator) {
+  private configureLongChandelierExit(color: string, indicatorPlot, indicator) {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    middleBand.stroke('green');
+    middleBand.stroke(color);
     middleBand.name('Long exit');
   }
 
-  private configureShortChandelierExit(indicatorPlot, indicator) {
+  private configureShortChandelierExit(color: string, indicatorPlot, indicator) {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    middleBand.stroke('red');
+    middleBand.stroke(color);
     middleBand.name('Short exit');
   }
 

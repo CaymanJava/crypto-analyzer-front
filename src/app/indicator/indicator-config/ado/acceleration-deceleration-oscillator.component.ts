@@ -18,9 +18,9 @@ export class AccelerationDecelerationOscillatorComponent implements OnInit {
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
     this.configForm = fb.group({
-      'slowPeriod' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'fastPeriod' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'smoothedPeriod' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]]
+      'slowPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'fastPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'smoothedPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]]
     });
   }
 
@@ -30,14 +30,16 @@ export class AccelerationDecelerationOscillatorComponent implements OnInit {
 
   onSubmit() {
     this.modal.close({
-      slowPeriod: this.configForm.get('slowPeriod').value,
-      fastPeriod: this.configForm.get('fastPeriod').value,
-      smoothedPeriod: this.configForm.get('smoothedPeriod').value,
+      configuration: {
+        slowPeriod: this.configForm.get('slowPeriod').value,
+        fastPeriod: this.configForm.get('fastPeriod').value,
+        smoothedPeriod: this.configForm.get('smoothedPeriod').value
+      }
     });
   }
 
   private initForm() {
-    if (this.configuration !== null && typeof this.configuration !== 'undefined') {
+    if (this.update) {
       this.configForm.setValue({
         slowPeriod: this.configuration.slowPeriod,
         fastPeriod: this.configuration.fastPeriod,

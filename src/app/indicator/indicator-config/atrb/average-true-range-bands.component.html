@@ -6,50 +6,55 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="period">Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['period'].valid && configForm.controls['period'].touched"
-               [formControl]="configForm.get('period')"
-               class="form-control"
-               id="period" placeholder="5" type="number">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="shift">Shift</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['shift'].valid && configForm.controls['shift'].touched"
-               [formControl]="configForm.get('shift')"
-               class="form-control"
-               id="shift" placeholder="3" type="number">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="priceType">Price type</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <select [class.form-control-danger]="!configForm.controls['priceType'].valid && configForm.controls['priceType'].touched"
-                [formControl]="configForm.get('priceType')" class="form-control col-form-label-sm custom-select"
-                id='priceType'>
-          <option value="HIGH">High</option>
-          <option value="LOW">Low</option>
-          <option value="OPEN">Open</option>
-          <option value="CLOSE">Close</option>
-        </select>
-      </div>
-    </div>
-
+    <app-indicator-input
+        [form]="configForm"
+        key="period"
+        label="Period"
+        placeholder="5">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="shift"
+        label="Shift"
+        placeholder="3">
+    </app-indicator-input>
+    <app-price-type-picker
+        [configForm]="configForm"
+        key="priceType">
+    </app-price-type-picker>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'atrBandsTopColor')"
+        [color]="drawConfigForm.get('atrBandsTopColor').value"
+        [label]="'ATR bands top'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'atrBandsBottomColor')"
+        [color]="drawConfigForm.get('atrBandsBottomColor').value"
+        [label]="'ATR bands bottom'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'atrBandsMiddleColor')"
+        [color]="drawConfigForm.get('atrBandsMiddleColor').value"
+        [label]="'ATR bands middle'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'atrBandsChannelColor')"
+        [color]="drawConfigForm.get('atrBandsChannelColor').value"
+        [label]="'ATR bands channel'">
+    </app-color-picker>
   </form>
 </div>
 <div class="modal-footer">
-  <button (click)="modal.close('close')" class="btn btn-outline-danger btn-rounded" type="button">Close</button>
-  <button (click)="onSubmit()" [disabled]="!configForm.valid" class="btn btn-outline-success btn-rounded" type="button">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

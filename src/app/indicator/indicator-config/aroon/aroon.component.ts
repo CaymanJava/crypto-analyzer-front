@@ -11,14 +11,20 @@ export class AroonComponent implements OnInit {
 
   @Input() name: string;
   @Input() configuration: any;
+  @Input() drawConfiguration: any;
   @Input() update: boolean = false;
 
   configForm: FormGroup;
+  drawConfigForm: FormGroup;
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
     this.configForm = fb.group({
-      'period' : ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]]
+    });
+    this.drawConfigForm = fb.group({
+      'aroonUpLineColor': ['#3ba158', Validators.required],
+      'aroonDownLineColor': ['#fa0f16', Validators.required]
     });
   }
 
@@ -28,14 +34,28 @@ export class AroonComponent implements OnInit {
 
   onSubmit() {
     this.modal.close({
-      period: this.configForm.get('period').value,
+      configuration: {
+        period: this.configForm.get('period').value
+      },
+      drawConfiguration: {
+        aroonUpLineColor: this.drawConfigForm.get('aroonUpLineColor').value,
+        aroonDownLineColor: this.drawConfigForm.get('aroonDownLineColor').value
+      }
     });
   }
 
+  onColorPickerChange(color: string, line: string) {
+    this.drawConfigForm.get(line).setValue(color);
+  }
+
   private initForm() {
-    if (this.configuration !== null && typeof this.configuration !== 'undefined') {
+    if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period
+      });
+      this.drawConfigForm.setValue({
+        aroonUpLineColor: this.drawConfiguration.aroonUpLineColor,
+        aroonDownLineColor: this.drawConfiguration.aroonDownLineColor
       });
     }
   }

@@ -6,21 +6,35 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="period">Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['period'].valid && configForm.controls['period'].touched"
-               [formControl]="configForm.get('period')" id="period" placeholder="14">
-      </div>
-    </div>
+    <app-indicator-input
+        [form]="configForm"
+        key="period"
+        label="Period"
+        placeholder="14">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'aroonUpLineColor')"
+        [color]="drawConfigForm.get('aroonUpLineColor').value"
+        [label]="'Aroon Up'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'aroonDownLineColor')"
+        [color]="drawConfigForm.get('aroonDownLineColor').value"
+        [label]="'Aroon Down'">
+    </app-color-picker>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('close')">Close</button>
-  <button type="button" class="btn btn-outline-success btn-rounded" [disabled]="!configForm.valid" (click)="onSubmit()">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

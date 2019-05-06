@@ -6,52 +6,47 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="period">Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['period'].valid && configForm.controls['period'].touched"
-               [formControl]="configForm.get('period')"
-               class="form-control"
-               id="period"
-               placeholder="22"
-               type="number">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="longFactor">Long factor</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['longFactor'].valid && configForm.controls['longFactor'].touched"
-               [formControl]="configForm.get('longFactor')"
-               class="form-control"
-               id="longFactor"
-               placeholder="3"
-               type="number">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="shortFactor">Short factor</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['shortFactor'].valid && configForm.controls['shortFactor'].touched"
-               [formControl]="configForm.get('shortFactor')"
-               class="form-control"
-               id="shortFactor"
-               placeholder="3"
-               type="number">
-      </div>
-    </div>
-
+    <app-indicator-input
+        [form]="configForm"
+        key="period"
+        label="Period"
+        placeholder="22">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="longFactor"
+        label="Long factor"
+        placeholder="3">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="shortFactor"
+        label="Short factor"
+        placeholder="3">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'longExitLineColor')"
+        [color]="drawConfigForm.get('longExitLineColor').value"
+        [label]="'Long exit line'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'shortExitLineColor')"
+        [color]="drawConfigForm.get('shortExitLineColor').value"
+        [label]="'Short exit line'">
+    </app-color-picker>
   </form>
 </div>
 <div class="modal-footer">
-  <button (click)="modal.close('close')" class="btn btn-outline-danger btn-rounded" type="button">Close</button>
-  <button (click)="onSubmit()" [disabled]="!configForm.valid" class="btn btn-outline-success btn-rounded" type="button">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

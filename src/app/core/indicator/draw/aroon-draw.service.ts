@@ -22,26 +22,26 @@ export class AroonDrawService extends CommonDrawService {
     const indicatorData = this.prepareAroonData(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
-    this.prepareLines(indicatorPlot, indicator);
+    this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private prepareLines(indicatorPlot, indicator) {
-    this.configureAroonUpLine(indicatorPlot, indicator);
-    this.configureAroonDownLine(indicatorPlot, indicator);
+  private prepareLines(drawConfiguration, indicatorPlot, indicator) {
+    this.configureAroonUpLine(drawConfiguration, indicatorPlot, indicator);
+    this.configureAroonDownLine(drawConfiguration, indicatorPlot, indicator);
   }
 
-  private configureAroonUpLine(indicatorPlot, indicator) {
-    const positiveDiLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    positiveDiLine.stroke('green');
-    positiveDiLine.name('Aroon UP');
+  private configureAroonUpLine(drawConfiguration, indicatorPlot, indicator) {
+    const arronUpLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
+    arronUpLine.stroke(drawConfiguration.aroonUpLineColor);
+    arronUpLine.name('Aroon UP');
   }
 
-  private configureAroonDownLine(indicatorPlot, indicator) {
-    const negativeDiLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    negativeDiLine.stroke('red');
-    negativeDiLine.name('Aroon DOWN');
+  private configureAroonDownLine(drawConfiguration, indicatorPlot, indicator) {
+    const aroonDownLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
+    aroonDownLine.stroke(drawConfiguration.aroonDownLineColor);
+    aroonDownLine.name('Aroon DOWN');
   }
 
   private configureData(indicatorData) {

@@ -21,17 +21,19 @@ export class AroonOscDrawService extends CommonDrawService {
   private drawAroonOsc(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareAroonOscData(result);
     const indicatorMapping = this.addData(indicatorData);
-    this.configurePlot(chart, plotNumber, indicatorMapping);
+    this.configurePlot(settings.drawConfiguration, chart, plotNumber, indicatorMapping);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private configurePlot(chart: any, plotNumber: number, indicatorMapping) {
+  private configurePlot(drawConfiguration: any, chart: any, plotNumber: number, indicatorMapping) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
     super.addHorizontalLine(indicatorPlot, 0);
-    return indicatorPlot.line(indicatorMapping);
+    const line = indicatorPlot.line(indicatorMapping);
+    line.stroke(drawConfiguration.indicatorLineColor);
+    line.name('Aroon OSC');
   }
 
   private addData(indicatorData) {

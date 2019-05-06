@@ -23,12 +23,13 @@ export class BbwDrawService extends CommonDrawService {
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping);
     const title = this.prepareTitle(settings);
-    this.configureComputedLine(computedLine, title);
+    this.configureComputedLine(settings.drawConfiguration, computedLine, title);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private configureComputedLine(computedLine, title) {
+  private configureComputedLine(drawConfiguration, computedLine, title) {
     computedLine.name(title);
+    computedLine.stroke(drawConfiguration.indicatorLineColor);
   }
 
   private configurePlot(chart: any, plotNumber: number, indicatorMapping) {

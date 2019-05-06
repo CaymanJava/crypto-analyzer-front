@@ -18,14 +18,14 @@ export class AlligatorDrawService extends CommonDrawService {
 
   private drawAlligator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicator = this.prepareData(result);
-    this.preparePlot(chart, plotNumber, indicator);
+    this.preparePlot(settings.drawConfiguration, chart, plotNumber, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private preparePlot(chart: any, plotNumber: number, indicator) {
+  private preparePlot(drawConfiguration: any, chart: any, plotNumber: number, indicator) {
     const indicatorPlot = chart.plot(plotNumber);
-    this.configureLines(indicatorPlot, indicator);
+    this.configureLines(drawConfiguration, indicatorPlot, indicator);
   }
 
   private prepareData(result: any[]) {
@@ -35,27 +35,27 @@ export class AlligatorDrawService extends CommonDrawService {
     return indicator;
   }
 
-  private configureLines(indicatorPlot, indicator) {
-    this.configureJawLine(indicatorPlot, indicator);
-    this.configureTeethLine(indicatorPlot, indicator);
-    this.configureLipsLine(indicatorPlot, indicator);
+  private configureLines(drawConfiguration: any, indicatorPlot, indicator) {
+    this.configureJawLine(drawConfiguration.jawLineColor, indicatorPlot, indicator);
+    this.configureTeethLine(drawConfiguration.teethLineColor, indicatorPlot, indicator);
+    this.configureLipsLine(drawConfiguration.lipsLineColor, indicatorPlot, indicator);
   }
 
-  private configureJawLine(indicatorPlot, indicator) {
+  private configureJawLine(color: string, indicatorPlot, indicator) {
     const jawLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    jawLine.stroke('blue');
+    jawLine.stroke(color);
     jawLine.name('Jaw');
   }
 
-  private configureTeethLine(indicatorPlot, indicator) {
+  private configureTeethLine(color: string, indicatorPlot, indicator) {
     const teethLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    teethLine.stroke('red');
+    teethLine.stroke(color);
     teethLine.name('Teeth');
   }
 
-  private configureLipsLine(indicatorPlot, indicator) {
+  private configureLipsLine(color: string, indicatorPlot, indicator) {
     const lipsLine = indicatorPlot.line(indicator.mapAs({'value': 3}));
-    lipsLine.stroke('green');
+    lipsLine.stroke(color);
     lipsLine.name('Lips');
   }
 

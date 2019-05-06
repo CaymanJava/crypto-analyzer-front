@@ -22,25 +22,25 @@ export class AtrDrawService extends CommonDrawService {
     const indicatorData = this.prepareAtrData(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
-    this.prepareLines(indicatorPlot, indicator);
+    this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private prepareLines(indicatorPlot, indicator) {
-    this.configureIndicatorLine(indicatorPlot, indicator);
-    this.configureSignalLine(indicatorPlot, indicator);
+  private prepareLines(drawConfiguration, indicatorPlot, indicator) {
+    this.configureIndicatorLine(drawConfiguration.indicatorLineColor, indicatorPlot, indicator);
+    this.configureSignalLine(drawConfiguration.signalLineColor, indicatorPlot, indicator);
   }
 
-  private configureIndicatorLine(indicatorPlot, indicator) {
+  private configureIndicatorLine(color: string, indicatorPlot, indicator) {
     const positiveDiLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    positiveDiLine.stroke('blue');
+    positiveDiLine.stroke(color);
     positiveDiLine.name('ATR');
   }
 
-  private configureSignalLine(indicatorPlot, indicator) {
+  private configureSignalLine(color: string, indicatorPlot, indicator) {
     const negativeDiLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    negativeDiLine.stroke('red');
+    negativeDiLine.stroke(color);
     negativeDiLine.name('Signal');
   }
 

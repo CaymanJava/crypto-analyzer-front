@@ -18,21 +18,37 @@ import { CommodityChannelIndexComponent } from './indicator-config/cci/commodity
 import { ChandelierExitComponent } from './indicator-config/ce/chandelier-exit.component';
 import { ChandeForecastOscillatorComponent } from './indicator-config/cfo/chande-forecast-oscillator.component';
 import { ChoppinessIndexComponent } from './indicator-config/chop/choppiness-index.component';
+import { AccumulationDistributionLineComponent } from './indicator-config/ac/accumulation-distribution-line.component';
+import { ColorPickerModule } from "ngx-color-picker";
+import { AroonOscillatorComponent } from './indicator-config/aroon-osc/aroon-oscillator.component';
+import { BollingerBandsWidthComponent } from './indicator-config/bollinger-bands-width/bollinger-bands-width.component';
+import { SharedComponentsModule } from "../shared/components/shared-components.module";
+import { ColorPickerComponent } from "./common/color-picker/color-picker.component";
+import { IndicatorInputComponent } from './common/indicator-input/indicator-input.component';
+import { MovingAverageShortPickerComponent } from './common/moving-average-short-picker/moving-average-short-picker.component';
+import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
 
 const components = [
-  IndicatorPickerComponent
+  IndicatorPickerComponent,
+  ColorPickerComponent,
+  IndicatorInputComponent,
+  MovingAverageShortPickerComponent,
+  PriceTypePickerComponent
 ];
 
 const modalConfig = [
   AccelerationDecelerationOscillatorComponent,
+  AccumulationDistributionLineComponent,
   AverageDirectionalMovementIndexComponent,
   AlligatorComponent,
   AwesomeOscillatorComponent,
   AverageTrueRangeComponent,
   AroonComponent,
+  AroonOscillatorComponent,
   AccumulativeSwingIndexComponent,
   AverageTrueRangeBandsComponent,
   BollingerBandsComponent,
+  BollingerBandsWidthComponent,
   CoppockCurveComponent,
   CommodityChannelIndexComponent,
   ChandelierExitComponent,
@@ -47,7 +63,9 @@ const modalConfig = [
     NgbModule,
     TieredMenuModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule,
+    SharedComponentsModule
   ],
   declarations: [components, modalConfig],
   providers: [],

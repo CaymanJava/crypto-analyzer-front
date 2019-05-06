@@ -11,9 +11,11 @@ export class ChandeForecastOscillatorComponent implements OnInit {
 
   @Input() name: string;
   @Input() configuration: any;
+  @Input() drawConfiguration: any;
   @Input() update: boolean = false;
 
   configForm: FormGroup;
+  drawConfigForm: FormGroup;
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
@@ -23,6 +25,10 @@ export class ChandeForecastOscillatorComponent implements OnInit {
       'movingAverageType': ['', [Validators.required]],
       'priceType': ['', [Validators.required]]
     });
+    this.drawConfigForm = fb.group({
+      'indicatorLineColor': ['#1c1afa', [Validators.required]],
+      'signalLineColor': ['#fa0f16', [Validators.required]]
+    });
   }
 
   ngOnInit() {
@@ -31,20 +37,34 @@ export class ChandeForecastOscillatorComponent implements OnInit {
 
   onSubmit() {
     this.modal.close({
-      period: this.configForm.get('period').value,
-      movingAveragePeriod: this.configForm.get('movingAveragePeriod').value,
-      movingAverageType: this.configForm.get('movingAverageType').value,
-      priceType: this.configForm.get('priceType').value,
+      configuration: {
+        period: this.configForm.get('period').value,
+        movingAveragePeriod: this.configForm.get('movingAveragePeriod').value,
+        movingAverageType: this.configForm.get('movingAverageType').value,
+        priceType: this.configForm.get('priceType').value
+      },
+      drawConfiguration: {
+        indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value,
+        signalLineColor: this.drawConfigForm.get('signalLineColor').value
+      }
     });
   }
 
+  onColorPickerChange(color: string, line: string) {
+    this.drawConfigForm.get(line).setValue(color);
+  }
+
   private initForm() {
-    if (this.configuration !== null && typeof this.configuration !== 'undefined') {
+    if (this.update) {
       this.configForm.setValue({
         period: this.configuration.period,
         movingAveragePeriod: this.configuration.movingAveragePeriod,
         movingAverageType: this.configuration.movingAverageType,
         priceType: this.configuration.priceType
+      });
+      this.drawConfigForm.setValue({
+        indicatorLineColor: this.drawConfiguration.indicatorLineColor,
+        signalLineColor: this.drawConfiguration.signalLineColor
       });
     }
   }

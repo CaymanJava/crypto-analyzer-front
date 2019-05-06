@@ -22,32 +22,32 @@ export class AdxDrawService extends CommonDrawService {
     const indicatorData = this.prepareAdxData(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
-    this.prepareLines(indicatorPlot, indicator);
+    this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
-  private prepareLines(indicatorPlot, indicator) {
-    this.configurePositiveDiLine(indicatorPlot, indicator);
-    this.configureNegativeDiLine(indicatorPlot, indicator);
-    this.configureIndicatorLine(indicatorPlot, indicator);
+  private prepareLines(drawConfiguration, indicatorPlot, indicator) {
+    this.configurePositiveDiLine(drawConfiguration, indicatorPlot, indicator);
+    this.configureNegativeDiLine(drawConfiguration, indicatorPlot, indicator);
+    this.configureIndicatorLine(drawConfiguration, indicatorPlot, indicator);
   }
 
-  private configurePositiveDiLine(indicatorPlot, indicator) {
+  private configurePositiveDiLine(drawConfiguration, indicatorPlot, indicator) {
     const positiveDiLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    positiveDiLine.stroke('green');
+    positiveDiLine.stroke(drawConfiguration.positiveDiLineColor);
     positiveDiLine.name('+DI');
   }
 
-  private configureNegativeDiLine(indicatorPlot, indicator) {
+  private configureNegativeDiLine(drawConfiguration, indicatorPlot, indicator) {
     const negativeDiLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    negativeDiLine.stroke('red');
+    negativeDiLine.stroke(drawConfiguration.negativeDiLineColor);
     negativeDiLine.name('-DI');
   }
 
-  private configureIndicatorLine(indicatorPlot, indicator) {
+  private configureIndicatorLine(drawConfiguration, indicatorPlot, indicator) {
     const indicatorLine = indicatorPlot.line(indicator.mapAs({'value': 3}));
-    indicatorLine.stroke('blue');
+    indicatorLine.stroke(drawConfiguration.indicatorLineColor);
     indicatorLine.name('ADX');
   }
 

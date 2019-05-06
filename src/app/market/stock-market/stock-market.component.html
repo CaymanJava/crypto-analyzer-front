@@ -67,7 +67,6 @@
 <div class="row">
   <div *ngFor='let indicatorConfigHandler of indicatorConfigurationHandlers' class="col-lg-auto">
     <button (click)="onIndicatorConfigChange(indicatorConfigHandler)"
-            [disabled]="!indicatorConfigHandler.updatable"
             class="btn btn-outline-success btn-rounded pt-2"
             type="button">
       {{indicatorConfigHandler.shortLabel}}

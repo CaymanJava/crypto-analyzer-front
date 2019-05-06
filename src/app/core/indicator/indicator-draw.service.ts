@@ -112,6 +112,8 @@ export class IndicatorDrawService {
         return this.aroonOscDrawService.update(settings, result, chart, plotNumber);
       case 'ASI':
         return this.asiDrawService.update(settings, result, chart, plotNumber);
+      case 'ATR':
+        return this.atrDrawService.update(settings, result, chart, plotNumber);
       case 'ATRB':
         return this.atrbDrawService.update(settings, result, chart);
       case 'BB':

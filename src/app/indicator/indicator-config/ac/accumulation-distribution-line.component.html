@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <app-color-picker
+        [color]="drawConfigForm.get('indicatorLineColor').value"
+        [label]="'Indicator line'"
+        (onColorChange)="onColorPickerChange($event)">
+    </app-color-picker>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-outline-danger btn-rounded"
+          (click)="modal.close('close')">
+    Close
+  </button>
+  <button type="button"
+          class="btn btn-outline-success btn-rounded"
+          [disabled]="!drawConfigForm.valid"
+          (click)="onSubmit()">
+    {{update ? 'Update' : 'Add'}}
+  </button>
+</div>

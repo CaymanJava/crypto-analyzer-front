@@ -6,55 +6,45 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="period">Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['period'].valid && configForm.controls['period'].touched"
-               [formControl]="configForm.get('period')"
-               class="form-control"
-               id="period" placeholder="10" type="number">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="movingAverageType">Moving average type</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <select id='movingAverageType' [formControl]="configForm.get('movingAverageType')" class="form-control col-form-label-sm custom-select"
-                [class.form-control-danger]="!configForm.controls['movingAverageType'].valid && configForm.controls['movingAverageType'].touched">
-          <option value="SIMPLE_MOVING_AVERAGE">Simple moving average</option>
-          <option value="EXPONENTIAL_MOVING_AVERAGE">Exponential moving average</option>
-          <option value="DOUBLE_EXPONENTIAL_MOVING_AVERAGE">Double exponential moving average</option>
-          <option value="TRIPLE_EXPONENTIAL_MOVING_AVERAGE">Triple exponential moving average</option>
-          <option value="HULL_MOVING_AVERAGE">Hull moving average</option>
-          <option value="SMOOTHED_MOVING_AVERAGE">Smoothed moving average</option>
-          <option value="WEIGHTED_MOVING_AVERAGE">Weighted moving average</option>
-          <option value="MODIFIED_MOVING_AVERAGE">Modified moving average</option>
-          <option value="VARIABLE_INDEX_DYNAMIC_AVERAGE">Variable index dynamic average</option>
-          <option value="WELLES_WILDERS_MOVING_AVERAGE">Welles Wilders moving average</option>
-          <option value="TIME_SERIES_MOVING_AVERAGE">Time series moving average</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 form-group mb-3">
-        <label for="movingAveragePeriod">Moving average period</label>
-      </div>
-      <div class="col-md-6 form-group mb-3">
-        <input [class.form-control-danger]="!configForm.controls['movingAveragePeriod'].valid && configForm.controls['movingAveragePeriod'].touched"
-               [formControl]="configForm.get('movingAveragePeriod')"
-               class="form-control"
-               id="movingAveragePeriod" placeholder="10" type="number">
-      </div>
-    </div>
+    <app-indicator-input
+        [form]="configForm"
+        key="period"
+        label="Period"
+        placeholder="10">
+    </app-indicator-input>
+    <app-moving-average-short-picker
+        [configForm]="configForm"
+        key="movingAverageType">
+    </app-moving-average-short-picker>
+    <app-indicator-input
+        [form]="configForm"
+        key="movingAveragePeriod"
+        label="Moving average period"
+        placeholder="10">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
+        [color]="drawConfigForm.get('indicatorLineColor').value"
+        [label]="'Indicator line'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'signalLineColor')"
+        [color]="drawConfigForm.get('signalLineColor').value"
+        [label]="'Signal line'">
+    </app-color-picker>
   </form>
 </div>
 <div class="modal-footer">
-  <button (click)="modal.close('close')" class="btn btn-outline-danger btn-rounded" type="button">Close</button>
-  <button (click)="onSubmit()" [disabled]="!configForm.valid" class="btn btn-outline-success btn-rounded" type="button">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

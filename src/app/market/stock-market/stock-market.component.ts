@@ -115,16 +115,16 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     this.clearAndRedrawChart();
   }
 
-  addIndicator(indicatorConfiguration: IndicatorSettings) {
-    const request = this.prepareIndicatorRequest(indicatorConfiguration);
+  addIndicator(indicatorSettings: IndicatorSettings) {
+    const request = this.prepareIndicatorRequest(indicatorSettings);
     this.indicatorService.calculateIndicator(request).subscribe(
       (result: any[]) => {
-        const drawData: IndicatorDrawResult = this.indicatorDrawerService.draw(indicatorConfiguration, result, this.chart, this.container, this.currentPlotNumber);
+        const drawData: IndicatorDrawResult = this.indicatorDrawerService.draw(indicatorSettings, result, this.chart, this.container, this.currentPlotNumber);
         this.indicatorConfigurationHandlers.push(
           new IndicatorConfigurationHandler(
-            drawData.title, drawData.plotNumber,
-            indicatorConfiguration.indicatorItem, indicatorConfiguration.configuration,
-            indicatorConfiguration.updatable, result
+            drawData.title, drawData.plotNumber, indicatorSettings.indicatorItem,
+            indicatorSettings.configuration, indicatorSettings.drawConfiguration,
+            result
           ));
         this.updateCurrentPlotNumber(drawData);
       }
@@ -137,7 +137,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   private recalculateIndicator(configHandler: IndicatorConfigurationHandler) {
     this.updatedConfigHandler = configHandler;
-    this.indicatorConfigProvider.open(configHandler.indicatorItem, true, configHandler.configuration);
+    this.indicatorConfigProvider.open(configHandler.indicatorItem, true, configHandler.configuration, configHandler.drawConfiguration);
   }
 
   private clearMainPlot() {
@@ -173,6 +173,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
       if (this.updatedConfigHandler == indicatorConfiguration) {
         indicatorConfiguration.shortLabel = drawResult.title;
         indicatorConfiguration.configuration = settings.configuration;
+        indicatorConfiguration.drawConfiguration = settings.drawConfiguration;
       }
     });
   }
@@ -258,7 +259,8 @@ export class StockMarketComponent implements OnInit, OnDestroy {
   private updateAllZeroPlotIndicators() {
     this.indicatorConfigurationHandlers.forEach(configHandler => {
         if (configHandler.plotNumber == 0 && configHandler != this.updatedConfigHandler) {
-          this.indicatorDrawerService.update(new IndicatorSettings(configHandler.indicatorItem, configHandler.configuration, true, true),
+          this.indicatorDrawerService.update(new IndicatorSettings(configHandler.indicatorItem,
+            configHandler.configuration, configHandler.drawConfiguration, true),
             configHandler.data, this.chart, this.container, 0);
         }
       }

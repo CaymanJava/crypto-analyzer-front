@@ -6,82 +6,70 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="jawPeriod">Jaw Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['jawPeriod'].valid && configForm.controls['jawPeriod'].touched"
-               [formControl]="configForm.get('jawPeriod')" id="jawPeriod" placeholder="13">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="jawOffset">Jaw Offset</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['jawOffset'].valid && configForm.controls['jawOffset'].touched"
-               [formControl]="configForm.get('jawOffset')" id="jawOffset" placeholder="8">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="teethPeriod">Teeth Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['teethPeriod'].valid && configForm.controls['teethPeriod'].touched"
-               [formControl]="configForm.get('teethPeriod')" id="teethPeriod" placeholder="8">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="teethOffset">Teeth Offset</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['teethOffset'].valid && configForm.controls['teethOffset'].touched"
-               [formControl]="configForm.get('teethOffset')" id="teethOffset" placeholder="5">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="lipsPeriod">Lips Period</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['lipsPeriod'].valid && configForm.controls['lipsPeriod'].touched"
-               [formControl]="configForm.get('lipsPeriod')" id="lipsPeriod" placeholder="5">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-        <label for="lipsOffset">Lips Offset</label>
-      </div>
-      <div class="col-6 form-group mb-3">
-        <input type="number"
-               class="form-control"
-               [class.form-control-danger]="!configForm.controls['lipsOffset'].valid && configForm.controls['lipsOffset'].touched"
-               [formControl]="configForm.get('lipsOffset')" id="lipsOffset" placeholder="3">
-      </div>
-    </div>
-
+    <app-indicator-input
+        [form]="configForm"
+        key="jawPeriod"
+        label="Jaw Period"
+        placeholder="13">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="jawOffset"
+        label="Jaw Offset"
+        placeholder="8">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="teethPeriod"
+        label="Teeth Period"
+        placeholder="8">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="teethOffset"
+        label="Teeth Offset"
+        placeholder="5">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="lipsPeriod"
+        label="Lips Period"
+        placeholder="5">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="lipsOffset"
+        label="Lips Offset"
+        placeholder="3">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'jawLineColor')"
+        [color]="drawConfigForm.get('jawLineColor').value"
+        [label]="'Jaw'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'teethLineColor')"
+        [color]="drawConfigForm.get('teethLineColor').value"
+        [label]="'Teeth'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'lipsLineColor')"
+        [color]="drawConfigForm.get('lipsLineColor').value"
+        [label]="'Lips'">
+    </app-color-picker>
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('close')">Close</button>
-  <button type="button" class="btn btn-outline-success btn-rounded" [disabled]="!configForm.valid" (click)="onSubmit()">{{update ? 'Update' : 'Add'}}</button>
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
 </div>

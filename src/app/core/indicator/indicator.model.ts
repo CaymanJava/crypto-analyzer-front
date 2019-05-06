@@ -20,13 +20,14 @@ export class IndicatorItem {
 export class IndicatorSettings {
   indicatorItem: IndicatorItem;
   configuration: any;
-  updatable: boolean;
+  drawConfiguration: any;
   update: boolean;
 
-  constructor(indicatorItem: IndicatorItem, configuration: any, updatable: boolean, update: boolean) {
+  constructor(indicatorItem: IndicatorItem, configuration: any,
+              drawConfiguration: any, update: boolean) {
     this.indicatorItem = indicatorItem;
     this.configuration = configuration;
-    this.updatable = updatable;
+    this.drawConfiguration = drawConfiguration;
     this.update = update;
   }
 }
@@ -46,17 +47,17 @@ export class IndicatorConfigurationHandler {
   plotNumber: number;
   indicatorItem: IndicatorItem;
   configuration: any;
-  updatable: boolean;
+  drawConfiguration: any;
   data: any[];
 
   constructor(shortLabel: string, plotNumber: number,
               indicatorItem: IndicatorItem, configuration: any,
-              updatable: boolean, data: any[]) {
+              drawConfiguration: any, data: any[]) {
     this.shortLabel = shortLabel;
     this.plotNumber = plotNumber;
     this.indicatorItem = indicatorItem;
     this.configuration = configuration;
-    this.updatable = updatable;
+    this.drawConfiguration = drawConfiguration;
     this.data = data;
   }
 }

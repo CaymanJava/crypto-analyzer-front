@@ -10,15 +10,15 @@ export class AcDrawService extends CommonDrawService{
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return this.drawAdo(settings, result, chart, plotNumber);
+    return this.drawAc(settings, result, chart, plotNumber);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     chart.plot(plotNumber).removeAllSeries();
-    return this.drawAdo(settings, result, chart, plotNumber);
+    return this.drawAc(settings, result, chart, plotNumber);
   }
 
-  private drawAdo(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+  private drawAc(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = super.prepareDefaultIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping);

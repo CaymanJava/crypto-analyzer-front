@@ -1,0 +1,14 @@
+<div class="row" style="text-align: center">
+  <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+    <label for="indicatorLineColor">{{label}}</label>
+  </div>
+  <div class="input-group-append col-6 form-group mb-3" style="display: inline-block">
+    <button (colorPickerChange)="onColorPickerChange($event)"
+        [colorPicker]="color"
+        [cpOutputFormat]="'hex'"
+        [style.background]="color"
+        class="btn color-button"
+        id="indicatorLineColor">
+    </button>
+  </div>
+</div>
