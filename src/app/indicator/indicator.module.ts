@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IndicatorPickerComponent } from './indicator-picker/indicator-picker.component';
 import { TieredMenuModule } from "primeng/primeng";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AccelerationDecelerationOscillatorComponent } from './indicator-config/ado/acceleration-deceleration-oscillator.component';
+import { AccelerationDecelerationOscillatorComponent } from './indicator-config/ac/acceleration-deceleration-oscillator.component';
 import { AverageDirectionalMovementIndexComponent } from './indicator-config/adx/average-directional-movement-index.component';
 import { AlligatorComponent } from './indicator-config/alligator/alligator.component';
 import { AwesomeOscillatorComponent } from './indicator-config/ao/awesome-oscillator.component';
@@ -18,7 +18,7 @@ import { CommodityChannelIndexComponent } from './indicator-config/cci/commodity
 import { ChandelierExitComponent } from './indicator-config/ce/chandelier-exit.component';
 import { ChandeForecastOscillatorComponent } from './indicator-config/cfo/chande-forecast-oscillator.component';
 import { ChoppinessIndexComponent } from './indicator-config/chop/choppiness-index.component';
-import { AccumulationDistributionLineComponent } from './indicator-config/ac/accumulation-distribution-line.component';
+import { AccumulationDistributionLineComponent } from './indicator-config/adl/accumulation-distribution-line.component';
 import { ColorPickerModule } from "ngx-color-picker";
 import { AroonOscillatorComponent } from './indicator-config/aroon-osc/aroon-oscillator.component';
 import { BollingerBandsWidthComponent } from './indicator-config/bbw/bollinger-bands-width.component';
@@ -28,6 +28,8 @@ import { IndicatorInputComponent } from './common/indicator-input/indicator-inpu
 import { MovingAverageShortPickerComponent } from './common/moving-average-short-picker/moving-average-short-picker.component';
 import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
 import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
+import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-flow.component';
+import { ChandeMomentumOscillatorComponent } from './indicator-config/cmo/chande-momentum-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -55,7 +57,9 @@ const modalConfig = [
   CommodityChannelIndexComponent,
   ChandelierExitComponent,
   ChandeForecastOscillatorComponent,
-  ChoppinessIndexComponent
+  ChoppinessIndexComponent,
+  ChaikinMoneyFlowComponent,
+  ChandeMomentumOscillatorComponent
 ];
 
 @NgModule({

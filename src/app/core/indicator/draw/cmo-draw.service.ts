@@ -1,25 +1,25 @@
-import { Injectable } from "@angular/core";
+import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import * as AnyChart from "anychart";
-import { CommonDrawService } from "./common-draw.service";
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root"
 })
-export class AsiDrawService extends CommonDrawService {
+export class CmoDrawService extends CommonDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return this.drawASI(settings, result, chart, plotNumber);
+    return this.drawCMO(settings, result, chart, plotNumber);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     chart.plot(plotNumber).removeAllSeries();
-    return this.drawASI(settings, result, chart, plotNumber);
+    return this.drawCMO(settings, result, chart, plotNumber);
   }
 
-  private drawASI(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    const indicatorData = this.prepareASIData(result);
+  private drawCMO(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+    const indicatorData = this.prepareCMOData(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
     this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
@@ -35,7 +35,7 @@ export class AsiDrawService extends CommonDrawService {
   private configureIndicatorLine(color, indicatorPlot, indicator) {
     const indicatorLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
     indicatorLine.stroke(color);
-    indicatorLine.name('ASI');
+    indicatorLine.name('CMO');
   }
 
   private configureSignalLine(color, indicatorPlot, indicator) {
@@ -59,11 +59,11 @@ export class AsiDrawService extends CommonDrawService {
 
   private prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '('
-      + settings.configuration.limitMoveValue + ','
-      + settings.configuration.movingAveragePeriod + ')';
+      + settings.configuration.period + ','
+      + settings.configuration.signalLinePeriod + ')';
   }
 
-  private prepareASIData(result: any[]) {
+  private prepareCMOData(result: any[]) {
     return super.prepareDataForIndicatorWithSignalLine(result);
   }
 

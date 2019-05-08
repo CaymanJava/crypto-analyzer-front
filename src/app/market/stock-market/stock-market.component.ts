@@ -16,7 +16,7 @@ import { IndicatorTypeRecognizerService } from "../../core/indicator/indicator-t
   selector: 'app-stock-market',
   templateUrl: './stock-market.component.html',
   styleUrls: [
-    './stock-market.component.scss',
+    './stock-market.component.scss'
   ],
   providers: [
     DatePipe,
@@ -215,10 +215,10 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     });
     this.indicatorConfigProvider.indicatorRemoveSubject.subscribe((id) => {
       if (this.updatedConfigHandler.id === id) {
-        if (this.updatedConfigHandler.plotNumber != 0) {
-          this.removeNonZeroPlotIndicator();
-        } else {
+        if (this.updatedConfigHandler.plotNumber === 0) {
           this.removeZeroPlotIndicator();
+        } else {
+          this.removeNonZeroPlotIndicator();
         }
       }
     });
