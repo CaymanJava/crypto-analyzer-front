@@ -25,75 +25,81 @@ export class IndicatorConfigProviderService {
 
   dialogConfig: any = {backdrop: 'static', keyboard: false, size: 'md'};
   indicatorSettingSubject: Subject<IndicatorSettings> = new Subject();
+  indicatorRemoveSubject: Subject<string> = new Subject();
 
   constructor(private modalService: NgbModal) {
   }
 
-  open(indicatorItem: IndicatorItem, update: boolean, configuration?: any, drawConfiguration?: any) {
+  open(indicatorItem: IndicatorItem, update: boolean, configuration?: any, drawConfiguration?: any, id?: string) {
     switch (indicatorItem.title) {
       case 'AC':
-        this.openModal(AccelerationDecelerationOscillatorComponent, indicatorItem, update, configuration);
+        this.openModal(AccelerationDecelerationOscillatorComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ADL':
-        this.openModal(AccumulationDistributionLineComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AccumulationDistributionLineComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ADX':
-        this.openModal(AverageDirectionalMovementIndexComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AverageDirectionalMovementIndexComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ALLIGATOR':
-        this.openModal(AlligatorComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AlligatorComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'AO':
-        this.openModal(AwesomeOscillatorComponent, indicatorItem, update, configuration);
+        this.openModal(AwesomeOscillatorComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'AROON':
-        this.openModal(AroonComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AroonComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'AROON OSC':
-        this.openModal(AroonOscillatorComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AroonOscillatorComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ASI':
-        this.openModal(AccumulativeSwingIndexComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AccumulativeSwingIndexComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ATR':
-        this.openModal(AverageTrueRangeComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AverageTrueRangeComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'ATRB':
-        this.openModal(AverageTrueRangeBandsComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(AverageTrueRangeBandsComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'BB':
-        this.openModal(BollingerBandsComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(BollingerBandsComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'BBW':
-        this.openModal(BollingerBandsWidthComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(BollingerBandsWidthComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'CC':
-        this.openModal(CoppockCurveComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(CoppockCurveComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'CCI':
-        this.openModal(CommodityChannelIndexComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(CommodityChannelIndexComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'CE':
-        this.openModal(ChandelierExitComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(ChandelierExitComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'CFO':
-        this.openModal(ChandeForecastOscillatorComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(ChandeForecastOscillatorComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
       case 'CHOP':
-        this.openModal(ChoppinessIndexComponent, indicatorItem, update, configuration, drawConfiguration);
+        this.openModal(ChoppinessIndexComponent, indicatorItem, update, configuration, drawConfiguration, id);
         break;
     }
   }
 
   private openModal(content: any, indicatorItem: IndicatorItem, update: boolean,
-                    configuration?: any, drawConfiguration?: any) {
+                    configuration?: any, drawConfiguration?: any, id?: string) {
     const dialog = this.modalService.open(content, this.dialogConfig);
     dialog.componentInstance.name = indicatorItem.label;
     dialog.componentInstance.configuration = configuration;
     dialog.componentInstance.drawConfiguration = drawConfiguration;
     dialog.componentInstance.update = update;
+    dialog.componentInstance.id = id;
     dialog.result.then((result) => {
-      if (result != 'close') {
+      if (result == 'remove') {
+        this.indicatorRemoveSubject.next(id);
+      }
+
+      if (result != 'close' && result != 'remove') {
         this.indicatorSettingSubject.next(new IndicatorSettings(indicatorItem, result.configuration, result.drawConfiguration, update));
       }
     });

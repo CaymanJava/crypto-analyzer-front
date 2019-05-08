@@ -133,8 +133,17 @@ export class IndicatorDrawService {
     }
   }
 
+  deleteNonZeroPlotChart(chart: any, container: ElementRef, plotNumber: number) {
+    chart.plot(plotNumber).dispose();
+    this.decreaseChartHeight(container);
+  }
+
   private increaseChartHeight(container: ElementRef) {
     container.nativeElement.style.height = +container.nativeElement.style.height.replace('px', '') + 150 + 'px';
+  }
+
+  private decreaseChartHeight(container: ElementRef) {
+    container.nativeElement.style.height = +container.nativeElement.style.height.replace('px', '') - 150 + 'px';
   }
 
 }

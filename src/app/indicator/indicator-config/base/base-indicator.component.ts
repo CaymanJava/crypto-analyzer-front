@@ -11,16 +11,16 @@ export abstract class BaseIndicatorComponent implements OnInit {
   @Input() configuration: any;
   @Input() drawConfiguration: any;
   @Input() update: boolean = false;
+  @Input() id: string;
 
   configForm: FormGroup;
   drawConfigForm: FormGroup;
 
-  ngOnInit() {
-  }
-
   onColorPickerChange(color: string, line: string) {
     this.drawConfigForm.get(line).setValue(color);
   }
+
+  abstract ngOnInit();
 
   abstract initForms();
 

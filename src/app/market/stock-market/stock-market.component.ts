@@ -71,6 +71,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     this.tickDataSubscription.unsubscribe();
     this.changes.unsubscribe();
     this.indicatorConfigProvider.indicatorSettingSubject.unsubscribe();
+    this.indicatorConfigProvider.indicatorRemoveSubject.unsubscribe();
   }
 
   startDrawing(event: any) {
@@ -137,7 +138,8 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   private recalculateIndicator(configHandler: IndicatorConfigurationHandler) {
     this.updatedConfigHandler = configHandler;
-    this.indicatorConfigProvider.open(configHandler.indicatorItem, true, configHandler.configuration, configHandler.drawConfiguration);
+    this.indicatorConfigProvider.open(configHandler.indicatorItem, true, configHandler.configuration,
+      configHandler.drawConfiguration, configHandler.id);
   }
 
   private clearMainPlot() {
@@ -211,6 +213,45 @@ export class StockMarketComponent implements OnInit, OnDestroy {
         this.addIndicator(settings);
       }
     });
+    this.indicatorConfigProvider.indicatorRemoveSubject.subscribe((id) => {
+      if (this.updatedConfigHandler.id === id) {
+        if (this.updatedConfigHandler.plotNumber != 0) {
+          this.removeNonZeroPlotIndicator();
+        } else {
+          this.removeZeroPlotIndicator();
+        }
+      }
+    });
+  }
+
+  private removeZeroPlotIndicator() {
+    this.removeIndicatorHandler();
+    this.updatedConfigHandler = null;
+    this.chart.plot(0).removeAllSeries();
+    this.redrawChart();
+    this.updateAllZeroPlotIndicators();
+  }
+
+  private removeIndicatorHandler() {
+    const index = this.indicatorConfigurationHandlers.indexOf(this.updatedConfigHandler);
+    this.indicatorConfigurationHandlers.splice(index, 1);
+  }
+
+  private removeNonZeroPlotIndicator() {
+    this.indicatorDrawerService.deleteNonZeroPlotChart(this.chart, this.container, this.updatedConfigHandler.plotNumber);
+    this.removeIndicatorHandler();
+    this.decreasePlotNumbers();
+    this.updatedConfigHandler = null;
+  }
+
+  private decreasePlotNumbers() {
+    this.currentPlotNumber = this.currentPlotNumber - 1;
+    this.indicatorConfigurationHandlers.forEach(configHandler => {
+        if (configHandler.plotNumber > this.updatedConfigHandler.plotNumber) {
+          configHandler.plotNumber = configHandler.plotNumber - 1;
+        }
+      }
+    );
   }
 
   private subscribeToTickData() {
@@ -254,7 +295,6 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     const tickForChart = this.prepareData();
     this.chart = this.chartDrawerService.draw(this.tickData, tickForChart, this.container);
   }
-
 
   private updateAllZeroPlotIndicators() {
     this.indicatorConfigurationHandlers.forEach(configHandler => {

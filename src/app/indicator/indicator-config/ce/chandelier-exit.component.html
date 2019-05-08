@@ -39,9 +39,15 @@
 </div>
 <div class="modal-footer">
   <button (click)="modal.close('close')"
-          class="btn btn-outline-danger btn-rounded"
+          class="btn btn-outline-warning btn-rounded"
           type="button">
     Close
+  </button>
+  <button (click)="modal.close('remove')"
+          *ngIf="update"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Remove
   </button>
   <button (click)="onSubmit()"
           [disabled]="!configForm.valid || !drawConfigForm.valid"

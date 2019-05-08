@@ -1,3 +1,5 @@
+import { UUID } from 'angular2-uuid';
+
 export class IndicatorCalculationRequest {
   marketId: number;
   timeFrame: string;
@@ -43,6 +45,7 @@ export class IndicatorDrawResult {
 }
 
 export class IndicatorConfigurationHandler {
+  id: string;
   shortLabel: string;
   plotNumber: number;
   indicatorItem: IndicatorItem;
@@ -53,6 +56,7 @@ export class IndicatorConfigurationHandler {
   constructor(shortLabel: string, plotNumber: number,
               indicatorItem: IndicatorItem, configuration: any,
               drawConfiguration: any, data: any[]) {
+    this.id = UUID.UUID();
     this.shortLabel = shortLabel;
     this.plotNumber = plotNumber;
     this.indicatorItem = indicatorItem;
