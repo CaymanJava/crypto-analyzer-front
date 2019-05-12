@@ -18,6 +18,10 @@ export class AroonDrawService extends CommonDrawService {
     return this.drawAroon(settings, result, chart, plotNumber);
   }
 
+  prepareTitle(settings: IndicatorSettings) {
+    return settings.indicatorItem.title + '(' + settings.configuration.period + ')';
+  }
+
   private drawAroon(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareAroonData(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
@@ -55,10 +59,6 @@ export class AroonDrawService extends CommonDrawService {
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
     return indicatorPlot;
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' + settings.configuration.period + ')';
   }
 
   private prepareAroonData(result: any[]) {

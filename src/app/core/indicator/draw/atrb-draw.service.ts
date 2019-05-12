@@ -16,6 +16,13 @@ export class AtrbDrawService extends CommonDrawService {
     return this.drawAtrb(settings, result, chart);
   }
 
+  prepareTitle(settings: IndicatorSettings) {
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ', ' +
+      settings.configuration.shift + ', ' +
+      settings.configuration.priceType + ')';
+  }
+
   private drawAtrb(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
     this.preparePlot(settings.drawConfiguration, chart, indicator);
@@ -48,13 +55,6 @@ export class AtrbDrawService extends CommonDrawService {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
     middleBand.stroke(color);
     middleBand.name('Middle');
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shift + ', ' +
-      settings.configuration.priceType + ')';
   }
 
 }

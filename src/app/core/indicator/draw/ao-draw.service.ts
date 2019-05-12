@@ -1,50 +1,30 @@
-import { CommonDrawService } from "./common-draw.service";
 import { Injectable } from "@angular/core";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import * as AnyChart from "anychart";
+import { ColumnDrawService } from "./column-draw.service";
 
 @Injectable({
   providedIn: "root"
 })
-export class AoDrawService extends CommonDrawService {
+export class AoDrawService extends ColumnDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return this.drawAo(settings, result, chart, plotNumber);
+    return super.draw(settings, result, chart, plotNumber, [0]);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     chart.plot(plotNumber).removeAllSeries();
-    return this.drawAo(settings, result, chart, plotNumber);
+    return super.draw(settings, result, chart, plotNumber, [0]);
   }
 
-  private drawAo(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    const indicatorData = super.prepareDefaultIndicatorData(result);
-    const indicatorMapping = this.addData(indicatorData);
-    const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping);
-    const title = this.prepareTitle(settings);
-    super.configureColumns(computedLine, title);
-    return new IndicatorDrawResult(title, plotNumber);
-  }
-
-  private configurePlot(chart: any, plotNumber: number, indicatorMapping) {
-    const indicatorPlot = chart.plot(plotNumber);
-    indicatorPlot.height('150px');
-    super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLine(indicatorPlot, 0);
-    return indicatorPlot.column(indicatorMapping);
-  }
-
-  private addData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator.mapAs({'value': 1});
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
+  prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
       settings.configuration.slowPeriod + ', ' +
       settings.configuration.fastPeriod + ')';
+  }
+
+  getName() {
+    return 'AO';
   }
 
 }

@@ -16,6 +16,16 @@ export class AlligatorDrawService extends CommonDrawService {
     return this.drawAlligator(settings, result, chart, 0);
   }
 
+  prepareTitle(settings: IndicatorSettings) {
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.jawPeriod + ', ' +
+      settings.configuration.jawOffset + ', ' +
+      settings.configuration.teethPeriod + ', ' +
+      settings.configuration.teethOffset + ', ' +
+      settings.configuration.lipsPeriod + ', ' +
+      settings.configuration.lipsOffset + ')';
+  }
+
   private drawAlligator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicator = this.prepareData(result);
     this.preparePlot(settings.drawConfiguration, chart, plotNumber, indicator);
@@ -57,16 +67,6 @@ export class AlligatorDrawService extends CommonDrawService {
     const lipsLine = indicatorPlot.line(indicator.mapAs({'value': 3}));
     lipsLine.stroke(color);
     lipsLine.name('Lips');
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' +
-      settings.configuration.jawPeriod + ', ' +
-      settings.configuration.jawOffset + ', ' +
-      settings.configuration.teethPeriod + ', ' +
-      settings.configuration.teethOffset + ', ' +
-      settings.configuration.lipsPeriod + ', ' +
-      settings.configuration.lipsOffset + ')';
   }
 
   private prepareAlligatorData(result: any[]) {

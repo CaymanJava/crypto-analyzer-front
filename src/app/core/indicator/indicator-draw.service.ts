@@ -19,6 +19,8 @@ import { CfoDrawService } from "./draw/cfo-draw.service";
 import { ChopDrawService } from "./draw/chop-draw.service";
 import { CmfDrawService } from "./draw/cmf-draw.service";
 import { CmoDrawService } from "./draw/cmo-draw.service";
+import { CoDrawService } from "./draw/co-draw.service";
+import { CogDrawService } from "./draw/cog-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -43,7 +45,9 @@ export class IndicatorDrawService {
               private cfoDrawService: CfoDrawService,
               private chopDrawService: ChopDrawService,
               private cmfDrawService: CmfDrawService,
-              private cmoDrawService: CmoDrawService) {
+              private cmoDrawService: CmoDrawService,
+              private coDrawService: CoDrawService,
+              private cogDrawService: CogDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -101,6 +105,12 @@ export class IndicatorDrawService {
       case 'CMO':
         this.increaseChartHeight(container);
         return this.cmoDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'CO':
+        this.increaseChartHeight(container);
+        return this.coDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'COG':
+        this.increaseChartHeight(container);
+        return this.cogDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -144,6 +154,10 @@ export class IndicatorDrawService {
         return this.cmfDrawService.update(settings, result, chart, plotNumber);
       case 'CMO':
         return this.cmoDrawService.update(settings, result, chart, plotNumber);
+      case 'CO':
+        return this.coDrawService.update(settings, result, chart, plotNumber);
+      case 'COG':
+        return this.cogDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

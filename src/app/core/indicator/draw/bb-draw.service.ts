@@ -16,6 +16,13 @@ export class BbDrawService extends CommonDrawService {
     return this.drawBb(settings, result, chart);
   }
 
+  prepareTitle(settings: IndicatorSettings) {
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ', ' +
+      settings.configuration.standardDeviationCoefficient + ', ' +
+      settings.configuration.priceType + ')';
+  }
+
   private drawBb(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
     this.preparePlot(settings.drawConfiguration, chart, indicator);
@@ -48,13 +55,6 @@ export class BbDrawService extends CommonDrawService {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
     middleBand.stroke(color);
     middleBand.name('Middle');
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.standardDeviationCoefficient + ', ' +
-      settings.configuration.priceType + ')';
   }
 
 }

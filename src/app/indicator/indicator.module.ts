@@ -30,6 +30,8 @@ import { PriceTypePickerComponent } from './common/price-type-picker/price-type-
 import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
 import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-flow.component';
 import { ChandeMomentumOscillatorComponent } from './indicator-config/cmo/chande-momentum-oscillator.component';
+import { ChaikinOscillatorComponent } from './indicator-config/co/chaikin-oscillator.component';
+import { CenterOfGravityComponent } from './indicator-config/cog/center-of-gravity.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -59,7 +61,9 @@ const modalConfig = [
   ChandeForecastOscillatorComponent,
   ChoppinessIndexComponent,
   ChaikinMoneyFlowComponent,
-  ChandeMomentumOscillatorComponent
+  ChandeMomentumOscillatorComponent,
+  ChaikinOscillatorComponent,
+  CenterOfGravityComponent
 ];
 
 @NgModule({

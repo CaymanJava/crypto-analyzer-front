@@ -16,6 +16,13 @@ export class CeDrawService extends CommonDrawService {
     return this.drawCE(settings, result, chart);
   }
 
+  prepareTitle(settings: IndicatorSettings) {
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ', ' +
+      settings.configuration.longFactor + ', ' +
+      settings.configuration.shortFactor + ')';
+  }
+
   private drawCE(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
     this.preparePlot(settings.drawConfiguration, chart, indicator);
@@ -26,7 +33,7 @@ export class CeDrawService extends CommonDrawService {
   private preparePlot(drawConfiguration: any, chart: any, indicator) {
     const indicatorPlot = chart.plot(0);
     this.configureLongChandelierExit(drawConfiguration.longExitLineColor, indicatorPlot, indicator);
-    this.configureShortChandelierExit(drawConfiguration.shortExitLineColor,indicatorPlot, indicator);
+    this.configureShortChandelierExit(drawConfiguration.shortExitLineColor, indicatorPlot, indicator);
   }
 
   private prepareData(result: any[]) {
@@ -58,13 +65,6 @@ export class CeDrawService extends CommonDrawService {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
     middleBand.stroke(color);
     middleBand.name('Short exit');
-  }
-
-  private prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.longFactor + ', ' +
-      settings.configuration.shortFactor + ')';
   }
 
 }

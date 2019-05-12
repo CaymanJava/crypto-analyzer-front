@@ -1,16 +1,19 @@
-import { Injectable } from "@angular/core";
+import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 
-@Injectable({
-  providedIn: "root"
-})
-export class CommonDrawService {
+export abstract class CommonDrawService {
 
-  prepareDefaultIndicatorData(result: any[]) {
+  abstract draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+
+  abstract update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+
+  abstract prepareTitle(settings: IndicatorSettings);
+
+  prepareSimpleIndicatorData(result: any[]) {
     const indicatorData = [];
     result.forEach(indicatorResult => indicatorData.push(
       [
         indicatorResult.time,
-        indicatorResult.indicatorValue == null ? null : this.convertValue(indicatorResult.indicatorValue)
+        this.convertValue(indicatorResult.indicatorValue)
       ]
     ));
     return indicatorData;
@@ -22,24 +25,12 @@ export class CommonDrawService {
     this.removeAnnotations(plot);
   }
 
-  configureColumns(computedLine, title) {
-    computedLine.name(title);
-    computedLine.risingFill('#3ba158');
-    computedLine.risingStroke('#3ba158');
-    computedLine.fallingFill('#fa0f16');
-    computedLine.fallingStroke('#fa0f16');
-  }
-
   addHorizontalLine(indicatorPlot, lineValue: number) {
     const controller = indicatorPlot.annotations();
     const line = controller.horizontalLine({
       valueAnchor: lineValue
     });
     line.allowEdit(false);
-  }
-
-  removeAnnotations(indicatorPlot) {
-    indicatorPlot.annotations().removeAllAnnotations();
   }
 
   configureDateTimeFormat(indicatorPlot) {
@@ -50,20 +41,6 @@ export class CommonDrawService {
 
   convertValue(indicatorValue) {
     return Number.parseFloat(indicatorValue).toFixed(10);
-  }
-
-  prepareDataForIndicatorWithSignalLine(result: any[]) {
-    const indicatorData = [];
-    result.forEach(indicatorResult => {
-      indicatorData.push(
-        [
-          indicatorResult.time,
-          this.convertValue(indicatorResult.indicatorValue),
-          this.convertValue(indicatorResult.signalLineValue)
-        ]
-      )
-    });
-    return indicatorData;
   }
 
   prepareBandData(result: any[]) {
@@ -77,6 +54,10 @@ export class CommonDrawService {
       ]
     ));
     return indicatorData;
+  }
+
+  private removeAnnotations(indicatorPlot) {
+    indicatorPlot.annotations().removeAllAnnotations();
   }
 
 }

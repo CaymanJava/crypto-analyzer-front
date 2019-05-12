@@ -5,7 +5,7 @@ import { SimpleDrawService } from "./simple-draw.service";
 @Injectable({
   providedIn: "root"
 })
-export class CcDrawService extends SimpleDrawService {
+export class CoDrawService extends SimpleDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
@@ -18,15 +18,13 @@ export class CcDrawService extends SimpleDrawService {
   }
 
   prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shortROCPeriod + ', ' +
-      settings.configuration.longROCPeriod + ', ' +
-      settings.configuration.priceType + ')';
+    return settings.indicatorItem.title + '('
+      + settings.configuration.slowPeriod + ','
+      + settings.configuration.fastPeriod + ')';
   }
 
   getName() {
-    return 'CC';
+    return 'CO';
   }
 
 }
