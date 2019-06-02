@@ -24,6 +24,7 @@ import { DonchianChannelComponent } from "../../indicator/indicator-config/dc/do
 import { DisparityIndexComponent } from "../../indicator/indicator-config/di/disparity-index.component";
 import { DetrendedPriceOscillatorComponent } from "../../indicator/indicator-config/dpo/detrended-price-oscillator.component";
 import { ElderForceIndexComponent } from "../../indicator/indicator-config/efi/elder-force-index.component";
+import { EhlersFisherTransformComponent } from "../../indicator/indicator-config/eft/ehlers-fisher-transform.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -79,6 +80,8 @@ export class IndicatorTypeRecognizerService {
         return 'DETRENDED_PRICE_OSCILLATOR';
       case 'EFI':
         return 'ELDERS_FORCE_INDEX';
+      case 'EFT':
+        return 'EHLERS_FISHER_TRANSFORM';
     }
   }
 
@@ -134,6 +137,8 @@ export class IndicatorTypeRecognizerService {
         return DetrendedPriceOscillatorComponent;
       case 'EFI':
         return ElderForceIndexComponent;
+      case 'EFT':
+        return EhlersFisherTransformComponent;
     }
   }
 

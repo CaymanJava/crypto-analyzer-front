@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import { SignalLineDrawService } from "./signal-line-draw.service";
+import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root"
 })
-export class AtrDrawService extends SignalLineDrawService {
+export class EftDrawService extends SignalLineDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
@@ -19,12 +19,11 @@ export class AtrDrawService extends SignalLineDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '('
-      + settings.configuration.period + ','
-      + settings.configuration.movingAveragePeriod + ')';
+      + settings.configuration.period + ')';
   }
 
   getName() {
-    return 'ATR';
+    return 'EFT';
   }
 
 }

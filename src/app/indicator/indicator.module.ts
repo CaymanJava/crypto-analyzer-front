@@ -36,6 +36,7 @@ import { DonchianChannelComponent } from './indicator-config/dc/donchian-channel
 import { DisparityIndexComponent } from './indicator-config/di/disparity-index.component';
 import { DetrendedPriceOscillatorComponent } from './indicator-config/dpo/detrended-price-oscillator.component';
 import { ElderForceIndexComponent } from './indicator-config/efi/elder-force-index.component';
+import { EhlersFisherTransformComponent } from './indicator-config/eft/ehlers-fisher-transform.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -71,7 +72,8 @@ const modalConfig = [
   DonchianChannelComponent,
   DisparityIndexComponent,
   DetrendedPriceOscillatorComponent,
-  ElderForceIndexComponent
+  ElderForceIndexComponent,
+  EhlersFisherTransformComponent
 ];
 
 @NgModule({
