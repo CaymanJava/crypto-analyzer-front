@@ -21,6 +21,7 @@ import { ChandeMomentumOscillatorComponent } from "../../indicator/indicator-con
 import { ChaikinOscillatorComponent } from "../../indicator/indicator-config/co/chaikin-oscillator.component";
 import { CenterOfGravityComponent } from "../../indicator/indicator-config/cog/center-of-gravity.component";
 import { DonchianChannelComponent } from "../../indicator/indicator-config/dc/donchian-channel.component";
+import { DisparityIndexComponent } from "../../indicator/indicator-config/disparity-index/disparity-index.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -70,6 +71,8 @@ export class IndicatorTypeRecognizerService {
         return 'CENTER_OF_GRAVITY';
       case 'DC':
         return 'DONCHIAN_CHANNEL';
+      case 'DI':
+        return 'DISPARITY_INDEX';
     }
   }
 
@@ -119,6 +122,8 @@ export class IndicatorTypeRecognizerService {
         return CenterOfGravityComponent;
       case 'DC':
         return DonchianChannelComponent;
+      case 'DI':
+        return DisparityIndexComponent;
     }
   }
 

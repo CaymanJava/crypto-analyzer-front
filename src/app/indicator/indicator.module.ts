@@ -33,6 +33,7 @@ import { ChandeMomentumOscillatorComponent } from './indicator-config/cmo/chande
 import { ChaikinOscillatorComponent } from './indicator-config/co/chaikin-oscillator.component';
 import { CenterOfGravityComponent } from './indicator-config/cog/center-of-gravity.component';
 import { DonchianChannelComponent } from './indicator-config/dc/donchian-channel.component';
+import { DisparityIndexComponent } from './indicator-config/disparity-index/disparity-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -65,7 +66,8 @@ const modalConfig = [
   ChandeMomentumOscillatorComponent,
   ChaikinOscillatorComponent,
   CenterOfGravityComponent,
-  DonchianChannelComponent
+  DonchianChannelComponent,
+  DisparityIndexComponent
 ];
 
 @NgModule({
