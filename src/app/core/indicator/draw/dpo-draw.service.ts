@@ -18,11 +18,13 @@ export class DpoDrawService extends SimpleDrawService {
   }
 
   prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title;
+    return settings.indicatorItem.title + '('
+      + settings.configuration.period + ','
+      + settings.configuration.priceType + ')';
   }
 
   getName() {
-    return 'DI';
+    return 'DPO';
   }
 
 }

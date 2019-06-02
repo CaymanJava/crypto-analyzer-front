@@ -35,6 +35,7 @@ import { CenterOfGravityComponent } from './indicator-config/cog/center-of-gravi
 import { DonchianChannelComponent } from './indicator-config/dc/donchian-channel.component';
 import { DisparityIndexComponent } from './indicator-config/di/disparity-index.component';
 import { DetrendedPriceOscillatorComponent } from './indicator-config/dpo/detrended-price-oscillator.component';
+import { ElderForceIndexComponent } from './indicator-config/efi/elder-force-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -69,7 +70,8 @@ const modalConfig = [
   CenterOfGravityComponent,
   DonchianChannelComponent,
   DisparityIndexComponent,
-  DetrendedPriceOscillatorComponent
+  DetrendedPriceOscillatorComponent,
+  ElderForceIndexComponent
 ];
 
 @NgModule({

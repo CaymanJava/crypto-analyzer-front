@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root"
 })
-export class DiDrawService extends SimpleDrawService {
+export class EfiDrawService extends SimpleDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
@@ -19,12 +19,11 @@ export class DiDrawService extends SimpleDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '('
-      + settings.configuration.period + ','
-      + settings.configuration.priceType + ')';
+      + settings.configuration.period + ')';
   }
 
   getName() {
-    return 'DI';
+    return 'EFI';
   }
 
 }

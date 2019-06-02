@@ -23,6 +23,7 @@ import { CenterOfGravityComponent } from "../../indicator/indicator-config/cog/c
 import { DonchianChannelComponent } from "../../indicator/indicator-config/dc/donchian-channel.component";
 import { DisparityIndexComponent } from "../../indicator/indicator-config/di/disparity-index.component";
 import { DetrendedPriceOscillatorComponent } from "../../indicator/indicator-config/dpo/detrended-price-oscillator.component";
+import { ElderForceIndexComponent } from "../../indicator/indicator-config/efi/elder-force-index.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -76,6 +77,8 @@ export class IndicatorTypeRecognizerService {
         return 'DISPARITY_INDEX';
       case 'DPO':
         return 'DETRENDED_PRICE_OSCILLATOR';
+      case 'EFI':
+        return 'ELDERS_FORCE_INDEX';
     }
   }
 
@@ -129,6 +132,8 @@ export class IndicatorTypeRecognizerService {
         return DisparityIndexComponent;
       case 'DPO':
         return DetrendedPriceOscillatorComponent;
+      case 'EFI':
+        return ElderForceIndexComponent;
     }
   }
 

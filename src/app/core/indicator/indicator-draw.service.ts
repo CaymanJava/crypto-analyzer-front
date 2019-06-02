@@ -24,6 +24,7 @@ import { CogDrawService } from "./draw/cog-draw.service";
 import { DcDrawService } from "./draw/dc-draw.service";
 import { DiDrawService } from "./draw/di-draw.service";
 import { DpoDrawService } from "./draw/dpo-draw.service";
+import { EfiDrawService } from "./draw/efi-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -53,7 +54,8 @@ export class IndicatorDrawService {
               private cogDrawService: CogDrawService,
               private dcDrawService: DcDrawService,
               private diDrawService: DiDrawService,
-              private dpoDrawService: DpoDrawService) {
+              private dpoDrawService: DpoDrawService,
+              private efiDrawService: EfiDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -125,6 +127,9 @@ export class IndicatorDrawService {
       case 'DPO':
         this.increaseChartHeight(container);
         return this.dpoDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'EFI':
+        this.increaseChartHeight(container);
+        return this.efiDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -178,6 +183,8 @@ export class IndicatorDrawService {
         return this.diDrawService.update(settings, result, chart, plotNumber);
       case 'DPO':
         return this.dpoDrawService.update(settings, result, chart, plotNumber);
+      case 'EFI':
+        return this.efiDrawService.update(settings, result, chart, plotNumber);
     }
   }
 
