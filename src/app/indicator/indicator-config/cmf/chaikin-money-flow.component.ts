@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-chaikin-money-flow',
+  moduleId: module.id,
   templateUrl: './chaikin-money-flow.component.html'
 })
 export class ChaikinMoneyFlowComponent extends BaseIndicatorComponent {

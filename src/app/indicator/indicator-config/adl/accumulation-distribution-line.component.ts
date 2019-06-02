@@ -4,7 +4,7 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-accumulation-distribution-line',
+  moduleId: module.id,
   templateUrl: './accumulation-distribution-line.component.html'
 })
 export class AccumulationDistributionLineComponent extends BaseIndicatorComponent {

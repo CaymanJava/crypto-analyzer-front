@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-donchian-channel',
+  moduleId: module.id,
   templateUrl: './donchian-channel.component.html'
 })
 export class DonchianChannelComponent extends BaseIndicatorComponent {

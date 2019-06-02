@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-center-of-gravity',
+  moduleId: module.id,
   templateUrl: './center-of-gravity.component.html'
 })
 export class CenterOfGravityComponent extends BaseIndicatorComponent {

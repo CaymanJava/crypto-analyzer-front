@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-disparity-index',
+  moduleId: module.id,
   templateUrl: './disparity-index.component.html'
 })
 export class DisparityIndexComponent extends BaseIndicatorComponent {

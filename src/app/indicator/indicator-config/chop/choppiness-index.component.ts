@@ -5,7 +5,7 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-choppiness-index',
+  moduleId: module.id,
   templateUrl: './choppiness-index.component.html'
 })
 export class ChoppinessIndexComponent extends BaseIndicatorComponent {

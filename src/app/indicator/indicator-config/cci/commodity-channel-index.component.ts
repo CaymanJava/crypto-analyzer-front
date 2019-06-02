@@ -5,7 +5,7 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-commodity-channel-index',
+  moduleId: module.id,
   templateUrl: './commodity-channel-index.component.html'
 })
 export class CommodityChannelIndexComponent extends BaseIndicatorComponent {

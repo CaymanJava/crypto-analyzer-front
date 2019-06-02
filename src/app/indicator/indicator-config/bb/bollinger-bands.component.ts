@@ -5,7 +5,7 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-bollinger-bands',
+  moduleId: module.id,
   templateUrl: './bollinger-bands.component.html'
 })
 export class BollingerBandsComponent extends BaseIndicatorComponent {

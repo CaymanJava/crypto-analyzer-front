@@ -5,7 +5,7 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-chande-forecast-oscillator',
+  moduleId: module.id,
   templateUrl: './chande-forecast-oscillator.component.html'
 })
 export class ChandeForecastOscillatorComponent extends BaseIndicatorComponent {

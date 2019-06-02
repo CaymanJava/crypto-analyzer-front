@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-chande-momentum-oscillator',
+  moduleId: module.id,
   templateUrl: './chande-momentum-oscillator.component.html'
 })
 export class ChandeMomentumOscillatorComponent extends BaseIndicatorComponent {

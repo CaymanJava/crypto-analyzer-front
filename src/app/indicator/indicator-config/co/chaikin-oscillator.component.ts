@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
-  selector: 'app-chaikin-oscillator',
+  moduleId: module.id,
   templateUrl: './chaikin-oscillator.component.html'
 })
 export class ChaikinOscillatorComponent extends BaseIndicatorComponent {

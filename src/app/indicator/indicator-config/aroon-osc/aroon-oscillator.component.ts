@@ -5,7 +5,7 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 
 @Component({
-  selector: 'app-aroon-oscillator',
+  moduleId: module.id,
   templateUrl: './aroon-oscillator.component.html'
 })
 export class AroonOscillatorComponent extends BaseIndicatorComponent {
