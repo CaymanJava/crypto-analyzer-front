@@ -20,6 +20,7 @@ import { ChaikinMoneyFlowComponent } from "../../indicator/indicator-config/cmf/
 import { ChandeMomentumOscillatorComponent } from "../../indicator/indicator-config/cmo/chande-momentum-oscillator.component";
 import { ChaikinOscillatorComponent } from "../../indicator/indicator-config/co/chaikin-oscillator.component";
 import { CenterOfGravityComponent } from "../../indicator/indicator-config/cog/center-of-gravity.component";
+import { DonchianChannelComponent } from "../../indicator/indicator-config/dc/donchian-channel.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -67,6 +68,8 @@ export class IndicatorTypeRecognizerService {
         return 'CHAIKIN_OSCILLATOR';
       case 'COG':
         return 'CENTER_OF_GRAVITY';
+      case 'DC':
+        return 'DONCHIAN_CHANNEL';
     }
   }
 
@@ -114,6 +117,8 @@ export class IndicatorTypeRecognizerService {
         return ChaikinOscillatorComponent;
       case 'COG':
         return CenterOfGravityComponent;
+      case 'DC':
+        return DonchianChannelComponent;
     }
   }
 

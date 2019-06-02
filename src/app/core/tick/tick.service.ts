@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { TickData, TickPeriodRequest, TickTimeRequest} from "./tick.model";
+import { TickData, TickPeriodRequest, TickTimeRequest } from "./tick.model";
 import { Observable } from "rxjs";
 import { ApiService } from "../api/api.service";
 import { environment } from "../../../environments/environment";

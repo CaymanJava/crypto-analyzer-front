@@ -1,30 +1,30 @@
 import { Injectable } from "@angular/core";
-import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import { BandDrawService } from "./band-draw.service";
+import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 
 @Injectable({
   providedIn: "root"
 })
-export class BbDrawService extends BandDrawService {
+export class DcDrawService extends BandDrawService {
 
   getTopBandColor(drawConfiguration): string {
-    return drawConfiguration.bbTopColor;
+    return drawConfiguration.dcTopColor;
   }
 
   getMiddleBandColor(drawConfiguration): string {
-    return drawConfiguration.bbMiddleColor;
+    return drawConfiguration.dcMiddleColor;
   }
 
   getBottomBandColor(drawConfiguration): string {
-    return drawConfiguration.bbBottomColor;
+    return drawConfiguration.dcBottomColor;
   }
 
   getChannelBandColor(drawConfiguration): string {
-    return drawConfiguration.bbChannelColor;
+    return drawConfiguration.dcChannelColor;
   }
 
   getName(): string {
-    return "BB";
+    return "DC";
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
@@ -37,9 +37,8 @@ export class BbDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.standardDeviationCoefficient + ', ' +
-      settings.configuration.priceType + ')';
+      settings.configuration.highPeriod + ', ' +
+      settings.configuration.lowPeriod + ')';
   }
 
 }

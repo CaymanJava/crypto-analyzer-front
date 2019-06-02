@@ -32,6 +32,7 @@ import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-
 import { ChandeMomentumOscillatorComponent } from './indicator-config/cmo/chande-momentum-oscillator.component';
 import { ChaikinOscillatorComponent } from './indicator-config/co/chaikin-oscillator.component';
 import { CenterOfGravityComponent } from './indicator-config/cog/center-of-gravity.component';
+import { DonchianChannelComponent } from './indicator-config/dc/donchian-channel.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -63,7 +64,8 @@ const modalConfig = [
   ChaikinMoneyFlowComponent,
   ChandeMomentumOscillatorComponent,
   ChaikinOscillatorComponent,
-  CenterOfGravityComponent
+  CenterOfGravityComponent,
+  DonchianChannelComponent
 ];
 
 @NgModule({
