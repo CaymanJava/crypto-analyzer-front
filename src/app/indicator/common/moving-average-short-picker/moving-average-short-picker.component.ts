@@ -9,6 +9,7 @@ export class MovingAverageShortPickerComponent implements OnInit {
 
   @Input() configForm: FormGroup;
   @Input() key: string;
+  @Input() label = 'Moving average type';
 
 
   constructor() { }

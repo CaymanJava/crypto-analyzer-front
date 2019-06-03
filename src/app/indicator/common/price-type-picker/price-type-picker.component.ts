@@ -9,6 +9,7 @@ export class PriceTypePickerComponent implements OnInit {
 
   @Input() configForm: FormGroup;
   @Input() key: string;
+  @Input() label = 'Price type';
 
   constructor() { }
 

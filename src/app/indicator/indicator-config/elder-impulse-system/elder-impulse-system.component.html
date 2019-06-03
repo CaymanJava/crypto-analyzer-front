@@ -5,27 +5,50 @@
   </button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="configForm">
+  <form>
     <app-indicator-input
         [form]="configForm"
-        key="period"
-        label="Period"
-        placeholder="7">
+        key="maPeriod"
+        label="Moving average period"
+        placeholder="13">
     </app-indicator-input>
+    <app-moving-average-short-picker
+        [configForm]="configForm"
+        key="maType">
+    </app-moving-average-short-picker>
     <app-price-type-picker
         [configForm]="configForm"
-        key="priceType">
+        key="maPriceType"
+        label="Moving average price type">
     </app-price-type-picker>
     <app-moving-average-short-picker
         [configForm]="configForm"
-        key="movingAverageType">
+        key="macdMaType"
+        label="MACD Moving average type">
     </app-moving-average-short-picker>
-    <div class="separator-breadcrumb border-top"></div>
-    <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
-        [color]="drawConfigForm.get('indicatorLineColor').value"
-        [label]="'Indicator line'">
-    </app-color-picker>
+    <app-price-type-picker
+        [configForm]="configForm"
+        key="macdPriceType"
+        label="MACD price type">
+    </app-price-type-picker>
+    <app-indicator-input
+        [form]="configForm"
+        key="macdFastPeriod"
+        label="MACD fast period"
+        placeholder="12">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="macdSlowPeriod"
+        label="MACD slow period"
+        placeholder="26">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="macdSignalPeriod"
+        label="MACD signal period"
+        placeholder="9">
+    </app-indicator-input>
   </form>
 </div>
 <div class="modal-footer">
@@ -41,7 +64,7 @@
     Remove
   </button>
   <button (click)="onSubmit()"
-          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          [disabled]="!configForm.valid"
           class="btn btn-outline-success btn-rounded"
           type="button">
     {{update ? 'Update' : 'Add'}}

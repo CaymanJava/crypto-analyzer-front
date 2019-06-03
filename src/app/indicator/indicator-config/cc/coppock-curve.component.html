@@ -49,7 +49,7 @@
     Remove
   </button>
   <button (click)="onSubmit()"
-          [disabled]="!configForm.valid"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
           class="btn btn-outline-success btn-rounded"
           type="button">
     {{update ? 'Update' : 'Add'}}

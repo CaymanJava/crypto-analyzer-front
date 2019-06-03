@@ -25,6 +25,7 @@ import { DisparityIndexComponent } from "../../indicator/indicator-config/di/dis
 import { DetrendedPriceOscillatorComponent } from "../../indicator/indicator-config/dpo/detrended-price-oscillator.component";
 import { ElderForceIndexComponent } from "../../indicator/indicator-config/efi/elder-force-index.component";
 import { EhlersFisherTransformComponent } from "../../indicator/indicator-config/eft/ehlers-fisher-transform.component";
+import { ElderImpulseSystemComponent } from "../../indicator/indicator-config/elder-impulse-system/elder-impulse-system.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -82,6 +83,8 @@ export class IndicatorTypeRecognizerService {
         return 'ELDERS_FORCE_INDEX';
       case 'EFT':
         return 'EHLERS_FISHER_TRANSFORM';
+      case 'EIS':
+        return 'ELDER_IMPULSE_SYSTEM';
     }
   }
 
@@ -139,6 +142,8 @@ export class IndicatorTypeRecognizerService {
         return ElderForceIndexComponent;
       case 'EFT':
         return EhlersFisherTransformComponent;
+      case 'EIS':
+        return ElderImpulseSystemComponent;
     }
   }
 
