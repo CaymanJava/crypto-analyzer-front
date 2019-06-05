@@ -37,7 +37,8 @@ import { DisparityIndexComponent } from './indicator-config/di/disparity-index.c
 import { DetrendedPriceOscillatorComponent } from './indicator-config/dpo/detrended-price-oscillator.component';
 import { ElderForceIndexComponent } from './indicator-config/efi/elder-force-index.component';
 import { EhlersFisherTransformComponent } from './indicator-config/eft/ehlers-fisher-transform.component';
-import { ElderImpulseSystemComponent } from './indicator-config/elder-impulse-system/elder-impulse-system.component';
+import { ElderImpulseSystemComponent } from './indicator-config/eis/elder-impulse-system.component';
+import { MovingAverageEnvelopesComponent } from './indicator-config/env/moving-average-envelopes.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -75,7 +76,8 @@ const modalConfig = [
   DetrendedPriceOscillatorComponent,
   ElderForceIndexComponent,
   EhlersFisherTransformComponent,
-  ElderImpulseSystemComponent
+  ElderImpulseSystemComponent,
+  MovingAverageEnvelopesComponent
 ];
 
 @NgModule({

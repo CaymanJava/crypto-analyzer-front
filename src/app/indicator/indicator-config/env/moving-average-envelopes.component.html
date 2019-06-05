@@ -8,40 +8,40 @@
   <form [formGroup]="configForm">
     <app-indicator-input
         [form]="configForm"
-        key="period"
-        label="Period"
-        placeholder="5">
+        key="movingAveragePeriod"
+        label="Moving average period"
+        placeholder="20">
     </app-indicator-input>
     <app-indicator-input
         [form]="configForm"
-        key="shift"
-        label="Shift"
-        placeholder="3">
+        key="indentationPercentage"
+        label="Indentation percentage"
+        placeholder="5">
     </app-indicator-input>
-    <app-price-type-picker
+    <app-moving-average-short-picker
         [configForm]="configForm"
-        key="priceType">
-    </app-price-type-picker>
+        key="movingAverageType">
+    </app-moving-average-short-picker>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
         (onColorChange)="onColorPickerChange($event, 'topBandColor')"
         [color]="drawConfigForm.get('topBandColor').value"
-        [label]="'ATR bands top'">
+        [label]="'ENV top'">
     </app-color-picker>
     <app-color-picker
         (onColorChange)="onColorPickerChange($event, 'bottomBandColor')"
         [color]="drawConfigForm.get('bottomBandColor').value"
-        [label]="'ATR bands bottom'">
+        [label]="'ENV bottom'">
     </app-color-picker>
     <app-color-picker
         (onColorChange)="onColorPickerChange($event, 'middleBandColor')"
         [color]="drawConfigForm.get('middleBandColor').value"
-        [label]="'ATR bands middle'">
+        [label]="'ENV middle'">
     </app-color-picker>
     <app-color-picker
         (onColorChange)="onColorPickerChange($event, 'channelColor')"
         [color]="drawConfigForm.get('channelColor').value"
-        [label]="'ATR bands channel'">
+        [label]="'ENV channel'">
     </app-color-picker>
   </form>
 </div>

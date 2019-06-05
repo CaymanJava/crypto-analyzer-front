@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { FormBuilder, Validators } from "@angular/forms";
+import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
+import { PositiveNumberValidator } from "../../../shared/validators/positive-number-validator";
 
 @Component({
   moduleId: module.id,
-  templateUrl: './bollinger-bands.component.html'
+  templateUrl: './moving-average-envelopes.component.html'
 })
-export class BollingerBandsComponent extends BaseIndicatorComponent {
+export class MovingAverageEnvelopesComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
@@ -18,16 +19,15 @@ export class BollingerBandsComponent extends BaseIndicatorComponent {
 
   initForms() {
     this.configForm = this.fb.group({
-      'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'priceType': ['', [Validators.required]],
-      'standardDeviationCoefficient': ['', [Validators.required, Validators.min(1.00001)]],
+      'movingAveragePeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'indentationPercentage': ['', [Validators.required, PositiveNumberValidator.valid, Validators.max(100)]],
       'movingAverageType': ['', [Validators.required]]
     });
     this.drawConfigForm = this.fb.group({
-      'topBandColor': ['#ca0ecc', Validators.required],
-      'bottomBandColor': ['#ca0ecc', Validators.required],
+      'topBandColor': ['#0a2ecc', Validators.required],
+      'bottomBandColor': ['#0a2ecc', Validators.required],
       'middleBandColor': ['#fa0f16', Validators.required],
-      'channelColor': ['#68cc98', Validators.required]
+      'channelColor': ['#7276cc', Validators.required]
     });
   }
 
@@ -38,9 +38,8 @@ export class BollingerBandsComponent extends BaseIndicatorComponent {
   onSubmit() {
     this.modal.close({
       configuration: {
-        period: this.configForm.get('period').value,
-        priceType: this.configForm.get('priceType').value,
-        standardDeviationCoefficient: this.configForm.get('standardDeviationCoefficient').value,
+        movingAveragePeriod: this.configForm.get('movingAveragePeriod').value,
+        indentationPercentage: this.configForm.get('indentationPercentage').value,
         movingAverageType: this.configForm.get('movingAverageType').value
       },
       drawConfiguration: {
@@ -55,10 +54,9 @@ export class BollingerBandsComponent extends BaseIndicatorComponent {
   fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
-        period: this.configuration.period,
-        priceType: this.configuration.priceType,
-        standardDeviationCoefficient: this.configuration.standardDeviationCoefficient,
-        movingAverageType: this.configuration.movingAverageType,
+        movingAveragePeriod: this.configuration.movingAveragePeriod,
+        indentationPercentage: this.configuration.indentationPercentage,
+        movingAverageType: this.configuration.movingAverageType
       });
       this.drawConfigForm.setValue({
         topBandColor: this.drawConfiguration.topBandColor,

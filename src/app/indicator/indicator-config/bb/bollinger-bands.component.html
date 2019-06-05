@@ -28,23 +28,23 @@
     </app-moving-average-short-picker>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'bbTopColor')"
-        [color]="drawConfigForm.get('bbTopColor').value"
+        (onColorChange)="onColorPickerChange($event, 'topBandColor')"
+        [color]="drawConfigForm.get('topBandColor').value"
         [label]="'BB top'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'bbBottomColor')"
-        [color]="drawConfigForm.get('bbBottomColor').value"
+        (onColorChange)="onColorPickerChange($event, 'bottomBandColor')"
+        [color]="drawConfigForm.get('bottomBandColor').value"
         [label]="'BB bottom'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'bbMiddleColor')"
-        [color]="drawConfigForm.get('bbMiddleColor').value"
+        (onColorChange)="onColorPickerChange($event, 'middleBandColor')"
+        [color]="drawConfigForm.get('middleBandColor').value"
         [label]="'BB middle'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'bbChannelColor')"
-        [color]="drawConfigForm.get('bbChannelColor').value"
+        (onColorChange)="onColorPickerChange($event, 'channelColor')"
+        [color]="drawConfigForm.get('channelColor').value"
         [label]="'BB channel'">
     </app-color-picker>
   </form>

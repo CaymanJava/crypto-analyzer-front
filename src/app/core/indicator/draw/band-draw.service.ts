@@ -6,14 +6,6 @@ export abstract class BandDrawService extends CommonDrawService {
 
   abstract getName(): string;
 
-  abstract getTopBandColor(drawConfiguration): string;
-
-  abstract getMiddleBandColor(drawConfiguration): string;
-
-  abstract getBottomBandColor(drawConfiguration): string;
-
-  abstract getChannelBandColor(drawConfiguration): string;
-
   draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     const indicator = this.prepareData(result);
     this.preparePlot(settings.drawConfiguration, chart, indicator);
@@ -30,9 +22,9 @@ export abstract class BandDrawService extends CommonDrawService {
   private configureArea(drawConfiguration, indicatorPlot, indicator) {
     const series = indicatorPlot.rangeArea(indicator.mapAs({low: 3, high: 1}));
     series.name(this.getName());
-    series.normal().fill(this.getChannelBandColor(drawConfiguration), 0.3);
-    series.normal().lowStroke(this.getBottomBandColor(drawConfiguration), 1.2, '10 5', 'round');
-    series.normal().highStroke(this.getTopBandColor(drawConfiguration), 1.2, '10 5', 'round');
+    series.normal().fill(drawConfiguration.channelColor, 0.3);
+    series.normal().lowStroke(drawConfiguration.bottomBandColor, 1.2, '10 5', 'round');
+    series.normal().highStroke(drawConfiguration.topBandColor, 1.2, '10 5', 'round');
   }
 
   private prepareData(result: any[]) {
@@ -44,7 +36,7 @@ export abstract class BandDrawService extends CommonDrawService {
 
   private configureMiddleBand(drawConfiguration, indicatorPlot, indicator) {
     const middleBand = indicatorPlot.line(indicator.mapAs({'value': 2}));
-    middleBand.stroke(this.getMiddleBandColor(drawConfiguration));
+    middleBand.stroke(drawConfiguration.middleBandColor);
     middleBand.name('Middle');
   }
 

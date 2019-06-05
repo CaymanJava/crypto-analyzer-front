@@ -27,6 +27,7 @@ import { DpoDrawService } from "./draw/dpo-draw.service";
 import { EfiDrawService } from "./draw/efi-draw.service";
 import { EftDrawService } from "./draw/eft-draw.service";
 import { EisDrawService } from "./draw/eis-draw.service";
+import { EnvDrawService } from "./draw/env-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -59,7 +60,8 @@ export class IndicatorDrawService {
               private dpoDrawService: DpoDrawService,
               private efiDrawService: EfiDrawService,
               private eftDrawService: EftDrawService,
-              private eisDrawService: EisDrawService) {
+              private eisDrawService: EisDrawService,
+              private envDrawService: EnvDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -140,6 +142,8 @@ export class IndicatorDrawService {
       case 'EIS':
         this.increaseChartHeight(container);
         return this.eisDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'ENV':
+        return this.envDrawService.draw(settings, result, chart);
     }
   }
 
@@ -199,6 +203,8 @@ export class IndicatorDrawService {
         return this.eftDrawService.update(settings, result, chart, plotNumber);
       case 'EIS':
         return this.eisDrawService.update(settings, result, chart, plotNumber);
+      case 'ENV':
+        return this.envDrawService.update(settings, result, chart);
     }
   }
 

@@ -20,23 +20,23 @@
     </app-indicator-input>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'dcTopColor')"
-        [color]="drawConfigForm.get('dcTopColor').value"
+        (onColorChange)="onColorPickerChange($event, 'topBandColor')"
+        [color]="drawConfigForm.get('topBandColor').value"
         [label]="'DC top'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'dcBottomColor')"
-        [color]="drawConfigForm.get('dcBottomColor').value"
+        (onColorChange)="onColorPickerChange($event, 'bottomBandColor')"
+        [color]="drawConfigForm.get('bottomBandColor').value"
         [label]="'DC bottom'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'dcMiddleColor')"
-        [color]="drawConfigForm.get('dcMiddleColor').value"
+        (onColorChange)="onColorPickerChange($event, 'middleBandColor')"
+        [color]="drawConfigForm.get('middleBandColor').value"
         [label]="'DC middle'">
     </app-color-picker>
     <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'dcChannelColor')"
-        [color]="drawConfigForm.get('dcChannelColor').value"
+        (onColorChange)="onColorPickerChange($event, 'channelColor')"
+        [color]="drawConfigForm.get('channelColor').value"
         [label]="'DC channel'">
     </app-color-picker>
   </form>

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import { BandDrawService } from "./band-draw.service";
+import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 
 @Injectable({
   providedIn: "root"
 })
-export class AtrbDrawService extends BandDrawService {
+export class EnvDrawService extends BandDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     return super.draw(settings, result, chart);
@@ -17,13 +17,12 @@ export class AtrbDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shift + ', ' +
-      settings.configuration.priceType + ')';
+      settings.configuration.movingAveragePeriod + ', ' +
+      settings.configuration.indentationPercentage + ')';
   }
 
   getName(): string {
-    return "ATRB";
+    return "ENV";
   }
 
 }

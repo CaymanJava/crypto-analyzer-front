@@ -7,26 +7,6 @@ import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 })
 export class DcDrawService extends BandDrawService {
 
-  getTopBandColor(drawConfiguration): string {
-    return drawConfiguration.dcTopColor;
-  }
-
-  getMiddleBandColor(drawConfiguration): string {
-    return drawConfiguration.dcMiddleColor;
-  }
-
-  getBottomBandColor(drawConfiguration): string {
-    return drawConfiguration.dcBottomColor;
-  }
-
-  getChannelBandColor(drawConfiguration): string {
-    return drawConfiguration.dcChannelColor;
-  }
-
-  getName(): string {
-    return "DC";
-  }
-
   draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     return super.draw(settings, result, chart);
   }
@@ -39,6 +19,10 @@ export class DcDrawService extends BandDrawService {
     return settings.indicatorItem.title + '(' +
       settings.configuration.highPeriod + ', ' +
       settings.configuration.lowPeriod + ')';
+  }
+
+  getName(): string {
+    return "DC";
   }
 
 }

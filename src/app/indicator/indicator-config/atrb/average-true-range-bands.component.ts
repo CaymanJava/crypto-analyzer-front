@@ -24,10 +24,10 @@ export class AverageTrueRangeBandsComponent extends BaseIndicatorComponent {
       'priceType': ['', [Validators.required]]
     });
     this.drawConfigForm = this.fb.group({
-      'atrBandsTopColor': ['#0a2ecc', Validators.required],
-      'atrBandsBottomColor': ['#0a2ecc', Validators.required],
-      'atrBandsMiddleColor': ['#fa0f16', Validators.required],
-      'atrBandsChannelColor': ['#7276cc', Validators.required]
+      'topBandColor': ['#0a2ecc', Validators.required],
+      'bottomBandColor': ['#0a2ecc', Validators.required],
+      'middleBandColor': ['#fa0f16', Validators.required],
+      'channelColor': ['#7276cc', Validators.required]
     });
   }
 
@@ -43,10 +43,10 @@ export class AverageTrueRangeBandsComponent extends BaseIndicatorComponent {
         priceType: this.configForm.get('priceType').value
       },
       drawConfiguration: {
-        atrBandsTopColor: this.drawConfigForm.get('atrBandsTopColor').value,
-        atrBandsBottomColor: this.drawConfigForm.get('atrBandsBottomColor').value,
-        atrBandsMiddleColor: this.drawConfigForm.get('atrBandsMiddleColor').value,
-        atrBandsChannelColor: this.drawConfigForm.get('atrBandsChannelColor').value
+        topBandColor: this.drawConfigForm.get('topBandColor').value,
+        bottomBandColor: this.drawConfigForm.get('bottomBandColor').value,
+        middleBandColor: this.drawConfigForm.get('middleBandColor').value,
+        channelColor: this.drawConfigForm.get('channelColor').value
       }
     });
   }
@@ -59,10 +59,10 @@ export class AverageTrueRangeBandsComponent extends BaseIndicatorComponent {
         priceType: this.configuration.priceType
       });
       this.drawConfigForm.setValue({
-        atrBandsTopColor: this.drawConfiguration.atrBandsTopColor,
-        atrBandsBottomColor: this.drawConfiguration.atrBandsBottomColor,
-        atrBandsMiddleColor: this.drawConfiguration.atrBandsMiddleColor,
-        atrBandsChannelColor: this.drawConfiguration.atrBandsChannelColor
+        topBandColor: this.drawConfiguration.topBandColor,
+        bottomBandColor: this.drawConfiguration.bottomBandColor,
+        middleBandColor: this.drawConfiguration.middleBandColor,
+        channelColor: this.drawConfiguration.channelColor
       });
     }
   }

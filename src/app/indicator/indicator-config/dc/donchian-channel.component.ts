@@ -22,10 +22,10 @@ export class DonchianChannelComponent extends BaseIndicatorComponent {
       'lowPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]]
     });
     this.drawConfigForm = this.fb.group({
-      'dcTopColor': ['#0a2ecc', Validators.required],
-      'dcBottomColor': ['#0a2ecc', Validators.required],
-      'dcMiddleColor': ['#fa0f16', Validators.required],
-      'dcChannelColor': ['#7276cc', Validators.required]
+      'topBandColor': ['#0a2ecc', Validators.required],
+      'bottomBandColor': ['#0a2ecc', Validators.required],
+      'middleBandColor': ['#fa0f16', Validators.required],
+      'channelColor': ['#7276cc', Validators.required]
     });
   }
 
@@ -40,10 +40,10 @@ export class DonchianChannelComponent extends BaseIndicatorComponent {
         lowPeriod: this.configForm.get('lowPeriod').value
       },
       drawConfiguration: {
-        dcTopColor: this.drawConfigForm.get('dcTopColor').value,
-        dcBottomColor: this.drawConfigForm.get('dcBottomColor').value,
-        dcMiddleColor: this.drawConfigForm.get('dcMiddleColor').value,
-        dcChannelColor: this.drawConfigForm.get('dcChannelColor').value
+        topBandColor: this.drawConfigForm.get('topBandColor').value,
+        bottomBandColor: this.drawConfigForm.get('bottomBandColor').value,
+        middleBandColor: this.drawConfigForm.get('middleBandColor').value,
+        channelColor: this.drawConfigForm.get('channelColor').value
       }
     });
   }
@@ -55,10 +55,10 @@ export class DonchianChannelComponent extends BaseIndicatorComponent {
         lowPeriod: this.configuration.lowPeriod
       });
       this.drawConfigForm.setValue({
-        dcTopColor: this.drawConfiguration.dcTopColor,
-        dcBottomColor: this.drawConfiguration.dcBottomColor,
-        dcMiddleColor: this.drawConfiguration.dcMiddleColor,
-        dcChannelColor: this.drawConfiguration.dcChannelColor
+        topBandColor: this.drawConfiguration.topBandColor,
+        bottomBandColor: this.drawConfiguration.bottomBandColor,
+        middleBandColor: this.drawConfiguration.middleBandColor,
+        channelColor: this.drawConfiguration.channelColor
       });
     }
   }

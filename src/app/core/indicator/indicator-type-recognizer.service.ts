@@ -25,7 +25,8 @@ import { DisparityIndexComponent } from "../../indicator/indicator-config/di/dis
 import { DetrendedPriceOscillatorComponent } from "../../indicator/indicator-config/dpo/detrended-price-oscillator.component";
 import { ElderForceIndexComponent } from "../../indicator/indicator-config/efi/elder-force-index.component";
 import { EhlersFisherTransformComponent } from "../../indicator/indicator-config/eft/ehlers-fisher-transform.component";
-import { ElderImpulseSystemComponent } from "../../indicator/indicator-config/elder-impulse-system/elder-impulse-system.component";
+import { ElderImpulseSystemComponent } from "../../indicator/indicator-config/eis/elder-impulse-system.component";
+import { MovingAverageEnvelopesComponent } from "../../indicator/indicator-config/env/moving-average-envelopes.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -85,6 +86,8 @@ export class IndicatorTypeRecognizerService {
         return 'EHLERS_FISHER_TRANSFORM';
       case 'EIS':
         return 'ELDER_IMPULSE_SYSTEM';
+      case 'ENV':
+        return 'MOVING_AVERAGE_ENVELOPES';
     }
   }
 
@@ -144,6 +147,8 @@ export class IndicatorTypeRecognizerService {
         return EhlersFisherTransformComponent;
       case 'EIS':
         return ElderImpulseSystemComponent;
+      case 'ENV':
+        return MovingAverageEnvelopesComponent;
     }
   }
 
