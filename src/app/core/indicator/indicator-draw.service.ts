@@ -29,6 +29,7 @@ import { EftDrawService } from "./draw/eft-draw.service";
 import { EisDrawService } from "./draw/eis-draw.service";
 import { EnvDrawService } from "./draw/env-draw.service";
 import { EomDrawService } from "./draw/eom-draw.service";
+import { EriDrawService } from "./draw/eri-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -63,7 +64,8 @@ export class IndicatorDrawService {
               private eftDrawService: EftDrawService,
               private eisDrawService: EisDrawService,
               private envDrawService: EnvDrawService,
-              private eomDrawService: EomDrawService) {
+              private eomDrawService: EomDrawService,
+              private eriDrawService: EriDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -149,6 +151,9 @@ export class IndicatorDrawService {
       case 'EOM':
         this.increaseChartHeight(container);
         return this.eomDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'ERI':
+        this.increaseChartHeight(container);
+        return this.eriDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -212,6 +217,8 @@ export class IndicatorDrawService {
         return this.envDrawService.update(settings, result, chart);
       case 'EOM':
         return this.eomDrawService.update(settings, result, chart, plotNumber);
+      case 'ERI':
+        return this.eriDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

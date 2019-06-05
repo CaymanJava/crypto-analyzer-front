@@ -75,8 +75,8 @@
       <span class="total-elements"> Showed {{data.numberOfElements}} | Total elements {{data.totalElements}} records</span>
     </div>
     <div *ngIf="data.totalElements > data.size" class="col-lg-6">
-      <ngb-pagination (pageChange)="onPageChange($event)" [page]="data.number" [collectionSize]="data.totalElements" [maxSize]="5"
-                      [pageSize]="data.size" size="md"></ngb-pagination>
+      <ngb-pagination (pageChange)="onPageChange($event)" [collectionSize]="data.totalElements" [maxSize]="5" [pageSize]="data.size"
+                      [page]="page" size="md"></ngb-pagination>
     </div>
   </div>
 </div>

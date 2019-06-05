@@ -40,6 +40,7 @@ import { EhlersFisherTransformComponent } from './indicator-config/eft/ehlers-fi
 import { ElderImpulseSystemComponent } from './indicator-config/eis/elder-impulse-system.component';
 import { MovingAverageEnvelopesComponent } from './indicator-config/env/moving-average-envelopes.component';
 import { EaseOfMovementComponent } from './indicator-config/eom/ease-of-movement.component';
+import { ElderRayIndexComponent } from './indicator-config/eri/elder-ray-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -79,7 +80,8 @@ const modalConfig = [
   EhlersFisherTransformComponent,
   ElderImpulseSystemComponent,
   MovingAverageEnvelopesComponent,
-  EaseOfMovementComponent
+  EaseOfMovementComponent,
+  ElderRayIndexComponent
 ];
 
 @NgModule({

@@ -28,6 +28,7 @@ import { EhlersFisherTransformComponent } from "../../indicator/indicator-config
 import { ElderImpulseSystemComponent } from "../../indicator/indicator-config/eis/elder-impulse-system.component";
 import { MovingAverageEnvelopesComponent } from "../../indicator/indicator-config/env/moving-average-envelopes.component";
 import { EaseOfMovementComponent } from "../../indicator/indicator-config/eom/ease-of-movement.component";
+import { ElderRayIndexComponent } from "../../indicator/indicator-config/eri/elder-ray-index.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -91,6 +92,8 @@ export class IndicatorTypeRecognizerService {
         return 'MOVING_AVERAGE_ENVELOPES';
       case 'EOM':
         return 'EASE_OF_MOVEMENT';
+      case 'ERI':
+        return 'ELDER_RAY_INDEX';
     }
   }
 
@@ -154,6 +157,8 @@ export class IndicatorTypeRecognizerService {
         return MovingAverageEnvelopesComponent;
       case 'EOM':
         return EaseOfMovementComponent;
+      case 'ERI':
+        return ElderRayIndexComponent;
     }
   }
 
