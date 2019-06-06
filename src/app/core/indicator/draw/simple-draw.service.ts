@@ -14,9 +14,8 @@ export abstract class SimpleDrawService extends CommonDrawService {
     const indicatorData = this.prepareSimpleIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
-    const title = this.prepareTitle(settings);
     this.configureComputedLine(settings.drawConfiguration, computedLine);
-    return new IndicatorDrawResult(title, plotNumber);
+    return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }
 
   private configureComputedLine(drawConfiguration, computedLine) {

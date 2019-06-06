@@ -57,7 +57,7 @@ export class ChartDrawerService {
 
   private configureDateFormat() {
     AnyChart.format.outputDateTimeFormat('HH:mm, dd MMM yyyy');
-    AnyChart.format.outputTimezone(-120);
+    AnyChart.format.outputTimezone(new Date().getTimezoneOffset());
   }
 
   private configureTooltips(chart) {

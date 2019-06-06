@@ -43,6 +43,7 @@ import { EaseOfMovementComponent } from './indicator-config/eom/ease-of-movement
 import { ElderRayIndexComponent } from './indicator-config/eri/elder-ray-index.component';
 import { FractalComponent } from './indicator-config/fractal/fractal.component';
 import { GopalakrishnanRangeIndexComponent } from './indicator-config/gapo/gopalakrishnan-range-index.component';
+import { HeikenAshiComponent } from './indicator-config/ha/heiken-ashi.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -85,7 +86,8 @@ const modalConfig = [
   EaseOfMovementComponent,
   ElderRayIndexComponent,
   FractalComponent,
-  GopalakrishnanRangeIndexComponent
+  GopalakrishnanRangeIndexComponent,
+  HeikenAshiComponent
 ];
 
 @NgModule({
