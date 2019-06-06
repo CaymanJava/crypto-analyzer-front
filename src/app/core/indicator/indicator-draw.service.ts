@@ -30,6 +30,7 @@ import { EisDrawService } from "./draw/eis-draw.service";
 import { EnvDrawService } from "./draw/env-draw.service";
 import { EomDrawService } from "./draw/eom-draw.service";
 import { EriDrawService } from "./draw/eri-draw.service";
+import { FractalDrawService } from "./draw/fractal-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -65,7 +66,8 @@ export class IndicatorDrawService {
               private eisDrawService: EisDrawService,
               private envDrawService: EnvDrawService,
               private eomDrawService: EomDrawService,
-              private eriDrawService: EriDrawService) {
+              private eriDrawService: EriDrawService,
+              private fractalDrawService: FractalDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -154,6 +156,8 @@ export class IndicatorDrawService {
       case 'ERI':
         this.increaseChartHeight(container);
         return this.eriDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'FRACTAL':
+        return this.fractalDrawService.draw(settings, result, chart);
     }
   }
 
@@ -219,6 +223,8 @@ export class IndicatorDrawService {
         return this.eomDrawService.update(settings, result, chart, plotNumber);
       case 'ERI':
         return this.eriDrawService.update(settings, result, chart, plotNumber);
+      case 'FRACTAL':
+        return this.fractalDrawService.update(settings, result, chart);
     }
   }
 

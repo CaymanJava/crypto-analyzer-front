@@ -41,6 +41,7 @@ import { ElderImpulseSystemComponent } from './indicator-config/eis/elder-impuls
 import { MovingAverageEnvelopesComponent } from './indicator-config/env/moving-average-envelopes.component';
 import { EaseOfMovementComponent } from './indicator-config/eom/ease-of-movement.component';
 import { ElderRayIndexComponent } from './indicator-config/eri/elder-ray-index.component';
+import { FractalComponent } from './indicator-config/fractal/fractal.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -81,7 +82,8 @@ const modalConfig = [
   ElderImpulseSystemComponent,
   MovingAverageEnvelopesComponent,
   EaseOfMovementComponent,
-  ElderRayIndexComponent
+  ElderRayIndexComponent,
+  FractalComponent
 ];
 
 @NgModule({

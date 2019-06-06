@@ -29,6 +29,7 @@ import { ElderImpulseSystemComponent } from "../../indicator/indicator-config/ei
 import { MovingAverageEnvelopesComponent } from "../../indicator/indicator-config/env/moving-average-envelopes.component";
 import { EaseOfMovementComponent } from "../../indicator/indicator-config/eom/ease-of-movement.component";
 import { ElderRayIndexComponent } from "../../indicator/indicator-config/eri/elder-ray-index.component";
+import { FractalComponent } from "../../indicator/indicator-config/fractal/fractal.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -94,6 +95,8 @@ export class IndicatorTypeRecognizerService {
         return 'EASE_OF_MOVEMENT';
       case 'ERI':
         return 'ELDER_RAY_INDEX';
+      case 'FRACTAL':
+        return 'FRACTAL';
     }
   }
 
@@ -159,6 +162,8 @@ export class IndicatorTypeRecognizerService {
         return EaseOfMovementComponent;
       case 'ERI':
         return ElderRayIndexComponent;
+      case 'FRACTAL':
+        return FractalComponent;
     }
   }
 
