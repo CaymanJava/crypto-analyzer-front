@@ -30,6 +30,7 @@ import { MovingAverageEnvelopesComponent } from "../../indicator/indicator-confi
 import { EaseOfMovementComponent } from "../../indicator/indicator-config/eom/ease-of-movement.component";
 import { ElderRayIndexComponent } from "../../indicator/indicator-config/eri/elder-ray-index.component";
 import { FractalComponent } from "../../indicator/indicator-config/fractal/fractal.component";
+import { GopalakrishnanRangeIndexComponent } from "../../indicator/indicator-config/gapo/gopalakrishnan-range-index.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -97,6 +98,8 @@ export class IndicatorTypeRecognizerService {
         return 'ELDER_RAY_INDEX';
       case 'FRACTAL':
         return 'FRACTAL';
+      case 'GAPO':
+        return 'GOPALAKRISHNAN_RANGE_INDEX';
     }
   }
 
@@ -164,6 +167,8 @@ export class IndicatorTypeRecognizerService {
         return ElderRayIndexComponent;
       case 'FRACTAL':
         return FractalComponent;
+      case 'GAPO':
+        return GopalakrishnanRangeIndexComponent;
     }
   }
 

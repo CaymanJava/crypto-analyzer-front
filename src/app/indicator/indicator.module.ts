@@ -42,6 +42,7 @@ import { MovingAverageEnvelopesComponent } from './indicator-config/env/moving-a
 import { EaseOfMovementComponent } from './indicator-config/eom/ease-of-movement.component';
 import { ElderRayIndexComponent } from './indicator-config/eri/elder-ray-index.component';
 import { FractalComponent } from './indicator-config/fractal/fractal.component';
+import { GopalakrishnanRangeIndexComponent } from './indicator-config/gapo/gopalakrishnan-range-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -83,7 +84,8 @@ const modalConfig = [
   MovingAverageEnvelopesComponent,
   EaseOfMovementComponent,
   ElderRayIndexComponent,
-  FractalComponent
+  FractalComponent,
+  GopalakrishnanRangeIndexComponent
 ];
 
 @NgModule({
