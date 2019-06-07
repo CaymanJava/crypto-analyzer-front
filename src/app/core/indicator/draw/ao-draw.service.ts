@@ -23,8 +23,4 @@ export class AoDrawService extends ColumnDrawService {
       settings.configuration.fastPeriod + ')';
   }
 
-  getName() {
-    return 'AO';
-  }
-
 }

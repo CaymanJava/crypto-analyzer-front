@@ -23,9 +23,4 @@ export class CfoDrawService extends SignalLineDrawService {
       + settings.configuration.movingAveragePeriod + ')';
   }
 
-  getName() {
-    return 'CFO';
-  }
-
-
 }

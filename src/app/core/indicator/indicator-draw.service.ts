@@ -34,6 +34,7 @@ import { FractalDrawService } from "./draw/fractal-draw.service";
 import { GapoDrawService } from "./draw/gapo-draw.service";
 import { HaDrawService } from "./draw/ha-draw.service";
 import { HlbDrawService } from "./draw/hlb-draw.service";
+import { HvDrawService } from "./draw/hv-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -73,7 +74,8 @@ export class IndicatorDrawService {
               private fractalDrawService: FractalDrawService,
               private gapoDrawService: GapoDrawService,
               private haDrawService: HaDrawService,
-              private hlbDrawService: HlbDrawService) {
+              private hlbDrawService: HlbDrawService,
+              private hvDrawService: HvDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -172,6 +174,9 @@ export class IndicatorDrawService {
         return this.haDrawService.draw(settings, result, chart, currentPlotNumber);
       case 'HLB':
         return this.hlbDrawService.draw(settings, result, chart);
+      case 'HV':
+        this.increaseChartHeight(container);
+        return this.hvDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -245,6 +250,8 @@ export class IndicatorDrawService {
         return this.haDrawService.update(settings, result, chart, plotNumber);
       case 'HLB':
         return this.hlbDrawService.update(settings, result, chart);
+      case 'HV':
+        return this.hvDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

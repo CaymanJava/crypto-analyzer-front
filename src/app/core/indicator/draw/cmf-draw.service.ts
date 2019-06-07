@@ -22,8 +22,4 @@ export class CmfDrawService extends SimpleDrawService {
       + settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'CMF';
-  }
-
 }

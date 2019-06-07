@@ -22,8 +22,4 @@ export class EfiDrawService extends SimpleDrawService {
       + settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'EFI';
-  }
-
 }

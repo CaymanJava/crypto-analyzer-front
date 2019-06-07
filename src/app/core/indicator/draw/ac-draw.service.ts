@@ -22,8 +22,4 @@ export class AcDrawService extends ColumnDrawService {
       settings.configuration.fastPeriod + ', ' + settings.configuration.smoothedPeriod + ')';
   }
 
-  getName() {
-    return 'AC';
-  }
-
 }

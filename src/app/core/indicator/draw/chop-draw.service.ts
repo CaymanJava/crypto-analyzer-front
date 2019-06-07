@@ -22,8 +22,4 @@ export class ChopDrawService extends SimpleDrawService {
       settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'CHOP';
-  }
-
 }

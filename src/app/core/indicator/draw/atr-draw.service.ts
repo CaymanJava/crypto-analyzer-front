@@ -23,8 +23,4 @@ export class AtrDrawService extends SignalLineDrawService {
       + settings.configuration.movingAveragePeriod + ')';
   }
 
-  getName() {
-    return 'ATR';
-  }
-
 }

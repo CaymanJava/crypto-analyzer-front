@@ -21,8 +21,4 @@ export class AdlDrawService extends SimpleDrawService {
     return settings.indicatorItem.title;
   }
 
-  getName() {
-    return 'ADL';
-  }
-
 }

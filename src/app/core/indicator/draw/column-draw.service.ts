@@ -4,8 +4,6 @@ import * as AnyChart from "anychart";
 
 export abstract class ColumnDrawService extends CommonDrawService {
 
-  abstract getName(): string;
-
   draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
     return this.drawColumnIndicator(settings, result, chart, plotNumber, horizontalLines);
   }
@@ -15,7 +13,7 @@ export abstract class ColumnDrawService extends CommonDrawService {
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
     const title = this.prepareTitle(settings);
-    this.configureColumns(computedLine, title);
+    this.configureColumns(computedLine, settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
 
@@ -39,8 +37,8 @@ export abstract class ColumnDrawService extends CommonDrawService {
     return indicator.mapAs({'value': 1});
   }
 
-  private configureColumns(computedLine, title) {
-    computedLine.name(title);
+  private configureColumns(computedLine, settings) {
+    computedLine.name(settings.indicatorItem.title);
     computedLine.risingFill('#3ba158');
     computedLine.risingStroke('#3ba158');
     computedLine.fallingFill('#fa0f16');

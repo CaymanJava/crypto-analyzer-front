@@ -23,8 +23,4 @@ export class CogDrawService extends SignalLineDrawService {
       + settings.configuration.signalLinePeriod + ')';
   }
 
-  getName() {
-    return 'COG';
-  }
-
 }

@@ -33,6 +33,7 @@ import { FractalComponent } from "../../indicator/indicator-config/fractal/fract
 import { GopalakrishnanRangeIndexComponent } from "../../indicator/indicator-config/gapo/gopalakrishnan-range-index.component";
 import { HeikenAshiComponent } from "../../indicator/indicator-config/ha/heiken-ashi.component";
 import { HighLowBandsComponent } from "../../indicator/indicator-config/hlb/high-low-bands.component";
+import { HistoricalVolatilityComponent } from "../../indicator/indicator-config/hv/historical-volatility.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -106,6 +107,8 @@ export class IndicatorTypeRecognizerService {
         return 'HEIKEN_ASHI';
       case 'HLB':
         return 'HIGH_LOW_BANDS';
+      case 'HV':
+        return 'HISTORICAL_VOLATILITY';
     }
   }
 
@@ -179,6 +182,8 @@ export class IndicatorTypeRecognizerService {
         return HeikenAshiComponent;
       case 'HLB':
         return HighLowBandsComponent;
+      case 'HV':
+        return HistoricalVolatilityComponent;
     }
   }
 

@@ -24,8 +24,4 @@ export class BbwDrawService extends SimpleDrawService {
       settings.configuration.priceType + ')';
   }
 
-  getName() {
-    return 'BBW';
-  }
-
 }

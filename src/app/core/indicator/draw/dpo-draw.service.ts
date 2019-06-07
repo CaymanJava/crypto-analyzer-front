@@ -23,8 +23,4 @@ export class DpoDrawService extends SimpleDrawService {
       + settings.configuration.priceType + ')';
   }
 
-  getName() {
-    return 'DPO';
-  }
-
 }

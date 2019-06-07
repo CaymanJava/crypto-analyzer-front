@@ -23,8 +23,4 @@ export class CoDrawService extends SimpleDrawService {
       + settings.configuration.fastPeriod + ')';
   }
 
-  getName() {
-    return 'CO';
-  }
-
 }

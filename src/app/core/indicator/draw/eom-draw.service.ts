@@ -22,8 +22,4 @@ export class EomDrawService extends SimpleDrawService {
       + settings.configuration.movingAveragePeriod + ')';
   }
 
-  getName() {
-    return 'EOM';
-  }
-
 }

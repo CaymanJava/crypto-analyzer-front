@@ -23,8 +23,4 @@ export class DiDrawService extends SimpleDrawService {
       + settings.configuration.priceType + ')';
   }
 
-  getName() {
-    return 'DI';
-  }
-
 }

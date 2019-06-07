@@ -21,8 +21,4 @@ export class GapoDrawService extends SimpleDrawService {
     return settings.indicatorItem.title + '(' + settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'GAPO';
-  }
-
 }

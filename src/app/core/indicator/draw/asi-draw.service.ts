@@ -23,8 +23,4 @@ export class AsiDrawService extends SignalLineDrawService {
       + settings.configuration.movingAveragePeriod + ')';
   }
 
-  getName() {
-    return 'ASI';
-  }
-
 }

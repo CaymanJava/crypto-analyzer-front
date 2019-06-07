@@ -4,8 +4,6 @@ import * as AnyChart from "anychart";
 
 export abstract class SimpleDrawService extends CommonDrawService {
 
-  abstract getName(): string;
-
   draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
     return this.drawSimpleIndicator(settings, result, chart, plotNumber, horizontalLines);
   }
@@ -14,13 +12,13 @@ export abstract class SimpleDrawService extends CommonDrawService {
     const indicatorData = this.prepareSimpleIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
     const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
-    this.configureComputedLine(settings.drawConfiguration, computedLine);
+    this.configureComputedLine(settings, computedLine);
     return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }
 
-  private configureComputedLine(drawConfiguration, computedLine) {
-    computedLine.name(this.getName());
-    computedLine.stroke(drawConfiguration.indicatorLineColor);
+  private configureComputedLine(settings, computedLine) {
+    computedLine.name(settings.indicatorItem.title);
+    computedLine.stroke(settings.drawConfiguration.indicatorLineColor);
   }
 
   private configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {

@@ -23,8 +23,4 @@ export class CmoDrawService extends SignalLineDrawService {
       + settings.configuration.signalLinePeriod + ')';
   }
 
-  getName(): string {
-    return 'CMO';
-  }
-
 }

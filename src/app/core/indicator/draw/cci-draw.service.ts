@@ -22,8 +22,4 @@ export class CciDrawService extends SimpleDrawService {
       settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'CCI';
-  }
-
 }

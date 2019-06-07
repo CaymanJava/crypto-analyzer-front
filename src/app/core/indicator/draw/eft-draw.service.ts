@@ -22,8 +22,4 @@ export class EftDrawService extends SignalLineDrawService {
       + settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'EFT';
-  }
-
 }

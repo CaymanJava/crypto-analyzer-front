@@ -21,10 +21,6 @@ export class AroonOscDrawService extends SimpleDrawService {
     return settings.indicatorItem.title + '(' + settings.configuration.period + ')';
   }
 
-  getName() {
-    return 'Aroon OSC';
-  }
-
   prepareSimpleIndicatorData(result: any[]) {
     const indicatorData = [];
     result.forEach(indicatorResult => indicatorData.push(

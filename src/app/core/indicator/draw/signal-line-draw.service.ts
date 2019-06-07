@@ -4,8 +4,6 @@ import * as AnyChart from "anychart";
 
 export abstract class SignalLineDrawService extends CommonDrawService {
 
-  abstract getName(): string;
-
   draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     return this.drawIndicatorWithSignalLine(settings, result, chart, plotNumber);
   }
@@ -14,7 +12,7 @@ export abstract class SignalLineDrawService extends CommonDrawService {
     const indicatorData = this.prepareDataForIndicatorWithSignalLine(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
-    this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
+    this.prepareLines(settings, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
@@ -35,15 +33,15 @@ export abstract class SignalLineDrawService extends CommonDrawService {
     ];
   }
 
-  private prepareLines(drawConfiguration, indicatorPlot, indicator) {
-    this.configureIndicatorLine(drawConfiguration.indicatorLineColor, indicatorPlot, indicator);
-    this.configureSignalLine(drawConfiguration.signalLineColor, indicatorPlot, indicator);
+  private prepareLines(settings, indicatorPlot, indicator) {
+    this.configureIndicatorLine(settings, indicatorPlot, indicator);
+    this.configureSignalLine(settings.drawConfiguration.signalLineColor, indicatorPlot, indicator);
   }
 
-  private configureIndicatorLine(color, indicatorPlot, indicator) {
+  private configureIndicatorLine(settings, indicatorPlot, indicator) {
     const indicatorLine = indicatorPlot.line(indicator.mapAs({'value': 1}));
-    indicatorLine.stroke(color);
-    indicatorLine.name(this.getName());
+    indicatorLine.stroke(settings.drawConfiguration.indicatorLineColor);
+    indicatorLine.name(settings.indicatorItem.title);
   }
 
   private configureSignalLine(color, indicatorPlot, indicator) {
