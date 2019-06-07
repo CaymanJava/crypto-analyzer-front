@@ -22,8 +22,4 @@ export class BbDrawService extends BandDrawService {
       settings.configuration.priceType + ')';
   }
 
-  getName(): string {
-    return "BB";
-  }
-
 }

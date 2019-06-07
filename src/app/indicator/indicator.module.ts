@@ -44,6 +44,7 @@ import { ElderRayIndexComponent } from './indicator-config/eri/elder-ray-index.c
 import { FractalComponent } from './indicator-config/fractal/fractal.component';
 import { GopalakrishnanRangeIndexComponent } from './indicator-config/gapo/gopalakrishnan-range-index.component';
 import { HeikenAshiComponent } from './indicator-config/ha/heiken-ashi.component';
+import { HighLowBandsComponent } from './indicator-config/hlb/high-low-bands.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -87,7 +88,8 @@ const modalConfig = [
   ElderRayIndexComponent,
   FractalComponent,
   GopalakrishnanRangeIndexComponent,
-  HeikenAshiComponent
+  HeikenAshiComponent,
+  HighLowBandsComponent
 ];
 
 @NgModule({

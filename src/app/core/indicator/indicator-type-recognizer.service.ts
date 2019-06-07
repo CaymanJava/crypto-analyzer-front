@@ -32,6 +32,7 @@ import { ElderRayIndexComponent } from "../../indicator/indicator-config/eri/eld
 import { FractalComponent } from "../../indicator/indicator-config/fractal/fractal.component";
 import { GopalakrishnanRangeIndexComponent } from "../../indicator/indicator-config/gapo/gopalakrishnan-range-index.component";
 import { HeikenAshiComponent } from "../../indicator/indicator-config/ha/heiken-ashi.component";
+import { HighLowBandsComponent } from "../../indicator/indicator-config/hlb/high-low-bands.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -103,6 +104,8 @@ export class IndicatorTypeRecognizerService {
         return 'GOPALAKRISHNAN_RANGE_INDEX';
       case 'HA':
         return 'HEIKEN_ASHI';
+      case 'HLB':
+        return 'HIGH_LOW_BANDS';
     }
   }
 
@@ -174,6 +177,8 @@ export class IndicatorTypeRecognizerService {
         return GopalakrishnanRangeIndexComponent;
       case 'HA':
         return HeikenAshiComponent;
+      case 'HLB':
+        return HighLowBandsComponent;
     }
   }
 

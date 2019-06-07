@@ -5,7 +5,7 @@ import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 @Injectable({
   providedIn: "root"
 })
-export class EnvDrawService extends BandDrawService {
+export class HlbDrawService extends BandDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
     return super.draw(settings, result, chart);
@@ -17,8 +17,9 @@ export class EnvDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.movingAveragePeriod + ', ' +
-      settings.configuration.indentationPercentage + ')';
+      settings.configuration.period + ', ' +
+      settings.configuration.shiftPercentage + ', ' +
+      settings.configuration.priceType + ')';
   }
 
 }

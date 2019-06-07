@@ -22,8 +22,4 @@ export class AtrbDrawService extends BandDrawService {
       settings.configuration.priceType + ')';
   }
 
-  getName(): string {
-    return "ATRB";
-  }
-
 }

@@ -21,8 +21,4 @@ export class DcDrawService extends BandDrawService {
       settings.configuration.lowPeriod + ')';
   }
 
-  getName(): string {
-    return "DC";
-  }
-
 }
