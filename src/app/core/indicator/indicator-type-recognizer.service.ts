@@ -37,6 +37,7 @@ import { HistoricalVolatilityComponent } from "../../indicator/indicator-config/
 import { IchimokuCloudsComponent } from "../../indicator/indicator-config/ic/ichimoku-clouds.component";
 import { IntradayMovementIndexComponent } from "../../indicator/indicator-config/imi/intraday-movement-index.component";
 import { KeltnerChannelComponent } from "../../indicator/indicator-config/kelt/keltner-channel.component";
+import { KnowSureThingComponent } from "../../indicator/indicator-config/kst/know-sure-thing.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -118,6 +119,8 @@ export class IndicatorTypeRecognizerService {
         return 'INTRADAY_MOMENTUM_INDEX';
       case 'KELT':
         return 'KELTNER_CHANNEL';
+      case 'KST':
+        return 'KNOW_SURE_THING';
     }
   }
 
@@ -199,6 +202,8 @@ export class IndicatorTypeRecognizerService {
         return IntradayMovementIndexComponent;
       case 'KELT':
         return KeltnerChannelComponent;
+      case 'KST':
+        return KnowSureThingComponent;
     }
   }
 

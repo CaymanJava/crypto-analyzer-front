@@ -1,0 +1,98 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+    <app-price-type-picker
+        [configForm]="configForm"
+        key="priceType">
+    </app-price-type-picker>
+    <app-indicator-input
+        [form]="configForm"
+        key="lightestROCPeriod"
+        label="Lightest ROC Period"
+        placeholder="10">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="lightestSMAPeriod"
+        label="Lightest SMA Period"
+        placeholder="10">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="lightROCPeriod"
+        label="Light ROC Period"
+        placeholder="15">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="lightSMAPeriod"
+        label="Light SMA Period"
+        placeholder="10">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="heavyROCPeriod"
+        label="Heavy ROC Period"
+        placeholder="20">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="heavySMAPeriod"
+        label="Heavy SMA Period"
+        placeholder="10">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="heaviestROCPeriod"
+        label="Heaviest ROC Period"
+        placeholder="30">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="heaviestSMAPeriod"
+        label="Heaviest SMA Period"
+        placeholder="15">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="signalLinePeriod"
+        label="Signal Line Period"
+        placeholder="9">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
+        [color]="drawConfigForm.get('indicatorLineColor').value"
+        [label]="'Indicator line'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'signalLineColor')"
+        [color]="drawConfigForm.get('signalLineColor').value"
+        [label]="'Signal line'">
+    </app-color-picker>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="modal.close('remove')"
+          *ngIf="update"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Remove
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
+</div>

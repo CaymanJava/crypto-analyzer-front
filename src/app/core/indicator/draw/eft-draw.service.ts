@@ -18,8 +18,8 @@ export class EftDrawService extends SignalLineDrawService {
   }
 
   prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '('
-      + settings.configuration.period + ')';
+    return settings.indicatorItem.title + '(' +
+      settings.configuration.period + ')';
   }
 
 }

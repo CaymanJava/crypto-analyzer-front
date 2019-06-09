@@ -49,6 +49,7 @@ import { HistoricalVolatilityComponent } from './indicator-config/hv/historical-
 import { IchimokuCloudsComponent } from './indicator-config/ic/ichimoku-clouds.component';
 import { IntradayMovementIndexComponent } from './indicator-config/imi/intraday-movement-index.component';
 import { KeltnerChannelComponent } from './indicator-config/kelt/keltner-channel.component';
+import { KnowSureThingComponent } from './indicator-config/kst/know-sure-thing.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -97,7 +98,8 @@ const modalConfig = [
   HistoricalVolatilityComponent,
   IchimokuCloudsComponent,
   IntradayMovementIndexComponent,
-  KeltnerChannelComponent
+  KeltnerChannelComponent,
+  KnowSureThingComponent
 ];
 
 @NgModule({

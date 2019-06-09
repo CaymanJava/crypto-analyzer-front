@@ -38,6 +38,7 @@ import { HvDrawService } from "./draw/hv-draw.service";
 import { IcDrawService } from "./draw/ic-draw.service";
 import { ImiDrawService } from "./draw/imi-draw.service";
 import { KeltDrawService } from "./draw/kelt-draw.service";
+import { KstDrawService } from "./draw/kst-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -81,7 +82,8 @@ export class IndicatorDrawService {
               private hvDrawService: HvDrawService,
               private icDrawService: IcDrawService,
               private imiDrawService: ImiDrawService,
-              private keltDrawService: KeltDrawService) {
+              private keltDrawService: KeltDrawService,
+              private kstDrawService: KstDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -190,6 +192,9 @@ export class IndicatorDrawService {
         return this.imiDrawService.draw(settings, result, chart, currentPlotNumber);
       case 'KELT':
         return this.keltDrawService.draw(settings, result, chart);
+      case 'KST':
+        this.increaseChartHeight(container);
+        return this.kstDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -271,6 +276,8 @@ export class IndicatorDrawService {
         return this.imiDrawService.update(settings, result, chart, plotNumber);
       case 'KELT':
         return this.keltDrawService.update(settings, result, chart);
+      case 'KST':
+        return this.kstDrawService.update(settings, result, chart, plotNumber);
     }
   }
 
