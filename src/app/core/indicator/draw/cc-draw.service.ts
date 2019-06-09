@@ -19,9 +19,9 @@ export class CcDrawService extends SimpleDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shortROCPeriod + ', ' +
-      settings.configuration.longROCPeriod + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.shortROCPeriod + ',' +
+      settings.configuration.longROCPeriod + ',' +
       settings.configuration.priceType + ')';
   }
 

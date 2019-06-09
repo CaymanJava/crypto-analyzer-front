@@ -18,11 +18,11 @@ export class AlligatorDrawService extends CommonDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.jawPeriod + ', ' +
-      settings.configuration.jawOffset + ', ' +
-      settings.configuration.teethPeriod + ', ' +
-      settings.configuration.teethOffset + ', ' +
-      settings.configuration.lipsPeriod + ', ' +
+      settings.configuration.jawPeriod + ',' +
+      settings.configuration.jawOffset + ',' +
+      settings.configuration.teethPeriod + ',' +
+      settings.configuration.teethOffset + ',' +
+      settings.configuration.lipsPeriod + ',' +
       settings.configuration.lipsOffset + ')';
   }
 

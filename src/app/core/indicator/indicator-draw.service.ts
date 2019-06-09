@@ -35,6 +35,7 @@ import { GapoDrawService } from "./draw/gapo-draw.service";
 import { HaDrawService } from "./draw/ha-draw.service";
 import { HlbDrawService } from "./draw/hlb-draw.service";
 import { HvDrawService } from "./draw/hv-draw.service";
+import { IcDrawService } from "./draw/ic-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -75,7 +76,8 @@ export class IndicatorDrawService {
               private gapoDrawService: GapoDrawService,
               private haDrawService: HaDrawService,
               private hlbDrawService: HlbDrawService,
-              private hvDrawService: HvDrawService) {
+              private hvDrawService: HvDrawService,
+              private icDrawService: IcDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -177,6 +179,8 @@ export class IndicatorDrawService {
       case 'HV':
         this.increaseChartHeight(container);
         return this.hvDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'IC':
+        return this.icDrawService.draw(settings, result, chart);
     }
   }
 
@@ -252,6 +256,8 @@ export class IndicatorDrawService {
         return this.hlbDrawService.update(settings, result, chart);
       case 'HV':
         return this.hvDrawService.update(settings, result, chart, plotNumber);
+      case 'IC':
+        return this.icDrawService.update(settings, result, chart);
     }
   }
 

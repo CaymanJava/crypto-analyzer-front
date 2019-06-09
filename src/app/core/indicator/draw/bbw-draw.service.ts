@@ -19,8 +19,8 @@ export class BbwDrawService extends SimpleDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.standardDeviationCoefficient + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.standardDeviationCoefficient + ',' +
       settings.configuration.priceType + ')';
   }
 

@@ -17,7 +17,7 @@ export class EnvDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.movingAveragePeriod + ', ' +
+      settings.configuration.movingAveragePeriod + ',' +
       settings.configuration.indentationPercentage + ')';
   }
 

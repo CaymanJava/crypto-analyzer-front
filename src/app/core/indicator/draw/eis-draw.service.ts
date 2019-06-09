@@ -29,7 +29,7 @@ export class EisDrawService extends CommonDrawService {
   private drawEIS(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareEISData(result);
     const indicatorMapping = this.addData(indicatorData);
-    this.configurePlot(chart, plotNumber, indicatorMapping);
+    this.configurePlot(settings, chart, plotNumber, indicatorMapping, indicatorData);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
   }
@@ -39,42 +39,27 @@ export class EisDrawService extends CommonDrawService {
     result.forEach(indicatorResult => indicatorData.push(
       [
         indicatorResult.time,
-        this.defineValue(indicatorResult.barColor),
+        indicatorResult.barColor,
+        1
       ]
     ));
     return indicatorData;
   }
 
-  private defineValue(barColor: string) {
-    if (barColor == null) {
-      return 1;
-    }
-
-    switch (barColor) {
-      case 'GREEN':
-        return 1.1;
-      case 'RED':
-        return 1.2;
-      default:
-        return 1;
-    }
-  }
-
   private addData(indicatorData) {
     const indicator = AnyChart.data.table(0);
     indicator.addData(indicatorData);
-    return indicator.mapAs({value: 1});
+    return indicator.mapAs({value: 2});
   }
 
-  private configurePlot(chart: any, plotNumber: number, indicatorMapping) {
+  private configurePlot(settings: any, chart: any, plotNumber: number, indicatorMapping, indicatorData: any[]) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
     const series = indicatorPlot.column(indicatorMapping);
     this.disableYAxis(indicatorPlot);
-    series.name('EIS');
-    let defineColor = this.defineColor();
-    series.fill(defineColor);
+    series.name(settings.indicatorItem.title);
+    series.fill(this.defineColor(indicatorData));
     series.yScale().minimum(1);
     series.yScale().maximum(1);
   }
@@ -83,15 +68,17 @@ export class EisDrawService extends CommonDrawService {
     indicatorPlot.yAxis(0).labels(false);
   }
 
-  private defineColor() {
-    return function defineColor(): string {
-      switch (this.value) {
-        case 1.1:
-          return '#3ba158';
-        case 1.2:
-          return '#fa0f16';
-        default:
-          return '#1512fa';
+  private defineColor(indicatorData: any[]) {
+    return function () {
+      if (this.index != null && this.index > 0) {
+        switch (indicatorData[this.index][1]) {
+          case 'GREEN':
+            return '#3ba158';
+          case 'RED':
+            return '#fa0f16';
+          default:
+            return '#1512fa';
+        }
       }
     };
   }

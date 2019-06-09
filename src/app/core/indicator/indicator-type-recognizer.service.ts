@@ -34,6 +34,7 @@ import { GopalakrishnanRangeIndexComponent } from "../../indicator/indicator-con
 import { HeikenAshiComponent } from "../../indicator/indicator-config/ha/heiken-ashi.component";
 import { HighLowBandsComponent } from "../../indicator/indicator-config/hlb/high-low-bands.component";
 import { HistoricalVolatilityComponent } from "../../indicator/indicator-config/hv/historical-volatility.component";
+import { IchimokuCloudsComponent } from "../../indicator/indicator-config/ic/ichimoku-clouds.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -109,6 +110,8 @@ export class IndicatorTypeRecognizerService {
         return 'HIGH_LOW_BANDS';
       case 'HV':
         return 'HISTORICAL_VOLATILITY';
+      case 'IC':
+        return 'ICHIMOKU_CLOUDS';
     }
   }
 
@@ -184,6 +187,8 @@ export class IndicatorTypeRecognizerService {
         return HighLowBandsComponent;
       case 'HV':
         return HistoricalVolatilityComponent;
+      case 'IC':
+        return IchimokuCloudsComponent;
     }
   }
 

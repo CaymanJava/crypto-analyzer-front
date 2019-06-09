@@ -18,8 +18,8 @@ export class CeDrawService extends CommonDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.longFactor + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.longFactor + ',' +
       settings.configuration.shortFactor + ')';
   }
 

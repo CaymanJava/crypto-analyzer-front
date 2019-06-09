@@ -19,7 +19,7 @@ export class AoDrawService extends ColumnDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.slowPeriod + ', ' +
+      settings.configuration.slowPeriod + ',' +
       settings.configuration.fastPeriod + ')';
   }
 

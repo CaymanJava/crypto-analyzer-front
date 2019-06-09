@@ -17,7 +17,7 @@ export class DcDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.highPeriod + ', ' +
+      settings.configuration.highPeriod + ',' +
       settings.configuration.lowPeriod + ')';
   }
 

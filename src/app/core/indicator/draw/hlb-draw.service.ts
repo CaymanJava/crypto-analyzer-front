@@ -17,8 +17,8 @@ export class HlbDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shiftPercentage + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.shiftPercentage + ',' +
       settings.configuration.priceType + ')';
   }
 

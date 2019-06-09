@@ -17,8 +17,8 @@ export class AtrbDrawService extends BandDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.shift + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.shift + ',' +
       settings.configuration.priceType + ')';
   }
 

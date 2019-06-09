@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <app-indicator-input
+        [form]="configForm"
+        key="conversionLinePeriod"
+        label="Conversion line period"
+        placeholder="9">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="baseLinePeriod"
+        label="Base line period"
+        placeholder="26">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="leadingSpanPeriod"
+        label="Leading Span B Period"
+        placeholder="52">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="displaced"
+        label="Lagging Span Period"
+        placeholder="26">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'conversionLineColor')"
+        [color]="drawConfigForm.get('conversionLineColor').value"
+        [label]="'Tenkan-sen'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'baseLineColor')"
+        [color]="drawConfigForm.get('baseLineColor').value"
+        [label]="'Kijun-sen'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'leadingSpanAColor')"
+        [color]="drawConfigForm.get('leadingSpanAColor').value"
+        [label]="'Senkou Span A'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'leadingSpanBColor')"
+        [color]="drawConfigForm.get('leadingSpanBColor').value"
+        [label]="'Senkou Span B'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'laggingSpanColor')"
+        [color]="drawConfigForm.get('laggingSpanColor').value"
+        [label]="'Chinkou Span'">
+    </app-color-picker>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="modal.close('remove')"
+          *ngIf="update"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Remove
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
+</div>

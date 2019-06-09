@@ -19,9 +19,9 @@ export class HvDrawService extends SimpleDrawService {
 
   prepareTitle(settings: IndicatorSettings) {
     return settings.indicatorItem.title + '(' +
-      settings.configuration.period + ', ' +
-      settings.configuration.daysPerYear + ', ' +
-      settings.configuration.standardDeviations + ', ' +
+      settings.configuration.period + ',' +
+      settings.configuration.daysPerYear + ',' +
+      settings.configuration.standardDeviations + ',' +
       settings.configuration.priceType + ')';
   }
 

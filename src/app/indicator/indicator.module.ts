@@ -46,6 +46,7 @@ import { GopalakrishnanRangeIndexComponent } from './indicator-config/gapo/gopal
 import { HeikenAshiComponent } from './indicator-config/ha/heiken-ashi.component';
 import { HighLowBandsComponent } from './indicator-config/hlb/high-low-bands.component';
 import { HistoricalVolatilityComponent } from './indicator-config/hv/historical-volatility.component';
+import { IchimokuCloudsComponent } from './indicator-config/ic/ichimoku-clouds.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -91,7 +92,8 @@ const modalConfig = [
   GopalakrishnanRangeIndexComponent,
   HeikenAshiComponent,
   HighLowBandsComponent,
-  HistoricalVolatilityComponent
+  HistoricalVolatilityComponent,
+  IchimokuCloudsComponent
 ];
 
 @NgModule({
