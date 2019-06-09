@@ -25,7 +25,9 @@ export class ChandeForecastOscillatorComponent extends BaseIndicatorComponent {
     });
     this.drawConfigForm = this.fb.group({
       'indicatorLineColor': ['#1c1afa', [Validators.required]],
-      'signalLineColor': ['#fa0f16', [Validators.required]]
+      'signalLineColor': ['#fa0f16', [Validators.required]],
+      'overbought': [0.5, [Validators.required, Validators.min(0)]],
+      'oversold': [-0.5, [Validators.required, Validators.max(0)]]
     });
   }
 
@@ -43,7 +45,9 @@ export class ChandeForecastOscillatorComponent extends BaseIndicatorComponent {
       },
       drawConfiguration: {
         indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value,
-        signalLineColor: this.drawConfigForm.get('signalLineColor').value
+        signalLineColor: this.drawConfigForm.get('signalLineColor').value,
+        overbought: this.drawConfigForm.get('overbought').value,
+        oversold: this.drawConfigForm.get('oversold').value
       }
     });
   }
@@ -58,7 +62,9 @@ export class ChandeForecastOscillatorComponent extends BaseIndicatorComponent {
       });
       this.drawConfigForm.setValue({
         indicatorLineColor: this.drawConfiguration.indicatorLineColor,
-        signalLineColor: this.drawConfiguration.signalLineColor
+        signalLineColor: this.drawConfiguration.signalLineColor,
+        overbought: this.drawConfiguration.overbought,
+        oversold: this.drawConfiguration.oversold
       });
     }
   }

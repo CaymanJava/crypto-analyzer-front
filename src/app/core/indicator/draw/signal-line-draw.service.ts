@@ -4,13 +4,13 @@ import * as AnyChart from "anychart";
 
 export abstract class SignalLineDrawService extends CommonDrawService {
 
-  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    return this.drawIndicatorWithSignalLine(settings, result, chart, plotNumber);
+  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
+    return this.drawIndicatorWithSignalLine(settings, result, chart, plotNumber, horizontalLines);
   }
 
-  private drawIndicatorWithSignalLine(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+  private drawIndicatorWithSignalLine(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
     const indicatorData = this.prepareDataForIndicatorWithSignalLine(result);
-    const indicatorPlot = this.configurePlot(chart, plotNumber);
+    const indicatorPlot = this.configurePlot(chart, plotNumber, horizontalLines);
     const indicator = this.configureData(indicatorData);
     this.prepareLines(settings, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
@@ -56,10 +56,11 @@ export abstract class SignalLineDrawService extends CommonDrawService {
     return indicator;
   }
 
-  private configurePlot(chart: any, plotNumber: number) {
+  private configurePlot(chart: any, plotNumber: number, horizontalLines?: number[]) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
+    super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot;
   }
 

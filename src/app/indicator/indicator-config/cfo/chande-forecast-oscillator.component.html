@@ -37,6 +37,18 @@
         [color]="drawConfigForm.get('signalLineColor').value"
         [label]="'Signal line'">
     </app-color-picker>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="overbought"
+        label="Overbought"
+        placeholder="0.5">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="oversold"
+        label="Oversold"
+        placeholder="-0.5">
+    </app-indicator-input>
   </form>
 </div>
 <div class="modal-footer">

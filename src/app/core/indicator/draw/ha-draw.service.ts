@@ -15,7 +15,7 @@ export class HaDrawService extends CommonDrawService {
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    chart.plot(plotNumber).removeAllSeries();
+    super.clearPlot(chart, plotNumber);
     this.drawHA(result, chart, settings, plotNumber);
     return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }

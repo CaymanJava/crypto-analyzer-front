@@ -21,14 +21,8 @@ export abstract class ColumnDrawService extends CommonDrawService {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
     super.configureDateTimeFormat(indicatorPlot);
-    this.addHorizontalLines(horizontalLines, indicatorPlot);
+    super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot.column(indicatorMapping);
-  }
-
-  private addHorizontalLines(horizontalLines: number[], indicatorPlot) {
-    if (horizontalLines != null) {
-      horizontalLines.forEach(line => super.addHorizontalLine(indicatorPlot, line));
-    }
   }
 
   private addData(indicatorData) {

@@ -14,7 +14,7 @@ export class AdxDrawService extends CommonDrawService {
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    chart.plot(plotNumber).removeAllSeries();
+    super.clearPlot(chart, plotNumber);
     return this.drawADX(settings, result, chart, plotNumber);
   }
 

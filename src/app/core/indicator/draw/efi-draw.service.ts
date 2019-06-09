@@ -13,7 +13,7 @@ export class EfiDrawService extends SimpleDrawService {
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    chart.plot(plotNumber).removeAllSeries();
+    super.clearPlot(chart, plotNumber);
     return super.draw(settings, result, chart, plotNumber, [0]);
   }
 

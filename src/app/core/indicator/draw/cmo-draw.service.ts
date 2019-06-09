@@ -9,12 +9,12 @@ export class CmoDrawService extends SignalLineDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    return super.draw(settings, result, chart, plotNumber);
+    return super.draw(settings, result, chart, plotNumber, [settings.drawConfiguration.overbought, settings.drawConfiguration.oversold]);
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    chart.plot(plotNumber).removeAllSeries();
-    return super.draw(settings, result, chart, plotNumber);
+    super.clearPlot(chart, plotNumber);
+    return super.draw(settings, result, chart, plotNumber, [settings.drawConfiguration.overbought, settings.drawConfiguration.oversold]);
   }
 
   prepareTitle(settings: IndicatorSettings) {

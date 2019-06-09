@@ -14,7 +14,7 @@ export class EisDrawService extends CommonDrawService {
   }
 
   update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
-    chart.plot(plotNumber).removeAllSeries();
+    super.clearPlot(chart, plotNumber);
     return this.drawEIS(settings, result, chart, plotNumber);
   }
 

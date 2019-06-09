@@ -25,12 +25,10 @@ export abstract class CommonDrawService {
     this.removeAnnotations(plot);
   }
 
-  addHorizontalLine(indicatorPlot, lineValue: number) {
-    const controller = indicatorPlot.annotations();
-    const line = controller.horizontalLine({
-      valueAnchor: lineValue
-    });
-    line.allowEdit(false);
+  addHorizontalLines(horizontalLines: number[], indicatorPlot) {
+    if (horizontalLines != null) {
+      horizontalLines.forEach(line => this.addHorizontalLine(indicatorPlot, line));
+    }
   }
 
   configureDateTimeFormat(indicatorPlot) {
@@ -54,6 +52,14 @@ export abstract class CommonDrawService {
       ]
     ));
     return indicatorData;
+  }
+
+  private addHorizontalLine(indicatorPlot, lineValue: number) {
+    const controller = indicatorPlot.annotations();
+    const line = controller.horizontalLine({
+      valueAnchor: lineValue
+    });
+    line.allowEdit(false);
   }
 
   private removeAnnotations(indicatorPlot) {
