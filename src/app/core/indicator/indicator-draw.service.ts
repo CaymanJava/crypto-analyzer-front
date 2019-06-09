@@ -36,6 +36,8 @@ import { HaDrawService } from "./draw/ha-draw.service";
 import { HlbDrawService } from "./draw/hlb-draw.service";
 import { HvDrawService } from "./draw/hv-draw.service";
 import { IcDrawService } from "./draw/ic-draw.service";
+import { ImiDrawService } from "./draw/imi-draw.service";
+import { KeltDrawService } from "./draw/kelt-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -77,7 +79,9 @@ export class IndicatorDrawService {
               private haDrawService: HaDrawService,
               private hlbDrawService: HlbDrawService,
               private hvDrawService: HvDrawService,
-              private icDrawService: IcDrawService) {
+              private icDrawService: IcDrawService,
+              private imiDrawService: ImiDrawService,
+              private keltDrawService: KeltDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -181,6 +185,11 @@ export class IndicatorDrawService {
         return this.hvDrawService.draw(settings, result, chart, currentPlotNumber);
       case 'IC':
         return this.icDrawService.draw(settings, result, chart);
+      case 'IMI':
+        this.increaseChartHeight(container);
+        return this.imiDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'KELT':
+        return this.keltDrawService.draw(settings, result, chart);
     }
   }
 
@@ -258,6 +267,10 @@ export class IndicatorDrawService {
         return this.hvDrawService.update(settings, result, chart, plotNumber);
       case 'IC':
         return this.icDrawService.update(settings, result, chart);
+      case 'IMI':
+        return this.imiDrawService.update(settings, result, chart, plotNumber);
+      case 'KELT':
+        return this.keltDrawService.update(settings, result, chart);
     }
   }
 

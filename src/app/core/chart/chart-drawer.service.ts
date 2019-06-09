@@ -14,7 +14,7 @@ export class ChartDrawerService {
     this.configureTooltips(chart);
     this.configurePrices(chart, mapping, tickData);
     this.configurePlot(chart, tickData);
-    this.setConfiguration(chart, container);
+    this.setConfiguration(chart, container, mapping);
     return chart;
   }
 
@@ -24,7 +24,7 @@ export class ChartDrawerService {
     this.configureTooltips(chart);
     this.configurePrices(chart, mapping, tickData);
     this.configurePlot(chart, tickData);
-    this.prepareDefaultConfiguration(chart, container);
+    this.prepareDefaultConfiguration(chart, container, mapping);
   }
 
   startDrawing(event: any, chart: any) {
@@ -86,14 +86,14 @@ export class ChartDrawerService {
     chart.title(this.getMarketName(tickData));
   }
 
-  private setConfiguration(chart, container: ElementRef) {
-    this.prepareDefaultConfiguration(chart, container);
+  private setConfiguration(chart, container: ElementRef, mapping) {
+    this.prepareDefaultConfiguration(chart, container, mapping);
     container.nativeElement.style.height = '600px';
   }
 
-  private prepareDefaultConfiguration(chart, container: ElementRef) {
+  private prepareDefaultConfiguration(chart, container: ElementRef, mapping) {
     chart.container(container.nativeElement);
-    chart.scroller(true);
+    chart.scroller().candlestick(mapping);
     chart.draw();
   }
 

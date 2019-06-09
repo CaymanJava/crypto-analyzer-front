@@ -35,6 +35,8 @@ import { HeikenAshiComponent } from "../../indicator/indicator-config/ha/heiken-
 import { HighLowBandsComponent } from "../../indicator/indicator-config/hlb/high-low-bands.component";
 import { HistoricalVolatilityComponent } from "../../indicator/indicator-config/hv/historical-volatility.component";
 import { IchimokuCloudsComponent } from "../../indicator/indicator-config/ic/ichimoku-clouds.component";
+import { IntradayMovementIndexComponent } from "../../indicator/indicator-config/imi/intraday-movement-index.component";
+import { KeltnerChannelComponent } from "../../indicator/indicator-config/kelt/keltner-channel.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -112,6 +114,10 @@ export class IndicatorTypeRecognizerService {
         return 'HISTORICAL_VOLATILITY';
       case 'IC':
         return 'ICHIMOKU_CLOUDS';
+      case 'IMI':
+        return 'INTRADAY_MOMENTUM_INDEX';
+      case 'KELT':
+        return 'KELTNER_CHANNEL';
     }
   }
 
@@ -189,6 +195,10 @@ export class IndicatorTypeRecognizerService {
         return HistoricalVolatilityComponent;
       case 'IC':
         return IchimokuCloudsComponent;
+      case 'IMI':
+        return IntradayMovementIndexComponent;
+      case 'KELT':
+        return KeltnerChannelComponent;
     }
   }
 
