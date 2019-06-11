@@ -50,13 +50,17 @@ import { IchimokuCloudsComponent } from './indicator-config/ic/ichimoku-clouds.c
 import { IntradayMovementIndexComponent } from './indicator-config/imi/intraday-movement-index.component';
 import { KeltnerChannelComponent } from './indicator-config/kelt/keltner-channel.component';
 import { KnowSureThingComponent } from './indicator-config/kst/know-sure-thing.component';
+import { KlingerVolumeOscillatorComponent } from './indicator-config/kvo/klinger-volume-oscillator.component';
+import { LinearRegressionComponent } from './indicator-config/linear-regression/linear-regression.component';
+import { IndicatorSwitcherComponent } from './common/indicator-switcher/indicator-switcher.component';
 
 const components = [
   IndicatorPickerComponent,
   ColorPickerComponent,
   IndicatorInputComponent,
   MovingAverageShortPickerComponent,
-  PriceTypePickerComponent
+  PriceTypePickerComponent,
+  IndicatorSwitcherComponent
 ];
 
 const modalConfig = [
@@ -99,7 +103,9 @@ const modalConfig = [
   IchimokuCloudsComponent,
   IntradayMovementIndexComponent,
   KeltnerChannelComponent,
-  KnowSureThingComponent
+  KnowSureThingComponent,
+  KlingerVolumeOscillatorComponent,
+  LinearRegressionComponent
 ];
 
 @NgModule({

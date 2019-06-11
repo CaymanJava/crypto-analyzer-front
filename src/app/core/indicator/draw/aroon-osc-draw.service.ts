@@ -18,7 +18,8 @@ export class AroonOscDrawService extends SimpleDrawService {
   }
 
   prepareTitle(settings: IndicatorSettings) {
-    return settings.indicatorItem.title + '(' + settings.configuration.period + ')';
+    return settings.indicatorItem.title + '('
+      + settings.configuration.period + ')';
   }
 
   prepareSimpleIndicatorData(result: any[]) {

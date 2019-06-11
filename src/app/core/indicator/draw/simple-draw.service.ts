@@ -8,6 +8,14 @@ export abstract class SimpleDrawService extends CommonDrawService {
     return this.drawSimpleIndicator(settings, result, chart, plotNumber, horizontalLines);
   }
 
+  configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {
+    const indicatorPlot = chart.plot(plotNumber);
+    indicatorPlot.height('150px');
+    super.configureDateTimeFormat(indicatorPlot);
+    super.addHorizontalLines(horizontalLines, indicatorPlot);
+    return indicatorPlot.line(indicatorMapping);
+  }
+
   private drawSimpleIndicator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines: number[]): IndicatorDrawResult {
     const indicatorData = this.prepareSimpleIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
@@ -19,14 +27,6 @@ export abstract class SimpleDrawService extends CommonDrawService {
   private configureComputedLine(settings, computedLine) {
     computedLine.name(settings.indicatorItem.title);
     computedLine.stroke(settings.drawConfiguration.indicatorLineColor);
-  }
-
-  private configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {
-    const indicatorPlot = chart.plot(plotNumber);
-    indicatorPlot.height('150px');
-    super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLines(horizontalLines, indicatorPlot);
-    return indicatorPlot.line(indicatorMapping);
   }
 
   private addData(indicatorData) {

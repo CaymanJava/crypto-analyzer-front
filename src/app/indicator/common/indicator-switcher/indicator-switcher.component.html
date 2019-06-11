@@ -1,0 +1,14 @@
+<div class="row" style="text-align: center">
+  <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+    <label [for]="key">{{label}}</label>
+  </div>
+  <div class="col-6 form-group mb-3" style="display: inline-block">
+    <label class="switch switch-primary mr-3">
+      <input [class.form-control-danger]="!form.controls[key].valid && form.controls[key].touched"
+             [formControl]="form.get(key)"
+             [id]="key"
+             type="checkbox">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>

@@ -19,8 +19,7 @@ export class KeltDrawService extends BandDrawService {
     return settings.indicatorItem.title + '(' +
       settings.configuration.movingAveragePeriod + ',' +
       settings.configuration.averageTrueRangePeriod + ',' +
-      settings.configuration.averageTrueRangeShift + ',' +
-      settings.configuration.priceType + ')';
+      settings.configuration.averageTrueRangeShift + ')';
   }
 
 }

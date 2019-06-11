@@ -174,9 +174,10 @@ select.form-control {
 
 // SWITCH 
 .switch {
+    margin-top: 0.5rem;
     position: relative;
     display: inline-block;
-    padding-left: 50px;
+    padding-left: 30px;
     height: 16px;
     span:not(.slider) {
         position: relative;

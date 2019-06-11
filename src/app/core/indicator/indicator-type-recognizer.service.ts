@@ -38,6 +38,8 @@ import { IchimokuCloudsComponent } from "../../indicator/indicator-config/ic/ich
 import { IntradayMovementIndexComponent } from "../../indicator/indicator-config/imi/intraday-movement-index.component";
 import { KeltnerChannelComponent } from "../../indicator/indicator-config/kelt/keltner-channel.component";
 import { KnowSureThingComponent } from "../../indicator/indicator-config/kst/know-sure-thing.component";
+import { KlingerVolumeOscillatorComponent } from "../../indicator/indicator-config/kvo/klinger-volume-oscillator.component";
+import { LinearRegressionComponent } from "../../indicator/indicator-config/linear-regression/linear-regression.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -121,6 +123,10 @@ export class IndicatorTypeRecognizerService {
         return 'KELTNER_CHANNEL';
       case 'KST':
         return 'KNOW_SURE_THING';
+      case 'KVO':
+        return 'KLINGER_VOLUME_OSCILLATOR';
+      case 'LR':
+        return 'LINEAR_REGRESSION';
     }
   }
 
@@ -204,6 +210,10 @@ export class IndicatorTypeRecognizerService {
         return KeltnerChannelComponent;
       case 'KST':
         return KnowSureThingComponent;
+      case 'KVO':
+        return KlingerVolumeOscillatorComponent;
+      case 'LR':
+        return LinearRegressionComponent;
     }
   }
 
