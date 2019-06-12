@@ -7,6 +7,7 @@ import { ScrollToDirective } from './scroll-to.directive';
 import { SidebarContainerDirective, SidebarContentDirective, SidebarDirective, SidebarTogglerDirective } from './sidebar.directive';
 import { HighlightjsDirective } from './highlightjs.directive';
 import { FullScreenWindowDirective } from './full-screen.directive';
+import { DisableControlDirective } from "./disable-control.directive";
 
 const directives = [
   DropdownAnchorDirective,
@@ -18,7 +19,8 @@ const directives = [
   SidebarContentDirective,
   SidebarTogglerDirective,
   HighlightjsDirective,
-  FullScreenWindowDirective
+  FullScreenWindowDirective,
+  DisableControlDirective
 ];
 
 @NgModule({

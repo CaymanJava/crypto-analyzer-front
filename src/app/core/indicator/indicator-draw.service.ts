@@ -41,6 +41,7 @@ import { KeltDrawService } from "./draw/kelt-draw.service";
 import { KstDrawService } from "./draw/kst-draw.service";
 import { KvoDrawService } from "./draw/kvo-draw.service";
 import { LrDrawService } from "./draw/lr-draw.service";
+import { MaDrawService } from "./draw/ma-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -87,7 +88,8 @@ export class IndicatorDrawService {
               private keltDrawService: KeltDrawService,
               private kstDrawService: KstDrawService,
               private kvoDrawService: KvoDrawService,
-              private lrDrawService: LrDrawService) {
+              private lrDrawService: LrDrawService,
+              private maDrawService: MaDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -204,6 +206,8 @@ export class IndicatorDrawService {
         return this.kvoDrawService.draw(settings, result, chart, currentPlotNumber);
       case 'LR':
         return this.lrDrawService.draw(settings, result, chart);
+      case 'MA':
+        return this.maDrawService.draw(settings, result, chart);
     }
   }
 
@@ -291,6 +295,8 @@ export class IndicatorDrawService {
         return this.kvoDrawService.update(settings, result, chart, plotNumber);
       case 'LR':
         return this.lrDrawService.update(settings, result, chart);
+      case 'MA':
+        return this.maDrawService.update(settings, result, chart);
     }
   }
 

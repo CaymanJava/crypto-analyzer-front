@@ -6,32 +6,52 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="configForm">
+    <app-moving-average-type-picker
+        (movingAverageChange)="onIndicatorTypeChange($event)"
+        [configForm]="configForm"
+        [fullList]="true"
+        key="indicatorType">
+    </app-moving-average-type-picker>
+    <app-moving-average-type-picker
+        (movingAverageChange)="onOriginalIndicatorTypeChange($event)"
+        *ngIf="configForm.get('indicatorType').value === 'DISPLACED_MOVING_AVERAGE'"
+        [configForm]="configForm"
+        key="originalIndicatorType">
+    </app-moving-average-type-picker>
+    <app-shift-type-picker
+        *ngIf="configForm.get('indicatorType').value === 'DISPLACED_MOVING_AVERAGE'"
+        [form]="configForm"
+        key="shiftType">
+    </app-shift-type-picker>
+    <app-indicator-input
+        *ngIf="configForm.get('indicatorType').value === 'DISPLACED_MOVING_AVERAGE'"
+        [form]="configForm"
+        key="shiftValue"
+        label="Shift value"
+        placeholder="3">
+    </app-indicator-input>
+    <app-price-type-picker
+        [configForm]="configForm"
+        key="priceType">
+    </app-price-type-picker>
     <app-indicator-input
         [form]="configForm"
         key="period"
         label="Period"
-        placeholder="10">
+        placeholder="14">
     </app-indicator-input>
-    <app-moving-average-type-picker
-        [configForm]="configForm"
-        key="movingAverageType">
-    </app-moving-average-type-picker>
     <app-indicator-input
+        *ngIf="isMaWithAlphaCoefficient()"
         [form]="configForm"
-        key="movingAveragePeriod"
-        label="Moving average period"
-        placeholder="10">
+        key="alphaCoefficient"
+        label="Alpha coefficient"
+        placeholder="0.13">
     </app-indicator-input>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
         (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
         [color]="drawConfigForm.get('indicatorLineColor').value"
         [label]="'Indicator line'">
-    </app-color-picker>
-    <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'signalLineColor')"
-        [color]="drawConfigForm.get('signalLineColor').value"
-        [label]="'Signal line'">
     </app-color-picker>
   </form>
 </div>

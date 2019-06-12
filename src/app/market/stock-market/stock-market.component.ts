@@ -199,7 +199,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     request.timeFrame = this.timeFrame;
     request.from = dateFrom;
     request.to = dateTo;
-    request.indicatorType = this.indicatorTypeRecognizerService.recognize(settings.indicatorItem.title);
+    request.indicatorType = this.indicatorTypeRecognizerService.recognize(settings);
     request.setConfiguration(settings.configuration);
     return request;
   }

@@ -40,12 +40,14 @@ import { KeltnerChannelComponent } from "../../indicator/indicator-config/kelt/k
 import { KnowSureThingComponent } from "../../indicator/indicator-config/kst/know-sure-thing.component";
 import { KlingerVolumeOscillatorComponent } from "../../indicator/indicator-config/kvo/klinger-volume-oscillator.component";
 import { LinearRegressionComponent } from "../../indicator/indicator-config/linear-regression/linear-regression.component";
+import { MovingAverageComponent } from "../../indicator/indicator-config/moving-average/moving-average.component";
+import { IndicatorSettings } from "./indicator.model";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
 
-  recognize(title: string): string {
-    switch (title) {
+  recognize(settings: IndicatorSettings): string {
+    switch (settings.indicatorItem.title) {
       case 'AC':
         return 'ACCELERATION_DECELERATION_OSCILLATOR';
       case 'ADL':
@@ -127,6 +129,8 @@ export class IndicatorTypeRecognizerService {
         return 'KLINGER_VOLUME_OSCILLATOR';
       case 'LR':
         return 'LINEAR_REGRESSION';
+      case 'MA':
+        return settings.configuration.indicatorType;
     }
   }
 
@@ -214,6 +218,8 @@ export class IndicatorTypeRecognizerService {
         return KlingerVolumeOscillatorComponent;
       case 'LR':
         return LinearRegressionComponent;
+      case 'MA':
+        return MovingAverageComponent;
     }
   }
 

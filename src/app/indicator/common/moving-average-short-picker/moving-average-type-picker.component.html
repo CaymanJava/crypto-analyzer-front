@@ -5,12 +5,16 @@
   <div class="col-6 form-group mb-3">
     <select [class.form-control-danger]="!configForm.controls[key].valid && configForm.controls[key].touched"
             [formControl]="configForm.get(key)"
+            (change)="onChange($event.target.value)"
             class="form-control col-form-label-sm custom-select"
             id='movingAverageType'>
       <option value="SIMPLE_MOVING_AVERAGE">Simple moving average</option>
       <option value="EXPONENTIAL_MOVING_AVERAGE">Exponential moving average</option>
       <option value="DOUBLE_EXPONENTIAL_MOVING_AVERAGE">Double exponential moving average</option>
       <option value="TRIPLE_EXPONENTIAL_MOVING_AVERAGE">Triple exponential moving average</option>
+      <option *ngIf="fullList" value="DISPLACED_MOVING_AVERAGE">Displaced moving average</option>
+      <option value="KAUFMAN_ADAPTIVE_MOVING_AVERAGE">Kaufman adaptive moving average</option>
+      <option value="TRIANGULAR_MOVING_AVERAGE">Triangular moving average</option>
       <option value="HULL_MOVING_AVERAGE">Hull moving average</option>
       <option value="SMOOTHED_MOVING_AVERAGE">Smoothed moving average</option>
       <option value="WEIGHTED_MOVING_AVERAGE">Weighted moving average</option>

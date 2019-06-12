@@ -25,7 +25,7 @@ import { BollingerBandsWidthComponent } from './indicator-config/bbw/bollinger-b
 import { SharedComponentsModule } from "../shared/components/shared-components.module";
 import { ColorPickerComponent } from "./common/color-picker/color-picker.component";
 import { IndicatorInputComponent } from './common/indicator-input/indicator-input.component';
-import { MovingAverageShortPickerComponent } from './common/moving-average-short-picker/moving-average-short-picker.component';
+import { MovingAverageTypePickerComponent } from './common/moving-average-short-picker/moving-average-type-picker.component';
 import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
 import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
 import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-flow.component';
@@ -53,14 +53,18 @@ import { KnowSureThingComponent } from './indicator-config/kst/know-sure-thing.c
 import { KlingerVolumeOscillatorComponent } from './indicator-config/kvo/klinger-volume-oscillator.component';
 import { LinearRegressionComponent } from './indicator-config/linear-regression/linear-regression.component';
 import { IndicatorSwitcherComponent } from './common/indicator-switcher/indicator-switcher.component';
+import { MovingAverageComponent } from './indicator-config/moving-average/moving-average.component';
+import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
+import { ShiftTypePickerComponent } from './common/shift-type-picker/shift-type-picker.component';
 
 const components = [
   IndicatorPickerComponent,
   ColorPickerComponent,
   IndicatorInputComponent,
-  MovingAverageShortPickerComponent,
+  MovingAverageTypePickerComponent,
   PriceTypePickerComponent,
-  IndicatorSwitcherComponent
+  IndicatorSwitcherComponent,
+  ShiftTypePickerComponent
 ];
 
 const modalConfig = [
@@ -105,7 +109,8 @@ const modalConfig = [
   KeltnerChannelComponent,
   KnowSureThingComponent,
   KlingerVolumeOscillatorComponent,
-  LinearRegressionComponent
+  LinearRegressionComponent,
+  MovingAverageComponent
 ];
 
 @NgModule({
@@ -117,7 +122,8 @@ const modalConfig = [
     FormsModule,
     ReactiveFormsModule,
     ColorPickerModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    SharedDirectivesModule
   ],
   declarations: [components, modalConfig],
   providers: [],
