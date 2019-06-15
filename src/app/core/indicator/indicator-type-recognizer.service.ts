@@ -43,6 +43,7 @@ import { LinearRegressionComponent } from "../../indicator/indicator-config/lr/l
 import { MovingAverageComponent } from "../../indicator/indicator-config/ma/moving-average.component";
 import { IndicatorSettings } from "./indicator.model";
 import { MovingAverageConvergenceDivergenceComponent } from "../../indicator/indicator-config/macd/moving-average-convergence-divergence.component";
+import { MarketFacilitationIndexComponent } from "../../indicator/indicator-config/mfi/market-facilitation-index.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -134,6 +135,8 @@ export class IndicatorTypeRecognizerService {
         return settings.configuration.indicatorType;
       case 'MACD':
         return 'MOVING_AVERAGE_CONVERGENCE_DIVERGENCE';
+      case 'MFI':
+        return 'MARKET_FACILITATION_INDEX';
     }
   }
 
@@ -225,6 +228,8 @@ export class IndicatorTypeRecognizerService {
         return MovingAverageComponent;
       case 'MACD':
         return MovingAverageConvergenceDivergenceComponent;
+      case 'MFI':
+        return MarketFacilitationIndexComponent;
     }
   }
 

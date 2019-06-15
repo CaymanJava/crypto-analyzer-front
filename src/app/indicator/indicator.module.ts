@@ -57,6 +57,7 @@ import { MovingAverageComponent } from './indicator-config/ma/moving-average.com
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
 import { ShiftTypePickerComponent } from './common/shift-type-picker/shift-type-picker.component';
 import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/macd/moving-average-convergence-divergence.component';
+import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-facilitation-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -112,7 +113,8 @@ const modalConfig = [
   KlingerVolumeOscillatorComponent,
   LinearRegressionComponent,
   MovingAverageComponent,
-  MovingAverageConvergenceDivergenceComponent
+  MovingAverageConvergenceDivergenceComponent,
+  MarketFacilitationIndexComponent
 ];
 
 @NgModule({
