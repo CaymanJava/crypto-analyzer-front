@@ -39,9 +39,10 @@ import { IntradayMovementIndexComponent } from "../../indicator/indicator-config
 import { KeltnerChannelComponent } from "../../indicator/indicator-config/kelt/keltner-channel.component";
 import { KnowSureThingComponent } from "../../indicator/indicator-config/kst/know-sure-thing.component";
 import { KlingerVolumeOscillatorComponent } from "../../indicator/indicator-config/kvo/klinger-volume-oscillator.component";
-import { LinearRegressionComponent } from "../../indicator/indicator-config/linear-regression/linear-regression.component";
-import { MovingAverageComponent } from "../../indicator/indicator-config/moving-average/moving-average.component";
+import { LinearRegressionComponent } from "../../indicator/indicator-config/lr/linear-regression.component";
+import { MovingAverageComponent } from "../../indicator/indicator-config/ma/moving-average.component";
 import { IndicatorSettings } from "./indicator.model";
+import { MovingAverageConvergenceDivergenceComponent } from "../../indicator/indicator-config/macd/moving-average-convergence-divergence.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -131,6 +132,8 @@ export class IndicatorTypeRecognizerService {
         return 'LINEAR_REGRESSION';
       case 'MA':
         return settings.configuration.indicatorType;
+      case 'MACD':
+        return 'MOVING_AVERAGE_CONVERGENCE_DIVERGENCE';
     }
   }
 
@@ -220,6 +223,8 @@ export class IndicatorTypeRecognizerService {
         return LinearRegressionComponent;
       case 'MA':
         return MovingAverageComponent;
+      case 'MACD':
+        return MovingAverageConvergenceDivergenceComponent;
     }
   }
 

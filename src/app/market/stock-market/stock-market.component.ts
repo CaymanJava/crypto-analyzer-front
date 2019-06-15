@@ -299,7 +299,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   private updateAllZeroPlotIndicators() {
     this.indicatorConfigurationHandlers.forEach(configHandler => {
-        if (configHandler.plotNumber == 0 && configHandler != this.updatedConfigHandler) {
+        if (configHandler.plotNumber == 0 && configHandler.id != this.updatedConfigHandler.id) {
           this.indicatorDrawerService.update(new IndicatorSettings(configHandler.indicatorItem,
             configHandler.configuration, configHandler.drawConfiguration, true),
             configHandler.data, this.chart, this.container, 0);

@@ -51,11 +51,12 @@ import { IntradayMovementIndexComponent } from './indicator-config/imi/intraday-
 import { KeltnerChannelComponent } from './indicator-config/kelt/keltner-channel.component';
 import { KnowSureThingComponent } from './indicator-config/kst/know-sure-thing.component';
 import { KlingerVolumeOscillatorComponent } from './indicator-config/kvo/klinger-volume-oscillator.component';
-import { LinearRegressionComponent } from './indicator-config/linear-regression/linear-regression.component';
+import { LinearRegressionComponent } from './indicator-config/lr/linear-regression.component';
 import { IndicatorSwitcherComponent } from './common/indicator-switcher/indicator-switcher.component';
-import { MovingAverageComponent } from './indicator-config/moving-average/moving-average.component';
+import { MovingAverageComponent } from './indicator-config/ma/moving-average.component';
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
 import { ShiftTypePickerComponent } from './common/shift-type-picker/shift-type-picker.component';
+import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/macd/moving-average-convergence-divergence.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -110,7 +111,8 @@ const modalConfig = [
   KnowSureThingComponent,
   KlingerVolumeOscillatorComponent,
   LinearRegressionComponent,
-  MovingAverageComponent
+  MovingAverageComponent,
+  MovingAverageConvergenceDivergenceComponent
 ];
 
 @NgModule({
