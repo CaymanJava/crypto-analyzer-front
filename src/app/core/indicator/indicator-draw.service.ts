@@ -46,58 +46,37 @@ import { MacdDrawService } from "./draw/macd-draw.service";
 import { MfiDrawService } from "./draw/mfi-draw.service";
 import { MiDrawService } from "./draw/mi-draw.service";
 import { ObvDrawService } from "./draw/obv-draw.service";
+import { PgoDrawService } from "./draw/pgo-draw.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class IndicatorDrawService {
 
-  constructor(private adoDrawService: AcDrawService,
-              private adlDrawService: AdlDrawService,
-              private adxDrawService: AdxDrawService,
-              private alligatorDrawService: AlligatorDrawService,
-              private aoDrawService: AoDrawService,
-              private atrDrawService: AtrDrawService,
-              private aroonDrawService: AroonDrawService,
-              private aroonOscDrawService: AroonOscDrawService,
-              private asiDrawService: AsiDrawService,
-              private atrbDrawService: AtrbDrawService,
-              private bbDrawService: BbDrawService,
-              private bbwDrawService: BbwDrawService,
-              private ccDrawService: CcDrawService,
-              private cciDrawService: CciDrawService,
-              private ceDrawService: CeDrawService,
-              private cfoDrawService: CfoDrawService,
-              private chopDrawService: ChopDrawService,
-              private cmfDrawService: CmfDrawService,
-              private cmoDrawService: CmoDrawService,
-              private coDrawService: CoDrawService,
-              private cogDrawService: CogDrawService,
-              private dcDrawService: DcDrawService,
-              private diDrawService: DiDrawService,
-              private dpoDrawService: DpoDrawService,
-              private efiDrawService: EfiDrawService,
-              private eftDrawService: EftDrawService,
-              private eisDrawService: EisDrawService,
-              private envDrawService: EnvDrawService,
-              private eomDrawService: EomDrawService,
-              private eriDrawService: EriDrawService,
-              private fractalDrawService: FractalDrawService,
-              private gapoDrawService: GapoDrawService,
-              private haDrawService: HaDrawService,
-              private hlbDrawService: HlbDrawService,
-              private hvDrawService: HvDrawService,
-              private icDrawService: IcDrawService,
-              private imiDrawService: ImiDrawService,
-              private keltDrawService: KeltDrawService,
-              private kstDrawService: KstDrawService,
-              private kvoDrawService: KvoDrawService,
-              private lrDrawService: LrDrawService,
-              private maDrawService: MaDrawService,
-              private macdDrawService: MacdDrawService,
-              private mfiDrawService: MfiDrawService,
-              private miDrawService: MiDrawService,
-              private obvDrawService: ObvDrawService) {
+  constructor(private adoDrawService: AcDrawService, private adlDrawService: AdlDrawService,
+              private adxDrawService: AdxDrawService, private alligatorDrawService: AlligatorDrawService,
+              private aoDrawService: AoDrawService, private atrDrawService: AtrDrawService,
+              private aroonDrawService: AroonDrawService, private aroonOscDrawService: AroonOscDrawService,
+              private asiDrawService: AsiDrawService, private atrbDrawService: AtrbDrawService,
+              private bbDrawService: BbDrawService, private bbwDrawService: BbwDrawService,
+              private ccDrawService: CcDrawService, private cciDrawService: CciDrawService,
+              private ceDrawService: CeDrawService, private cfoDrawService: CfoDrawService,
+              private chopDrawService: ChopDrawService, private cmfDrawService: CmfDrawService,
+              private cmoDrawService: CmoDrawService, private coDrawService: CoDrawService,
+              private cogDrawService: CogDrawService, private dcDrawService: DcDrawService,
+              private diDrawService: DiDrawService, private dpoDrawService: DpoDrawService,
+              private efiDrawService: EfiDrawService, private eftDrawService: EftDrawService,
+              private eisDrawService: EisDrawService, private envDrawService: EnvDrawService,
+              private eomDrawService: EomDrawService, private eriDrawService: EriDrawService,
+              private fractalDrawService: FractalDrawService, private gapoDrawService: GapoDrawService,
+              private haDrawService: HaDrawService, private hlbDrawService: HlbDrawService,
+              private hvDrawService: HvDrawService, private icDrawService: IcDrawService,
+              private imiDrawService: ImiDrawService, private keltDrawService: KeltDrawService,
+              private kstDrawService: KstDrawService, private kvoDrawService: KvoDrawService,
+              private lrDrawService: LrDrawService, private maDrawService: MaDrawService,
+              private macdDrawService: MacdDrawService, private mfiDrawService: MfiDrawService,
+              private miDrawService: MiDrawService, private obvDrawService: ObvDrawService,
+              private pgoDrawService: PgoDrawService) {
   }
 
   draw(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, currentPlotNumber: number): IndicatorDrawResult {
@@ -228,6 +207,9 @@ export class IndicatorDrawService {
       case 'OBV':
         this.increaseChartHeight(container);
         return this.obvDrawService.draw(settings, result, chart, currentPlotNumber);
+      case 'PGO':
+        this.increaseChartHeight(container);
+        return this.pgoDrawService.draw(settings, result, chart, currentPlotNumber);
     }
   }
 
@@ -325,6 +307,8 @@ export class IndicatorDrawService {
         return this.miDrawService.update(settings, result, chart, plotNumber);
       case 'OBV':
         return this.obvDrawService.update(settings, result, chart, plotNumber);
+      case 'PGO':
+        return this.pgoDrawService.update(settings, result, chart, plotNumber);
     }
   }
 

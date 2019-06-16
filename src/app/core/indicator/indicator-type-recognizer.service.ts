@@ -46,6 +46,7 @@ import { MovingAverageConvergenceDivergenceComponent } from "../../indicator/ind
 import { MarketFacilitationIndexComponent } from "../../indicator/indicator-config/mfi/market-facilitation-index.component";
 import { MassIndexComponent } from "../../indicator/indicator-config/mi/mass-index.component";
 import { OnBalanceVolumeComponent } from "../../indicator/indicator-config/obv/on-balance-volume.component";
+import { PrettyGoodOscillatorComponent } from "../../indicator/indicator-config/pretty-good-oscillator/pretty-good-oscillator.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -143,6 +144,8 @@ export class IndicatorTypeRecognizerService {
         return 'MASS_INDEX';
       case 'OBV':
         return 'ON_BALANCE_VOLUME';
+      case 'PGO':
+        return 'PRETTY_GOOD_OSCILLATOR';
     }
   }
 
@@ -240,6 +243,8 @@ export class IndicatorTypeRecognizerService {
         return MassIndexComponent;
       case 'OBV':
         return OnBalanceVolumeComponent;
+      case 'PGO':
+        return PrettyGoodOscillatorComponent;
     }
   }
 

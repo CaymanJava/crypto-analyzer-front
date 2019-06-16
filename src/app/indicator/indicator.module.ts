@@ -60,6 +60,7 @@ import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/
 import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-facilitation-index.component';
 import { MassIndexComponent } from './indicator-config/mi/mass-index.component';
 import { OnBalanceVolumeComponent } from './indicator-config/obv/on-balance-volume.component';
+import { PrettyGoodOscillatorComponent } from './indicator-config/pretty-good-oscillator/pretty-good-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -118,7 +119,8 @@ const modalConfig = [
   MovingAverageConvergenceDivergenceComponent,
   MarketFacilitationIndexComponent,
   MassIndexComponent,
-  OnBalanceVolumeComponent
+  OnBalanceVolumeComponent,
+  PrettyGoodOscillatorComponent
 ];
 
 @NgModule({
