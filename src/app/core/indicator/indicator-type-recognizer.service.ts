@@ -45,6 +45,7 @@ import { IndicatorSettings } from "./indicator.model";
 import { MovingAverageConvergenceDivergenceComponent } from "../../indicator/indicator-config/macd/moving-average-convergence-divergence.component";
 import { MarketFacilitationIndexComponent } from "../../indicator/indicator-config/mfi/market-facilitation-index.component";
 import { MassIndexComponent } from "../../indicator/indicator-config/mi/mass-index.component";
+import { OnBalanceVolumeComponent } from "../../indicator/indicator-config/obv/on-balance-volume.component";
 
 @Injectable()
 export class IndicatorTypeRecognizerService {
@@ -140,6 +141,8 @@ export class IndicatorTypeRecognizerService {
         return 'MARKET_FACILITATION_INDEX';
       case 'MI':
         return 'MASS_INDEX';
+      case 'OBV':
+        return 'ON_BALANCE_VOLUME';
     }
   }
 
@@ -235,6 +238,8 @@ export class IndicatorTypeRecognizerService {
         return MarketFacilitationIndexComponent;
       case 'MI':
         return MassIndexComponent;
+      case 'OBV':
+        return OnBalanceVolumeComponent;
     }
   }
 

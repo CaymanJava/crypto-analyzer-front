@@ -57,6 +57,9 @@ export class AroonDrawService extends CommonDrawService {
   private configurePlot(chart: any, plotNumber: number) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
+    indicatorPlot.xGrid().enabled(true);
+    indicatorPlot.yGrid().enabled(true);
+    indicatorPlot.yGrid().stroke("#dee2e6");
     super.configureDateTimeFormat(indicatorPlot);
     return indicatorPlot;
   }

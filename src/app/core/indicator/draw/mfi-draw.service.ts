@@ -51,6 +51,9 @@ export class MfiDrawService extends CommonDrawService {
   private configurePlot(settings: any, chart: any, plotNumber: number, indicatorMapping, indicatorData: any[]) {
     const indicatorPlot = chart.plot(plotNumber);
     indicatorPlot.height('150px');
+    indicatorPlot.xGrid().enabled(true);
+    indicatorPlot.yGrid().enabled(true);
+    indicatorPlot.yGrid().stroke("#dee2e6");
     super.configureDateTimeFormat(indicatorPlot);
     const series = indicatorPlot.column(indicatorMapping);
     series.name(settings.indicatorItem.title);

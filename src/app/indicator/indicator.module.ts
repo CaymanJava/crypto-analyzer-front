@@ -59,6 +59,7 @@ import { ShiftTypePickerComponent } from './common/shift-type-picker/shift-type-
 import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/macd/moving-average-convergence-divergence.component';
 import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-facilitation-index.component';
 import { MassIndexComponent } from './indicator-config/mi/mass-index.component';
+import { OnBalanceVolumeComponent } from './indicator-config/obv/on-balance-volume.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -116,7 +117,8 @@ const modalConfig = [
   MovingAverageComponent,
   MovingAverageConvergenceDivergenceComponent,
   MarketFacilitationIndexComponent,
-  MassIndexComponent
+  MassIndexComponent,
+  OnBalanceVolumeComponent
 ];
 
 @NgModule({
