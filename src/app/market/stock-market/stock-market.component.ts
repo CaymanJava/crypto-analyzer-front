@@ -6,7 +6,7 @@ import { TickData, TickPeriodRequest, TickTimeRequest } from "../../core/tick/ti
 import { DatePipe } from "@angular/common";
 import { IndicatorService } from "../../core/indicator/indicator.service";
 import { IndicatorCalculationRequest, IndicatorConfigurationHandler, IndicatorDrawResult, IndicatorItem, IndicatorSettings } from "../../core/indicator/indicator.model";
-import { IndicatorConfigProviderService } from "../../core/indicator/indicator-config-provider.service";
+import { IndicatorConfigService } from "../../core/indicator/indicator-config.service";
 import { ChartDrawerService } from "../../core/chart/chart-drawer.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
@@ -20,8 +20,7 @@ import { IndicatorTypeRecognizerService } from "../../core/indicator/indicator-t
   ],
   providers: [
     DatePipe,
-    IndicatorConfigProviderService,
-    IndicatorTypeRecognizerService
+    IndicatorConfigService
   ]
 })
 export class StockMarketComponent implements OnInit, OnDestroy {
@@ -50,7 +49,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
               private chartDrawerService: ChartDrawerService,
               private chartSaveService: ChartSaveService,
               private indicatorDrawerService: IndicatorDrawService,
-              private indicatorConfigProvider: IndicatorConfigProviderService,
+              private indicatorConfigProvider: IndicatorConfigService,
               private indicatorTypeRecognizerService: IndicatorTypeRecognizerService,
               private datePipe: DatePipe,
               private renderer: Renderer2) {

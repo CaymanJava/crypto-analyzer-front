@@ -1,6 +1,16 @@
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 
-export abstract class CommonDrawService {
+export interface DrawService {
+
+  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+
+  update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+
+  prepareTitle(settings: IndicatorSettings);
+
+}
+
+export abstract class CommonDrawService implements DrawService {
 
   abstract draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
 
