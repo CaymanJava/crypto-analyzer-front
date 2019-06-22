@@ -29,6 +29,17 @@ export abstract class CommonDrawService implements DrawService {
     return indicatorData;
   }
 
+  prepareBarChartData(result: any[]) {
+    const indicatorData = [];
+    result.forEach(indicatorResult => indicatorData.push(
+      [
+        indicatorResult.time,
+        this.convertValue(indicatorResult.barChartValue)
+      ]
+    ));
+    return indicatorData;
+  }
+
   clearPlot(chart: any, plotNumber: number) {
     const plot = chart.plot(plotNumber);
     plot.removeAllSeries();

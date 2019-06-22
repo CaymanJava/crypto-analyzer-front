@@ -1,12 +1,12 @@
+import { Injectable } from "@angular/core";
 import { SignalLineDrawService } from "./signal-line-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
 import * as AnyChart from "anychart";
-import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root"
 })
-export class MacdDrawService extends SignalLineDrawService {
+export class PpoDrawService extends SignalLineDrawService {
 
   draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
@@ -42,7 +42,7 @@ export class MacdDrawService extends SignalLineDrawService {
   private configureColumn(settings: any, chart: any, plotNumber: number, indicatorMapping) {
     const columns = chart.plot(plotNumber).column(indicatorMapping);
     columns.normal().fill(settings.drawConfiguration.barChartColor, 0.3);
-    columns.name('MACD bars');
+    columns.name('PPO bars');
   }
 
 }

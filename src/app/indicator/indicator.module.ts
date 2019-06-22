@@ -64,6 +64,7 @@ import { PrettyGoodOscillatorComponent } from './indicator-config/pgo/pretty-goo
 import { PivotPointsComponent } from './indicator-config/pivot/pivot-points.component';
 import { PivotPointsPickerComponent } from './common/pivot-points-picker/pivot-points-picker.component';
 import { PriceMomentumOscillatorComponent } from './indicator-config/pmo/price-momentum-oscillator.component';
+import { PercentagePriceOscillatorComponent } from './indicator-config/ppo/percentage-price-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -126,7 +127,8 @@ const modalConfig = [
   OnBalanceVolumeComponent,
   PrettyGoodOscillatorComponent,
   PivotPointsComponent,
-  PriceMomentumOscillatorComponent
+  PriceMomentumOscillatorComponent,
+  PercentagePriceOscillatorComponent
 ];
 
 @NgModule({

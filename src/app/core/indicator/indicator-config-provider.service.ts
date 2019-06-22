@@ -48,6 +48,7 @@ import { PrettyGoodOscillatorComponent } from "../../indicator/indicator-config/
 import { Injectable } from "@angular/core";
 import { PivotPointsComponent } from "../../indicator/indicator-config/pivot/pivot-points.component";
 import { PriceMomentumOscillatorComponent } from "../../indicator/indicator-config/pmo/price-momentum-oscillator.component";
+import { PercentagePriceOscillatorComponent } from "../../indicator/indicator-config/ppo/percentage-price-oscillator.component";
 
 @Injectable({
   providedIn: "root"
@@ -154,6 +155,8 @@ export class IndicatorConfigProviderService {
         return PivotPointsComponent;
       case 'PMO':
         return PriceMomentumOscillatorComponent;
+      case 'PPO':
+        return PercentagePriceOscillatorComponent;
     }
   }
 

@@ -18,8 +18,8 @@
         <p class="text-muted mt-2">%Change</p>
         <p [ngClass]="tickData.market.priceDiff >= 0 ? 'text-success' : 'text-danger'" class="text-primary text-20 line-height-1 mb-2">
           {{tickData.market.priceDiff | number : '1.0-2'}}%
-          <i *ngIf="tickData.market.priceDiff > 0" class="i-Up1 text-success text-18"></i>
-          <i *ngIf="tickData.market.priceDiff < 0" class="i-Down1 text-danger text-18"></i>
+          <i *ngIf="tickData.market.priceDiff > 0" class="i-Up1 text-success text-16"></i>
+          <i *ngIf="tickData.market.priceDiff < 0" class="i-Down1 text-danger text-16"></i>
         </p>
       </div>
     </div>

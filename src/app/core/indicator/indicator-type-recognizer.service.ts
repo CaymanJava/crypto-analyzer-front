@@ -105,6 +105,8 @@ export class IndicatorTypeRecognizerService {
         return settings.configuration.indicatorType;
       case 'PMO':
         return 'PRICE_MOMENTUM_OSCILLATOR';
+      case 'PPO':
+        return 'PERCENTAGE_PRICE_OSCILLATOR';
     }
   }
 
