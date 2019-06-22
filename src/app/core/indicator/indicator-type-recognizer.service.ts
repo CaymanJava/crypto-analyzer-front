@@ -101,6 +101,8 @@ export class IndicatorTypeRecognizerService {
         return 'ON_BALANCE_VOLUME';
       case 'PGO':
         return 'PRETTY_GOOD_OSCILLATOR';
+      case 'PIVOT':
+        return settings.configuration.indicatorType;
     }
   }
 

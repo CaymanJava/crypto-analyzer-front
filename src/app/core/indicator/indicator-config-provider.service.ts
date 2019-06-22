@@ -46,6 +46,7 @@ import { MassIndexComponent } from "../../indicator/indicator-config/mi/mass-ind
 import { OnBalanceVolumeComponent } from "../../indicator/indicator-config/obv/on-balance-volume.component";
 import { PrettyGoodOscillatorComponent } from "../../indicator/indicator-config/pretty-good-oscillator/pretty-good-oscillator.component";
 import { Injectable } from "@angular/core";
+import { PivotPointsComponent } from "../../indicator/indicator-config/pivot/pivot-points.component";
 
 @Injectable({
   providedIn: "root"
@@ -148,6 +149,8 @@ export class IndicatorConfigProviderService {
         return OnBalanceVolumeComponent;
       case 'PGO':
         return PrettyGoodOscillatorComponent;
+      case 'PIVOT':
+        return PivotPointsComponent;
     }
   }
 

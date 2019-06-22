@@ -139,10 +139,11 @@ export class MovingAverageComponent extends BaseIndicatorComponent {
   }
 
   private initAlphaCoefficientMaTypes() {
-    this.typesWithAlphaCoefficient.add('DISPLACED_MOVING_AVERAGE');
-    this.typesWithAlphaCoefficient.add('EXPONENTIAL_MOVING_AVERAGE');
-    this.typesWithAlphaCoefficient.add('DOUBLE_EXPONENTIAL_MOVING_AVERAGE');
-    this.typesWithAlphaCoefficient.add('TRIPLE_EXPONENTIAL_MOVING_AVERAGE');
+    this.typesWithAlphaCoefficient
+      .add('DISPLACED_MOVING_AVERAGE')
+      .add('EXPONENTIAL_MOVING_AVERAGE')
+      .add('DOUBLE_EXPONENTIAL_MOVING_AVERAGE')
+      .add('TRIPLE_EXPONENTIAL_MOVING_AVERAGE');
   }
 
   private enableControls() {

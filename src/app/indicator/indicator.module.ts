@@ -25,7 +25,7 @@ import { BollingerBandsWidthComponent } from './indicator-config/bbw/bollinger-b
 import { SharedComponentsModule } from "../shared/components/shared-components.module";
 import { ColorPickerComponent } from "./common/color-picker/color-picker.component";
 import { IndicatorInputComponent } from './common/indicator-input/indicator-input.component';
-import { MovingAverageTypePickerComponent } from './common/moving-average-short-picker/moving-average-type-picker.component';
+import { MovingAverageTypePickerComponent } from './common/moving-average-picker/moving-average-type-picker.component';
 import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
 import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
 import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-flow.component';
@@ -61,6 +61,8 @@ import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-
 import { MassIndexComponent } from './indicator-config/mi/mass-index.component';
 import { OnBalanceVolumeComponent } from './indicator-config/obv/on-balance-volume.component';
 import { PrettyGoodOscillatorComponent } from './indicator-config/pretty-good-oscillator/pretty-good-oscillator.component';
+import { PivotPointsComponent } from './indicator-config/pivot/pivot-points.component';
+import { PivotPointsPickerComponent } from './common/pivot-points-picker/pivot-points-picker.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -69,7 +71,8 @@ const components = [
   MovingAverageTypePickerComponent,
   PriceTypePickerComponent,
   IndicatorSwitcherComponent,
-  ShiftTypePickerComponent
+  ShiftTypePickerComponent,
+  PivotPointsPickerComponent
 ];
 
 const modalConfig = [
@@ -120,7 +123,8 @@ const modalConfig = [
   MarketFacilitationIndexComponent,
   MassIndexComponent,
   OnBalanceVolumeComponent,
-  PrettyGoodOscillatorComponent
+  PrettyGoodOscillatorComponent,
+  PivotPointsComponent
 ];
 
 @NgModule({

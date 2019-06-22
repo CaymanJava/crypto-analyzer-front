@@ -48,6 +48,7 @@ import { ObvDrawService } from "./draw/obv-draw.service";
 import { PgoDrawService } from "./draw/pgo-draw.service";
 import { IndicatorSettings } from "./indicator.model";
 import { DrawService } from "./draw/common-draw.service";
+import { PivotDrawService } from "./draw/pivot-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -77,7 +78,7 @@ export class IndicatorDrawProviderService {
               private lrDrawService: LrDrawService, private maDrawService: MaDrawService,
               private macdDrawService: MacdDrawService, private mfiDrawService: MfiDrawService,
               private miDrawService: MiDrawService, private obvDrawService: ObvDrawService,
-              private pgoDrawService: PgoDrawService) {
+              private pgoDrawService: PgoDrawService, private pivotDrawService: PivotDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -176,6 +177,8 @@ export class IndicatorDrawProviderService {
         return this.obvDrawService;
       case 'PGO':
         return this.pgoDrawService;
+      case 'PIVOT':
+        return this.pivotDrawService;
     }
   }
 
