@@ -103,6 +103,8 @@ export class IndicatorTypeRecognizerService {
         return 'PRETTY_GOOD_OSCILLATOR';
       case 'PIVOT':
         return settings.configuration.indicatorType;
+      case 'PMO':
+        return 'PRICE_MOMENTUM_OSCILLATOR';
     }
   }
 

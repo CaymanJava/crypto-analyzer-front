@@ -60,9 +60,10 @@ import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/
 import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-facilitation-index.component';
 import { MassIndexComponent } from './indicator-config/mi/mass-index.component';
 import { OnBalanceVolumeComponent } from './indicator-config/obv/on-balance-volume.component';
-import { PrettyGoodOscillatorComponent } from './indicator-config/pretty-good-oscillator/pretty-good-oscillator.component';
+import { PrettyGoodOscillatorComponent } from './indicator-config/pgo/pretty-good-oscillator.component';
 import { PivotPointsComponent } from './indicator-config/pivot/pivot-points.component';
 import { PivotPointsPickerComponent } from './common/pivot-points-picker/pivot-points-picker.component';
+import { PriceMomentumOscillatorComponent } from './indicator-config/pmo/price-momentum-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -124,7 +125,8 @@ const modalConfig = [
   MassIndexComponent,
   OnBalanceVolumeComponent,
   PrettyGoodOscillatorComponent,
-  PivotPointsComponent
+  PivotPointsComponent,
+  PriceMomentumOscillatorComponent
 ];
 
 @NgModule({

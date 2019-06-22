@@ -9,7 +9,7 @@
     <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:center;">
       <div class="content">
         <p class="text-muted mt-2">Day volume</p>
-        <p class="text-primary text-20 line-height-1 mb-2">{{tickData.market.baseVolume.toFixed(2) + ' ' + tickData.market.baseCurrency}}</p>
+        <p class="text-primary text-20 line-height-1 mb-2">{{ (tickData.market.baseVolume.toFixed(2)  | number : '1.0-15') + ' ' + tickData.market.baseCurrency}}</p>
       </div>
     </div>
 
@@ -18,8 +18,8 @@
         <p class="text-muted mt-2">%Change</p>
         <p [ngClass]="tickData.market.priceDiff >= 0 ? 'text-success' : 'text-danger'" class="text-primary text-20 line-height-1 mb-2">
           {{tickData.market.priceDiff | number : '1.0-2'}}%
-          <i *ngIf="tickData.market.priceDiff > 0" class="i-Up1 text-success"></i>
-          <i *ngIf="tickData.market.priceDiff < 0" class="i-Down1 text-danger"></i>
+          <i *ngIf="tickData.market.priceDiff > 0" class="i-Up1 text-success text-18"></i>
+          <i *ngIf="tickData.market.priceDiff < 0" class="i-Down1 text-danger text-18"></i>
         </p>
       </div>
     </div>
