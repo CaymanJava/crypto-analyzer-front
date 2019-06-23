@@ -69,6 +69,7 @@ import { ParabolicStopAndReverseComponent } from './indicator-config/psar/parabo
 import { PriceVolumeTrendComponent } from './indicator-config/pvt/price-volume-trend.component';
 import { QuickStickComponent } from './indicator-config/qs/quick-stick.component';
 import { RainbowMovingAverageComponent } from './indicator-config/rma/rainbow-moving-average.component';
+import { RainbowOscillatorComponent } from './indicator-config/ro/rainbow-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -136,7 +137,8 @@ const modalConfig = [
   ParabolicStopAndReverseComponent,
   PriceVolumeTrendComponent,
   QuickStickComponent,
-  RainbowMovingAverageComponent
+  RainbowMovingAverageComponent,
+  RainbowOscillatorComponent
 ];
 
 @NgModule({

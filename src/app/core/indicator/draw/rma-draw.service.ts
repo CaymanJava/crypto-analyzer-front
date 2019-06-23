@@ -22,8 +22,8 @@ export class RmaDrawService extends CommonDrawService {
   }
 
   private drawRainbowMA(result: any[], settings: IndicatorSettings, chart: any) {
-    const indicator = this.prepareData(result);
-    this.preparePlot(settings, chart, indicator);
+    const indicatorData = this.prepareData(result);
+    this.preparePlot(settings, chart, indicatorData);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, 0);
   }
@@ -55,22 +55,22 @@ export class RmaDrawService extends CommonDrawService {
     return indicatorData;
   }
 
-  private preparePlot(settings: any, chart: any, indicator) {
+  private preparePlot(settings: any, chart: any, indicatorData) {
     const indicatorPlot = chart.plot(0);
-    this.configureLines(settings, indicatorPlot, indicator);
+    this.configureLines(settings, indicatorPlot, indicatorData);
   }
 
-  private configureLines(settings: any, indicatorPlot, indicator) {
-    this.configureLine(indicatorPlot, indicator, 1, settings.drawConfiguration.firstMaColor, '1st MA');
-    this.configureLine(indicatorPlot, indicator, 2, settings.drawConfiguration.secondMaColor, '2nd MA');
-    this.configureLine(indicatorPlot, indicator, 3, settings.drawConfiguration.thirdMaColor, '3nd MA');
-    this.configureLine(indicatorPlot, indicator, 4, settings.drawConfiguration.fourthMaColor, '4th MA');
-    this.configureLine(indicatorPlot, indicator, 5, settings.drawConfiguration.fifthMaColor, '5th MA');
-    this.configureLine(indicatorPlot, indicator, 6, settings.drawConfiguration.sixthMaColor, '6th MA');
-    this.configureLine(indicatorPlot, indicator, 7, settings.drawConfiguration.seventhMaColor, '7th MA');
-    this.configureLine(indicatorPlot, indicator, 8, settings.drawConfiguration.eighthMaColor, '8th MA');
-    this.configureLine(indicatorPlot, indicator, 9, settings.drawConfiguration.ninthMaColor, '9th MA');
-    this.configureLine(indicatorPlot, indicator, 10, settings.drawConfiguration.tenthMaColor, '10th MA');
+  private configureLines(settings: any, indicatorPlot, indicatorData) {
+    this.configureLine(indicatorPlot, indicatorData, 1, settings.drawConfiguration.firstMaColor, '1st MA');
+    this.configureLine(indicatorPlot, indicatorData, 2, settings.drawConfiguration.secondMaColor, '2nd MA');
+    this.configureLine(indicatorPlot, indicatorData, 3, settings.drawConfiguration.thirdMaColor, '3nd MA');
+    this.configureLine(indicatorPlot, indicatorData, 4, settings.drawConfiguration.fourthMaColor, '4th MA');
+    this.configureLine(indicatorPlot, indicatorData, 5, settings.drawConfiguration.fifthMaColor, '5th MA');
+    this.configureLine(indicatorPlot, indicatorData, 6, settings.drawConfiguration.sixthMaColor, '6th MA');
+    this.configureLine(indicatorPlot, indicatorData, 7, settings.drawConfiguration.seventhMaColor, '7th MA');
+    this.configureLine(indicatorPlot, indicatorData, 8, settings.drawConfiguration.eighthMaColor, '8th MA');
+    this.configureLine(indicatorPlot, indicatorData, 9, settings.drawConfiguration.ninthMaColor, '9th MA');
+    this.configureLine(indicatorPlot, indicatorData, 10, settings.drawConfiguration.tenthMaColor, '10th MA');
   }
 
   private configureLine(indicatorPlot, indicator, index: number, color: string, title: string) {

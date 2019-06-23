@@ -115,6 +115,8 @@ export class IndicatorTypeRecognizerService {
         return 'QUICK_STICK';
       case 'RMA':
         return 'RAINBOW_MOVING_AVERAGE';
+      case 'RO':
+        return 'RAINBOW_OSCILLATOR';
     }
   }
 

@@ -53,6 +53,7 @@ import { ParabolicStopAndReverseComponent } from "../../indicator/indicator-conf
 import { PriceVolumeTrendComponent } from "../../indicator/indicator-config/pvt/price-volume-trend.component";
 import { QuickStickComponent } from "../../indicator/indicator-config/qs/quick-stick.component";
 import { RainbowMovingAverageComponent } from "../../indicator/indicator-config/rma/rainbow-moving-average.component";
+import { RainbowOscillatorComponent } from "../../indicator/indicator-config/ro/rainbow-oscillator.component";
 
 @Injectable({
   providedIn: "root"
@@ -169,6 +170,8 @@ export class IndicatorConfigProviderService {
         return QuickStickComponent;
       case 'RMA':
         return RainbowMovingAverageComponent;
+      case 'RO':
+        return RainbowOscillatorComponent;
     }
   }
 
