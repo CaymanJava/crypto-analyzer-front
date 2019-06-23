@@ -57,12 +57,7 @@ export abstract class SignalLineDrawService extends CommonDrawService {
   }
 
   private configurePlot(chart: any, plotNumber: number, horizontalLines?: number[]) {
-    const indicatorPlot = chart.plot(plotNumber);
-    indicatorPlot.height('150px');
-    indicatorPlot.xGrid().enabled(true);
-    indicatorPlot.yGrid().enabled(true);
-    indicatorPlot.yGrid().stroke("#dee2e6");
-    super.configureDateTimeFormat(indicatorPlot);
+    const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
     super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot;
   }

@@ -39,13 +39,8 @@ export class RoDrawService extends CommonDrawService {
   }
 
   private preparePlot(chart: any, plotNumber: number, settings: IndicatorSettings, indicatorData) {
-    const indicatorPlot = chart.plot(plotNumber);
-    indicatorPlot.height('150px');
-    indicatorPlot.xGrid().enabled(true);
-    indicatorPlot.yGrid().enabled(true);
-    indicatorPlot.yGrid().stroke("#dee2e6");
-    super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLines([0], indicatorPlot);
+    const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
+    this.addHorizontalLines([0], indicatorPlot);
     this.configureColumn(settings, indicatorPlot, indicatorData);
     this.configureLines(settings, indicatorPlot, indicatorData);
   }

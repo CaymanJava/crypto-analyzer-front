@@ -27,7 +27,7 @@ export class EriDrawService extends CommonDrawService {
 
   private drawERI(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareERIData(result);
-    const indicatorPlot = this.configurePlot(chart, plotNumber);
+    const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
     const indicator = this.configureData(indicatorData);
     this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
@@ -62,16 +62,6 @@ export class EriDrawService extends CommonDrawService {
     const indicator = AnyChart.data.table(0);
     indicator.addData(indicatorData);
     return indicator;
-  }
-
-  private configurePlot(chart: any, plotNumber: number) {
-    const indicatorPlot = chart.plot(plotNumber);
-    indicatorPlot.height('150px');
-    indicatorPlot.xGrid().enabled(true);
-    indicatorPlot.yGrid().enabled(true);
-    indicatorPlot.yGrid().stroke("#dee2e6");
-    super.configureDateTimeFormat(indicatorPlot);
-    return indicatorPlot;
   }
 
   private prepareERIData(result: any[]) {

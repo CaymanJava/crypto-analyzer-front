@@ -70,6 +70,7 @@ import { PriceVolumeTrendComponent } from './indicator-config/pvt/price-volume-t
 import { QuickStickComponent } from './indicator-config/qs/quick-stick.component';
 import { RainbowMovingAverageComponent } from './indicator-config/rma/rainbow-moving-average.component';
 import { RainbowOscillatorComponent } from './indicator-config/ro/rainbow-oscillator.component';
+import { RateOfChangeComponent } from './indicator-config/roc/rate-of-change.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -138,7 +139,8 @@ const modalConfig = [
   PriceVolumeTrendComponent,
   QuickStickComponent,
   RainbowMovingAverageComponent,
-  RainbowOscillatorComponent
+  RainbowOscillatorComponent,
+  RateOfChangeComponent
 ];
 
 @NgModule({

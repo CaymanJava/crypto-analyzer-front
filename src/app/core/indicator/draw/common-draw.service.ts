@@ -62,6 +62,16 @@ export abstract class CommonDrawService implements DrawService {
     return Number.parseFloat(indicatorValue).toFixed(10);
   }
 
+  prepareDefaultPlotConfiguration(chart, plotNumber) {
+    const indicatorPlot = chart.plot(plotNumber);
+    indicatorPlot.height('150px');
+    indicatorPlot.xGrid().enabled(true);
+    indicatorPlot.yGrid().enabled(true);
+    indicatorPlot.yGrid().stroke('#dee2e6');
+    this.configureDateTimeFormat(indicatorPlot);
+    return indicatorPlot;
+  }
+
   prepareBandData(result: any[]) {
     const indicatorData = [];
     result.forEach(indicatorResult => indicatorData.push(

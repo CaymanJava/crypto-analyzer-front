@@ -54,6 +54,7 @@ import { PriceVolumeTrendComponent } from "../../indicator/indicator-config/pvt/
 import { QuickStickComponent } from "../../indicator/indicator-config/qs/quick-stick.component";
 import { RainbowMovingAverageComponent } from "../../indicator/indicator-config/rma/rainbow-moving-average.component";
 import { RainbowOscillatorComponent } from "../../indicator/indicator-config/ro/rainbow-oscillator.component";
+import { RateOfChangeComponent } from "../../indicator/indicator-config/roc/rate-of-change.component";
 
 @Injectable({
   providedIn: "root"
@@ -172,6 +173,8 @@ export class IndicatorConfigProviderService {
         return RainbowMovingAverageComponent;
       case 'RO':
         return RainbowOscillatorComponent;
+      case 'ROC':
+        return RateOfChangeComponent;
     }
   }
 
