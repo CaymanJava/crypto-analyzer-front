@@ -113,6 +113,8 @@ export class IndicatorTypeRecognizerService {
         return 'PRICE_VOLUME_TREND';
       case 'QS':
         return 'QUICK_STICK';
+      case 'RMA':
+        return 'RAINBOW_MOVING_AVERAGE';
     }
   }
 

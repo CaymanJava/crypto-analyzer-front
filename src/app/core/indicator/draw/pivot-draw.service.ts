@@ -29,6 +29,20 @@ export class PivotDrawService extends CommonDrawService {
     return settings.indicatorItem.title;
   }
 
+  private drawPivotPoints(result: any[], settings: IndicatorSettings, chart: any) {
+    const indicator = this.prepareData(result);
+    this.preparePlot(settings, chart, indicator);
+    const title = this.prepareTitle(settings);
+    return new IndicatorDrawResult(title, 0);
+  }
+
+  private prepareData(result: any[]) {
+    const indicatorData = this.preparePivotData(result);
+    const table = AnyChart.data.table();
+    table.addData(indicatorData);
+    return table;
+  }
+
   private preparePivotData(result: any[]) {
     const indicatorData = [];
     result.forEach(indicatorResult => indicatorData.push(
@@ -46,20 +60,6 @@ export class PivotDrawService extends CommonDrawService {
       ]
     ));
     return indicatorData;
-  }
-
-  private drawPivotPoints(result: any[], settings: IndicatorSettings, chart: any) {
-    const indicator = this.prepareData(result);
-    this.preparePlot(settings, chart, indicator);
-    const title = this.prepareTitle(settings);
-    return new IndicatorDrawResult(title, 0);
-  }
-
-  private prepareData(result: any[]) {
-    const indicatorData = this.preparePivotData(result);
-    const table = AnyChart.data.table();
-    table.addData(indicatorData);
-    return table;
   }
 
   private preparePlot(settings: any, chart: any, indicator) {

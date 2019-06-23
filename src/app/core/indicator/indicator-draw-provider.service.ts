@@ -54,6 +54,7 @@ import { PpoDrawService } from "./draw/ppo-draw.service";
 import { PsarDrawService } from "./draw/psar-draw.service";
 import { PvtDrawService } from "./draw/pvt-draw.service";
 import { QsDrawService } from "./draw/qs-draw.service";
+import { RmaDrawService } from "./draw/rma-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -86,7 +87,7 @@ export class IndicatorDrawProviderService {
               private pgoDrawService: PgoDrawService, private pivotDrawService: PivotDrawService,
               private pmoDrawService: PmoDrawService, private ppoDrawService: PpoDrawService,
               private psarDrawService: PsarDrawService, private pvtDrawService: PvtDrawService,
-              private qsDrawService: QsDrawService) {
+              private qsDrawService: QsDrawService, private rmaDrawService: RmaDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -197,6 +198,8 @@ export class IndicatorDrawProviderService {
         return this.pvtDrawService;
       case 'QS':
         return this.qsDrawService;
+      case 'RMA':
+        return this.rmaDrawService;
     }
   }
 
