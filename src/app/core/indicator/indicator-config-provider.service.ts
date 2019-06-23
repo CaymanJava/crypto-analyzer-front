@@ -49,6 +49,7 @@ import { Injectable } from "@angular/core";
 import { PivotPointsComponent } from "../../indicator/indicator-config/pivot/pivot-points.component";
 import { PriceMomentumOscillatorComponent } from "../../indicator/indicator-config/pmo/price-momentum-oscillator.component";
 import { PercentagePriceOscillatorComponent } from "../../indicator/indicator-config/ppo/percentage-price-oscillator.component";
+import { ParabolicStopAndReverseComponent } from "../../indicator/indicator-config/psar/parabolic-stop-and-reverse.component";
 
 @Injectable({
   providedIn: "root"
@@ -157,6 +158,8 @@ export class IndicatorConfigProviderService {
         return PriceMomentumOscillatorComponent;
       case 'PPO':
         return PercentagePriceOscillatorComponent;
+      case 'PSAR':
+        return ParabolicStopAndReverseComponent;
     }
   }
 

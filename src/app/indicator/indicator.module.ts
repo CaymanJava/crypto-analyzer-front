@@ -65,6 +65,7 @@ import { PivotPointsComponent } from './indicator-config/pivot/pivot-points.comp
 import { PivotPointsPickerComponent } from './common/pivot-points-picker/pivot-points-picker.component';
 import { PriceMomentumOscillatorComponent } from './indicator-config/pmo/price-momentum-oscillator.component';
 import { PercentagePriceOscillatorComponent } from './indicator-config/ppo/percentage-price-oscillator.component';
+import { ParabolicStopAndReverseComponent } from './indicator-config/psar/parabolic-stop-and-reverse.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -128,7 +129,8 @@ const modalConfig = [
   PrettyGoodOscillatorComponent,
   PivotPointsComponent,
   PriceMomentumOscillatorComponent,
-  PercentagePriceOscillatorComponent
+  PercentagePriceOscillatorComponent,
+  ParabolicStopAndReverseComponent
 ];
 
 @NgModule({

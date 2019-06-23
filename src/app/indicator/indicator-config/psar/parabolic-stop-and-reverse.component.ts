@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { BaseIndicatorComponent } from "../base/base-indicator.component";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { FormBuilder, Validators } from "@angular/forms";
+
+@Component({
+  moduleId: module.id,
+  templateUrl: './parabolic-stop-and-reverse.component.html'
+})
+export class ParabolicStopAndReverseComponent extends BaseIndicatorComponent {
+
+  constructor(private modal: NgbActiveModal,
+              protected fb: FormBuilder) {
+    super();
+    this.initForms();
+  }
+
+  initForms() {
+    this.configForm = this.fb.group({
+      'minAccelerationFactor': [false, [Validators.required, Validators.min(0.0001)]],
+      'maxAccelerationFactor': [false, [Validators.required, Validators.min(0.0001)]]
+    });
+    this.drawConfigForm = this.fb.group({
+      'indicatorColor': ['#7e05a1', Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    this.fillConfiguration();
+  }
+
+  onSubmit() {
+    this.modal.close({
+      configuration: {
+        minAccelerationFactor: this.configForm.get('minAccelerationFactor').value,
+        maxAccelerationFactor: this.configForm.get('maxAccelerationFactor').value
+      },
+      drawConfiguration: {
+        indicatorColor: this.drawConfigForm.get('indicatorColor').value
+      }
+    });
+  }
+
+  fillConfiguration() {
+    if (this.update) {
+      this.configForm.setValue({
+        minAccelerationFactor: this.configuration.minAccelerationFactor,
+        maxAccelerationFactor: this.configuration.maxAccelerationFactor
+      });
+      this.drawConfigForm.setValue({
+        indicatorColor: this.drawConfiguration.indicatorColor
+      });
+    }
+  }
+
+}

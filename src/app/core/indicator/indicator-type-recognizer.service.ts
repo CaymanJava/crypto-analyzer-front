@@ -107,6 +107,8 @@ export class IndicatorTypeRecognizerService {
         return 'PRICE_MOMENTUM_OSCILLATOR';
       case 'PPO':
         return 'PERCENTAGE_PRICE_OSCILLATOR';
+      case 'PSAR':
+        return 'PARABOLIC_STOP_AND_REVERSE';
     }
   }
 

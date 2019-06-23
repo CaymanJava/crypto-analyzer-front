@@ -19,23 +19,23 @@ export abstract class SimpleDrawService extends CommonDrawService {
     return indicatorPlot.line(indicatorMapping);
   }
 
-  private drawSimpleIndicator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines: number[]): IndicatorDrawResult {
-    const indicatorData = this.prepareSimpleIndicatorData(result);
-    const indicatorMapping = this.addData(indicatorData);
-    const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
-    this.configureComputedLine(settings, computedLine);
-    return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
+  addData(indicatorData) {
+    const indicator = AnyChart.data.table(0);
+    indicator.addData(indicatorData);
+    return indicator.mapAs({'value': 1});
   }
 
-  private configureComputedLine(settings, computedLine) {
+  configureIndicator(settings, computedLine) {
     computedLine.name(settings.indicatorItem.title);
     computedLine.stroke(settings.drawConfiguration.indicatorLineColor);
   }
 
-  private addData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator.mapAs({'value': 1});
+  private drawSimpleIndicator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines: number[]): IndicatorDrawResult {
+    const indicatorData = this.prepareSimpleIndicatorData(result);
+    const indicatorMapping = this.addData(indicatorData);
+    const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
+    this.configureIndicator(settings, computedLine);
+    return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }
 
 }
