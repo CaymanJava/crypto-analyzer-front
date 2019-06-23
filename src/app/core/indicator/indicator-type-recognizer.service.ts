@@ -110,7 +110,9 @@ export class IndicatorTypeRecognizerService {
       case 'PSAR':
         return 'PARABOLIC_STOP_AND_REVERSE';
       case 'PVT':
-        return 'PRICE_VOLUME_TREND'
+        return 'PRICE_VOLUME_TREND';
+      case 'QS':
+        return 'QUICK_STICK';
     }
   }
 

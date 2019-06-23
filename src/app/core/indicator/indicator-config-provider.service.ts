@@ -51,6 +51,7 @@ import { PriceMomentumOscillatorComponent } from "../../indicator/indicator-conf
 import { PercentagePriceOscillatorComponent } from "../../indicator/indicator-config/ppo/percentage-price-oscillator.component";
 import { ParabolicStopAndReverseComponent } from "../../indicator/indicator-config/psar/parabolic-stop-and-reverse.component";
 import { PriceVolumeTrendComponent } from "../../indicator/indicator-config/pvt/price-volume-trend.component";
+import { QuickStickComponent } from "../../indicator/indicator-config/qs/quick-stick.component";
 
 @Injectable({
   providedIn: "root"
@@ -163,6 +164,8 @@ export class IndicatorConfigProviderService {
         return ParabolicStopAndReverseComponent;
       case 'PVT':
         return PriceVolumeTrendComponent;
+      case 'QS':
+        return QuickStickComponent;
     }
   }
 

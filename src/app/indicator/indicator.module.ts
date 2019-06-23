@@ -67,6 +67,7 @@ import { PriceMomentumOscillatorComponent } from './indicator-config/pmo/price-m
 import { PercentagePriceOscillatorComponent } from './indicator-config/ppo/percentage-price-oscillator.component';
 import { ParabolicStopAndReverseComponent } from './indicator-config/psar/parabolic-stop-and-reverse.component';
 import { PriceVolumeTrendComponent } from './indicator-config/pvt/price-volume-trend.component';
+import { QuickStickComponent } from './indicator-config/qs/quick-stick.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -132,7 +133,8 @@ const modalConfig = [
   PriceMomentumOscillatorComponent,
   PercentagePriceOscillatorComponent,
   ParabolicStopAndReverseComponent,
-  PriceVolumeTrendComponent
+  PriceVolumeTrendComponent,
+  QuickStickComponent
 ];
 
 @NgModule({

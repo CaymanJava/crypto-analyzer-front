@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+    <app-moving-average-type-picker
+        [configForm]="configForm"
+        key="movingAverageType">
+    </app-moving-average-type-picker>
+    <app-indicator-input
+        [form]="configForm"
+        key="period"
+        label="Period"
+        placeholder="14">
+    </app-indicator-input>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'indicatorLineColor')"
+        [color]="drawConfigForm.get('indicatorLineColor').value"
+        [label]="'Indicator line'">
+    </app-color-picker>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="modal.close('remove')"
+          *ngIf="update"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Remove
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
+</div>
