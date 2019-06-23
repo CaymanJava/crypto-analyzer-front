@@ -119,6 +119,10 @@ export class IndicatorTypeRecognizerService {
         return 'RAINBOW_OSCILLATOR';
       case 'ROC':
         return 'RATE_OF_CHANGE';
+      case 'RSI':
+        return 'RELATIVE_STRENGTH_INDEX';
+      case 'CRSI':
+        return 'CONNORS_RELATIVE_STRENGTH_INDEX';
     }
   }
 

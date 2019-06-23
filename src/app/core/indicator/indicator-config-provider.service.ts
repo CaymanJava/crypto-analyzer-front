@@ -55,6 +55,8 @@ import { QuickStickComponent } from "../../indicator/indicator-config/qs/quick-s
 import { RainbowMovingAverageComponent } from "../../indicator/indicator-config/rma/rainbow-moving-average.component";
 import { RainbowOscillatorComponent } from "../../indicator/indicator-config/ro/rainbow-oscillator.component";
 import { RateOfChangeComponent } from "../../indicator/indicator-config/roc/rate-of-change.component";
+import { RelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/relative-strength-index.component";
+import { ConnorsRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/connors-relative-strength-index.component";
 
 @Injectable({
   providedIn: "root"
@@ -175,6 +177,10 @@ export class IndicatorConfigProviderService {
         return RainbowOscillatorComponent;
       case 'ROC':
         return RateOfChangeComponent;
+      case 'RSI':
+        return RelativeStrengthIndexComponent;
+      case 'CRSI':
+        return ConnorsRelativeStrengthIndexComponent;
     }
   }
 
