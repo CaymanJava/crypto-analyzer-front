@@ -109,6 +109,8 @@ export class IndicatorTypeRecognizerService {
         return 'PERCENTAGE_PRICE_OSCILLATOR';
       case 'PSAR':
         return 'PARABOLIC_STOP_AND_REVERSE';
+      case 'PVT':
+        return 'PRICE_VOLUME_TREND'
     }
   }
 

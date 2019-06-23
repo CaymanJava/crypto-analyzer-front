@@ -50,6 +50,7 @@ import { PivotPointsComponent } from "../../indicator/indicator-config/pivot/piv
 import { PriceMomentumOscillatorComponent } from "../../indicator/indicator-config/pmo/price-momentum-oscillator.component";
 import { PercentagePriceOscillatorComponent } from "../../indicator/indicator-config/ppo/percentage-price-oscillator.component";
 import { ParabolicStopAndReverseComponent } from "../../indicator/indicator-config/psar/parabolic-stop-and-reverse.component";
+import { PriceVolumeTrendComponent } from "../../indicator/indicator-config/pvt/price-volume-trend.component";
 
 @Injectable({
   providedIn: "root"
@@ -160,6 +161,8 @@ export class IndicatorConfigProviderService {
         return PercentagePriceOscillatorComponent;
       case 'PSAR':
         return ParabolicStopAndReverseComponent;
+      case 'PVT':
+        return PriceVolumeTrendComponent;
     }
   }
 
