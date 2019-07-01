@@ -4,7 +4,7 @@ import { IndicatorSettings } from "./indicator.model";
 @Injectable({
   providedIn: "root"
 })
-export class IndicatorTypeRecognizerService {
+export class IndicatorTypeProviderService {
 
   recognize(settings: IndicatorSettings): string {
     switch (settings.indicatorItem.title) {
@@ -127,6 +127,8 @@ export class IndicatorTypeRecognizerService {
         return 'LAGUERRE_RELATIVE_STRENGTH_INDEX';
       case 'SRSI':
         return 'STOCHASTIC_RELATIVE_STRENGTH_INDEX';
+      case 'RV':
+        return 'RELATIVE_VOLATILITY';
     }
   }
 

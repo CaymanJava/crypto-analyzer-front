@@ -59,6 +59,7 @@ import { RelativeStrengthIndexComponent } from "../../indicator/indicator-config
 import { ConnorsRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/connors-relative-strength-index.component";
 import { LaguerreRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/laguerre-relative-strength-index.component";
 import { StochasticRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/stochastic-relative-strength-index.component";
+import { RelativeVolatilityComponent } from "../../indicator/indicator-config/rv/relative-volatility.component";
 
 @Injectable({
   providedIn: "root"
@@ -187,6 +188,8 @@ export class IndicatorConfigProviderService {
         return LaguerreRelativeStrengthIndexComponent;
       case 'SRSI':
         return StochasticRelativeStrengthIndexComponent;
+      case 'RV':
+        return RelativeVolatilityComponent;
     }
   }
 

@@ -75,6 +75,7 @@ import { RelativeStrengthIndexComponent } from './indicator-config/rsi/relative-
 import { ConnorsRelativeStrengthIndexComponent } from "./indicator-config/rsi/connors-relative-strength-index.component";
 import { LaguerreRelativeStrengthIndexComponent } from "./indicator-config/rsi/laguerre-relative-strength-index.component";
 import { StochasticRelativeStrengthIndexComponent } from "./indicator-config/rsi/stochastic-relative-strength-index.component";
+import { RelativeVolatilityComponent } from './indicator-config/rv/relative-volatility.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -148,7 +149,8 @@ const modalConfig = [
   RelativeStrengthIndexComponent,
   ConnorsRelativeStrengthIndexComponent,
   LaguerreRelativeStrengthIndexComponent,
-  StochasticRelativeStrengthIndexComponent
+  StochasticRelativeStrengthIndexComponent,
+  RelativeVolatilityComponent
 ];
 
 @NgModule({

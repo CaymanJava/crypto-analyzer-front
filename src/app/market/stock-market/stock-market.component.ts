@@ -10,7 +10,7 @@ import { IndicatorConfigService } from "../../core/indicator/indicator-config.se
 import { ChartDrawerService } from "../../core/chart/chart-drawer.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
-import { IndicatorTypeRecognizerService } from "../../core/indicator/indicator-type-recognizer.service";
+import { IndicatorTypeProviderService } from "../../core/indicator/indicator-type-provider.service";
 
 @Component({
   selector: 'app-stock-market',
@@ -50,7 +50,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
               private chartSaveService: ChartSaveService,
               private indicatorDrawerService: IndicatorDrawService,
               private indicatorConfigProvider: IndicatorConfigService,
-              private indicatorTypeRecognizerService: IndicatorTypeRecognizerService,
+              private indicatorTypeProviderService: IndicatorTypeProviderService,
               private datePipe: DatePipe,
               private renderer: Renderer2) {
     this.currentMarketSubscription = activatedRoute.params.subscribe(params => {
@@ -198,7 +198,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     request.timeFrame = this.timeFrame;
     request.from = dateFrom;
     request.to = dateTo;
-    request.indicatorType = this.indicatorTypeRecognizerService.recognize(settings);
+    request.indicatorType = this.indicatorTypeProviderService.recognize(settings);
     request.setConfiguration(settings.configuration);
     return request;
   }
