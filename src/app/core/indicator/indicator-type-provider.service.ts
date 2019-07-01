@@ -129,6 +129,8 @@ export class IndicatorTypeProviderService {
         return 'STOCHASTIC_RELATIVE_STRENGTH_INDEX';
       case 'RV':
         return 'RELATIVE_VOLATILITY';
+      case 'RVI':
+        return 'RELATIVE_VIGOR_INDEX';
     }
   }
 
