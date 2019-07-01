@@ -131,6 +131,8 @@ export class IndicatorTypeProviderService {
         return 'RELATIVE_VOLATILITY';
       case 'RVI':
         return 'RELATIVE_VIGOR_INDEX';
+      case 'RWI':
+        return 'RANDOM_WALK_INDEX';
     }
   }
 

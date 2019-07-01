@@ -61,6 +61,7 @@ import { LaguerreRelativeStrengthIndexComponent } from "../../indicator/indicato
 import { StochasticRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/stochastic-relative-strength-index.component";
 import { RelativeVolatilityComponent } from "../../indicator/indicator-config/rv/relative-volatility.component";
 import { RelativeVigorIndexComponent } from "../../indicator/indicator-config/rvi/relative-vigor-index.component";
+import { RandomWalkIndexComponent } from "../../indicator/indicator-config/rwi/random-walk-index.component";
 
 @Injectable({
   providedIn: "root"
@@ -193,6 +194,8 @@ export class IndicatorConfigProviderService {
         return RelativeVolatilityComponent;
       case 'RVI':
         return RelativeVigorIndexComponent;
+      case 'RWI':
+        return RandomWalkIndexComponent;
     }
   }
 

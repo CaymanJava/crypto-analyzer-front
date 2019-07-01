@@ -77,6 +77,7 @@ import { LaguerreRelativeStrengthIndexComponent } from "./indicator-config/rsi/l
 import { StochasticRelativeStrengthIndexComponent } from "./indicator-config/rsi/stochastic-relative-strength-index.component";
 import { RelativeVolatilityComponent } from './indicator-config/rv/relative-volatility.component';
 import { RelativeVigorIndexComponent } from './indicator-config/rvi/relative-vigor-index.component';
+import { RandomWalkIndexComponent } from './indicator-config/rwi/random-walk-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -152,7 +153,8 @@ const modalConfig = [
   LaguerreRelativeStrengthIndexComponent,
   StochasticRelativeStrengthIndexComponent,
   RelativeVolatilityComponent,
-  RelativeVigorIndexComponent
+  RelativeVigorIndexComponent,
+  RandomWalkIndexComponent
 ];
 
 @NgModule({
