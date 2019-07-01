@@ -184,9 +184,9 @@ export class StockMarketComponent implements OnInit, OnDestroy {
       this.chart.plot(0).removeAllSeries();
       this.redrawChart();
       this.updateAllZeroPlotIndicators();
-      return this.indicatorDrawerService.update(settings, result, this.chart, this.container, this.updatedConfigHandler.plotNumber);
+      return this.indicatorDrawerService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
     } else {
-      return this.indicatorDrawerService.update(settings, result, this.chart, this.container, this.updatedConfigHandler.plotNumber);
+      return this.indicatorDrawerService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
     }
   }
 
@@ -301,7 +301,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
         if (configHandler.plotNumber == 0 && configHandler.id != this.updatedConfigHandler.id) {
           this.indicatorDrawerService.update(new IndicatorSettings(configHandler.indicatorItem,
             configHandler.configuration, configHandler.drawConfiguration, true),
-            configHandler.data, this.chart, this.container, 0);
+            configHandler.data, this.chart, 0);
         }
       }
     );

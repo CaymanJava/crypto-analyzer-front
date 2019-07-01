@@ -18,7 +18,7 @@ export class IndicatorDrawService {
     return drawResult;
   }
 
-  update(settings: IndicatorSettings, result: any[], chart: any, container: ElementRef, plotNumber: number): IndicatorDrawResult {
+  update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     return this.drawServiceProvider.getDrawService(settings).update(settings, result, chart, plotNumber);
   }
 

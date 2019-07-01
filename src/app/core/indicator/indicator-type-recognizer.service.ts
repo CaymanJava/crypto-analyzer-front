@@ -123,6 +123,8 @@ export class IndicatorTypeRecognizerService {
         return 'RELATIVE_STRENGTH_INDEX';
       case 'CRSI':
         return 'CONNORS_RELATIVE_STRENGTH_INDEX';
+      case 'LRSI':
+        return 'LAGUERRE_RELATIVE_STRENGTH_INDEX';
     }
   }
 

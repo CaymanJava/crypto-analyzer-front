@@ -73,6 +73,7 @@ import { RainbowOscillatorComponent } from './indicator-config/ro/rainbow-oscill
 import { RateOfChangeComponent } from './indicator-config/roc/rate-of-change.component';
 import { RelativeStrengthIndexComponent } from './indicator-config/rsi/relative-strength-index.component';
 import { ConnorsRelativeStrengthIndexComponent } from "./indicator-config/rsi/connors-relative-strength-index.component";
+import { LaguerreRelativeStrengthIndexComponent } from "./indicator-config/rsi/laguerre-relative-strength-index.component";
 
 const components = [
   IndicatorPickerComponent,
@@ -144,7 +145,8 @@ const modalConfig = [
   RainbowOscillatorComponent,
   RateOfChangeComponent,
   RelativeStrengthIndexComponent,
-  ConnorsRelativeStrengthIndexComponent
+  ConnorsRelativeStrengthIndexComponent,
+  LaguerreRelativeStrengthIndexComponent
 ];
 
 @NgModule({

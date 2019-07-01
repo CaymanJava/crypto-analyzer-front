@@ -57,6 +57,7 @@ import { RainbowOscillatorComponent } from "../../indicator/indicator-config/ro/
 import { RateOfChangeComponent } from "../../indicator/indicator-config/roc/rate-of-change.component";
 import { RelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/relative-strength-index.component";
 import { ConnorsRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/connors-relative-strength-index.component";
+import { LaguerreRelativeStrengthIndexComponent } from "../../indicator/indicator-config/rsi/laguerre-relative-strength-index.component";
 
 @Injectable({
   providedIn: "root"
@@ -181,6 +182,8 @@ export class IndicatorConfigProviderService {
         return RelativeStrengthIndexComponent;
       case 'CRSI':
         return ConnorsRelativeStrengthIndexComponent;
+      case 'LRSI':
+        return LaguerreRelativeStrengthIndexComponent;
     }
   }
 
