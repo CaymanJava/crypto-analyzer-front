@@ -74,6 +74,7 @@ import { RateOfChangeComponent } from './indicator-config/roc/rate-of-change.com
 import { RelativeStrengthIndexComponent } from './indicator-config/rsi/relative-strength-index.component';
 import { ConnorsRelativeStrengthIndexComponent } from "./indicator-config/rsi/connors-relative-strength-index.component";
 import { LaguerreRelativeStrengthIndexComponent } from "./indicator-config/rsi/laguerre-relative-strength-index.component";
+import { StochasticRelativeStrengthIndexComponent } from "./indicator-config/rsi/stochastic-relative-strength-index.component";
 
 const components = [
   IndicatorPickerComponent,
@@ -146,7 +147,8 @@ const modalConfig = [
   RateOfChangeComponent,
   RelativeStrengthIndexComponent,
   ConnorsRelativeStrengthIndexComponent,
-  LaguerreRelativeStrengthIndexComponent
+  LaguerreRelativeStrengthIndexComponent,
+  StochasticRelativeStrengthIndexComponent
 ];
 
 @NgModule({

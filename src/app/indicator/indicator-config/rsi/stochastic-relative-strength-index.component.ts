@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { BaseIndicatorComponent } from "../base/base-indicator.component";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormBuilder, Validators } from "@angular/forms";
+import { NotDecimalValidator } from "../../../shared/validators/not-decimal-validator";
 
 @Component({
   moduleId: module.id,
-  templateUrl: './laguerre-relative-strength-index.component.html'
+  templateUrl: './stochastic-relative-strength-index.component.html'
 })
-export class LaguerreRelativeStrengthIndexComponent extends BaseIndicatorComponent {
+export class StochasticRelativeStrengthIndexComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
@@ -17,7 +18,9 @@ export class LaguerreRelativeStrengthIndexComponent extends BaseIndicatorCompone
 
   initForms() {
     this.configForm = this.fb.group({
-      'gamma': ['', [Validators.required, Validators.min(0.0001)]]
+      'movingAverageType': ['', [Validators.required]],
+      'rsiPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'stochPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
     });
     this.drawConfigForm = this.fb.group({
       'indicatorLineColor': ['#1c1afa', [Validators.required]],
@@ -33,7 +36,9 @@ export class LaguerreRelativeStrengthIndexComponent extends BaseIndicatorCompone
   onSubmit() {
     this.modal.close({
       configuration: {
-        gamma: this.configForm.get('gamma').value
+        movingAverageType: this.configForm.get('movingAverageType').value,
+        rsiPeriod: this.configForm.get('rsiPeriod').value,
+        stochPeriod: this.configForm.get('stochPeriod').value
       },
       drawConfiguration: {
         indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value,
@@ -46,7 +51,9 @@ export class LaguerreRelativeStrengthIndexComponent extends BaseIndicatorCompone
   fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
-        gamma: this.configuration.gamma
+        movingAverageType: this.configuration.movingAverageType,
+        rsiPeriod: this.configuration.rsiPeriod,
+        stochPeriod: this.configuration.stochPeriod
       });
       this.drawConfigForm.setValue({
         indicatorLineColor: this.drawConfiguration.indicatorLineColor,
