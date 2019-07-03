@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import * as AnyChart from "anychart";
 
 @Injectable({
   providedIn: "root"
@@ -25,7 +24,7 @@ export class AroonDrawService extends CommonDrawService {
   private drawAroon(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareAroonData(result);
     const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
-    const indicator = this.configureData(indicatorData);
+    const indicator = super.configureDataTable(indicatorData);
     this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
@@ -46,12 +45,6 @@ export class AroonDrawService extends CommonDrawService {
     const aroonDownLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
     aroonDownLine.stroke(drawConfiguration.aroonDownLineColor);
     aroonDownLine.name('Aroon DOWN');
-  }
-
-  private configureData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator;
   }
 
   private prepareAroonData(result: any[]) {

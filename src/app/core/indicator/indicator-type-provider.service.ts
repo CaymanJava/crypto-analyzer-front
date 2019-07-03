@@ -137,6 +137,8 @@ export class IndicatorTypeProviderService {
         return 'SWING_INDEX';
       case 'SMI':
         return 'STOCHASTIC_MOMENTUM_INDEX';
+      case 'ST':
+        return 'SUPER_TREND';
     }
   }
 

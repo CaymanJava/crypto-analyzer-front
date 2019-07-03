@@ -80,6 +80,7 @@ import { RelativeVigorIndexComponent } from './indicator-config/rvi/relative-vig
 import { RandomWalkIndexComponent } from './indicator-config/rwi/random-walk-index.component';
 import { SwingIndexComponent } from './indicator-config/si/swing-index.component';
 import { StochasticMomentumIndexComponent } from './indicator-config/smi/stochastic-momentum-index.component';
+import { SuperTrendComponent } from './indicator-config/st/super-trend.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -158,7 +159,8 @@ const modalConfig = [
   RelativeVigorIndexComponent,
   RandomWalkIndexComponent,
   SwingIndexComponent,
-  StochasticMomentumIndexComponent
+  StochasticMomentumIndexComponent,
+  SuperTrendComponent
 ];
 
 @NgModule({

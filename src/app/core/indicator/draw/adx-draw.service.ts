@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import * as AnyChart from "anychart";
 import { CommonDrawService } from "./common-draw.service";
 
 @Injectable({
@@ -25,7 +24,7 @@ export class AdxDrawService extends CommonDrawService {
   private drawADX(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareAdxData(result);
     const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
-    const indicator = this.configureData(indicatorData);
+    const indicator = super.configureDataTable(indicatorData);
     this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
@@ -53,12 +52,6 @@ export class AdxDrawService extends CommonDrawService {
     const indicatorLine = indicatorPlot.line(indicator.mapAs({'value': 3}));
     indicatorLine.stroke(drawConfiguration.indicatorLineColor);
     indicatorLine.name('ADX');
-  }
-
-  private configureData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator;
   }
 
   private prepareAdxData(result: any[]) {

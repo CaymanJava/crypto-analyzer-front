@@ -18,7 +18,6 @@ export class MaDrawService extends SimpleDrawService {
   configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {
     const indicatorPlot = chart.plot(plotNumber);
     super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot.line(indicatorMapping);
   }
 

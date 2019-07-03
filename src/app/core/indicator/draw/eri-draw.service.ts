@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import * as AnyChart from "anychart";
 
 @Injectable({
   providedIn: "root"
@@ -28,7 +27,7 @@ export class EriDrawService extends CommonDrawService {
   private drawERI(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
     const indicatorData = this.prepareERIData(result);
     const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
-    const indicator = this.configureData(indicatorData);
+    const indicator = super.configureDataTable(indicatorData);
     this.prepareLines(settings.drawConfiguration, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
@@ -56,12 +55,6 @@ export class EriDrawService extends CommonDrawService {
     const negativeDiLine = indicatorPlot.line(indicator.mapAs({'value': 3}));
     negativeDiLine.stroke(drawConfiguration.smoothLineColor);
     negativeDiLine.name('Smoothed');
-  }
-
-  private configureData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator;
   }
 
   private prepareERIData(result: any[]) {

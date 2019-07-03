@@ -1,4 +1,5 @@
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
+import * as AnyChart from "anychart";
 
 export interface DrawService {
 
@@ -38,6 +39,12 @@ export abstract class CommonDrawService implements DrawService {
       ]
     ));
     return indicatorData;
+  }
+
+  configureDataTable(indicatorData) {
+    const indicator = AnyChart.data.table(0);
+    indicator.addData(indicatorData);
+    return indicator;
   }
 
   clearPlot(chart: any, plotNumber: number) {

@@ -1,6 +1,5 @@
 import { CommonDrawService } from "./common-draw.service";
 import { IndicatorDrawResult, IndicatorSettings } from "../indicator.model";
-import * as AnyChart from "anychart";
 
 export abstract class SignalLineDrawService extends CommonDrawService {
 
@@ -11,7 +10,7 @@ export abstract class SignalLineDrawService extends CommonDrawService {
   private drawIndicatorWithSignalLine(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
     const indicatorData = this.prepareDataForIndicatorWithSignalLine(result);
     const indicatorPlot = this.configurePlot(chart, plotNumber, horizontalLines);
-    const indicator = this.configureData(indicatorData);
+    const indicator = super.configureDataTable(indicatorData);
     this.prepareLines(settings, indicatorPlot, indicator);
     const title = this.prepareTitle(settings);
     return new IndicatorDrawResult(title, plotNumber);
@@ -48,12 +47,6 @@ export abstract class SignalLineDrawService extends CommonDrawService {
     const signalLine = indicatorPlot.line(indicator.mapAs({'value': 2}));
     signalLine.stroke(color);
     signalLine.name('Signal');
-  }
-
-  private configureData(indicatorData) {
-    const indicator = AnyChart.data.table(0);
-    indicator.addData(indicatorData);
-    return indicator;
   }
 
   private configurePlot(chart: any, plotNumber: number, horizontalLines?: number[]) {
