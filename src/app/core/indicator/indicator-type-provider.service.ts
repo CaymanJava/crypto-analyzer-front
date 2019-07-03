@@ -133,6 +133,8 @@ export class IndicatorTypeProviderService {
         return 'RELATIVE_VIGOR_INDEX';
       case 'RWI':
         return 'RANDOM_WALK_INDEX';
+      case 'SI':
+        return 'SWING_INDEX';
     }
   }
 

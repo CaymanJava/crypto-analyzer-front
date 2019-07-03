@@ -78,6 +78,7 @@ import { StochasticRelativeStrengthIndexComponent } from "./indicator-config/rsi
 import { RelativeVolatilityComponent } from './indicator-config/rv/relative-volatility.component';
 import { RelativeVigorIndexComponent } from './indicator-config/rvi/relative-vigor-index.component';
 import { RandomWalkIndexComponent } from './indicator-config/rwi/random-walk-index.component';
+import { SwingIndexComponent } from './indicator-config/si/swing-index.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -154,7 +155,8 @@ const modalConfig = [
   StochasticRelativeStrengthIndexComponent,
   RelativeVolatilityComponent,
   RelativeVigorIndexComponent,
-  RandomWalkIndexComponent
+  RandomWalkIndexComponent,
+  SwingIndexComponent
 ];
 
 @NgModule({

@@ -64,6 +64,7 @@ import { SrsiDrawService } from "./draw/srsi-draw.service";
 import { RvDrawService } from "./draw/rv-draw.service";
 import { RviDrawService } from "./draw/rvi-draw.service";
 import { RwiDrawService } from "./draw/rwi-draw.service";
+import { SiDrawService } from "./draw/si-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -101,7 +102,7 @@ export class IndicatorDrawProviderService {
               private rsiDrawService: RsiDrawService, private crsiDrawService: CrsiDrawService,
               private lrsiDrawService: LrsiDrawService, private srsiDrawService: SrsiDrawService,
               private rvDrawService: RvDrawService, private rviDrawService: RviDrawService,
-              private rwiDrawService: RwiDrawService) {
+              private rwiDrawService: RwiDrawService, private siDrawService: SiDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -232,6 +233,8 @@ export class IndicatorDrawProviderService {
         return this.rviDrawService;
       case 'RWI':
         return this.rwiDrawService;
+      case 'SI':
+        return this.siDrawService;
     }
   }
 
