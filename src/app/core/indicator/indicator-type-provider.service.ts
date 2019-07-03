@@ -135,6 +135,8 @@ export class IndicatorTypeProviderService {
         return 'RANDOM_WALK_INDEX';
       case 'SI':
         return 'SWING_INDEX';
+      case 'SMI':
+        return 'STOCHASTIC_MOMENTUM_INDEX';
     }
   }
 
