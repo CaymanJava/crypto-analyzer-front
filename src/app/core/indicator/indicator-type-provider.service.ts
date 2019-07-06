@@ -141,6 +141,8 @@ export class IndicatorTypeProviderService {
         return 'SUPER_TREND';
       case 'STC':
         return 'SCHAFF_TREND_CYCLE';
+      case 'STDEV':
+        return 'STANDARD_DEVIATION';
     }
   }
 

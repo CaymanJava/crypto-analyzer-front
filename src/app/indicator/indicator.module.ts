@@ -82,6 +82,7 @@ import { SwingIndexComponent } from './indicator-config/si/swing-index.component
 import { StochasticMomentumIndexComponent } from './indicator-config/smi/stochastic-momentum-index.component';
 import { SuperTrendComponent } from './indicator-config/st/super-trend.component';
 import { SchaffTrendCycleComponent } from './indicator-config/stc/schaff-trend-cycle.component';
+import { StandardDeviationComponent } from './indicator-config/stdev/standard-deviation.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -162,7 +163,8 @@ const modalConfig = [
   SwingIndexComponent,
   StochasticMomentumIndexComponent,
   SuperTrendComponent,
-  SchaffTrendCycleComponent
+  SchaffTrendCycleComponent,
+  StandardDeviationComponent
 ];
 
 @NgModule({
