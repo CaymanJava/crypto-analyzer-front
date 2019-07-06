@@ -65,6 +65,7 @@ import { RandomWalkIndexComponent } from "../../indicator/indicator-config/rwi/r
 import { SwingIndexComponent } from "../../indicator/indicator-config/si/swing-index.component";
 import { StochasticMomentumIndexComponent } from "../../indicator/indicator-config/smi/stochastic-momentum-index.component";
 import { SuperTrendComponent } from "../../indicator/indicator-config/st/super-trend.component";
+import { SchaffTrendCycleComponent } from "../../indicator/indicator-config/stc/schaff-trend-cycle.component";
 
 @Injectable({
   providedIn: "root"
@@ -205,6 +206,8 @@ export class IndicatorConfigProviderService {
         return StochasticMomentumIndexComponent;
       case 'ST':
         return SuperTrendComponent;
+      case 'STC':
+        return SchaffTrendCycleComponent;
     }
   }
 

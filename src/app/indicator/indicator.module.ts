@@ -81,6 +81,7 @@ import { RandomWalkIndexComponent } from './indicator-config/rwi/random-walk-ind
 import { SwingIndexComponent } from './indicator-config/si/swing-index.component';
 import { StochasticMomentumIndexComponent } from './indicator-config/smi/stochastic-momentum-index.component';
 import { SuperTrendComponent } from './indicator-config/st/super-trend.component';
+import { SchaffTrendCycleComponent } from './indicator-config/stc/schaff-trend-cycle.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -160,7 +161,8 @@ const modalConfig = [
   RandomWalkIndexComponent,
   SwingIndexComponent,
   StochasticMomentumIndexComponent,
-  SuperTrendComponent
+  SuperTrendComponent,
+  SchaffTrendCycleComponent
 ];
 
 @NgModule({

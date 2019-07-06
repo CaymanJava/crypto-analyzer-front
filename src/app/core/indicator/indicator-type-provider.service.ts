@@ -139,6 +139,8 @@ export class IndicatorTypeProviderService {
         return 'STOCHASTIC_MOMENTUM_INDEX';
       case 'ST':
         return 'SUPER_TREND';
+      case 'STC':
+        return 'SCHAFF_TREND_CYCLE';
     }
   }
 
