@@ -72,6 +72,7 @@ import { StdevDrawService } from "./draw/stdev-draw.service";
 import { StochDrawService } from "./draw/stoch-draw.service";
 import { TmfDrawService } from "./draw/tmf-draw.service";
 import { TrixDrawService } from "./draw/trix-draw.service";
+import { UoDrawService } from "./draw/uo-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -113,7 +114,7 @@ export class IndicatorDrawProviderService {
               private smiDrawService: SmiDrawService, private stDrawService: StDrawService,
               private stcDrawService: StcDrawService, private stdevDrawService: StdevDrawService,
               private stochDrawService: StochDrawService, private tmfDrawService: TmfDrawService,
-              private trixDrawService: TrixDrawService) {
+              private trixDrawService: TrixDrawService, private uoDrawService: UoDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -261,6 +262,8 @@ export class IndicatorDrawProviderService {
         return this.tmfDrawService;
       case 'TRIX':
         return this.trixDrawService;
+      case 'UO':
+        return this.uoDrawService;
     }
   }
 

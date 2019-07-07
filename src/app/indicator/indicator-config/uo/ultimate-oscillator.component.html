@@ -8,9 +8,21 @@
   <form [formGroup]="configForm">
     <app-indicator-input
         [form]="configForm"
-        key="period"
-        label="Period"
-        placeholder="21">
+        key="shortPeriod"
+        label="Short period"
+        placeholder="7">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="middlePeriod"
+        label="Middle period"
+        placeholder="14">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="longPeriod"
+        label="Long period"
+        placeholder="28">
     </app-indicator-input>
     <div class="separator-breadcrumb border-top"></div>
     <app-color-picker
@@ -18,11 +30,18 @@
         [color]="drawConfigForm.get('indicatorLineColor').value"
         [label]="'Indicator line'">
     </app-color-picker>
-    <app-color-picker
-        (onColorChange)="onColorPickerChange($event, 'signalLineColor')"
-        [color]="drawConfigForm.get('signalLineColor').value"
-        [label]="'Signal line'">
-    </app-color-picker>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="overbought"
+        label="Overbought"
+        placeholder="70">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="oversold"
+        label="Oversold"
+        placeholder="30">
+    </app-indicator-input>
   </form>
 </div>
 <div class="modal-footer">

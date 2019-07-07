@@ -70,6 +70,7 @@ import { StandardDeviationComponent } from "../../indicator/indicator-config/std
 import { StochasticOscillatorComponent } from "../../indicator/indicator-config/stoch/stochastic-oscillator.component";
 import { TwiggsMoneyFlowComponent } from "../../indicator/indicator-config/tmf/twiggs-money-flow.component";
 import { TripleExponentialAverageComponent } from "../../indicator/indicator-config/trix/triple-exponential-average.component";
+import { UltimateOscillatorComponent } from "../../indicator/indicator-config/uo/ultimate-oscillator.component";
 
 @Injectable({
   providedIn: "root"
@@ -221,6 +222,8 @@ export class IndicatorConfigProviderService {
         return TwiggsMoneyFlowComponent;
       case 'TRIX':
         return TripleExponentialAverageComponent;
+      case 'UO':
+        return UltimateOscillatorComponent;
     }
   }
 

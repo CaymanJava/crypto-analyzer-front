@@ -86,6 +86,7 @@ import { StandardDeviationComponent } from './indicator-config/stdev/standard-de
 import { StochasticOscillatorComponent } from './indicator-config/stoch/stochastic-oscillator.component';
 import { TwiggsMoneyFlowComponent } from './indicator-config/tmf/twiggs-money-flow.component';
 import { TripleExponentialAverageComponent } from './indicator-config/trix/triple-exponential-average.component';
+import { UltimateOscillatorComponent } from './indicator-config/uo/ultimate-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -170,7 +171,8 @@ const modalConfig = [
   StandardDeviationComponent,
   StochasticOscillatorComponent,
   TwiggsMoneyFlowComponent,
-  TripleExponentialAverageComponent
+  TripleExponentialAverageComponent,
+  UltimateOscillatorComponent
 ];
 
 @NgModule({

@@ -151,6 +151,8 @@ export class IndicatorTypeProviderService {
         return 'TWIGGS_MONEY_FLOW';
       case 'TRIX':
         return 'TRIPLE_EXPONENTIAL_AVERAGE';
+      case 'UO':
+        return 'ULTIMATE_OSCILLATOR';
     }
   }
 
