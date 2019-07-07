@@ -147,6 +147,8 @@ export class IndicatorTypeProviderService {
         return 'STOCHASTIC_OSCILLATOR';
       case 'PSTOCH':
         return 'PREFERABLE_STOCHASTIC_OSCILLATOR';
+      case 'TMF':
+        return 'TWIGGS_MONEY_FLOW';
     }
   }
 

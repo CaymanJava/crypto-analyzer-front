@@ -84,6 +84,7 @@ import { SuperTrendComponent } from './indicator-config/st/super-trend.component
 import { SchaffTrendCycleComponent } from './indicator-config/stc/schaff-trend-cycle.component';
 import { StandardDeviationComponent } from './indicator-config/stdev/standard-deviation.component';
 import { StochasticOscillatorComponent } from './indicator-config/stoch/stochastic-oscillator.component';
+import { TwiggsMoneyFlowComponent } from './indicator-config/tmf/twiggs-money-flow.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -166,7 +167,8 @@ const modalConfig = [
   SuperTrendComponent,
   SchaffTrendCycleComponent,
   StandardDeviationComponent,
-  StochasticOscillatorComponent
+  StochasticOscillatorComponent,
+  TwiggsMoneyFlowComponent
 ];
 
 @NgModule({
