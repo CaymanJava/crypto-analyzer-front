@@ -88,6 +88,8 @@ import { TwiggsMoneyFlowComponent } from './indicator-config/tmf/twiggs-money-fl
 import { TripleExponentialAverageComponent } from './indicator-config/trix/triple-exponential-average.component';
 import { UltimateOscillatorComponent } from './indicator-config/uo/ultimate-oscillator.component';
 import { VerticalHorizontalFilterComponent } from './indicator-config/vhf/vertical-horizontal-filter.component';
+import { VolumeIndexComponent } from './indicator-config/vi/volume-index.component';
+import { VolumeIndexTypePickerComponent } from './common/volume-index-type-picker/volume-index-type-picker.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -97,7 +99,8 @@ const components = [
   PriceTypePickerComponent,
   IndicatorSwitcherComponent,
   ShiftTypePickerComponent,
-  PivotPointsPickerComponent
+  PivotPointsPickerComponent,
+  VolumeIndexTypePickerComponent
 ];
 
 const modalConfig = [
@@ -174,7 +177,8 @@ const modalConfig = [
   TwiggsMoneyFlowComponent,
   TripleExponentialAverageComponent,
   UltimateOscillatorComponent,
-  VerticalHorizontalFilterComponent
+  VerticalHorizontalFilterComponent,
+  VolumeIndexComponent
 ];
 
 @NgModule({

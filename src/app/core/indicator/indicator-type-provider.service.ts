@@ -155,6 +155,8 @@ export class IndicatorTypeProviderService {
         return 'ULTIMATE_OSCILLATOR';
       case 'VHF':
         return 'VERTICAL_HORIZONTAL_FILTER';
+      case 'VI':
+        return settings.configuration.volumeIndexType;
     }
   }
 
