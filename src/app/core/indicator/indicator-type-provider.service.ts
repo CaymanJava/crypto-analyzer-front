@@ -149,6 +149,8 @@ export class IndicatorTypeProviderService {
         return 'PREFERABLE_STOCHASTIC_OSCILLATOR';
       case 'TMF':
         return 'TWIGGS_MONEY_FLOW';
+      case 'TRIX':
+        return 'TRIPLE_EXPONENTIAL_AVERAGE';
     }
   }
 
