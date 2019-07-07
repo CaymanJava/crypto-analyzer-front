@@ -71,6 +71,7 @@ import { StochasticOscillatorComponent } from "../../indicator/indicator-config/
 import { TwiggsMoneyFlowComponent } from "../../indicator/indicator-config/tmf/twiggs-money-flow.component";
 import { TripleExponentialAverageComponent } from "../../indicator/indicator-config/trix/triple-exponential-average.component";
 import { UltimateOscillatorComponent } from "../../indicator/indicator-config/uo/ultimate-oscillator.component";
+import { VerticalHorizontalFilterComponent } from "../../indicator/indicator-config/vhf/vertical-horizontal-filter.component";
 
 @Injectable({
   providedIn: "root"
@@ -224,6 +225,8 @@ export class IndicatorConfigProviderService {
         return TripleExponentialAverageComponent;
       case 'UO':
         return UltimateOscillatorComponent;
+      case 'VHF':
+        return VerticalHorizontalFilterComponent;
     }
   }
 

@@ -87,6 +87,7 @@ import { StochasticOscillatorComponent } from './indicator-config/stoch/stochast
 import { TwiggsMoneyFlowComponent } from './indicator-config/tmf/twiggs-money-flow.component';
 import { TripleExponentialAverageComponent } from './indicator-config/trix/triple-exponential-average.component';
 import { UltimateOscillatorComponent } from './indicator-config/uo/ultimate-oscillator.component';
+import { VerticalHorizontalFilterComponent } from './indicator-config/vhf/vertical-horizontal-filter.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -172,7 +173,8 @@ const modalConfig = [
   StochasticOscillatorComponent,
   TwiggsMoneyFlowComponent,
   TripleExponentialAverageComponent,
-  UltimateOscillatorComponent
+  UltimateOscillatorComponent,
+  VerticalHorizontalFilterComponent
 ];
 
 @NgModule({

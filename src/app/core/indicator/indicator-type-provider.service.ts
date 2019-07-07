@@ -153,6 +153,8 @@ export class IndicatorTypeProviderService {
         return 'TRIPLE_EXPONENTIAL_AVERAGE';
       case 'UO':
         return 'ULTIMATE_OSCILLATOR';
+      case 'VHF':
+        return 'VERTICAL_HORIZONTAL_FILTER';
     }
   }
 
