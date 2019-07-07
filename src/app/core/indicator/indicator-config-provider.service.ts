@@ -74,6 +74,7 @@ import { UltimateOscillatorComponent } from "../../indicator/indicator-config/uo
 import { VerticalHorizontalFilterComponent } from "../../indicator/indicator-config/vhf/vertical-horizontal-filter.component";
 import { VolumeIndexComponent } from "../../indicator/indicator-config/vi/volume-index.component";
 import { VolumeOscillatorComponent } from "../../indicator/indicator-config/vo/volume-oscillator.component";
+import { WilliamsPercentRangeComponent } from "../../indicator/indicator-config/wpr/williams-percent-range.component";
 
 @Injectable({
   providedIn: "root"
@@ -233,6 +234,8 @@ export class IndicatorConfigProviderService {
         return VolumeIndexComponent;
       case 'VO':
         return VolumeOscillatorComponent;
+      case 'WPR':
+        return WilliamsPercentRangeComponent;
     }
   }
 

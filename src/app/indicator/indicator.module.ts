@@ -91,6 +91,7 @@ import { VerticalHorizontalFilterComponent } from './indicator-config/vhf/vertic
 import { VolumeIndexComponent } from './indicator-config/vi/volume-index.component';
 import { VolumeIndexTypePickerComponent } from './common/volume-index-type-picker/volume-index-type-picker.component';
 import { VolumeOscillatorComponent } from './indicator-config/vo/volume-oscillator.component';
+import { WilliamsPercentRangeComponent } from './indicator-config/wpr/williams-percent-range.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -180,7 +181,8 @@ const modalConfig = [
   UltimateOscillatorComponent,
   VerticalHorizontalFilterComponent,
   VolumeIndexComponent,
-  VolumeOscillatorComponent
+  VolumeOscillatorComponent,
+  WilliamsPercentRangeComponent
 ];
 
 @NgModule({

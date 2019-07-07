@@ -76,6 +76,7 @@ import { UoDrawService } from "./draw/uo-draw.service";
 import { VhfDrawService } from "./draw/vhf-draw.service";
 import { ViDrawService } from "./draw/vi-draw.service";
 import { VoDrawService } from "./draw/vo-draw.service";
+import { WprDrawService } from "./draw/wpr-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -119,7 +120,7 @@ export class IndicatorDrawProviderService {
               private stochDrawService: StochDrawService, private tmfDrawService: TmfDrawService,
               private trixDrawService: TrixDrawService, private uoDrawService: UoDrawService,
               private vhfDrawService: VhfDrawService, private viDrawService: ViDrawService,
-              private voDrawService: VoDrawService) {
+              private voDrawService: VoDrawService, private wprDrawService: WprDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -275,6 +276,8 @@ export class IndicatorDrawProviderService {
         return this.viDrawService;
       case 'VO':
         return this.voDrawService;
+      case 'WPR':
+        return this.wprDrawService;
     }
   }
 

@@ -159,6 +159,8 @@ export class IndicatorTypeProviderService {
         return settings.configuration.volumeIndexType;
       case 'VO':
         return 'VOLUME_OSCILLATOR';
+      case 'WPR':
+        return 'WILLIAMS_PERCENT_RANGE';
     }
   }
 
