@@ -157,6 +157,8 @@ export class IndicatorTypeProviderService {
         return 'VERTICAL_HORIZONTAL_FILTER';
       case 'VI':
         return settings.configuration.volumeIndexType;
+      case 'VO':
+        return 'VOLUME_OSCILLATOR';
     }
   }
 

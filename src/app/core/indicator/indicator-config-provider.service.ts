@@ -73,6 +73,7 @@ import { TripleExponentialAverageComponent } from "../../indicator/indicator-con
 import { UltimateOscillatorComponent } from "../../indicator/indicator-config/uo/ultimate-oscillator.component";
 import { VerticalHorizontalFilterComponent } from "../../indicator/indicator-config/vhf/vertical-horizontal-filter.component";
 import { VolumeIndexComponent } from "../../indicator/indicator-config/vi/volume-index.component";
+import { VolumeOscillatorComponent } from "../../indicator/indicator-config/vo/volume-oscillator.component";
 
 @Injectable({
   providedIn: "root"
@@ -230,6 +231,8 @@ export class IndicatorConfigProviderService {
         return VerticalHorizontalFilterComponent;
       case 'VI':
         return VolumeIndexComponent;
+      case 'VO':
+        return VolumeOscillatorComponent;
     }
   }
 

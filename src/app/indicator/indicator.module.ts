@@ -90,6 +90,7 @@ import { UltimateOscillatorComponent } from './indicator-config/uo/ultimate-osci
 import { VerticalHorizontalFilterComponent } from './indicator-config/vhf/vertical-horizontal-filter.component';
 import { VolumeIndexComponent } from './indicator-config/vi/volume-index.component';
 import { VolumeIndexTypePickerComponent } from './common/volume-index-type-picker/volume-index-type-picker.component';
+import { VolumeOscillatorComponent } from './indicator-config/vo/volume-oscillator.component';
 
 const components = [
   IndicatorPickerComponent,
@@ -178,7 +179,8 @@ const modalConfig = [
   TripleExponentialAverageComponent,
   UltimateOscillatorComponent,
   VerticalHorizontalFilterComponent,
-  VolumeIndexComponent
+  VolumeIndexComponent,
+  VolumeOscillatorComponent
 ];
 
 @NgModule({
