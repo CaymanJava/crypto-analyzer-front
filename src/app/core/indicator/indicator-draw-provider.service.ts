@@ -69,6 +69,7 @@ import { SmiDrawService } from "./draw/smi-draw.service";
 import { StDrawService } from "./draw/st-draw.service";
 import { StcDrawService } from "./draw/stc-draw.service";
 import { StdevDrawService } from "./draw/stdev-draw.service";
+import { StochDrawService } from "./draw/stoch-draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -108,7 +109,8 @@ export class IndicatorDrawProviderService {
               private rvDrawService: RvDrawService, private rviDrawService: RviDrawService,
               private rwiDrawService: RwiDrawService, private siDrawService: SiDrawService,
               private smiDrawService: SmiDrawService, private stDrawService: StDrawService,
-              private stcDrawService: StcDrawService, private stdevDrawService: StdevDrawService) {
+              private stcDrawService: StcDrawService, private stdevDrawService: StdevDrawService,
+              private stochDrawService: StochDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -249,6 +251,9 @@ export class IndicatorDrawProviderService {
         return this.stcDrawService;
       case 'STDEV':
         return this.stdevDrawService;
+      case 'STOCH':
+      case 'PSTOCH':
+        return this.stochDrawService;
     }
   }
 

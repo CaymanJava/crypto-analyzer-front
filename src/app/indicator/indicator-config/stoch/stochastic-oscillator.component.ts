@@ -6,9 +6,9 @@ import { NotDecimalValidator } from "../../../shared/validators/not-decimal-vali
 
 @Component({
   moduleId: module.id,
-  templateUrl: './schaff-trend-cycle.component.html'
+  templateUrl: './stochastic-oscillator.component.html'
 })
-export class SchaffTrendCycleComponent extends BaseIndicatorComponent {
+export class StochasticOscillatorComponent extends BaseIndicatorComponent {
 
   constructor(private modal: NgbActiveModal,
               protected fb: FormBuilder) {
@@ -18,16 +18,15 @@ export class SchaffTrendCycleComponent extends BaseIndicatorComponent {
 
   initForms() {
     this.configForm = this.fb.group({
-      'period': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'shortCycle': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'longCycle': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
-      'priceType': ['', [Validators.required]],
+      'fastStochPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
+      'slowStochPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
       'movingAverageType': ['', [Validators.required]]
     });
     this.drawConfigForm = this.fb.group({
-      'indicatorLineColor': ['#1c1afa', Validators.required],
-      'overbought': [75, [Validators.required, Validators.min(0)]],
-      'oversold': [25, [Validators.required, Validators.max(100)]],
+      'fastStochasticColor': ['#1c1afa', Validators.required],
+      'slowStochasticColor': ['#fa0f16', Validators.required],
+      'overbought': [80, [Validators.required, Validators.min(0)]],
+      'oversold': [20, [Validators.required, Validators.max(100)]],
     });
   }
 
@@ -38,14 +37,13 @@ export class SchaffTrendCycleComponent extends BaseIndicatorComponent {
   onSubmit() {
     this.modal.close({
       configuration: {
-        period: this.configForm.get('period').value,
-        shortCycle: this.configForm.get('shortCycle').value,
-        longCycle: this.configForm.get('longCycle').value,
-        priceType: this.configForm.get('priceType').value,
+        fastStochPeriod: this.configForm.get('fastStochPeriod').value,
+        slowStochPeriod: this.configForm.get('slowStochPeriod').value,
         movingAverageType: this.configForm.get('movingAverageType').value
       },
       drawConfiguration: {
-        indicatorLineColor: this.drawConfigForm.get('indicatorLineColor').value,
+        fastStochasticColor: this.drawConfigForm.get('fastStochasticColor').value,
+        slowStochasticColor: this.drawConfigForm.get('slowStochasticColor').value,
         overbought: this.drawConfigForm.get('overbought').value,
         oversold: this.drawConfigForm.get('oversold').value
       }
@@ -55,14 +53,13 @@ export class SchaffTrendCycleComponent extends BaseIndicatorComponent {
   fillConfiguration() {
     if (this.update) {
       this.configForm.setValue({
-        period: this.configuration.period,
-        shortCycle: this.configuration.shortCycle,
-        longCycle: this.configuration.longCycle,
-        priceType: this.configuration.priceType,
+        fastStochPeriod: this.configuration.fastStochPeriod,
+        slowStochPeriod: this.configuration.slowStochPeriod,
         movingAverageType: this.configuration.movingAverageType
       });
       this.drawConfigForm.setValue({
-        indicatorLineColor: this.drawConfiguration.indicatorLineColor,
+        fastStochasticColor: this.drawConfiguration.fastStochasticColor,
+        slowStochasticColor: this.drawConfiguration.slowStochasticColor,
         overbought: this.drawConfiguration.overbought,
         oversold: this.drawConfiguration.oversold
       });

@@ -143,6 +143,10 @@ export class IndicatorTypeProviderService {
         return 'SCHAFF_TREND_CYCLE';
       case 'STDEV':
         return 'STANDARD_DEVIATION';
+      case 'STOCH':
+        return 'STOCHASTIC_OSCILLATOR';
+      case 'PSTOCH':
+        return 'PREFERABLE_STOCHASTIC_OSCILLATOR';
     }
   }
 

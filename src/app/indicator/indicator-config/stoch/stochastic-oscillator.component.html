@@ -1,0 +1,68 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="configForm">
+    <app-indicator-input
+        [form]="configForm"
+        key="fastStochPeriod"
+        label="Fast period"
+        placeholder="14">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="configForm"
+        key="slowStochPeriod"
+        label="Slow period"
+        placeholder="3">
+    </app-indicator-input>
+    <app-moving-average-type-picker
+        [configForm]="configForm"
+        key="movingAverageType">
+    </app-moving-average-type-picker>
+    <div class="separator-breadcrumb border-top"></div>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'fastStochasticColor')"
+        [color]="drawConfigForm.get('fastStochasticColor').value"
+        [label]="'Fast Stochastic'">
+    </app-color-picker>
+    <app-color-picker
+        (onColorChange)="onColorPickerChange($event, 'slowStochasticColor')"
+        [color]="drawConfigForm.get('slowStochasticColor').value"
+        [label]="'Slow Stochastic'">
+    </app-color-picker>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="overbought"
+        label="Overbought"
+        placeholder="80">
+    </app-indicator-input>
+    <app-indicator-input
+        [form]="drawConfigForm"
+        key="oversold"
+        label="Oversold"
+        placeholder="20">
+    </app-indicator-input>
+  </form>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="modal.close('remove')"
+          *ngIf="update"
+          class="btn btn-outline-danger btn-rounded"
+          type="button">
+    Remove
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    {{update ? 'Update' : 'Add'}}
+  </button>
+</div>
