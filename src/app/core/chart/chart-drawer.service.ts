@@ -30,8 +30,23 @@ export class ChartDrawerService {
   startDrawing(event: any, chart: any) {
     chart.plot(0).annotations().startDrawing({
       type: event.drawType,
-      color: event.color
+      color: event.color,
+      stroke: {
+        thickness: event.thickness,
+        dash: event.dash,
+        color: event.strokeColor
+      }
     });
+  }
+
+  drawMarker(event: any, chart: any) {
+    chart.plot(0).annotations()
+      .startDrawing({
+        type: 'marker',
+        markerType: event.marker,
+        color: event.color,
+        size: event.size
+      });
   }
 
   clearDrawing(chart: any) {

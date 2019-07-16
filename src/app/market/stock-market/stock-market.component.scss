@@ -61,6 +61,22 @@
   border-radius: 3.25rem !important;
 }
 
+.indicator-button-config {
+  color: #663399;
+  background-color: transparent;
+  background-image: none;
+  border-color: #663399;
+}
+
+.indicator-button-config:focus,
+.indicator-button-config:hover,
+.indicator-button-config:active{
+  color: #fff;
+  background-color: #663399;
+  background-image: none;
+  border-color: #663399;
+}
+
 .right-side-rounded {
   border-top-right-radius: 3.25rem;
   border-bottom-right-radius: 3.25rem;

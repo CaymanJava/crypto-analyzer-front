@@ -19,6 +19,7 @@ import { DrawingToolsComponent } from './drawing-tools/drawing-tools.component';
 import { ColorPickerModule } from "ngx-color-picker";
 import { FormInputErrorComponent } from "./error/form.input.error.component";
 import { SavingToolsComponent } from './saving-tools/saving-tools.component';
+import { Ng5SliderModule } from "ng5-slider";
 
 const components = [
   BtnLoadingComponent,
@@ -51,7 +52,8 @@ const gridComponents = [
     NgbTooltipModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    ColorPickerModule
+    ColorPickerModule,
+    Ng5SliderModule
   ],
   declarations: [components, gridComponents],
   exports: [components, gridComponents]

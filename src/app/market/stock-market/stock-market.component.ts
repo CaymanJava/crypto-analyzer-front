@@ -77,6 +77,10 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     this.chartDrawerService.startDrawing(event, this.chart);
   }
 
+  drawMarker(event: any) {
+    this.chartDrawerService.drawMarker(event, this.chart);
+  }
+
   clear() {
     this.chartDrawerService.clearDrawing(this.chart);
   }

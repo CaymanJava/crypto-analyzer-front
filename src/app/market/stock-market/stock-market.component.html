@@ -59,6 +59,7 @@
 <app-drawing-tools
     (clearAll)="clear()"
     (drawToolSelected)="startDrawing($event)"
+    (markerSelected)="drawMarker($event)"
     (removeSelectedTool)="removeSelected()"
     [hidden]="hideDrawingTools">
 </app-drawing-tools>
@@ -67,7 +68,7 @@
 <div class="row">
   <div *ngFor='let indicatorConfigHandler of indicatorConfigurationHandlers' class="col-lg-auto">
     <button (click)="onIndicatorConfigChange(indicatorConfigHandler)"
-            class="btn btn-outline-success btn-rounded pt-2"
+            class="btn btn-outline indicator-button-config btn-rounded pt-2"
             type="button">
       {{indicatorConfigHandler.shortLabel}}
     </button>

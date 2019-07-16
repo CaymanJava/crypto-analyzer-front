@@ -8,6 +8,7 @@ import { SidebarContainerDirective, SidebarContentDirective, SidebarDirective, S
 import { HighlightjsDirective } from './highlightjs.directive';
 import { FullScreenWindowDirective } from './full-screen.directive';
 import { DisableControlDirective } from "./disable-control.directive";
+import { BootstrapSelectDirective } from "./bootstrap-select.directive";
 
 const directives = [
   DropdownAnchorDirective,
@@ -20,7 +21,8 @@ const directives = [
   SidebarTogglerDirective,
   HighlightjsDirective,
   FullScreenWindowDirective,
-  DisableControlDirective
+  DisableControlDirective,
+  BootstrapSelectDirective
 ];
 
 @NgModule({
