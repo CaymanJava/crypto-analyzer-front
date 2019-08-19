@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
       const activeRoute = window.location.hash || window.location.pathname;
       this.nav.forEach(item => {
         item.active = false;
-        if (activeRoute.indexOf(item.state) !== -1) {
+        if (activeRoute.startsWith(item.state)) {
           this.selectedItem = item;
           item.active = true;
         }

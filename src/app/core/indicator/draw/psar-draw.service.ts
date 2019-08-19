@@ -32,7 +32,8 @@ export class PsarDrawService extends SimpleDrawService {
     series.name(settings.indicatorItem.title);
     series.normal().fill(settings.drawConfiguration.indicatorColor, 1);
     series.normal().stroke(settings.drawConfiguration.indicatorColor, 1);
-    series.normal().size(5);
+    series.normal().size(settings.drawConfiguration.markerSize);
+    series.normal().type(settings.drawConfiguration.marker);
   }
 
 }

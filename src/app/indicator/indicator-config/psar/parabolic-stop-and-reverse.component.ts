@@ -21,7 +21,9 @@ export class ParabolicStopAndReverseComponent extends BaseIndicatorComponent {
       'maxAccelerationFactor': [false, [Validators.required, Validators.min(0.0001)]]
     });
     this.drawConfigForm = this.fb.group({
-      'indicatorColor': ['#7e05a1', Validators.required]
+      'indicatorColor': ['#7e05a1', Validators.required],
+      'markerSize': ['5', Validators.required],
+      'marker': ['star4', Validators.required],
     });
   }
 
@@ -36,7 +38,9 @@ export class ParabolicStopAndReverseComponent extends BaseIndicatorComponent {
         maxAccelerationFactor: this.configForm.get('maxAccelerationFactor').value
       },
       drawConfiguration: {
-        indicatorColor: this.drawConfigForm.get('indicatorColor').value
+        indicatorColor: this.drawConfigForm.get('indicatorColor').value,
+        markerSize: this.drawConfigForm.get('markerSize').value,
+        marker: this.drawConfigForm.get('marker').value
       }
     });
   }
@@ -48,7 +52,9 @@ export class ParabolicStopAndReverseComponent extends BaseIndicatorComponent {
         maxAccelerationFactor: this.configuration.maxAccelerationFactor
       });
       this.drawConfigForm.setValue({
-        indicatorColor: this.drawConfiguration.indicatorColor
+        indicatorColor: this.drawConfiguration.indicatorColor,
+        markerSize: this.drawConfiguration.markerSize,
+        marker: this.drawConfiguration.marker
       });
     }
   }

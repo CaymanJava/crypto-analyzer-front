@@ -1,0 +1,11 @@
+<div class="row" style="text-align: center">
+  <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+    <label>{{label}}</label>
+  </div>
+  <div class="text-center input-group-append col-6 form-group mb-3 marker-picker" style="display: inline-block">
+    <app-marker-picker
+        [marker]="marker"
+        (onMarkerChange)="markerChange($event)">
+    </app-marker-picker>
+  </div>
+</div>

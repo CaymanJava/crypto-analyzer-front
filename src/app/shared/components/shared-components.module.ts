@@ -8,7 +8,7 @@ import { SharedPipesModule } from '../pipes/shared-pipes.module';
 import { SharedDirectivesModule } from '../directives/shared-directives.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { SpinnerComponent } from "./spinner/spinner.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GridColumnComponent, GridComponent } from "./grid";
 import { GridActionComponent } from "./grid/grid-action.component";
 import { GridHeaderComponent } from "./grid/grid.header.component";
@@ -19,7 +19,22 @@ import { DrawingToolsComponent } from './drawing-tools/drawing-tools.component';
 import { ColorPickerModule } from "ngx-color-picker";
 import { FormInputErrorComponent } from "./error/form.input.error.component";
 import { SavingToolsComponent } from './saving-tools/saving-tools.component';
-import { Ng5SliderModule } from "ng5-slider";
+import { StockMarketListComponent } from './market-list/stock-market-list.component';
+import { StockMarketHeader } from "./stock-market-header/stock-market-header.component";
+import { SliderComponent } from './slider/slider.component';
+import { MatSliderModule } from "@angular/material";
+import { MarkerPickerComponent } from './marker-picker/marker-picker.component';
+import { ColorPickerComponent } from "./indicator/color-picker/color-picker.component";
+import { IndicatorInputComponent } from "./indicator/indicator-input/indicator-input.component";
+import { MovingAverageTypePickerComponent } from "./indicator/moving-average-picker/moving-average-type-picker.component";
+import { PriceTypePickerComponent } from "./indicator/price-type-picker/price-type-picker.component";
+import { IndicatorSwitcherComponent } from "./indicator/indicator-switcher/indicator-switcher.component";
+import { ShiftTypePickerComponent } from "./indicator/shift-type-picker/shift-type-picker.component";
+import { PivotPointsPickerComponent } from "./indicator/pivot-points-picker/pivot-points-picker.component";
+import { VolumeIndexTypePickerComponent } from "./indicator/volume-index-type-picker/volume-index-type-picker.component";
+import { MarkerSizeSliderComponent } from "./indicator/marker-size-slider/marker-size-slider.component";
+import { IndicatorMarkerPickerComponent } from "./indicator/indicator-marker-picker/indicator-marker-picker.component";
+import { PositionPickerComponent } from './indicator/position-picker/position-picker.component';
 
 const components = [
   BtnLoadingComponent,
@@ -29,7 +44,22 @@ const components = [
   TimeFramePickerComponent,
   DrawingToolsComponent,
   FormInputErrorComponent,
-  SavingToolsComponent
+  SavingToolsComponent,
+  StockMarketListComponent,
+  StockMarketHeader,
+  SliderComponent,
+  MarkerPickerComponent,
+  ColorPickerComponent,
+  IndicatorInputComponent,
+  MovingAverageTypePickerComponent,
+  PriceTypePickerComponent,
+  IndicatorSwitcherComponent,
+  ShiftTypePickerComponent,
+  PivotPointsPickerComponent,
+  VolumeIndexTypePickerComponent,
+  MarkerSizeSliderComponent,
+  IndicatorMarkerPickerComponent,
+  PositionPickerComponent
 ];
 
 const gridComponents = [
@@ -49,11 +79,12 @@ const gridComponents = [
     NgbModule,
     NgbPaginationModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbTooltipModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ColorPickerModule,
-    Ng5SliderModule
+    MatSliderModule
   ],
   declarations: [components, gridComponents],
   exports: [components, gridComponents]

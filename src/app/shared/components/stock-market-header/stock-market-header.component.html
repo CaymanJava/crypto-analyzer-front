@@ -1,25 +1,25 @@
 <div class="row">
-  <div *ngIf="tickData" class="row card-body">
+  <div *ngIf="market" class="row card-body">
     <div class="col-lg-1 col-md-1 col-sm-1">
       <div class="avatar box-shadow-2" style="border-radius: 50%;">
-        <img [src]="tickData.market.logoUrl === null ? './assets/images/no_image.png' : tickData.market.logoUrl" style="border-radius: 50%;">
+        <img [src]="market.logoUrl === null ? './assets/images/no_image.png' : market.logoUrl" style="border-radius: 50%;">
       </div>
     </div>
 
     <div class="col-lg-3 col-md-3 col-sm-3" style="text-align:center;">
       <div class="content">
         <p class="text-muted mt-2">Day volume</p>
-        <p class="text-primary text-20 line-height-1 mb-2">{{ (tickData.market.baseVolume.toFixed(2)  | number : '1.0-15') + ' ' + tickData.market.baseCurrency}}</p>
+        <p class="text-primary text-20 line-height-1 mb-2">{{ (market.baseVolume.toFixed(2)  | number : '1.0-15') + ' ' + market.baseCurrency}}</p>
       </div>
     </div>
 
     <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:center;">
       <div class="content">
         <p class="text-muted mt-2">%Change</p>
-        <p [ngClass]="tickData.market.priceDiff >= 0 ? 'text-success' : 'text-danger'" class="text-primary text-20 line-height-1 mb-2">
-          {{tickData.market.priceDiff | number : '1.0-2'}}%
-          <i *ngIf="tickData.market.priceDiff > 0" class="i-Up1 text-success text-16"></i>
-          <i *ngIf="tickData.market.priceDiff < 0" class="i-Down1 text-danger text-16"></i>
+        <p [ngClass]="market.priceDiff >= 0 ? 'text-success' : 'text-danger'" class="text-primary text-20 line-height-1 mb-2">
+          {{market.priceDiff | number : '1.0-2'}}%
+          <i *ngIf="market.priceDiff > 0" class="i-Up1 text-success text-16"></i>
+          <i *ngIf="market.priceDiff < 0" class="i-Down1 text-danger text-16"></i>
         </p>
       </div>
     </div>
@@ -28,7 +28,7 @@
       <div class="content">
         <p class="text-muted mt-2">Last price</p>
         <p class="text-primary text-20 line-height-1 mb-2">
-          {{tickData.market.last | number : '1.0-15'}}
+          {{market.last | number : '1.0-15'}}
         </p>
       </div>
     </div>
@@ -37,7 +37,7 @@
       <div class="content">
         <p class="text-muted mt-2">24H high</p>
         <p class="text-success text-20 line-height-1 mb-2">
-          {{tickData.market.high | number : '1.0-15'}}
+          {{market.high | number : '1.0-15'}}
         </p>
       </div>
     </div>
@@ -46,7 +46,7 @@
       <div class="content">
         <p class="text-muted mt-2">24H low</p>
         <p class="text-danger text-20 line-height-1 mb-2">
-          {{tickData.market.low | number : '1.0-15'}}
+          {{market.low | number : '1.0-15'}}
         </p>
       </div>
     </div>

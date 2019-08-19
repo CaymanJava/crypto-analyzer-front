@@ -1,17 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MarketService } from "../core/market/market.service";
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject, Subscription } from "rxjs";
-import { PageableParams, PageSlice } from "../core/api/api.model";
+import { PageableParams, PageSlice } from "../../../core/api/api.model";
+import { Stock } from "../../../core/stock/stock.model";
+import { MarketService } from "../../../core/market/market.service";
+import { StockService } from "../../../core/stock/stock.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { StockService } from "../core/stock/stock.service";
-import { Stock } from "../core/stock/stock.model";
 
 @Component({
-  selector: 'app-market',
-  templateUrl: './market-list.component.html',
-  styleUrls: ['./market-list.component.scss']
+  selector: 'app-stock-market-list',
+  templateUrl: './stock-market-list.component.html',
+  styleUrls: ['./stock-market-list.component.scss']
 })
-export class MarketListComponent implements OnInit, OnDestroy {
+export class StockMarketListComponent implements OnInit, OnDestroy {
+
+  @Input('title') title: string = 'Markets';
+  @Input('selectTitle') selectTitle: string = 'View';
+
+  @Output('selectMarket') selectMarket: EventEmitter<number> = new EventEmitter();
 
   changesSubscription: Subscription;
   marketSubscription: Subscription;
@@ -60,8 +65,9 @@ export class MarketListComponent implements OnInit, OnDestroy {
   }
 
   onActionClick(event: any) {
-    if (event.action === 'viewMarket') {
+    if (event.action === 'selectMarket') {
       this.route.navigate(['/market', event.row.id]);
+      this.selectMarket.emit(event.row.id);
     }
   }
 

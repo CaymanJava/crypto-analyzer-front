@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-auto col-md-4 col-sm-4">
+    <label>Date
+      <app-date-time-range (dateRangeChange)="dataRangeChange($event)" [dateTimeRange]="dateTimeRange"></app-date-time-range>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-3 col-sm-3">
+    <label>TimeFrame
+      <app-time-frame-picker (onTimeFrameSelected)="timeFrameChange($event)" [timeFrame]="timeFrame"></app-time-frame-picker>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Drawing
+      <div class="input-group">
+        <div class="input-group-append">
+          <button (click)="drawClick()" class="btn btn-primary btn-rounded dropdown-toggle" style="border-radius: 3.25rem;" type="button">
+            <i class="icon-regular i-Pen-4"></i>
+          </button>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Save
+      <app-saving-tools (onSave)="save($event)"></app-saving-tools>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Config
+      <div class="input-group">
+        <div class="input-group-append">
+          <button (click)="configClick()" class="btn btn-primary btn-rounded config-button" style="border-radius: 3.25rem;" type="button">
+            <i class="i-Gear-2"></i>
+          </button>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <div class="col-lg-auto col-md-1 col-sm-1">
+    <label>Signals
+      <div class="input-group">
+        <div class="input-group-append">
+          <button (click)="signalsClick()" class="btn btn-primary btn-rounded signal-button" style="border-radius: 3.25rem;" type="button">
+            <i class="i-Bell"></i>
+          </button>
+        </div>
+      </div>
+    </label>
+  </div>
+
+  <!--  TODO start monitoring button -->
+
+</div>
+
+<app-drawing-tools
+    (clearAll)="clearDrawing()"
+    (drawToolSelected)="startDrawing($event)"
+    (markerSelected)="drawMarker($event)"
+    (removeSelectedTool)="removeSelected()"
+    [hidden]="hideDrawingTools">
+</app-drawing-tools>

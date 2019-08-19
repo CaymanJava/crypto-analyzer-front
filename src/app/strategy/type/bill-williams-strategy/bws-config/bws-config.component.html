@@ -1,0 +1,167 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-indicator-input
+          [form]="configForm"
+          key="acFastPeriod"
+          label="AC Fast Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="acSlowPeriod"
+          label="AC Slow Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="acSmoothedPeriod"
+          label="AC Smoothed Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorJawPeriod"
+          label="Alligator Jaw Period"
+          placeholder="13">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorJawOffset"
+          label="Alligator Jaw Offset"
+          placeholder="8">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorTeethPeriod"
+          label="Alligator Teeth Period"
+          placeholder="8">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorTeethOffset"
+          label="Alligator Teeth Offset"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorLipsPeriod"
+          label="Alligator Lips Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="alligatorLipsOffset"
+          label="Alligator Lips Offset"
+          placeholder="3">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="aoFastPeriod"
+          label="AO Fast Period"
+          placeholder="6">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="aoSlowPeriod"
+          label="AO Slow Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-position-picker
+          [positions]="configForm.get('positions').value"
+          (onPositionSelected)="positionsSelected($event, 'positions')">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'jawLineColor')"
+          [color]="drawConfigForm.get('jawLineColor').value"
+          [label]="'Jaw line'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'teethLineColor')"
+          [color]="drawConfigForm.get('teethLineColor').value"
+          [label]="'Teeth line'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'lipsLineColor')"
+          [color]="drawConfigForm.get('lipsLineColor').value"
+          [label]="'Lips line'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'upFractalColor')"
+          [color]="drawConfigForm.get('upFractalColor').value"
+          [label]="'UP Fractal'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'downFractalColor')"
+          [color]="drawConfigForm.get('downFractalColor').value"
+          [label]="'DOWN Fractal'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'fractalMarkerSize')"
+          [label]="'Fractal size'"
+          [value]="drawConfigForm.get('fractalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          [label]="'Fractal marker'"
+          (onMarkerChange)="onMarkerChange($event, 'fractalMarker')"
+          [marker]="drawConfigForm.get('fractalMarker').value">
+      </app-indicator-marker-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'exitLongColor')"
+          [color]="drawConfigForm.get('exitLongColor').value"
+          [label]="'Exit Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'exitShortColor')"
+          [color]="drawConfigForm.get('exitShortColor').value"
+          [label]="'Exit Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          [label]="'Buy marker'"
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          [label]="'Sell marker'"
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>

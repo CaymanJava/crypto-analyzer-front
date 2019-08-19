@@ -16,7 +16,6 @@
   </div>
 
   <div class="row list-grid">
-
     <div *ngFor="let stock of stocks | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
          class="list-item col-md-3" [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}">
       <div class="card o-hidden mb-4 d-flex flex-column">

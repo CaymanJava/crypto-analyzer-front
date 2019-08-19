@@ -60,7 +60,7 @@ export class NavigationService {
         name: 'Orders',
         type: 'link',
         icon: 'i-Money-Bag',
-        state: '/signal'
+        state: '/order'
       }
     ];
   }

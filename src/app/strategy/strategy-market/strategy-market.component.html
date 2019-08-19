@@ -1,0 +1,11 @@
+<div class="breadcrumb">
+  <button (click)="backToStrategies()" class="btn btn-outline-primary mt-3 mb-3 m-sm-0 btn-rounded btn-sm">
+    Back to strategies
+  </button>
+</div>
+
+<app-stock-market-list
+    (selectMarket)="onMarketSelect($event)"
+    selectTitle="Select"
+    title="Select market">
+</app-stock-market-list>

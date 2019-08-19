@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: './market/market.module#MarketModule',
   },
   {
+    path: 'strategy',
+    loadChildren: './strategy/strategy.module#StrategyModule',
+  },
+  {
     path: '**',
     redirectTo: 'others/404'
   }

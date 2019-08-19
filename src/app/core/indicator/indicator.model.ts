@@ -17,6 +17,11 @@ export class IndicatorCalculationRequest {
 export class IndicatorItem {
   label: string;
   title: string;
+
+  constructor(title: string) {
+    this.label = '';
+    this.title = title;
+  }
 }
 
 export class IndicatorSettings {

@@ -1,5 +1,4 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, ViewChildren } from '@angular/core';
-import { Options } from "ng5-slider";
 
 @Component({
   selector: 'app-drawing-tools',
@@ -17,10 +16,6 @@ export class DrawingToolsComponent implements OnInit {
   markerColor = '#20b0d8';
 
   markerSize: number = 10;
-  markerOptions: Options = {
-    floor: 5,
-    ceil: 35
-  };
 
   @Output() drawToolSelected: EventEmitter<{ drawType: string, color: string, thickness: number, dash: string, strokeColor: string }> = new EventEmitter();
   @Output() markerSelected: EventEmitter<{ marker: string, color: string, size: number }> = new EventEmitter();
@@ -82,6 +77,16 @@ export class DrawingToolsComponent implements OnInit {
         size: this.markerSize
       });
     }
+  }
+
+  markerSizeChange(size: number) {
+    this.markerSize = size;
+    this.emitMarkerConfigChange();
+  }
+
+  markerChange(marker: string) {
+    this.marker = marker;
+    this.emitMarkerConfigChange();
   }
 
   private emitDrawConfigChanges() {

@@ -250,24 +250,6 @@ button .dropdown-toggle {
   border-radius: 3.25rem !important;
 }
 
-::ng-deep {
-  .custom-slider {
-    .ng5-slider {
-      .ng5-slider-selection {
-        background: #663399 !important;
-      }
-
-      .ng5-slider-pointer {
-        background: #663399 !important;
-      }
-
-      .ng5-slider-bubble {
-        font-size: 12px;
-      }
-    }
-  }
-}
-
 .left-side-rounded {
   border-top-left-radius: 3.25rem !important;
   border-bottom-left-radius: 3.25rem !important;
@@ -282,4 +264,30 @@ button .dropdown-toggle {
 .filter-option .ac,
 .dropdown-menu .ac {
   font-size: 14px;
+}
+
+::ng-deep {
+  .select-marker {
+    .dropdown-toggle {
+      border-radius: 3.25rem !important;
+    }
+  }
+}
+
+::ng-deep {
+  .line-size {
+    .dropdown-toggle {
+      border-top-left-radius: 3.25rem !important;
+      border-bottom-left-radius: 3.25rem !important;
+    }
+  }
+}
+
+::ng-deep {
+  .line-type {
+    .dropdown-toggle {
+      border-top-right-radius: 3.25rem !important;
+      border-bottom-right-radius: 3.25rem !important;
+    }
+  }
 }

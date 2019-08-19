@@ -187,6 +187,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     if (this.updatedConfigHandler.plotNumber == 0) {
       this.chart.plot(0).removeAllSeries();
       this.redrawChart();
+      this.chartDrawerService.clearDrawing(this.chart);
       this.updateAllZeroPlotIndicators();
       return this.indicatorDrawerService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
     } else {

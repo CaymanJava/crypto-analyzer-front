@@ -11,7 +11,7 @@ import { LoggerService } from "@ngx-toolkit/logger";
   providedIn: "root"
 })
 export class TickService {
-  private apiUrl = environment.apiUrl.concat('/front-office/tick');
+  private apiUrl = environment.apiUrl.concat('/tick');
 
   constructor(private api: ApiService,
               private log: LoggerService) {

@@ -1,4 +1,12 @@
 @import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.xl > .modal-dialog {
+  max-width: 1490px !important;
+  min-width: 971px !important;
+  width: 95% !important;
+}
 
 .left-side-rounded {
   border-top-left-radius: 3.25rem;

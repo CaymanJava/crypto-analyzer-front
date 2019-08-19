@@ -1,0 +1,40 @@
+<spinner *ngIf="!strategies"></spinner>
+
+<div [hidden]="!strategies">
+  <div class="breadcrumb">
+    <h1>Strategies</h1>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+  <div class="row mb-4"></div>
+
+  <div class="mb-4">
+    <div class="search-bar">
+      <input #searchStrategy placeholder="Search" type="text">
+      <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+    </div>
+  </div>
+
+  <div class="row list-horizontal">
+    <div *ngFor="let strategy of strategies | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
+         [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}" class="list-item col-md-6">
+      <a (click)="onStrategyClick(strategy)" >
+      <div class="card o-hidden mb-4 d-flex flex-row strategy-card">
+        <div class="flex-grow-1 pl-2 d-flex">
+          <div class="card-body  flex-lg-rowalign-self-center d-flex flex-column justify-content-between align-items-lg-center">
+            <p class="strategy-title w-40 w-sm-100 item-title text-center">
+              {{strategy.name}}
+            </p>
+            <p class="m-0 text-muted strategy-description text-small w-15 w-sm-100 text-center">
+              {{strategy.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+      </a>
+    </div>
+
+    <div *ngIf="strategies?.length" class="col-md-12 mt-3">
+      <pagination-controls (pageChange)="page = $event" nextLabel="" previousLabel=""></pagination-controls>
+    </div>
+  </div>
+</div>

@@ -16,8 +16,16 @@ export abstract class BaseIndicatorComponent implements OnInit {
   configForm: FormGroup;
   drawConfigForm: FormGroup;
 
-  onColorPickerChange(color: string, line: string) {
-    this.drawConfigForm.get(line).setValue(color);
+  onColorPickerChange(color: string, key: string) {
+    this.drawConfigForm.get(key).setValue(color);
+  }
+
+  onMarkerSizeChange(size: number, key: string) {
+    this.drawConfigForm.get(key).setValue(size);
+  }
+
+  onMarkerChange(marker: string, key: string) {
+    this.drawConfigForm.get(key).setValue(marker);
   }
 
   abstract ngOnInit();

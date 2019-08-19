@@ -66,7 +66,7 @@ export class GridComponent implements OnInit {
         return value;
       case ('boolean'):
         return value;
-      case ('day-time'):
+      case ('date-time'):
         return this.datePipe.transform(value, 'yyyy-MM-dd HH:mm');
       case ('date'):
         return this.datePipe.transform(value, 'dd/MM/yyyy');

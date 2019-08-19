@@ -1,0 +1,19 @@
+::ng-deep {
+  .custom-slider {
+    .mat-accent {
+      .mat-slider-track-fill {
+        background: #663399 !important;
+      }
+    }
+    .mat-accent {
+      .mat-slider-thumb {
+        background: #663399 !important;
+      }
+    }
+    .mat-accent {
+      .mat-slider-thumb-label {
+        background: #663399 !important;
+      }
+    }
+  }
+}

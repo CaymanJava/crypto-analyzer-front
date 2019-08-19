@@ -23,10 +23,6 @@ import { ColorPickerModule } from "ngx-color-picker";
 import { AroonOscillatorComponent } from './indicator-config/aroon-osc/aroon-oscillator.component';
 import { BollingerBandsWidthComponent } from './indicator-config/bbw/bollinger-bands-width.component';
 import { SharedComponentsModule } from "../shared/components/shared-components.module";
-import { ColorPickerComponent } from "./common/color-picker/color-picker.component";
-import { IndicatorInputComponent } from './common/indicator-input/indicator-input.component';
-import { MovingAverageTypePickerComponent } from './common/moving-average-picker/moving-average-type-picker.component';
-import { PriceTypePickerComponent } from './common/price-type-picker/price-type-picker.component';
 import { BaseIndicatorComponent } from './indicator-config/base/base-indicator.component';
 import { ChaikinMoneyFlowComponent } from './indicator-config/cmf/chaikin-money-flow.component';
 import { ChandeMomentumOscillatorComponent } from './indicator-config/cmo/chande-momentum-oscillator.component';
@@ -52,17 +48,14 @@ import { KeltnerChannelComponent } from './indicator-config/kelt/keltner-channel
 import { KnowSureThingComponent } from './indicator-config/kst/know-sure-thing.component';
 import { KlingerVolumeOscillatorComponent } from './indicator-config/kvo/klinger-volume-oscillator.component';
 import { LinearRegressionComponent } from './indicator-config/lr/linear-regression.component';
-import { IndicatorSwitcherComponent } from './common/indicator-switcher/indicator-switcher.component';
 import { MovingAverageComponent } from './indicator-config/ma/moving-average.component';
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
-import { ShiftTypePickerComponent } from './common/shift-type-picker/shift-type-picker.component';
 import { MovingAverageConvergenceDivergenceComponent } from './indicator-config/macd/moving-average-convergence-divergence.component';
 import { MarketFacilitationIndexComponent } from './indicator-config/mfi/market-facilitation-index.component';
 import { MassIndexComponent } from './indicator-config/mi/mass-index.component';
 import { OnBalanceVolumeComponent } from './indicator-config/obv/on-balance-volume.component';
 import { PrettyGoodOscillatorComponent } from './indicator-config/pgo/pretty-good-oscillator.component';
 import { PivotPointsComponent } from './indicator-config/pivot/pivot-points.component';
-import { PivotPointsPickerComponent } from './common/pivot-points-picker/pivot-points-picker.component';
 import { PriceMomentumOscillatorComponent } from './indicator-config/pmo/price-momentum-oscillator.component';
 import { PercentagePriceOscillatorComponent } from './indicator-config/ppo/percentage-price-oscillator.component';
 import { ParabolicStopAndReverseComponent } from './indicator-config/psar/parabolic-stop-and-reverse.component';
@@ -89,20 +82,11 @@ import { TripleExponentialAverageComponent } from './indicator-config/trix/tripl
 import { UltimateOscillatorComponent } from './indicator-config/uo/ultimate-oscillator.component';
 import { VerticalHorizontalFilterComponent } from './indicator-config/vhf/vertical-horizontal-filter.component';
 import { VolumeIndexComponent } from './indicator-config/vi/volume-index.component';
-import { VolumeIndexTypePickerComponent } from './common/volume-index-type-picker/volume-index-type-picker.component';
 import { VolumeOscillatorComponent } from './indicator-config/vo/volume-oscillator.component';
 import { WilliamsPercentRangeComponent } from './indicator-config/wpr/williams-percent-range.component';
 
 const components = [
-  IndicatorPickerComponent,
-  ColorPickerComponent,
-  IndicatorInputComponent,
-  MovingAverageTypePickerComponent,
-  PriceTypePickerComponent,
-  IndicatorSwitcherComponent,
-  ShiftTypePickerComponent,
-  PivotPointsPickerComponent,
-  VolumeIndexTypePickerComponent
+  IndicatorPickerComponent
 ];
 
 const modalConfig = [
@@ -188,7 +172,6 @@ const modalConfig = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     NgbModule,
     TieredMenuModule,
     FormsModule,

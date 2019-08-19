@@ -74,11 +74,7 @@ export class StockService {
   ];
 
   public getStocks(): Observable<Stock[]> {
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(this.stocks);
-      }, 1000);
-    });
+    return new Observable(observer => observer.next(this.stocks));
   }
 
 }

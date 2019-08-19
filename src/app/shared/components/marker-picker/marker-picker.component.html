@@ -1,0 +1,79 @@
+<select bootstrapSelect
+        (change)="markerChange()"
+        [(ngModel)]="marker"
+        [selectedIndex]="0"
+        [value]="marker"
+        class="drawing-tools selectpicker choose-marker"
+        data-max-options="1"
+        data-style="btn-sm"
+        data-width="110"
+        title="Marker">
+  <option selected data-annotation-type="marker" data-icon="ac-arrow-up-square"
+          data-marker-anchor="center-top" value="arrowUp">
+    <i aria-hidden="true" class="ac ac-ray"></i>Up Arrow
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-arrow-down-square"
+          data-marker-anchor="center-bottom" value="arrow-down">Down Arrow
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-arrow-left-square"
+          data-marker-anchor="left-center" value="arrow-left">Left Arrow
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-arrow-right-square"
+          data-marker-anchor="right-center" value="arrow-right">Right Arrow
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-head-arrow"
+          data-marker-anchor="right-center"
+          value="arrowHead">Head Arrow
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-cross" data-marker-anchor="center"
+          value="cross">Cross
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-diagonal-cros"
+          data-marker-anchor="center"
+          value="diagonal-cross">Diagonal cross
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-diamond" data-marker-anchor="center"
+          value="diamond">Diamond
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-pentagon" data-marker-anchor="center"
+          value="pentagon">Pentagon
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-square" data-marker-anchor="center"
+          value="square">Square
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-star-1" data-marker-anchor="center"
+          value="star10">Star 1
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-star-2" data-marker-anchor="center"
+          value="star4">Star 2
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-star-3" data-marker-anchor="center"
+          value="star5">Star 3
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-star-4" data-marker-anchor="center"
+          value="star6">Star 4
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-star-5" data-marker-anchor="center"
+          value="star7">Star 5
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-trapezium"
+          data-marker-anchor="center"
+          value="trapezium">Trapezium
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-triangle-up"
+          data-marker-anchor="center-top"
+          value="triangle-up">Triangle Up
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-triangle-down"
+          data-marker-anchor="center-bottom"
+          value="triangle-down">Triangle Down
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-triangle-left"
+          data-marker-anchor="left-center"
+          value="triangle-left">Triangle Left
+  </option>
+  <option selected data-annotation-type="marker" data-icon="ac-triangle-right"
+          data-marker-anchor="right-center"
+          value="triangle-right">Triangle Right
+  </option>
+</select>

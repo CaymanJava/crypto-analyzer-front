@@ -30,6 +30,18 @@ export abstract class CommonDrawService implements DrawService {
     return indicatorData;
   }
 
+  prepareColumnIndicatorData(result: any[]) {
+    const indicatorData = [];
+    result.forEach(indicatorResult => indicatorData.push(
+      [
+        indicatorResult.time,
+        this.convertValue(indicatorResult.indicatorValue),
+        indicatorResult.increased
+      ]
+    ));
+    return indicatorData;
+  }
+
   prepareBarChartData(result: any[]) {
     const indicatorData = [];
     result.forEach(indicatorResult => indicatorData.push(

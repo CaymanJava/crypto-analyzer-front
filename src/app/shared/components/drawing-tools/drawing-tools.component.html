@@ -23,7 +23,7 @@
         <select bootstrapSelect
             (change)="onDrawConfigChange()"
             [(ngModel)]="thickness"
-            class="drawing-tools selectpicker choose-drawing-tools"
+            class="drawing-tools line-size selectpicker choose-drawing-tools"
             data-max-options="1"
             data-style="btn-sm"
             data-width="60"
@@ -38,7 +38,7 @@
         <select bootstrapSelect
             (change)="onDrawConfigChange()"
             [(ngModel)]="dash"
-            class="drawing-tools selectpicker choose-drawing-tools"
+            class="drawing-tools line-type selectpicker choose-drawing-tools"
             data-max-options="1"
             data-style="btn-sm"
             data-width="80"
@@ -128,85 +128,11 @@
       </div>
 
       <div class="btn-group input-group-append">
-        <div class="drawing-tools">
-          <select bootstrapSelect
-              (change)="emitMarkerConfigChange()"
-              [(ngModel)]="marker"
-              class="drawing-tools selectpicker choose-marker"
-              data-max-options="1"
-              data-style="btn-sm"
-              data-width="110"
-              title="Marker">
-            <option data-annotation-type="marker" data-icon="ac-arrow-up-square"
-                    data-marker-anchor="center-top"
-                    value="arrowUp">
-              <i aria-hidden="true" class="ac ac-ray"></i>Up Arrow
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-arrow-down-square"
-                    data-marker-anchor="center-bottom" value="arrow-down">Down Arrow
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-arrow-left-square"
-                    data-marker-anchor="left-center" value="arrow-left">Left Arrow
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-arrow-right-square"
-                    data-marker-anchor="right-center" value="arrow-right">Right Arrow
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-head-arrow"
-                    data-marker-anchor="right-center"
-                    value="arrowHead">Head Arrow
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-cross" data-marker-anchor="center"
-                    value="cross">Cross
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-diagonal-cros"
-                    data-marker-anchor="center"
-                    value="diagonal-cross">Diagonal cross
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-diamond" data-marker-anchor="center"
-                    value="diamond">Diamond
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-pentagon" data-marker-anchor="center"
-                    value="pentagon">Pentagon
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-square" data-marker-anchor="center"
-                    value="square">Square
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-star-1" data-marker-anchor="center"
-                    value="star10">Star 1
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-star-2" data-marker-anchor="center"
-                    value="star4">Star 2
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-star-3" data-marker-anchor="center"
-                    value="star5">Star 3
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-star-4" data-marker-anchor="center"
-                    value="star6">Star 4
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-star-5" data-marker-anchor="center"
-                    value="star7">Star 5
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-trapezium"
-                    data-marker-anchor="center"
-                    value="trapezium">Trapezium
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-triangle-up"
-                    data-marker-anchor="center-top"
-                    value="triangle-up">Triangle Up
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-triangle-down"
-                    data-marker-anchor="center-bottom"
-                    value="triangle-down">Triangle Down
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-triangle-left"
-                    data-marker-anchor="left-center"
-                    value="triangle-left">Triangle Left
-            </option>
-            <option data-annotation-type="marker" data-icon="ac-triangle-right"
-                    data-marker-anchor="right-center"
-                    value="triangle-right">Triangle Right
-            </option>
-          </select>
+        <div class="drawing-tools select-marker">
+          <app-marker-picker
+              [marker]="marker"
+              (onMarkerChange)="markerChange($event)">
+          </app-marker-picker>
         </div>
       </div>
 
@@ -224,10 +150,13 @@
         <div class="btn-group hidden-xs">
           <div ngbDropdown>
             <button aria-label="Center Align" class="btn btn-default rounded-button" data-toggle="tooltip"
-                    ngbDropdownToggle title="Delete all drawings" type="button">Marker size
+                    ngbDropdownToggle type="button">Marker size
             </button>
-            <div class="p-2 text-center custom-slider" ngbDropdownMenu>
-              <ng5-slider (valueChange)="emitMarkerConfigChange()" [(value)]="markerSize" [options]="markerOptions"></ng5-slider>
+            <div class="p-2 text-center" ngbDropdownMenu>
+              <app-slider
+                  [value]="markerSize"
+                  (onValueChange)="markerSizeChange($event)">
+              </app-slider>
             </div>
           </div>
         </div>

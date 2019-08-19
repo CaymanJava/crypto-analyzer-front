@@ -12,7 +12,7 @@ import { LoggerService } from "@ngx-toolkit/logger";
 })
 export class IndicatorService {
 
-  private apiUrl = environment.apiUrl.concat('/front-office/indicator');
+  private apiUrl = environment.apiUrl.concat('/indicator');
 
   constructor(private api: ApiService,
               private log: LoggerService) {

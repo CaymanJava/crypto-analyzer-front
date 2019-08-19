@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name + ' signals'}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <app-grid [data]="data">
+        <app-grid-column [value-fn]="getTime" dataType="date-time" title="Time"></app-grid-column>
+        <app-grid-column [value-fn]="getOpen" title="Open"></app-grid-column>
+        <app-grid-column [value-fn]="getHigh" title="High"></app-grid-column>
+        <app-grid-column [value-fn]="getLow" title="Low"></app-grid-column>
+        <app-grid-column [value-fn]="getClose" title="Close"></app-grid-column>
+        <app-grid-column [value-fn]="getVolume" title="Volume"></app-grid-column>
+        <app-grid-column [value-fn]="getBaseVolume" title="Base Volume"></app-grid-column>
+        <app-grid-column [value-fn]="getPositions" title="Market"></app-grid-column>
+        <app-grid-column key="entryPrice" title="Entry price"></app-grid-column>
+        <app-grid-column key="stopLose" title="Stop lose"></app-grid-column>
+      </app-grid>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+</div>

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+    <label for="positions">{{label}}</label>
+  </div>
+  <div class="text-center input-group-append col-6 form-group mb-3 custom-slider position-select" style="display: inline-block">
+    <select bootstrapSelect class="selectpicker"
+            id="positions"
+            (ngModelChange)="positionsSelected($event)"
+            [ngModel]="positions"
+            [title]="label"
+            data-max-options="4"
+            data-style="btn-sm"
+            data-width="110"
+            multiple>
+      <option value="ENTRY_LONG" data-settings="type">Entry Long</option>
+      <option value="ENTRY_SHORT" data-settings="type">Entry Short</option>
+      <option value="EXIT_LONG" data-settings="type">Exit Long</option>
+      <option value="EXIT_SHORT" data-settings="type">Exit Short</option>
+    </select>
+  </div>
+</div>

@@ -24,6 +24,14 @@
         [color]="drawConfigForm.get('indicatorColor').value"
         [label]="'PSAR'">
     </app-color-picker>
+    <app-marker-size-slider
+        (onValueChange)="onMarkerSizeChange($event, 'markerSize')"
+        [value]="drawConfigForm.get('markerSize').value">
+    </app-marker-size-slider>
+    <app-indicator-marker-picker
+        (onMarkerChange)="onMarkerChange($event, 'marker')"
+        [marker]="drawConfigForm.get('marker').value">
+    </app-indicator-marker-picker>
   </form>
 </div>
 <div class="modal-footer">

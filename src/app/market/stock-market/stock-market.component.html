@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<app-stock-market-header [tickData]="tickData"></app-stock-market-header>
+<app-stock-market-header *ngIf="tickData" [market]="tickData.market"></app-stock-market-header>
 
 <div [hidden]="!tickData" class="separator-breadcrumb border-top"></div>
 

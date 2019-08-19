@@ -1,0 +1,17 @@
+::ng-deep {
+  .dropdown-menu {
+    .selected {
+      background: #663399 !important;
+      color: #fff;
+    }
+  }
+}
+
+
+::ng-deep {
+  .position-select {
+    .bootstrap-select {
+      width: 10.6rem !important;
+    }
+  }
+}

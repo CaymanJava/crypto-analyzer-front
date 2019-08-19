@@ -1,0 +1,63 @@
+.text-center {
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  position: relative;
+  width: 230px;
+  height: 40px;
+
+  input {
+    background: transparent;
+    border: 0;
+    color: #212121;
+    font-size: .8rem;
+    line-height: 2;
+    height: 100%;
+    outline: initial !important;
+    padding: .5rem 1rem;
+    width: calc(100% - 32px);
+  }
+
+  .search-icon {
+    font-size: 18px;
+    width: 24px;
+    display: inline-block;
+  }
+}
+
+.strategy-card:hover {
+  background: #663399;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.strategy-card:hover .strategy-description {
+  color: #fff !important;
+  font-size: .77rem;
+}
+
+.indicator-button-config {
+  color: #663399;
+  background-color: transparent;
+  background-image: none;
+  border-color: #663399;
+}
+
+.indicator-button-config:focus,
+.indicator-button-config:hover,
+.indicator-button-config:active {
+  color: #fff;
+  background-color: #663399;
+  background-image: none;
+  border-color: #663399;
+}

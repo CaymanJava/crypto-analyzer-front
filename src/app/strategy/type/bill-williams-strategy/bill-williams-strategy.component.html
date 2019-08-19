@@ -1,0 +1,21 @@
+<spinner *ngIf="inProgress"></spinner>
+
+<app-strategy-config-header
+    *ngIf="!inProgress"
+    [dateTimeRange]="dateTimeRange"
+    [timeFrame]="timeFrame"
+    (onDateTimeRangeChange)="dateTimeRangeChange($event)"
+    (onTimeFrameChange)="timeFrameChange($event)"
+    (onSaveClick)="save($event)"
+    (onClearDrawing)="clearDrawing()"
+    (onStartDrawing)="startDrawing($event)"
+    (onMarkerDraw)="drawMarker($event)"
+    (onSelectedRemove)="removeSelected()"
+    (onConfigClick)="configClick()"
+    (onSignalsClick)="signalsClick()"
+>
+</app-strategy-config-header>
+
+<div [hidden]="inProgress" class="row">
+  <div #chartContainer class="chart-container row card-body"></div>
+</div>
