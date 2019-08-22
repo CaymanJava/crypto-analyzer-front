@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DatePipe } from "@angular/common";
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
 import { BwsConfigComponent } from "./bws-config/bws-config.component";
 import { BwsSignalsComponent } from "./bws-signals/bws-signals.component";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'app-bill-williams-strategy',
@@ -17,11 +17,6 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
 
   type = 'BILL_WILLIAMS_STRATEGY';
   configuration: any;
-
-  ngOnDestroy() {
-    this.strategyCalculationSubscription.unsubscribe();
-    this.componentSubscription.unsubscribe();
-  }
 
   drawStrategyResult() {
     this.drawAc();
@@ -78,10 +73,6 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
 
   getStrategySignalModel() {
     return BwsSignalsComponent;
-  }
-
-  private allPosition() {
-    return ['ENTRY_LONG', 'EXIT_LONG', 'ENTRY_SHORT', 'EXIT_SHORT'];
   }
 
   private drawAc() {

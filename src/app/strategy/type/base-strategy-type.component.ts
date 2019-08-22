@@ -71,8 +71,6 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     this.changes.next();
   }
 
-  abstract ngOnDestroy();
-
   abstract drawStrategyResult();
 
   abstract getDefaultConfig();
@@ -130,6 +128,15 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     dialog.componentInstance.data = this.buildSignalsPageSlice();
   }
 
+  ngOnDestroy() {
+    this.strategyCalculationSubscription.unsubscribe();
+    this.componentSubscription.unsubscribe();
+  }
+
+  allPosition() {
+    return ['ENTRY_LONG', 'EXIT_LONG', 'ENTRY_SHORT', 'EXIT_SHORT'];
+  }
+
   private getMarketName() {
     return this.strategy.name + '-' + this.market.marketName + ' (' + this.market.stock + ')';
   }
@@ -165,7 +172,8 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   }
 
   private buildStrategyCalculationRequest() {
-    this.configuration.strategyConfiguration.alligatorTimeFrame = this.timeFrame;
+    this.addTimeFrame();
+
     const dateFrom = this.datePipe.transform(this.dateTimeRange[0], this.formatter);
     const dateTo = this.datePipe.transform(this.dateTimeRange[1], this.formatter);
 
@@ -178,6 +186,12 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     request.setConfiguration(this.configuration.strategyConfiguration);
 
     return request;
+  }
+
+  private addTimeFrame() {
+    if (this.type == 'BILL_WILLIAMS_STRATEGY') {
+      this.configuration.strategyConfiguration.alligatorTimeFrame = this.timeFrame;
+    }
   }
 
   private drawChart() {

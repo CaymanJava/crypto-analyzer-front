@@ -7,8 +7,7 @@ import { ArraySizeValidator } from "../../../../shared/validators/array-size-val
 
 @Component({
   selector: 'app-bws-config',
-  templateUrl: './bws-config.component.html',
-  styleUrls: ['./bws-config.component.scss']
+  templateUrl: './bws-config.component.html'
 })
 export class BwsConfigComponent extends BaseStrategyConfigComponent {
 

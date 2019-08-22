@@ -9,6 +9,11 @@ export class PositionPickerComponent implements OnInit {
 
   @Input() positions: string[];
   @Input() label = 'Positions';
+  @Input() onlyEntries = false;
+  @Input() onlyExits = false;
+  @Input() onlyLongPositions = false;
+  @Input() onlyShortPositions = false;
+
   @Output() onPositionSelected: EventEmitter<string[]> = new EventEmitter();
 
   constructor() { }

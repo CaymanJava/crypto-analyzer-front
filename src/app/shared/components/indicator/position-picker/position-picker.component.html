@@ -12,10 +12,10 @@
             data-style="btn-sm"
             data-width="110"
             multiple>
-      <option value="ENTRY_LONG" data-settings="type">Entry Long</option>
-      <option value="ENTRY_SHORT" data-settings="type">Entry Short</option>
-      <option value="EXIT_LONG" data-settings="type">Exit Long</option>
-      <option value="EXIT_SHORT" data-settings="type">Exit Short</option>
+      <option *ngIf="!onlyExits && !onlyShortPositions" value="ENTRY_LONG" data-settings="type">Entry Long</option>
+      <option *ngIf="!onlyExits && !onlyLongPositions" value="ENTRY_SHORT" data-settings="type">Entry Short</option>
+      <option *ngIf="!onlyEntries && !onlyShortPositions" value="EXIT_LONG" data-settings="type">Exit Long</option>
+      <option *ngIf="!onlyEntries && !onlyLongPositions" value="EXIT_SHORT" data-settings="type">Exit Short</option>
     </select>
   </div>
 </div>

@@ -18,6 +18,9 @@ import { IndicatorModule } from "../indicator/indicator.module";
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
 import { BwsSignalsComponent } from './type/bill-williams-strategy/bws-signals/bws-signals.component';
 import { BaseStrategySignalComponent } from "./type/base-strategy-signal.component";
+import { CciRsiAtrComponent } from "./type/cci-rsi-atr/cci.rsi.atr.component";
+import { CciRsiAtrConfigComponent } from './type/cci-rsi-atr/cci-rsi-atr-config/cci-rsi-atr-config.component';
+import { CciRsiAtrSignalsComponent } from './type/cci-rsi-atr/cci-rsi-atr-signals/cci-rsi-atr-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -27,15 +30,18 @@ const components = [
   StrategyMarketComponent,
   StrategyConfigComponent,
   BillWilliamsStrategyComponent,
-  StrategyConfigHeaderComponent
+  StrategyConfigHeaderComponent,
+  CciRsiAtrComponent
 ];
 
 const modalConfigs = [
-  BwsConfigComponent
+  BwsConfigComponent,
+  CciRsiAtrConfigComponent
 ];
 
 const modalSignals = [
-  BwsSignalsComponent
+  BwsSignalsComponent,
+  CciRsiAtrSignalsComponent
 ];
 
 @NgModule({
