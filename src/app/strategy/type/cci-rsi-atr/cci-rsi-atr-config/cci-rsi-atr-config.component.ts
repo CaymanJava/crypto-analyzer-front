@@ -17,7 +17,6 @@ export class CciRsiAtrConfigComponent extends BaseStrategyConfigComponent {
     this.initForms();
   }
 
-
   initForms() {
     this.configForm = this.fb.group({
       'cciPeriod': ['', [Validators.required, Validators.min(1), NotDecimalValidator.valid]],
@@ -41,7 +40,7 @@ export class CciRsiAtrConfigComponent extends BaseStrategyConfigComponent {
       'atrSignalLineColor': ['', Validators.required],
       'entryLongColor': ['', Validators.required],
       'entryShortColor': ['', Validators.required],
-      'signalMarkerSize': ['', [Validators.required, Validators.min(5)]],
+      'signalMarkerSize': ['', [Validators.required, Validators.min(1)]],
       'buyMarker': ['', Validators.required],
       'sellMarker': ['', Validators.required]
     });

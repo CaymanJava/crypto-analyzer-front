@@ -9,7 +9,7 @@ export class MarkerSizeSliderComponent implements OnInit {
 
   @Input() label: string = 'Marker size';
   @Input() max: number = 35;
-  @Input() min: number = 5;
+  @Input() min: number = 1;
   @Input() value: number = 10;
   @Input() tickInterval: number = 1;
   @Input() step: number = 1;

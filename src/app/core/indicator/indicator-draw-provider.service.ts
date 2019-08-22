@@ -77,6 +77,7 @@ import { VhfDrawService } from "./draw/vhf-draw.service";
 import { ViDrawService } from "./draw/vi-draw.service";
 import { VoDrawService } from "./draw/vo-draw.service";
 import { WprDrawService } from "./draw/wpr-draw.service";
+import { PsarMacdDrawService } from "./draw/psar-macd.draw.service";
 
 @Injectable({
   providedIn: "root"
@@ -120,7 +121,8 @@ export class IndicatorDrawProviderService {
               private stochDrawService: StochDrawService, private tmfDrawService: TmfDrawService,
               private trixDrawService: TrixDrawService, private uoDrawService: UoDrawService,
               private vhfDrawService: VhfDrawService, private viDrawService: ViDrawService,
-              private voDrawService: VoDrawService, private wprDrawService: WprDrawService) {
+              private voDrawService: VoDrawService, private wprDrawService: WprDrawService,
+              private psarMacdDrawService: PsarMacdDrawService) {
   }
 
   getDrawService(settings: IndicatorSettings): DrawService {
@@ -227,6 +229,8 @@ export class IndicatorDrawProviderService {
         return this.ppoDrawService;
       case 'PSAR':
         return this.psarDrawService;
+      case 'PSAR-MACD':
+        return this.psarMacdDrawService;
       case 'PVT':
         return this.pvtDrawService;
       case 'QS':

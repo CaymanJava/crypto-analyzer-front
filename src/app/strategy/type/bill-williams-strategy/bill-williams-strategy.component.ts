@@ -16,7 +16,6 @@ import { DatePipe } from "@angular/common";
 export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
 
   type = 'BILL_WILLIAMS_STRATEGY';
-  configuration: any;
 
   drawStrategyResult() {
     this.drawAc();

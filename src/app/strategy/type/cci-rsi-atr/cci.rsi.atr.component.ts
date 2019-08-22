@@ -16,7 +16,6 @@ import { CciRsiAtrSignalsComponent } from "./cci-rsi-atr-signals/cci-rsi-atr-sig
 export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
 
   type = 'CCI_RSI_ATR';
-  configuration: any;
 
   drawStrategyResult() {
     this.drawCci();

@@ -1,0 +1,179 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-indicator-input
+          [form]="configForm"
+          key="movingAveragePeriod"
+          label="MA Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="movingAveragePriceType"
+          label="MA Price Type">
+      </app-price-type-picker>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="movingAverageType">
+      </app-moving-average-type-picker>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="macdMovingAverageType"
+          label="MACD Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="macdPriceType"
+          label="MACD Price Type">
+      </app-price-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdFastPeriod"
+          label="MACD Fast Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSlowPeriod"
+          label="MACD Slow Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSignalPeriod"
+          label="MACD Signal Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="psarMinAccelerationFactor"
+          label="PSAR Min acceleration factor"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="psarMaxAccelerationFactor"
+          label="PSAR Max acceleration factor"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="pswMinAccelerationFactor"
+          label="PSAR(MACD) Min acceleration factor"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="pswMaxAccelerationFactor"
+          label="PSAR(MACD) Max acceleration factor"
+          placeholder="34">
+      </app-indicator-input>
+      <app-position-picker
+          (onPositionSelected)="positionsSelected($event, 'positions')"
+          [onlyEntries]="true"
+          [positions]="configForm.get('positions').value">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'maLineColor')"
+          [color]="drawConfigForm.get('maLineColor').value"
+          [label]="'MA'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdLineColor')"
+          [color]="drawConfigForm.get('macdLineColor').value"
+          [label]="'MACD'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdSignalLineColor')"
+          [color]="drawConfigForm.get('macdSignalLineColor').value"
+          [label]="'MACD Signal'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdBarChartLineColor')"
+          [color]="drawConfigForm.get('macdBarChartLineColor').value"
+          [label]="'MACD Bar Chart'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'psarColor')"
+          [color]="drawConfigForm.get('psarColor').value"
+          [label]="'PSAR'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'psarMarkerSize')"
+          [label]="'PSAR size'"
+          [value]="drawConfigForm.get('psarMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'psarMarker')"
+          [label]="'PSAR marker'"
+          [marker]="drawConfigForm.get('psarMarker').value">
+      </app-indicator-marker-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'psarMacdColor')"
+          [color]="drawConfigForm.get('psarMacdColor').value"
+          [label]="'PSAR(MACD)'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'psarMacdSignalLineColor')"
+          [color]="drawConfigForm.get('psarMacdSignalLineColor').value"
+          [label]="'PSAR(MACD) Signal Line'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'psarMacdMarkerSize')"
+          [label]="'PSAR(MACD) size'"
+          [value]="drawConfigForm.get('psarMacdMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'psarMacdMarker')"
+          [label]="'PSAR(MACD) marker'"
+          [marker]="drawConfigForm.get('psarMacdMarker').value">
+      </app-indicator-marker-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [label]="'Buy marker'"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [label]="'Sell marker'"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>

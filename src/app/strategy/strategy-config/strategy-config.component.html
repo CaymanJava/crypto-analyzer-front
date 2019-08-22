@@ -26,6 +26,7 @@
 <div *ngIf="market" [ngSwitch]="strategy.type">
   <app-bill-williams-strategy *ngSwitchCase="'BILL_WILLIAMS_STRATEGY'" [market]="market" [strategy]="strategy"></app-bill-williams-strategy>
   <app-cci-rsi-atr *ngSwitchCase="'CCI_RSI_ATR'" [market]="market" [strategy]="strategy"></app-cci-rsi-atr>
+  <app-double-parabolic-strategy *ngSwitchCase="'DOUBLE_PARABOLIC'" [market]="market" [strategy]="strategy"></app-double-parabolic-strategy>
 
 <!--  TODO remove -->
   <div *ngSwitchDefault>

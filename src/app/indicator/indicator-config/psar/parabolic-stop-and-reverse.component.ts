@@ -17,8 +17,8 @@ export class ParabolicStopAndReverseComponent extends BaseIndicatorComponent {
 
   initForms() {
     this.configForm = this.fb.group({
-      'minAccelerationFactor': [false, [Validators.required, Validators.min(0.0001)]],
-      'maxAccelerationFactor': [false, [Validators.required, Validators.min(0.0001)]]
+      'minAccelerationFactor': ['', [Validators.required, Validators.min(0.0001)]],
+      'maxAccelerationFactor': ['', [Validators.required, Validators.min(0.0001)]]
     });
     this.drawConfigForm = this.fb.group({
       'indicatorColor': ['#7e05a1', Validators.required],
