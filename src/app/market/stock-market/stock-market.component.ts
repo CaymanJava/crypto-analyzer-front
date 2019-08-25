@@ -7,7 +7,7 @@ import { DatePipe } from "@angular/common";
 import { IndicatorService } from "../../core/indicator/indicator.service";
 import { IndicatorCalculationRequest, IndicatorConfigurationHandler, IndicatorDrawResult, IndicatorItem, IndicatorSettings } from "../../core/indicator/indicator.model";
 import { IndicatorConfigService } from "../../core/indicator/indicator-config.service";
-import { ChartDrawerService } from "../../core/chart/chart-drawer.service";
+import { ChartDrawService } from "../../core/chart/chart-draw.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
 import { IndicatorTypeProviderService } from "../../core/indicator/indicator-type-provider.service";
@@ -46,9 +46,9 @@ export class StockMarketComponent implements OnInit, OnDestroy {
   constructor(private activatedRoute: ActivatedRoute,
               private tickService: TickService,
               private indicatorService: IndicatorService,
-              private chartDrawerService: ChartDrawerService,
+              private chartDrawService: ChartDrawService,
               private chartSaveService: ChartSaveService,
-              private indicatorDrawerService: IndicatorDrawService,
+              private indicatorDrawService: IndicatorDrawService,
               private indicatorConfigProvider: IndicatorConfigService,
               private indicatorTypeProviderService: IndicatorTypeProviderService,
               private datePipe: DatePipe,
@@ -74,19 +74,19 @@ export class StockMarketComponent implements OnInit, OnDestroy {
   }
 
   startDrawing(event: any) {
-    this.chartDrawerService.startDrawing(event, this.chart);
+    this.chartDrawService.startDrawing(event, this.chart);
   }
 
   drawMarker(event: any) {
-    this.chartDrawerService.drawMarker(event, this.chart);
+    this.chartDrawService.drawMarker(event, this.chart);
   }
 
   clear() {
-    this.chartDrawerService.clearDrawing(this.chart);
+    this.chartDrawService.clearDrawing(this.chart);
   }
 
   removeSelected() {
-    this.chartDrawerService.removeSelectedDrawTool(this.chart);
+    this.chartDrawService.removeSelectedDrawTool(this.chart);
   }
 
   onDataRangeChange(event: any) {
@@ -123,7 +123,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     const request = this.prepareIndicatorRequest(indicatorSettings);
     this.indicatorService.calculateIndicator(request).subscribe(
       (result: any[]) => {
-        const drawData: IndicatorDrawResult = this.indicatorDrawerService.draw(indicatorSettings, result, this.chart, this.container, this.currentPlotNumber);
+        const drawData: IndicatorDrawResult = this.indicatorDrawService.draw(indicatorSettings, result, this.chart, this.container, this.currentPlotNumber);
         this.indicatorConfigurationHandlers.push(
           new IndicatorConfigurationHandler(
             drawData.title, drawData.plotNumber, indicatorSettings.indicatorItem,
@@ -187,11 +187,11 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     if (this.updatedConfigHandler.plotNumber == 0) {
       this.chart.plot(0).removeAllSeries();
       this.redrawChart();
-      this.chartDrawerService.clearDrawing(this.chart);
+      this.chartDrawService.clearDrawing(this.chart);
       this.updateAllZeroPlotIndicators();
-      return this.indicatorDrawerService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
+      return this.indicatorDrawService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
     } else {
-      return this.indicatorDrawerService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
+      return this.indicatorDrawService.update(settings, result, this.chart, this.updatedConfigHandler.plotNumber);
     }
   }
 
@@ -243,7 +243,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
   }
 
   private removeNonZeroPlotIndicator() {
-    this.indicatorDrawerService.deleteNonZeroPlotChart(this.chart, this.container, this.updatedConfigHandler.plotNumber);
+    this.indicatorDrawService.deleteNonZeroPlotChart(this.chart, this.container, this.updatedConfigHandler.plotNumber);
     this.removeIndicatorHandler();
     this.decreasePlotNumbers();
     this.updatedConfigHandler = null;
@@ -298,13 +298,13 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   private drawChart() {
     const tickForChart = this.prepareData();
-    this.chart = this.chartDrawerService.draw(this.tickData, tickForChart, this.container);
+    this.chart = this.chartDrawService.draw(this.tickData, tickForChart, this.container);
   }
 
   private updateAllZeroPlotIndicators() {
     this.indicatorConfigurationHandlers.forEach(configHandler => {
         if (configHandler.plotNumber == 0 && configHandler.id != this.updatedConfigHandler.id) {
-          this.indicatorDrawerService.update(new IndicatorSettings(configHandler.indicatorItem,
+          this.indicatorDrawService.update(new IndicatorSettings(configHandler.indicatorItem,
             configHandler.configuration, configHandler.drawConfiguration, true),
             configHandler.data, this.chart, 0);
         }
@@ -314,7 +314,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   private redrawChart() {
     const tickForChart = this.prepareData();
-    this.chartDrawerService.redraw(this.chart, this.tickData, tickForChart, this.container);
+    this.chartDrawService.redraw(this.chart, this.tickData, tickForChart, this.container);
   }
 
   private clearAndRedrawChart() {

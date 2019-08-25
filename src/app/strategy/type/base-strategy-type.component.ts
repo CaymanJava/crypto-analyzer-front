@@ -3,7 +3,7 @@ import { Subject, Subscription } from "rxjs";
 import { Market } from "../../core/market/market.model";
 import { TickData, TimeFrame } from "../../core/tick/tick.model";
 import { StrategyCalculationService } from "../../core/strategy/strategy-calculation.service";
-import { ChartDrawerService } from "../../core/chart/chart-drawer.service";
+import { ChartDrawService } from "../../core/chart/chart-draw.service";
 import { DatePipe } from "@angular/common";
 import { Strategy, StrategyCalculationRequest } from "../../core/strategy/strategy.model";
 import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
@@ -38,8 +38,8 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   changes: Subject<any> = new Subject();
 
   strategyCalculationService: StrategyCalculationService;
-  chartDrawerService: ChartDrawerService;
-  indicatorDrawerService: IndicatorDrawService;
+  chartDrawService: ChartDrawService;
+  indicatorDrawService: IndicatorDrawService;
   signalDrawService: SignalDrawService;
   chartSaveService: ChartSaveService;
   datePipe: DatePipe;
@@ -49,16 +49,16 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   strategyResults: any[];
 
   protected constructor(strategyCalculationService: StrategyCalculationService,
-                        chartDrawerService: ChartDrawerService,
-                        indicatorDrawerService: IndicatorDrawService,
+                        chartDrawService: ChartDrawService,
+                        indicatorDrawService: IndicatorDrawService,
                         signalDrawService: SignalDrawService,
                         chartSaveService: ChartSaveService,
                         datePipe: DatePipe,
                         private modalService: NgbModal,
                         private renderer: Renderer2) {
     this.strategyCalculationService = strategyCalculationService;
-    this.chartDrawerService = chartDrawerService;
-    this.indicatorDrawerService = indicatorDrawerService;
+    this.chartDrawService = chartDrawService;
+    this.indicatorDrawService = indicatorDrawService;
     this.signalDrawService = signalDrawService;
     this.chartSaveService = chartSaveService;
     this.datePipe = datePipe;
@@ -94,19 +94,19 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   }
 
   clearDrawing() {
-    this.chartDrawerService.clearDrawing(this.chart);
+    this.chartDrawService.clearDrawing(this.chart);
   }
 
   startDrawing(event: any) {
-    this.chartDrawerService.startDrawing(event, this.chart);
+    this.chartDrawService.startDrawing(event, this.chart);
   }
 
   drawMarker(event: any) {
-    this.chartDrawerService.drawMarker(event, this.chart);
+    this.chartDrawService.drawMarker(event, this.chart);
   }
 
   removeSelected() {
-    this.chartDrawerService.removeSelectedDrawTool(this.chart);
+    this.chartDrawService.removeSelectedDrawTool(this.chart);
   }
 
   configClick() {
@@ -197,7 +197,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   private drawChart() {
     const tickData = this.buildTickDate();
     const tickForChart = this.prepareData(tickData);
-    this.chart = this.chartDrawerService.draw(tickData, tickForChart, this.container);
+    this.chart = this.chartDrawService.draw(tickData, tickForChart, this.container);
   }
 
   private buildTickDate() {

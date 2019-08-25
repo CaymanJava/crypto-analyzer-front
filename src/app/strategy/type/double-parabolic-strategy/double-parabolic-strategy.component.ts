@@ -3,8 +3,8 @@ import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { DpsarConfigComponent } from "./dpsar-config/dpsar-config.component";
-import { DpsarSignalsComponent } from "./dpsar-signals/dpsar-signals.component";
+import { DpsarConfigComponent } from "./config/dpsar-config.component";
+import { DpsarSignalsComponent } from "./signals/dpsar-signals.component";
 
 @Component({
   selector: 'app-double-parabolic-strategy',
@@ -82,7 +82,7 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
   }
 
   private drawMa() {
-    this.indicatorDrawerService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 0);
   }
 
   private buildMaConfig() {
@@ -111,7 +111,7 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
   }
 
   private drawMacd() {
-    this.indicatorDrawerService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 1);
   }
 
   private buildMacdConfig() {
@@ -144,7 +144,7 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
   }
 
   private drawPsar() {
-    this.indicatorDrawerService.draw(this.buildPsarConfig(), this.buildPsarResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildPsarConfig(), this.buildPsarResults(), this.chart, this.container, 0);
   }
 
   private buildPsarConfig() {
@@ -172,7 +172,7 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
   }
 
   private drawPsarMacd() {
-    this.indicatorDrawerService.draw(this.buildPsarMacdConfig(), this.buildPsarMacdResults(), this.chart, this.container, 2);
+    this.indicatorDrawService.draw(this.buildPsarMacdConfig(), this.buildPsarMacdResults(), this.chart, this.container, 2);
   }
 
   private buildPsarMacdConfig() {

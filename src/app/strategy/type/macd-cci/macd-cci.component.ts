@@ -3,8 +3,8 @@ import { DatePipe } from "@angular/common";
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { MacdCciConfigComponent } from "./macd-cci-config/macd-cci-config.component";
-import { MacdCciSignalsComponent } from "./macd-cci-signals/macd-cci-signals.component";
+import { MacdCciConfigComponent } from "./config/macd-cci-config.component";
+import { MacdCciSignalsComponent } from "./signals/macd-cci-signals.component";
 
 @Component({
   selector: 'app-macd-cci',
@@ -69,7 +69,7 @@ export class MacdCciComponent extends BaseStrategyTypeComponent {
   }
 
   private drawMacd() {
-    this.indicatorDrawerService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 0);
   }
 
   private buildMacdConfig() {
@@ -102,7 +102,7 @@ export class MacdCciComponent extends BaseStrategyTypeComponent {
   }
 
   private drawCci() {
-    this.indicatorDrawerService.draw(this.buildCciConfig(), this.buildCciResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildCciConfig(), this.buildCciResults(), this.chart, this.container, 1);
   }
 
   private buildCciConfig() {

@@ -3,8 +3,8 @@ import { DatePipe } from "@angular/common";
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { HaMacdPsarConfigComponent } from "./ha-macd-psar-config/ha-macd-psar-config.component";
-import { HaMacdPsarSignalsComponent } from "./ha-macd-psar-signals/ha-macd-psar-signals.component";
+import { HaMacdPsarConfigComponent } from "./config/ha-macd-psar-config.component";
+import { HaMacdPsarSignalsComponent } from "./signals/ha-macd-psar-signals.component";
 
 @Component({
   selector: 'app-ha-macd-psar',
@@ -71,7 +71,7 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawHa() {
-    this.indicatorDrawerService.draw(this.buildHaConfig(), this.buildHaResults(), this.chart, this.container, 0, 400);
+    this.indicatorDrawService.draw(this.buildHaConfig(), this.buildHaResults(), this.chart, this.container, 0, 400);
   }
 
   private buildHaConfig() {
@@ -95,7 +95,7 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawMacd() {
-    this.indicatorDrawerService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 1);
   }
 
   private buildMacdConfig() {
@@ -128,7 +128,7 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawPsar() {
-    this.indicatorDrawerService.draw(this.buildPsarConfig(), this.buildPsarResults(),
+    this.indicatorDrawService.draw(this.buildPsarConfig(), this.buildPsarResults(),
       this.chart, this.container, 1, null, 1);
   }
 

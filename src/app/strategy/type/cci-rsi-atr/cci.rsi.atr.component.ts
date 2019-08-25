@@ -3,8 +3,8 @@ import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { DatePipe } from "@angular/common";
 import { Signal } from "../../../core/signal/signal.model";
-import { CciRsiAtrConfigComponent } from "./cci-rsi-atr-config/cci-rsi-atr-config.component";
-import { CciRsiAtrSignalsComponent } from "./cci-rsi-atr-signals/cci-rsi-atr-signals.component";
+import { CciRsiAtrConfigComponent } from "./config/cci-rsi-atr-config.component";
+import { CciRsiAtrSignalsComponent } from "./signals/cci-rsi-atr-signals.component";
 
 @Component({
   selector: 'app-cci-rsi-atr',
@@ -72,7 +72,7 @@ export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
   }
 
   private drawCci() {
-    this.indicatorDrawerService.draw(this.buildCciConfig(), this.buildCciResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildCciConfig(), this.buildCciResults(), this.chart, this.container, 1);
   }
 
   private buildCciConfig() {
@@ -99,7 +99,7 @@ export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
   }
 
   private drawRsi() {
-    this.indicatorDrawerService.draw(this.buildRsiConfig(), this.buildRsiResults(), this.chart, this.container, 2);
+    this.indicatorDrawService.draw(this.buildRsiConfig(), this.buildRsiResults(), this.chart, this.container, 2);
   }
 
   private buildRsiConfig() {
@@ -127,7 +127,7 @@ export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
   }
 
   private drawAtr() {
-    this.indicatorDrawerService.draw(this.buildAtrConfig(), this.buildAtrResults(), this.chart, this.container, 3);
+    this.indicatorDrawService.draw(this.buildAtrConfig(), this.buildAtrResults(), this.chart, this.container, 3);
   }
 
   private buildAtrConfig() {

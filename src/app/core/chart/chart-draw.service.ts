@@ -5,7 +5,7 @@ import { ElementRef, Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root"
 })
-export class ChartDrawerService {
+export class ChartDrawService {
 
   draw(tickData: TickData, tickForChart: any[], container: ElementRef) {
     const chart = AnyChart.stock(0);

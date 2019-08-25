@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { BwsConfigComponent } from "./bws-config/bws-config.component";
-import { BwsSignalsComponent } from "./bws-signals/bws-signals.component";
+import { BwsConfigComponent } from "./config/bws-config.component";
+import { BwsSignalsComponent } from "./signals/bws-signals.component";
 import { DatePipe } from "@angular/common";
 
 @Component({
@@ -75,7 +75,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
   }
 
   private drawAc() {
-    this.indicatorDrawerService.draw(this.buildAcConfig(), this.buildAcResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildAcConfig(), this.buildAcResults(), this.chart, this.container, 1);
   }
 
   private buildAcConfig() {
@@ -105,7 +105,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
   }
 
   private drawAo() {
-    this.indicatorDrawerService.draw(this.buildAoConfig(), this.buildAoResults(), this.chart, this.container, 2);
+    this.indicatorDrawService.draw(this.buildAoConfig(), this.buildAoResults(), this.chart, this.container, 2);
   }
 
   private buildAoConfig() {
@@ -134,7 +134,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
   }
 
   private drawAlligator() {
-    this.indicatorDrawerService.draw(this.buildAlligatorConfig(), this.buildAlligatorResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildAlligatorConfig(), this.buildAlligatorResults(), this.chart, this.container, 0);
   }
 
   private buildAlligatorConfig() {
@@ -169,7 +169,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
   }
 
   private drawFractal() {
-    this.indicatorDrawerService.draw(this.buildFractalConfig(), this.buildFractalResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildFractalConfig(), this.buildFractalResults(), this.chart, this.container, 0);
   }
 
   private buildFractalConfig() {

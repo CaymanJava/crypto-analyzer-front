@@ -12,27 +12,27 @@ import { StrategyConfigComponent } from './strategy-config/strategy-config.compo
 import { BillWilliamsStrategyComponent } from './type/bill-williams-strategy/bill-williams-strategy.component';
 import { StrategyConfigHeaderComponent } from './strategy-config/header/strategy-config-header.component';
 import { BaseStrategyTypeComponent } from "./type/base-strategy-type.component";
-import { BwsConfigComponent } from './type/bill-williams-strategy/bws-config/bws-config.component';
+import { BwsConfigComponent } from './type/bill-williams-strategy/config/bws-config.component';
 import { BaseStrategyConfigComponent } from "./type/base-strategy-config.component";
 import { IndicatorModule } from "../indicator/indicator.module";
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
-import { BwsSignalsComponent } from './type/bill-williams-strategy/bws-signals/bws-signals.component';
+import { BwsSignalsComponent } from './type/bill-williams-strategy/signals/bws-signals.component';
 import { BaseStrategySignalComponent } from "./type/base-strategy-signal.component";
 import { CciRsiAtrComponent } from "./type/cci-rsi-atr/cci.rsi.atr.component";
-import { CciRsiAtrConfigComponent } from './type/cci-rsi-atr/cci-rsi-atr-config/cci-rsi-atr-config.component';
-import { CciRsiAtrSignalsComponent } from './type/cci-rsi-atr/cci-rsi-atr-signals/cci-rsi-atr-signals.component';
+import { CciRsiAtrConfigComponent } from './type/cci-rsi-atr/config/cci-rsi-atr-config.component';
+import { CciRsiAtrSignalsComponent } from './type/cci-rsi-atr/signals/cci-rsi-atr-signals.component';
 import { DoubleParabolicStrategyComponent } from './type/double-parabolic-strategy/double-parabolic-strategy.component';
-import { DpsarConfigComponent } from './type/double-parabolic-strategy/dpsar-config/dpsar-config.component';
-import { DpsarSignalsComponent } from './type/double-parabolic-strategy/dpsar-signals/dpsar-signals.component';
+import { DpsarConfigComponent } from './type/double-parabolic-strategy/config/dpsar-config.component';
+import { DpsarSignalsComponent } from './type/double-parabolic-strategy/signals/dpsar-signals.component';
 import { HaMacdPsarComponent } from './type/ha-macd-psar/ha-macd-psar.component';
-import { HaMacdPsarConfigComponent } from './type/ha-macd-psar/ha-macd-psar-config/ha-macd-psar-config.component';
-import { HaMacdPsarSignalsComponent } from './type/ha-macd-psar/ha-macd-psar-signals/ha-macd-psar-signals.component';
+import { HaMacdPsarConfigComponent } from './type/ha-macd-psar/config/ha-macd-psar-config.component';
+import { HaMacdPsarSignalsComponent } from './type/ha-macd-psar/signals/ha-macd-psar-signals.component';
 import { MacdCciComponent } from './type/macd-cci/macd-cci.component';
 import { LrsiMaPsarComponent } from './type/lrsi-ma-psar/lrsi-ma-psar.component';
-import { LrsiMaPsarConfigComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-config/lrsi-ma-psar-config.component';
-import { LrsiMaPsarSignalsComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-signals/lrsi-ma-psar-signals.component';
-import { MacdCciConfigComponent } from './type/macd-cci/macd-cci-config/macd-cci-config.component';
-import { MacdCciSignalsComponent } from './type/macd-cci/macd-cci-signals/macd-cci-signals.component';
+import { LrsiMaPsarConfigComponent } from './type/lrsi-ma-psar/config/lrsi-ma-psar-config.component';
+import { LrsiMaPsarSignalsComponent } from './type/lrsi-ma-psar/signals/lrsi-ma-psar-signals.component';
+import { MacdCciConfigComponent } from './type/macd-cci/config/macd-cci-config.component';
+import { MacdCciSignalsComponent } from './type/macd-cci/signals/macd-cci-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,

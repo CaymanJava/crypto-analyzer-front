@@ -3,8 +3,8 @@ import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { LrsiMaPsarConfigComponent } from "./lrsi-ma-psar-config/lrsi-ma-psar-config.component";
-import { LrsiMaPsarSignalsComponent } from "./lrsi-ma-psar-signals/lrsi-ma-psar-signals.component";
+import { LrsiMaPsarConfigComponent } from "./config/lrsi-ma-psar-config.component";
+import { LrsiMaPsarSignalsComponent } from "./signals/lrsi-ma-psar-signals.component";
 
 @Component({
   selector: 'app-lrsi-ma-psar',
@@ -73,7 +73,7 @@ export class LrsiMaPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawLrsi() {
-    this.indicatorDrawerService.draw(this.buildLrsiConfig(), this.buildLrsiResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildLrsiConfig(), this.buildLrsiResults(), this.chart, this.container, 0);
   }
 
   private buildLrsiConfig() {
@@ -100,7 +100,7 @@ export class LrsiMaPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawMa() {
-    this.indicatorDrawerService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 1);
   }
 
   private buildMaConfig() {
@@ -129,7 +129,7 @@ export class LrsiMaPsarComponent extends BaseStrategyTypeComponent {
   }
 
   private drawPsar() {
-    this.indicatorDrawerService.draw(this.buildPsarConfig(), this.buildPsarResults(), this.chart, this.container, 0);
+    this.indicatorDrawService.draw(this.buildPsarConfig(), this.buildPsarResults(), this.chart, this.container, 0);
   }
 
   private buildPsarConfig() {
