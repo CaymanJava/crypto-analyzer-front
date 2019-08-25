@@ -113,7 +113,7 @@ export class LrsiMaPsarConfigComponent extends BaseStrategyConfigComponent {
       entryShortColor: this.drawConfiguration.signalConfiguration.entryShortColor,
       signalMarkerSize: this.drawConfiguration.signalConfiguration.signalMarkerSize,
       buyMarker: this.drawConfiguration.signalConfiguration.buyMarker,
-      sellMarker: this.drawConfiguration.signalConfiguration.sellMarker,
+      sellMarker: this.drawConfiguration.signalConfiguration.sellMarker
     });
   }
 

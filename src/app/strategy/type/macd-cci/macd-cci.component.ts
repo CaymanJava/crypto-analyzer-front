@@ -3,24 +3,23 @@ import { DatePipe } from "@angular/common";
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { Signal } from "../../../core/signal/signal.model";
-import { HaMacdPsarConfigComponent } from "./ha-macd-psar-config/ha-macd-psar-config.component";
-import { HaMacdPsarSignalsComponent } from "./ha-macd-psar-signals/ha-macd-psar-signals.component";
+import { MacdCciConfigComponent } from "./macd-cci-config/macd-cci-config.component";
+import { MacdCciSignalsComponent } from "./macd-cci-signals/macd-cci-signals.component";
 
 @Component({
-  selector: 'app-ha-macd-psar',
-  templateUrl: './ha-macd-psar.component.html',
+  selector: 'app-macd-cci',
+  templateUrl: './macd-cci.component.html',
   providers: [
     DatePipe
   ]
 })
-export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
+export class MacdCciComponent extends BaseStrategyTypeComponent {
 
-  type = 'HA_MACD_PSAR';
+  type = 'MACD_CCI';
 
   drawStrategyResult() {
-    this.drawHa();
     this.drawMacd();
-    this.drawPsar();
+    this.drawCci();
     this.drawSignals();
   }
 
@@ -29,30 +28,29 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
       strategyConfiguration: {
         macdMaType: 'EXPONENTIAL_MOVING_AVERAGE',
         macdPriceType: 'CLOSE',
-        macdFastPeriod: 12,
-        macdSlowPeriod: 26,
-        macdSignalPeriod: 9,
-        psarMinAccelerationFactor: 0.02,
-        psarMaxAccelerationFactor: 0.2,
-        positions: ['ENTRY_LONG', 'ENTRY_SHORT']
+        macdFastPeriod: 8,
+        macdSlowPeriod: 17,
+        macdSignalPeriod: 2,
+        cciPeriod: 14,
+        cciOversoldLevel: -100,
+        cciOverboughtLevel: 100,
+        positions: super.allPosition()
       },
       drawConfiguration: {
-        haDrawConfiguration: {
-          risingBarColor: '#3ba158',
-          fallingBarColor: '#fa0f16'
-        },
         macdDrawConfiguration: {
           indicatorLineColor: '#1c1afa',
           signalLineColor: '#fa0f16',
           barChartColor: '#4e4e76'
         },
-        psarDrawConfiguration: {
-          indicatorColor: '#7e05a1',
-          markerSize: 5,
-          marker: 'star4'
+        cciDrawConfiguration: {
+          oversold: -100,
+          overbought: 100,
+          indicatorLineColor: '#0a2ecc'
         },
         signalConfiguration: {
           entryLongColor: '#3ba158',
+          exitShortColor: '#4708fa',
+          exitLongColor: '#fa0f16',
           entryShortColor: '#fa9a12',
           signalMarkerSize: 8,
           buyMarker: 'arrowUp',
@@ -63,39 +61,15 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
   }
 
   getStrategyConfigModal() {
-    return HaMacdPsarConfigComponent;
+    return MacdCciConfigComponent;
   }
 
   getStrategySignalModal() {
-    return HaMacdPsarSignalsComponent;
-  }
-
-  private drawHa() {
-    this.indicatorDrawerService.draw(this.buildHaConfig(), this.buildHaResults(), this.chart, this.container, 0, 400);
-  }
-
-  private buildHaConfig() {
-    return new IndicatorSettings(new IndicatorItem('HA'), {}, this.configuration.drawConfiguration.haDrawConfiguration, false);
-  }
-
-  private buildHaResults() {
-    const haResults = [];
-    this.strategyResults.forEach(strategyResult => haResults.push(this.buildHaResult(strategyResult)));
-    return haResults;
-  }
-
-  private buildHaResult(strategyResult: any) {
-    return {
-      time: strategyResult.tick.tickTime,
-      open: strategyResult.haOpen,
-      high: strategyResult.haHigh,
-      low: strategyResult.haLow,
-      close: strategyResult.haClose,
-    }
+    return MacdCciSignalsComponent;
   }
 
   private drawMacd() {
-    this.indicatorDrawerService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 1);
+    this.indicatorDrawerService.draw(this.buildMacdConfig(), this.buildMacdResults(), this.chart, this.container, 0);
   }
 
   private buildMacdConfig() {
@@ -127,32 +101,30 @@ export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
     }
   }
 
-  private drawPsar() {
-    this.indicatorDrawerService.draw(this.buildPsarConfig(), this.buildPsarResults(),
-      this.chart, this.container, 1, null, 1);
+  private drawCci() {
+    this.indicatorDrawerService.draw(this.buildCciConfig(), this.buildCciResults(), this.chart, this.container, 1);
   }
 
-  private buildPsarConfig() {
-    return new IndicatorSettings(new IndicatorItem('PSAR'), this.getPsarConfig(), this.configuration.drawConfiguration.psarDrawConfiguration, false);
+  private buildCciConfig() {
+    return new IndicatorSettings(new IndicatorItem('CCI'), this.getCciConfig(), this.configuration.drawConfiguration.cciDrawConfiguration, false);
   }
 
-  private getPsarConfig() {
+  private getCciConfig() {
     return {
-      minAccelerationFactor: this.configuration.strategyConfiguration.psarMinAccelerationFactor,
-      maxAccelerationFactor: this.configuration.strategyConfiguration.psarMaxAccelerationFactor
+      period: this.configuration.strategyConfiguration.cciPeriod
     }
   }
 
-  private buildPsarResults() {
-    const psarResults = [];
-    this.strategyResults.forEach(strategyResult => psarResults.push(this.buildPsarResult(strategyResult)));
-    return psarResults;
+  private buildCciResults() {
+    const cciResults = [];
+    this.strategyResults.forEach(strategyResult => cciResults.push(this.buildCciResult(strategyResult)));
+    return cciResults;
   }
 
-  private buildPsarResult(strategyResult: any) {
+  private buildCciResult(strategyResult: any) {
     return {
       time: strategyResult.tick.tickTime,
-      indicatorValue: strategyResult.psarValue
+      indicatorValue: strategyResult.cciMacdValue
     }
   }
 

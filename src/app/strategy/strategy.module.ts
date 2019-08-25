@@ -31,6 +31,8 @@ import { MacdCciComponent } from './type/macd-cci/macd-cci.component';
 import { LrsiMaPsarComponent } from './type/lrsi-ma-psar/lrsi-ma-psar.component';
 import { LrsiMaPsarConfigComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-config/lrsi-ma-psar-config.component';
 import { LrsiMaPsarSignalsComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-signals/lrsi-ma-psar-signals.component';
+import { MacdCciConfigComponent } from './type/macd-cci/macd-cci-config/macd-cci-config.component';
+import { MacdCciSignalsComponent } from './type/macd-cci/macd-cci-signals/macd-cci-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -53,7 +55,8 @@ const modalConfigs = [
   CciRsiAtrConfigComponent,
   DpsarConfigComponent,
   HaMacdPsarConfigComponent,
-  LrsiMaPsarConfigComponent
+  LrsiMaPsarConfigComponent,
+  MacdCciConfigComponent
 ];
 
 const modalSignals = [
@@ -61,7 +64,8 @@ const modalSignals = [
   CciRsiAtrSignalsComponent,
   DpsarSignalsComponent,
   HaMacdPsarSignalsComponent,
-  LrsiMaPsarSignalsComponent
+  LrsiMaPsarSignalsComponent,
+  MacdCciSignalsComponent
 ];
 
 @NgModule({

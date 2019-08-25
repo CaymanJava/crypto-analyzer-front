@@ -63,11 +63,11 @@ export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
     }
   }
 
-  getStrategyConfigModel() {
+  getStrategyConfigModal() {
     return CciRsiAtrConfigComponent;
   }
 
-  getStrategySignalModel() {
+  getStrategySignalModal() {
     return CciRsiAtrSignalsComponent;
   }
 

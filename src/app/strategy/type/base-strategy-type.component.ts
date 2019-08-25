@@ -75,9 +75,9 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   abstract getDefaultConfig();
 
-  abstract getStrategyConfigModel();
+  abstract getStrategyConfigModal();
 
-  abstract getStrategySignalModel();
+  abstract getStrategySignalModal();
 
   dateTimeRangeChange(dateTimeRange: Date[]) {
     this.dateTimeRange = dateTimeRange;
@@ -110,7 +110,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   }
 
   configClick() {
-    const dialog = this.modalService.open(this.getStrategyConfigModel(), this.dialogConfig);
+    const dialog = this.modalService.open(this.getStrategyConfigModal(), this.dialogConfig);
     dialog.componentInstance.name = this.strategy.name;
     dialog.componentInstance.configuration = this.configuration.strategyConfiguration;
     dialog.componentInstance.drawConfiguration = this.configuration.drawConfiguration;
@@ -123,7 +123,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   }
 
   signalsClick() {
-    const dialog = this.modalService.open(this.getStrategySignalModel(), this.dialogSignalConfig);
+    const dialog = this.modalService.open(this.getStrategySignalModal(), this.dialogSignalConfig);
     dialog.componentInstance.name = this.strategy.name;
     dialog.componentInstance.data = this.buildSignalsPageSlice();
   }

@@ -66,11 +66,11 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
     };
   }
 
-  getStrategyConfigModel() {
+  getStrategyConfigModal() {
     return BwsConfigComponent;
   }
 
-  getStrategySignalModel() {
+  getStrategySignalModal() {
     return BwsSignalsComponent;
   }
 

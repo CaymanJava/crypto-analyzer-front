@@ -73,11 +73,11 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
     };
   }
 
-  getStrategyConfigModel() {
+  getStrategyConfigModal() {
     return DpsarConfigComponent;
   }
 
-  getStrategySignalModel() {
+  getStrategySignalModal() {
     return DpsarSignalsComponent;
   }
 

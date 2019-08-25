@@ -1,0 +1,132 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="macdMaType"
+          label="MACD Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="macdPriceType"
+          label="MACD Price Type">
+      </app-price-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdFastPeriod"
+          label="MACD Fast Period"
+          placeholder="12">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSlowPeriod"
+          label="MACD Slow Period"
+          placeholder="26">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSignalPeriod"
+          label="MACD Signal Period"
+          placeholder="9">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="cciPeriod"
+          label="CCI Period"
+          placeholder="0.5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="cciOversoldLevel"
+          label="CCI Oversold"
+          placeholder="-100">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="cciOverboughtLevel"
+          label="CCI Overbought"
+          placeholder="100">
+      </app-indicator-input>
+      <app-position-picker
+          (onPositionSelected)="positionsSelected($event, 'positions')"
+          [positions]="configForm.get('positions').value">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdLineColor')"
+          [color]="drawConfigForm.get('macdLineColor').value"
+          [label]="'MACD'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdSignalLineColor')"
+          [color]="drawConfigForm.get('macdSignalLineColor').value"
+          [label]="'MACD Signal'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdBarChartLineColor')"
+          [color]="drawConfigForm.get('macdBarChartLineColor').value"
+          [label]="'MACD Bar Chart'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'cciLineColor')"
+          [color]="drawConfigForm.get('cciLineColor').value"
+          [label]="'CCI'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'exitLongColor')"
+          [color]="drawConfigForm.get('exitLongColor').value"
+          [label]="'Exit Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'exitShortColor')"
+          [color]="drawConfigForm.get('exitShortColor').value"
+          [label]="'Exit Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [label]="'Buy marker'"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [label]="'Sell marker'"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>

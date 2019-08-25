@@ -64,11 +64,11 @@ export class LrsiMaPsarComponent extends BaseStrategyTypeComponent {
     }
   }
 
-  getStrategyConfigModel() {
+  getStrategyConfigModal() {
     return LrsiMaPsarConfigComponent;
   }
 
-  getStrategySignalModel() {
+  getStrategySignalModal() {
     return LrsiMaPsarSignalsComponent;
   }
 
