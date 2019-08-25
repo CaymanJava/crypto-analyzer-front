@@ -8,15 +8,15 @@ import { Injectable } from "@angular/core";
 })
 export class HaDrawService extends CommonDrawService {
 
-  draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number): IndicatorDrawResult {
+  draw(settings: IndicatorSettings, result: any[], chart: any, currentPlotNumber: number, [], pixels: number = 150): IndicatorDrawResult {
     const plotNumber = currentPlotNumber + 1;
-    this.drawHA(result, chart, settings, plotNumber);
+    this.drawHA(result, chart, settings, plotNumber, pixels);
     return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }
 
-  update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult {
+  update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, [], pixels: number = 150): IndicatorDrawResult {
     super.clearPlot(chart, plotNumber);
-    this.drawHA(result, chart, settings, plotNumber);
+    this.drawHA(result, chart, settings, plotNumber, pixels);
     return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }
 
@@ -38,10 +38,10 @@ export class HaDrawService extends CommonDrawService {
     return settings.indicatorItem.title;
   }
 
-  private drawHA(result: any[], chart: any, settings: IndicatorSettings, plotNumber) {
+  private drawHA(result: any[], chart: any, settings: IndicatorSettings, plotNumber, pixels: number) {
     const data = this.prepareData(result);
     const mapping = this.addData(data);
-    const plot = this.preparePlot(chart, mapping, plotNumber);
+    const plot = this.preparePlot(chart, mapping, plotNumber, pixels);
     this.configureCandlestick(plot, settings);
   }
 
@@ -56,9 +56,9 @@ export class HaDrawService extends CommonDrawService {
     });
   }
 
-  private preparePlot(chart, mapping, plotNumber: number) {
+  private preparePlot(chart, mapping, plotNumber: number, pixels: number) {
     const plot = chart.plot(plotNumber);
-    plot.height('150px');
+    plot.height(pixels + 'px');
     plot.xGrid().enabled(true);
     plot.yGrid().enabled(true);
     plot.yGrid().stroke("#dee2e6");

@@ -7,12 +7,14 @@ import { SimpleDrawService } from "./simple-draw.service";
 })
 export class PsarDrawService extends SimpleDrawService {
 
-  draw(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
-    return super.draw(settings, result, chart, 0);
+  draw(settings: IndicatorSettings, result: any[], chart: any,
+       currentPlotNumber: number, [], pixels?: number, requestedPlotNumber?: number): IndicatorDrawResult {
+    return super.draw(settings, result, chart, 0, [], pixels, requestedPlotNumber);
   }
 
-  update(settings: IndicatorSettings, result: any[], chart: any): IndicatorDrawResult {
-    return super.draw(settings, result, chart, 0);
+  update(settings: IndicatorSettings, result: any[], chart: any,
+         currentPlotNumber: number, [], pixels: number = 150, requestedPlotNumber?: number): IndicatorDrawResult {
+    return super.draw(settings, result, chart, 0, [], pixels, requestedPlotNumber);
   }
 
   prepareTitle(settings: IndicatorSettings) {
@@ -21,10 +23,9 @@ export class PsarDrawService extends SimpleDrawService {
       settings.configuration.maxAccelerationFactor + ')';
   }
 
-  configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {
-    const indicatorPlot = chart.plot(plotNumber);
+  configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[], requestedPlotNumber?: number) {
+    const indicatorPlot = chart.plot(requestedPlotNumber === null ? plotNumber: requestedPlotNumber);
     super.configureDateTimeFormat(indicatorPlot);
-    super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot.marker(indicatorMapping);
   }
 

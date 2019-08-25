@@ -3,9 +3,11 @@ import * as AnyChart from "anychart";
 
 export interface DrawService {
 
-  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number,
+       horizontalLines: number[], pixels: number, requestedPlotNumber: number): IndicatorDrawResult;
 
-  update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+  update(settings: IndicatorSettings, result: any[], chart: any,
+         plotNumber: number, horizontalLines: number[], pixels: number, requestedPlotNumber: number): IndicatorDrawResult;
 
   prepareTitle(settings: IndicatorSettings);
 
@@ -13,9 +15,11 @@ export interface DrawService {
 
 export abstract class CommonDrawService implements DrawService {
 
-  abstract draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+  abstract draw(settings: IndicatorSettings, result: any[], chart: any,
+                plotNumber: number, horizontalLines?: number[], pixels?: number, requestedPlotNumber?: number): IndicatorDrawResult;
 
-  abstract update(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number): IndicatorDrawResult;
+  abstract update(settings: IndicatorSettings, result: any[], chart: any,
+                  plotNumber: number, horizontalLines?: number[], pixels?: number, requestedPlotNumber?: number): IndicatorDrawResult;
 
   abstract prepareTitle(settings: IndicatorSettings);
 
@@ -62,7 +66,6 @@ export abstract class CommonDrawService implements DrawService {
   clearPlot(chart: any, plotNumber: number) {
     const plot = chart.plot(plotNumber);
     plot.removeAllSeries();
-    this.removeAnnotations(plot);
   }
 
   addHorizontalLines(horizontalLines: number[], indicatorPlot) {
@@ -110,10 +113,6 @@ export abstract class CommonDrawService implements DrawService {
       valueAnchor: lineValue
     });
     line.allowEdit(false);
-  }
-
-  private removeAnnotations(indicatorPlot) {
-    indicatorPlot.annotations().removeAllAnnotations();
   }
 
 }

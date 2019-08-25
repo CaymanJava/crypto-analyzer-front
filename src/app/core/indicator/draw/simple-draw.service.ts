@@ -4,11 +4,12 @@ import * as AnyChart from "anychart";
 
 export abstract class SimpleDrawService extends CommonDrawService {
 
-  draw(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines?: number[]): IndicatorDrawResult {
-    return this.drawSimpleIndicator(settings, result, chart, plotNumber, horizontalLines);
+  draw(settings: IndicatorSettings, result: any[], chart: any,
+       plotNumber: number, horizontalLines?: number[], pixels?: number, requestedPlotNumber?: number): IndicatorDrawResult {
+    return this.drawSimpleIndicator(settings, result, chart, plotNumber, horizontalLines, requestedPlotNumber);
   }
 
-  configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[]) {
+  configurePlot(chart: any, plotNumber: number, indicatorMapping, horizontalLines: number[], requestedPlotNumber?: number) {
     const indicatorPlot = super.prepareDefaultPlotConfiguration(chart, plotNumber);
     super.addHorizontalLines(horizontalLines, indicatorPlot);
     return indicatorPlot.line(indicatorMapping);
@@ -25,10 +26,11 @@ export abstract class SimpleDrawService extends CommonDrawService {
     computedLine.stroke(settings.drawConfiguration.indicatorLineColor);
   }
 
-  private drawSimpleIndicator(settings: IndicatorSettings, result: any[], chart: any, plotNumber: number, horizontalLines: number[]): IndicatorDrawResult {
+  private drawSimpleIndicator(settings: IndicatorSettings, result: any[], chart: any,
+                              plotNumber: number, horizontalLines: number[], requestedPlotNumber?: number): IndicatorDrawResult {
     const indicatorData = this.prepareSimpleIndicatorData(result);
     const indicatorMapping = this.addData(indicatorData);
-    const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines);
+    const computedLine = this.configurePlot(chart, plotNumber, indicatorMapping, horizontalLines, requestedPlotNumber);
     this.configureIndicator(settings, computedLine);
     return new IndicatorDrawResult(this.prepareTitle(settings), plotNumber);
   }

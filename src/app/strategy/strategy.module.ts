@@ -24,6 +24,9 @@ import { CciRsiAtrSignalsComponent } from './type/cci-rsi-atr/cci-rsi-atr-signal
 import { DoubleParabolicStrategyComponent } from './type/double-parabolic-strategy/double-parabolic-strategy.component';
 import { DpsarConfigComponent } from './type/double-parabolic-strategy/dpsar-config/dpsar-config.component';
 import { DpsarSignalsComponent } from './type/double-parabolic-strategy/dpsar-signals/dpsar-signals.component';
+import { HaMacdPsarComponent } from './type/ha-macd-psar/ha-macd-psar.component';
+import { HaMacdPsarConfigComponent } from './type/ha-macd-psar/ha-macd-psar-config/ha-macd-psar-config.component';
+import { HaMacdPsarSignalsComponent } from './type/ha-macd-psar/ha-macd-psar-signals/ha-macd-psar-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -35,19 +38,22 @@ const components = [
   BillWilliamsStrategyComponent,
   StrategyConfigHeaderComponent,
   CciRsiAtrComponent,
-  DoubleParabolicStrategyComponent
+  DoubleParabolicStrategyComponent,
+  HaMacdPsarComponent
 ];
 
 const modalConfigs = [
   BwsConfigComponent,
   CciRsiAtrConfigComponent,
-  DpsarConfigComponent
+  DpsarConfigComponent,
+  HaMacdPsarConfigComponent
 ];
 
 const modalSignals = [
   BwsSignalsComponent,
   CciRsiAtrSignalsComponent,
-  DpsarSignalsComponent
+  DpsarSignalsComponent,
+  HaMacdPsarSignalsComponent
 ];
 
 @NgModule({
