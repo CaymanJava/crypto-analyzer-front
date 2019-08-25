@@ -81,7 +81,6 @@ export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent 
     return DpsarSignalsComponent;
   }
 
-
   private drawMa() {
     this.indicatorDrawerService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 0);
   }

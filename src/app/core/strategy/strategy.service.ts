@@ -29,6 +29,11 @@ export class StrategyService {
       'description': 'Heiken Ashi + Moving Average Convergence Divergence + Parabolic Stop And Reverse'
     },
     {
+      'name': 'LRSI + MA + PSAR',
+      'type': 'LRSI_MA_PSAR',
+      'description': 'Laguerre Relative Strength Index + Moving Average + Parabolic Stop And Reverse'
+    },
+    {
       'name': 'MACD + CCI',
       'type': 'MACD_CCI',
       'description': 'Moving Average Convergence Divergence + Commodity Channel Index'
@@ -57,6 +62,11 @@ export class StrategyService {
       'name': 'STOCH + ADX + MA',
       'type': 'STOCH_ADX_MA',
       'description': 'Stochastic Oscillator + Average Directional Movement Index + Moving Average'
+    },
+    {
+      'name': 'STOCH + CCI',
+      'type': 'STOCH_CCI',
+      'description': 'Stochastic Oscillator + Commodity Channel Index'
     },
     {
       'name': 'STOCH + HA',

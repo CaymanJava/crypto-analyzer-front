@@ -27,6 +27,10 @@ import { DpsarSignalsComponent } from './type/double-parabolic-strategy/dpsar-si
 import { HaMacdPsarComponent } from './type/ha-macd-psar/ha-macd-psar.component';
 import { HaMacdPsarConfigComponent } from './type/ha-macd-psar/ha-macd-psar-config/ha-macd-psar-config.component';
 import { HaMacdPsarSignalsComponent } from './type/ha-macd-psar/ha-macd-psar-signals/ha-macd-psar-signals.component';
+import { MacdCciComponent } from './type/macd-cci/macd-cci.component';
+import { LrsiMaPsarComponent } from './type/lrsi-ma-psar/lrsi-ma-psar.component';
+import { LrsiMaPsarConfigComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-config/lrsi-ma-psar-config.component';
+import { LrsiMaPsarSignalsComponent } from './type/lrsi-ma-psar/lrsi-ma-psar-signals/lrsi-ma-psar-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -39,21 +43,25 @@ const components = [
   StrategyConfigHeaderComponent,
   CciRsiAtrComponent,
   DoubleParabolicStrategyComponent,
-  HaMacdPsarComponent
+  HaMacdPsarComponent,
+  MacdCciComponent,
+  LrsiMaPsarComponent
 ];
 
 const modalConfigs = [
   BwsConfigComponent,
   CciRsiAtrConfigComponent,
   DpsarConfigComponent,
-  HaMacdPsarConfigComponent
+  HaMacdPsarConfigComponent,
+  LrsiMaPsarConfigComponent
 ];
 
 const modalSignals = [
   BwsSignalsComponent,
   CciRsiAtrSignalsComponent,
   DpsarSignalsComponent,
-  HaMacdPsarSignalsComponent
+  HaMacdPsarSignalsComponent,
+  LrsiMaPsarSignalsComponent
 ];
 
 @NgModule({

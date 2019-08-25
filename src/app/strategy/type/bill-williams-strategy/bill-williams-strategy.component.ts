@@ -39,7 +39,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
         alligatorLipsOffset: 3,
         aoFastPeriod: 6,
         aoSlowPeriod: 34,
-        positions: this.allPosition()
+        positions: super.allPosition()
       },
       drawConfiguration: {
         alligatorConfiguration: {
