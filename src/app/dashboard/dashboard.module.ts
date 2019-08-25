@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopVolumeMarketComponent } from './top-volume/top-volume-market.component';
 import { LastAddedMarketComponent } from './market/last-added-market.component';
@@ -17,7 +16,6 @@ import { CoreModule } from "../core/core.module";
   imports: [
     CommonModule,
     NgxEchartsModule,
-    NgxDatatableModule,
     NgbModule,
     DashboardRoutingModule,
     SharedComponentsModule,

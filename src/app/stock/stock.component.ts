@@ -19,7 +19,7 @@ export class StockComponent implements OnInit, OnDestroy {
   stockSubscription: Subscription;
   searchSubscription: Subscription;
 
-  @ViewChild('searchStock') search: ElementRef;
+  @ViewChild('searchStock', {static: true}) search: ElementRef;
 
   constructor(private stockService: StockService) {
   }

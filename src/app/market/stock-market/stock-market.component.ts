@@ -40,7 +40,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
   currentPlotNumber = 0;
   updatedConfigHandler: IndicatorConfigurationHandler;
 
-  @ViewChild('chartContainer') container: ElementRef;
+  @ViewChild('chartContainer', {static: false}) container: ElementRef;
   chart = null;
 
   constructor(private activatedRoute: ActivatedRoute,

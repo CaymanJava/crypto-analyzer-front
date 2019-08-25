@@ -44,7 +44,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   chartSaveService: ChartSaveService;
   datePipe: DatePipe;
 
-  @ViewChild('chartContainer') container: ElementRef;
+  @ViewChild('chartContainer', {static: false}) container: ElementRef;
   chart = null;
   strategyResults: any[];
 

@@ -147,7 +147,7 @@ export class MacdCciComponent extends BaseStrategyTypeComponent {
     return signal;
   }
 
-  private buildPositions(strategyResult: any) {
+  private buildPositions(strategyResult: any): Set<string> {
     if (strategyResult.positions === null || strategyResult.positions.length === 0) {
       return new Set();
     }

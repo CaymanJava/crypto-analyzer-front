@@ -11,7 +11,7 @@ import { SearchService } from "./core/search/search.service";
 export class AppComponent {
 
   moduleLoading: boolean;
-  @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
+  @ViewChild(PerfectScrollbarDirective, {static: false}) perfectScrollbar: PerfectScrollbarDirective;
 
   constructor(public navService: NavigationService,
               public searchService: SearchService,

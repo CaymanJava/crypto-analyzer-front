@@ -22,7 +22,7 @@ export class StrategyListComponent implements OnInit, OnDestroy {
   strategySubscription: Subscription;
   searchSubscription: Subscription;
 
-  @ViewChild('searchStrategy') search: ElementRef;
+  @ViewChild('searchStrategy', {static: true}) search: ElementRef;
 
   constructor(private strategiesService: StrategyService,
               private strategySharedDataService: StrategySharedDataService,

@@ -9,19 +9,19 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {
     path: 'stock',
-    loadChildren: './stock/stock.module#StockModule',
+    loadChildren: () => import('./stock/stock.module').then(m => m.StockModule),
   },
   {
     path: 'market',
-    loadChildren: './market/market.module#MarketModule',
+    loadChildren: () => import('./market/market.module').then(m => m.MarketModule),
   },
   {
     path: 'strategy',
-    loadChildren: './strategy/strategy.module#StrategyModule',
+    loadChildren: () => import('./strategy/strategy.module').then(m => m.StrategyModule),
   },
   {
     path: '**',
