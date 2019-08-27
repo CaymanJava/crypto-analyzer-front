@@ -11,6 +11,7 @@ import { SignalDrawService } from "../../core/signal/signal-draw.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Signal } from "../../core/signal/signal.model";
+import { SignalBuilderService } from "../../core/signal/signal-builder.service";
 
 @Component({
   moduleId: module.id,
@@ -41,6 +42,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   chartDrawService: ChartDrawService;
   indicatorDrawService: IndicatorDrawService;
   signalDrawService: SignalDrawService;
+  signalBuildService: SignalBuilderService;
   chartSaveService: ChartSaveService;
   datePipe: DatePipe;
 
@@ -53,6 +55,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
                         indicatorDrawService: IndicatorDrawService,
                         signalDrawService: SignalDrawService,
                         chartSaveService: ChartSaveService,
+                        signalBuildService: SignalBuilderService,
                         datePipe: DatePipe,
                         private modalService: NgbModal,
                         private renderer: Renderer2) {
@@ -60,6 +63,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     this.chartDrawService = chartDrawService;
     this.indicatorDrawService = indicatorDrawService;
     this.signalDrawService = signalDrawService;
+    this.signalBuildService = signalBuildService;
     this.chartSaveService = chartSaveService;
     this.datePipe = datePipe;
   }
@@ -135,6 +139,12 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   allPosition() {
     return ['ENTRY_LONG', 'EXIT_LONG', 'ENTRY_SHORT', 'EXIT_SHORT'];
+  }
+
+  drawSignals() {
+    this.signals = this.signalBuildService.buildSignals(this.strategyResults);
+    this.signalDrawService.draw(this.signals, this.configuration.drawConfiguration.signalConfiguration,
+      this.chart, this.configuration.strategyConfiguration.positions);
   }
 
   private getMarketName() {

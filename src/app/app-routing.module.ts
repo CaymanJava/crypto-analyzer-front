@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'others/404'
+    redirectTo: 'dashboard'
   }
 ];
 

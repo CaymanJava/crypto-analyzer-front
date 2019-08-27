@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
-import { Signal } from "../../../core/signal/signal.model";
 import { PivotRsiMacdMaConfigComponent } from "./config/pivot-rsi-macd-ma-config.component";
 import { PivotRsiMacdMaSignalsComponent } from "./signals/pivot-rsi-macd-ma-signals.component";
 
@@ -22,7 +21,7 @@ export class PivotRsiMacdMaComponent extends BaseStrategyTypeComponent {
     this.drawRsi();
     this.drawMacd();
     this.drawMa();
-    this.drawSignals();
+    super.drawSignals();
   }
 
   getDefaultConfig() {
@@ -209,39 +208,6 @@ export class PivotRsiMacdMaComponent extends BaseStrategyTypeComponent {
       time: strategyResult.tick.tickTime,
       indicatorValue: strategyResult.maValue
     }
-  }
-
-  private drawSignals() {
-    this.signals = this.buildSignals();
-    this.signalDrawService.draw(this.signals, this.configuration.drawConfiguration.signalConfiguration,
-      this.chart, this.configuration.strategyConfiguration.positions);
-  }
-
-  private buildSignals() {
-    const signalResults = [];
-    this.strategyResults.forEach(strategyResult => signalResults.push(this.buildStrategyResult(strategyResult)));
-    return signalResults;
-  }
-
-  private buildStrategyResult(strategyResult: any) {
-    const signal = new Signal();
-    signal.tick = strategyResult.tick;
-    signal.positions = this.buildPositions(strategyResult);
-    signal.stopLose = strategyResult.stopLose;
-    signal.firstTakeProfit = strategyResult.firstTakeProfit;
-    signal.secondTakeProfit = strategyResult.secondTakeProfit;
-    return signal;
-  }
-
-  private buildPositions(strategyResult: any): Set<string> {
-    if (strategyResult.positions === null || strategyResult.positions.length === 0) {
-      return new Set();
-    }
-
-    const positions = new Set<string>();
-    strategyResult.positions.forEach(position => positions.add(position));
-
-    return positions;
   }
 
 }

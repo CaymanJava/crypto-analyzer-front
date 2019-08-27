@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
-import { Signal } from "../../../core/signal/signal.model";
 import { BwsConfigComponent } from "./config/bws-config.component";
 import { BwsSignalsComponent } from "./signals/bws-signals.component";
 import { DatePipe } from "@angular/common";
@@ -22,7 +21,7 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
     this.drawAo();
     this.drawAlligator();
     this.drawFractal();
-    this.drawSignals();
+    super.drawSignals();
   }
 
   getDefaultConfig() {
@@ -191,38 +190,6 @@ export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
       high: strategyResult.tick.high,
       low: strategyResult.tick.low
     }
-  }
-
-  private drawSignals() {
-    this.signals = this.buildSignals();
-    this.signalDrawService.draw(this.signals, this.configuration.drawConfiguration.signalConfiguration,
-      this.chart, this.configuration.strategyConfiguration.positions);
-  }
-
-  private buildSignals() {
-    const signalResults = [];
-    this.strategyResults.forEach(strategyResult => signalResults.push(this.buildStrategyResult(strategyResult)));
-    return signalResults;
-  }
-
-  private buildStrategyResult(strategyResult: any) {
-    const signal = new Signal();
-    signal.tick = strategyResult.tick;
-    signal.positions = this.buildPositions(strategyResult);
-    signal.entryPrice = strategyResult.entryPrice;
-    signal.stopLose = strategyResult.stopLose;
-    return signal;
-  }
-
-  private buildPositions(strategyResult: any): Set<string> {
-    if (strategyResult.positions === null || strategyResult.positions.length === 0) {
-      return new Set();
-    }
-
-    const positions = new Set<string>();
-    strategyResult.positions.forEach(position => positions.add(position));
-
-    return positions;
   }
 
 }
