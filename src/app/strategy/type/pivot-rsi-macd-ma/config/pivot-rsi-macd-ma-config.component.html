@@ -1,0 +1,195 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="rsiMaType"
+          label="RSI Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="rsiPeriod"
+          label="RSI Period"
+          placeholder="14">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="rsiSignalLine"
+          label="RSI Signal Period"
+          placeholder="50">
+      </app-indicator-input>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="macdMaType"
+          label="MACD Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="macdPriceType"
+          label="MACD Price Type">
+      </app-price-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdFastPeriod"
+          label="MACD Fast Period"
+          placeholder="8">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSlowPeriod"
+          label="MACD Slow Period"
+          placeholder="17">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="macdSignalPeriod"
+          label="MACD Signal Period"
+          placeholder="9">
+      </app-indicator-input>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="maType"
+          label="Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="maPriceType"
+          label="Moving Average Price Type">
+      </app-price-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="maPeriod"
+          label="MA Period"
+          placeholder="50">
+      </app-indicator-input>
+      <app-position-picker
+          (onPositionSelected)="positionsSelected($event, 'positions')"
+          [onlyEntries]="true"
+          [positions]="configForm.get('positions').value">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'rsiLineColor')"
+          [color]="drawConfigForm.get('rsiLineColor').value"
+          [label]="'RSI'">
+      </app-color-picker>
+      <app-indicator-input
+          [form]="drawConfigForm"
+          key="rsiOversold"
+          label="RSI Oversold"
+          placeholder="30">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="drawConfigForm"
+          key="rsiOverbought"
+          label="RSI Overbought"
+          placeholder="70">
+      </app-indicator-input>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdLineColor')"
+          [color]="drawConfigForm.get('macdLineColor').value"
+          [label]="'MACD'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdSignalLineColor')"
+          [color]="drawConfigForm.get('macdSignalLineColor').value"
+          [label]="'MACD Signal'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'macdBarChartLineColor')"
+          [color]="drawConfigForm.get('macdBarChartLineColor').value"
+          [label]="'MACD Bar Chart'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'pivotColor')"
+          [color]="drawConfigForm.get('pivotColor').value"
+          [label]="'Pivot'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'firstResistanceColor')"
+          [color]="drawConfigForm.get('firstResistanceColor').value"
+          [label]="'First resistance'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'secondResistanceColor')"
+          [color]="drawConfigForm.get('secondResistanceColor').value"
+          [label]="'Second resistance'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'thirdResistanceColor')"
+          [color]="drawConfigForm.get('thirdResistanceColor').value"
+          [label]="'Third resistance'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'fourthResistanceColor')"
+          [color]="drawConfigForm.get('fourthResistanceColor').value"
+          [label]="'Fourth resistance'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'firstSupportColor')"
+          [color]="drawConfigForm.get('firstSupportColor').value"
+          [label]="'First support'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'secondSupportColor')"
+          [color]="drawConfigForm.get('secondSupportColor').value"
+          [label]="'Second support'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'thirdSupportColor')"
+          [color]="drawConfigForm.get('thirdSupportColor').value"
+          [label]="'Third support'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'fourthSupportColor')"
+          [color]="drawConfigForm.get('fourthSupportColor').value"
+          [label]="'Fourth support'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [label]="'Buy marker'"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [label]="'Sell marker'"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>
