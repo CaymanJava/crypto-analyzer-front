@@ -160,7 +160,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   private initDateTimeRange() {
     const now = new Date();
-    this.dateTimeRange = [new Date(new Date().setMonth(now.getMonth() - 1)), now];
+    this.dateTimeRange = [new Date(new Date().setMonth(now.getMonth() - 2)), now];
   }
 
   private subscribeToStrategyCalculation() {

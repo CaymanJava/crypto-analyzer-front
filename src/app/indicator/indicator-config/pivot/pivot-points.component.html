@@ -12,50 +12,50 @@
     </app-pivot-point-picker>
     <div *ngIf="hasPivotTypeChosen()">
       <div class="separator-breadcrumb border-top"></div>
-      <app-color-picker *ngIf="isPivotLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'pivotColor')"
-          [color]="drawConfigForm.get('pivotColor').value"
-          [label]="'Pivot'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'pivotColor')"
+                        *ngIf="isPivotLineEnable()"
+                        [color]="drawConfigForm.get('pivotColor').value"
+                        [label]="'Pivot'">
       </app-color-picker>
       <app-color-picker
           (onColorChange)="onColorPickerChange($event, 'firstResistanceColor')"
           [color]="drawConfigForm.get('firstResistanceColor').value"
           [label]="'First resistance'">
       </app-color-picker>
-      <app-color-picker *ngIf="isSecondLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'secondResistanceColor')"
-          [color]="drawConfigForm.get('secondResistanceColor').value"
-          [label]="'Second resistance'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'secondResistanceColor')"
+                        *ngIf="isSecondLineEnable()"
+                        [color]="drawConfigForm.get('secondResistanceColor').value"
+                        [label]="'Second resistance'">
       </app-color-picker>
-      <app-color-picker *ngIf="isThirdLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'thirdResistanceColor')"
-          [color]="drawConfigForm.get('thirdResistanceColor').value"
-          [label]="'Third resistance'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'thirdResistanceColor')"
+                        *ngIf="isThirdLineEnable()"
+                        [color]="drawConfigForm.get('thirdResistanceColor').value"
+                        [label]="'Third resistance'">
       </app-color-picker>
-      <app-color-picker *ngIf="isFourthLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'fourthResistanceColor')"
-          [color]="drawConfigForm.get('fourthResistanceColor').value"
-          [label]="'Fourth resistance'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'fourthResistanceColor')"
+                        *ngIf="isFourthLineEnable()"
+                        [color]="drawConfigForm.get('fourthResistanceColor').value"
+                        [label]="'Fourth resistance'">
       </app-color-picker>
       <app-color-picker
           (onColorChange)="onColorPickerChange($event, 'firstSupportColor')"
           [color]="drawConfigForm.get('firstSupportColor').value"
           [label]="'First support'">
       </app-color-picker>
-      <app-color-picker *ngIf="isSecondLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'secondSupportColor')"
-          [color]="drawConfigForm.get('secondSupportColor').value"
-          [label]="'Second support'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'secondSupportColor')"
+                        *ngIf="isSecondLineEnable()"
+                        [color]="drawConfigForm.get('secondSupportColor').value"
+                        [label]="'Second support'">
       </app-color-picker>
-      <app-color-picker *ngIf="isThirdLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'thirdSupportColor')"
-          [color]="drawConfigForm.get('thirdSupportColor').value"
-          [label]="'Third support'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'thirdSupportColor')"
+                        *ngIf="isThirdLineEnable()"
+                        [color]="drawConfigForm.get('thirdSupportColor').value"
+                        [label]="'Third support'">
       </app-color-picker>
-      <app-color-picker *ngIf="isFourthLineEnable()"
-          (onColorChange)="onColorPickerChange($event, 'fourthSupportColor')"
-          [color]="drawConfigForm.get('fourthSupportColor').value"
-          [label]="'Fourth support'">
+      <app-color-picker (onColorChange)="onColorPickerChange($event, 'fourthSupportColor')"
+                        *ngIf="isFourthLineEnable()"
+                        [color]="drawConfigForm.get('fourthSupportColor').value"
+                        [label]="'Fourth support'">
       </app-color-picker>
     </div>
   </form>

@@ -38,13 +38,6 @@ export class StrategyConfigComponent implements OnInit, OnDestroy {
     }
   }
 
-  private subscribeToMarket() {
-    this.marketSubscription = this.marketService.getMarket(this.marketId)
-      .subscribe(market => {
-        this.market = market;
-      })
-  }
-
   selectStrategy() {
     this.strategySharedDataService.clearStrategyType();
     this.route.navigate([this.strategySharedDataService.resolveRoutePath()]);
@@ -53,6 +46,13 @@ export class StrategyConfigComponent implements OnInit, OnDestroy {
   selectMarket() {
     this.strategySharedDataService.clearMarket();
     this.route.navigate([this.strategySharedDataService.resolveRoutePath()]);
+  }
+
+  private subscribeToMarket() {
+    this.marketSubscription = this.marketService.getMarket(this.marketId)
+      .subscribe(market => {
+        this.market = market;
+      })
   }
 
 }

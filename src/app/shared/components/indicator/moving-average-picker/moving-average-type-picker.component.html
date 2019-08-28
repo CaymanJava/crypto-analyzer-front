@@ -1,27 +1,29 @@
 <div class="row">
   <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
-    <label for="movingAverageType">{{label}}</label>
+    <label for="positions">{{label}}</label>
   </div>
-  <div class="col-6 form-group mb-3">
-    <select [class.form-control-danger]="!configForm.controls[key].valid && configForm.controls[key].touched"
-            [formControl]="configForm.get(key)"
-            (change)="onChange($event.target.value)"
-            class="form-control col-form-label-sm custom-select"
-            id='movingAverageType'>
-      <option value="SIMPLE_MOVING_AVERAGE">Simple moving average</option>
-      <option value="EXPONENTIAL_MOVING_AVERAGE">Exponential moving average</option>
-      <option value="DOUBLE_EXPONENTIAL_MOVING_AVERAGE">Double exponential moving average</option>
-      <option value="TRIPLE_EXPONENTIAL_MOVING_AVERAGE">Triple exponential moving average</option>
-      <option *ngIf="fullList" value="DISPLACED_MOVING_AVERAGE">Displaced moving average</option>
-      <option value="KAUFMAN_ADAPTIVE_MOVING_AVERAGE">Kaufman adaptive moving average</option>
-      <option value="TRIANGULAR_MOVING_AVERAGE">Triangular moving average</option>
-      <option value="HULL_MOVING_AVERAGE">Hull moving average</option>
-      <option value="SMOOTHED_MOVING_AVERAGE">Smoothed moving average</option>
-      <option value="WEIGHTED_MOVING_AVERAGE">Weighted moving average</option>
-      <option value="MODIFIED_MOVING_AVERAGE">Modified moving average</option>
-      <option value="VARIABLE_INDEX_DYNAMIC_AVERAGE">Variable index dynamic average</option>
-      <option value="WELLES_WILDERS_MOVING_AVERAGE">Welles Wilders moving average</option>
-      <option value="TIME_SERIES_MOVING_AVERAGE">Time series moving average</option>
+  <div class="text-center input-group-append col-6 form-group mb-3 custom-slider" style="display: inline-block">
+    <select (ngModelChange)="onChange($event)"
+            [ngModel]="configForm.get(this.key).value"
+            [title]="label"
+            bootstrapSelect
+            class="selectpicker form-control col-form-label-sm custom-select"
+            data-style="btn-sm"
+            id="positions">
+      <option data-settings="type" selected value="SIMPLE_MOVING_AVERAGE">Simple moving average</option>
+      <option data-settings="type" selected value="EXPONENTIAL_MOVING_AVERAGE">Exponential moving average</option>
+      <option data-settings="type" selected value="DOUBLE_EXPONENTIAL_MOVING_AVERAGE">Double exponential moving average</option>
+      <option data-settings="type" selected value="TRIPLE_EXPONENTIAL_MOVING_AVERAGE">Triple exponential moving average</option>
+      <option *ngIf="fullList" data-settings="type" selected value="DISPLACED_MOVING_AVERAGE">Displaced moving average</option>
+      <option data-settings="type" selected value="KAUFMAN_ADAPTIVE_MOVING_AVERAGE">Kaufman adaptive moving average</option>
+      <option data-settings="type" selected value="TRIANGULAR_MOVING_AVERAGE">Triangular moving average</option>
+      <option data-settings="type" selected value="HULL_MOVING_AVERAGE">Hull moving average</option>
+      <option data-settings="type" selected value="SMOOTHED_MOVING_AVERAGE">Smoothed moving average</option>
+      <option data-settings="type" selected value="WEIGHTED_MOVING_AVERAGE">Weighted moving average</option>
+      <option data-settings="type" selected value="MODIFIED_MOVING_AVERAGE">Modified moving average</option>
+      <option data-settings="type" selected value="VARIABLE_INDEX_DYNAMIC_AVERAGE">Variable index dynamic average</option>
+      <option data-settings="type" selected value="WELLES_WILDERS_MOVING_AVERAGE">Welles Wilders moving average</option>
+      <option data-settings="type" selected value="TIME_SERIES_MOVING_AVERAGE">Time series moving average</option>
     </select>
   </div>
 </div>

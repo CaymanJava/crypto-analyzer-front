@@ -17,4 +17,8 @@ export class VolumeIndexTypePickerComponent implements OnInit {
   ngOnInit() {
   }
 
+  onChange(type) {
+    this.configForm.get(this.key).setValue(type);
+  }
+
 }

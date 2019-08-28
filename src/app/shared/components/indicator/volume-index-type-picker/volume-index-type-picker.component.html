@@ -2,13 +2,16 @@
   <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
     <label for="movingAverageType">{{label}}</label>
   </div>
-  <div class="col-6 form-group mb-3">
-    <select [class.form-control-danger]="!configForm.controls[key].valid && configForm.controls[key].touched"
-            [formControl]="configForm.get(key)"
-            class="form-control col-form-label-sm custom-select"
+  <div class="text-center input-group-append col-6 form-group mb-3 custom-slider">
+    <select (ngModelChange)="onChange($event)"
+            [ngModel]="configForm.get(key).value"
+            [title]="label"
+            bootstrapSelect
+            class="selectpicker form-control col-form-label-sm custom-select"
+            data-style="btn-sm"
             id='movingAverageType'>
-      <option value="POSITIVE_VOLUME_INDEX">Positive volume index</option>
-      <option value="NEGATIVE_VOLUME_INDEX">Negative volume index</option>
+      <option selected value="POSITIVE_VOLUME_INDEX">Positive volume index</option>
+      <option selected value="NEGATIVE_VOLUME_INDEX">Negative volume index</option>
     </select>
   </div>
 </div>

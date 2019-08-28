@@ -1,14 +1,22 @@
-<div class="input-group">
-  <select class="form-control form-control-rounded time-frame" [(ngModel)]="timeFrame">
-    <option value="FIVE_MIN">5 Min</option>
-    <option value="FIFTEEN_MIN">15 Min</option>
-    <option value="THIRTY_MIN">30 Min</option>
-    <option value="ONE_HOUR">1 Hour</option>
-    <option value="FOUR_HOURS">4 Hours</option>
-    <option value="ONE_DAY">1 Day</option>
-  </select>
+<div class="input-group raw">
+  <div class="text-center input-group-append form-group mb-3"
+       style="display: inline-block">
+    <select [(ngModel)]="timeFrame"
+            [title]="'Time Frame'"
+            bootstrapSelect
+            class="selectpicker form-control left-side-rounded time-frame"
+            data-width="150"
+            data-style="btn-sm">
+      <option selected value="FIVE_MIN">5 Min</option>
+      <option selected value="FIFTEEN_MIN">15 Min</option>
+      <option selected value="THIRTY_MIN">30 Min</option>
+      <option selected value="ONE_HOUR">1 Hour</option>
+      <option selected value="FOUR_HOURS">4 Hours</option>
+      <option selected value="ONE_DAY">1 Day</option>
+    </select>
+  </div>
   <div class="input-group-append">
-    <button class="btn btn-secondary right-side-rounded" (click)="onTimeFrameChange()" type="button">
+    <button (click)="onTimeFrameChange()" class="btn btn-secondary right-side-rounded" type="button">
       <i class="icon-regular i-Repeat-3"></i>
     </button>
   </div>

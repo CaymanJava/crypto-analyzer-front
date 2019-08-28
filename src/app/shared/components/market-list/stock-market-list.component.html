@@ -23,10 +23,17 @@
 
     <div class="col-md-3 form-group mb-4">
       <div class="input-group">
-        <select [(ngModel)]="filterParams.stock" class="form-control form-control-rounded stock-list">
-          <option disabled selected>Stock</option>
-          <option *ngFor="let stock of stocks" value="{{stock.id}}"> {{stock.name}}</option>
-        </select>
+        <div class="text-center input-group-append form-group mb-3"
+             style="display: inline-block">
+          <select [(ngModel)]="filterParams.stock"
+                  [title]="'Stock'"
+                  bootstrapSelect
+                  class="selectpicker form-control left-side-rounded"
+                  data-style="btn-sm"
+                  data-width="150">
+            <option *ngFor="let stock of stocks" selected value="{{stock.id}}"> {{stock.name}}</option>
+          </select>
+        </div>
         <div class="input-group-append">
           <button (click)="onFilter()" class="btn btn-secondary search-button" type="button">
             <i class="icon-regular i-Magnifi-Glass1"></i>
@@ -55,7 +62,7 @@
         <app-grid-column [sorted]='true' dataType="number" key="high" title="24H High"></app-grid-column>
         <app-grid-column [sorted]='true' dataType="number" key="low" title="24H Low"></app-grid-column>
         <app-grid-column [sorted]='true' dataType="date" key="created" title="Added"></app-grid-column>
-        <app-grid-action key="selectMarket" [title]="selectTitle"></app-grid-action>
+        <app-grid-action [title]="selectTitle" key="selectMarket"></app-grid-action>
       </app-grid>
     </div>
   </div>

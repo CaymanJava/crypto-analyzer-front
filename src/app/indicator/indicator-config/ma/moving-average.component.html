@@ -16,7 +16,8 @@
         (movingAverageChange)="onOriginalIndicatorTypeChange($event)"
         *ngIf="configForm.get('indicatorType').value === 'DISPLACED_MOVING_AVERAGE'"
         [configForm]="configForm"
-        key="originalIndicatorType">
+        key="originalIndicatorType"
+        label="Original Moving Average Type">
     </app-moving-average-type-picker>
     <app-shift-type-picker
         *ngIf="configForm.get('indicatorType').value === 'DISPLACED_MOVING_AVERAGE'"

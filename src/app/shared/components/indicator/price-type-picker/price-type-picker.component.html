@@ -2,14 +2,19 @@
   <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
     <label for="priceType">{{label}}</label>
   </div>
-  <div class="col-6 form-group mb-3">
-    <select [class.form-control-danger]="!configForm.controls[key].valid && configForm.controls[key].touched"
-            [formControl]="configForm.get(key)" class="form-control col-form-label-sm custom-select"
+  <div class="text-center input-group-append col-6 form-group mb-3 custom-slider"
+       style="display: inline-block">
+    <select (ngModelChange)="onChange($event)"
+            [ngModel]="configForm.get(key).value"
+            [title]="label"
+            bootstrapSelect
+            class="selectpicker form-control col-form-label-sm custom-select"
+            data-style="btn-sm"
             id='priceType'>
-      <option value="HIGH">High</option>
-      <option value="LOW">Low</option>
-      <option value="OPEN">Open</option>
-      <option value="CLOSE">Close</option>
+      <option selected value="HIGH">High</option>
+      <option selected value="LOW">Low</option>
+      <option selected value="OPEN">Open</option>
+      <option selected value="CLOSE">Close</option>
     </select>
   </div>
 </div>

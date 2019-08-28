@@ -20,6 +20,7 @@ export class MovingAverageTypePickerComponent implements OnInit {
   }
 
   onChange(type) {
+    this.configForm.get(this.key).setValue(type);
     this.movingAverageChange.emit(type);
   }
 

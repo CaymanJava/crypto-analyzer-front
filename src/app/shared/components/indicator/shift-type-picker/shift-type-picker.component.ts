@@ -10,9 +10,14 @@ export class ShiftTypePickerComponent implements OnInit {
   @Input() form: FormGroup;
   @Input() key: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onChange(type) {
+    this.form.get(this.key).setValue(type);
   }
 
 }
