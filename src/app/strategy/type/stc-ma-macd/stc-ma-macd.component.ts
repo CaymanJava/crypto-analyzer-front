@@ -110,7 +110,7 @@ export class StcMaMacdComponent extends BaseStrategyTypeComponent {
   }
 
   private drawMa() {
-    this.indicatorDrawService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 1);
+    this.indicatorDrawService.draw(this.buildMaConfig(), this.buildMaResults(), this.chart, this.container, 0);
   }
 
   private buildMaConfig() {

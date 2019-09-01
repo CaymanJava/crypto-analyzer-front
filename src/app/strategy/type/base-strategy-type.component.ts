@@ -12,6 +12,7 @@ import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Signal } from "../../core/signal/signal.model";
 import { SignalBuilderService } from "../../core/signal/signal-builder.service";
+import * as moment from 'moment';
 
 @Component({
   moduleId: module.id,
@@ -160,7 +161,8 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   private initDateTimeRange() {
     const now = new Date();
-    this.dateTimeRange = [new Date(new Date().setMonth(now.getMonth() - 2)), now];
+    const dateFrom = moment(now).subtract(2, 'months').toDate();
+    this.dateTimeRange = [dateFrom, now];
   }
 
   private subscribeToStrategyCalculation() {

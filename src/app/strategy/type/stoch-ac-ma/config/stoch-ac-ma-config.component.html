@@ -1,0 +1,135 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-indicator-input
+          [form]="configForm"
+          key="acSlowPeriod"
+          label="AC Slow Period"
+          placeholder="34">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="acFastPeriod"
+          label="AC Fast Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="acSmoothedPeriod"
+          label="AC Smoothed Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="stochMovingAverageType"
+          label="Stoch AC Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochFastPeriod"
+          label="Stoch AC Fast Period"
+          placeholder="14">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochSlowPeriod"
+          label="Stoch AC Slow Period"
+          placeholder="3">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochOversoldLevel"
+          label="Stoch AC Oversold"
+          placeholder="20">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochOverboughtLevel"
+          label="Stoch AC Overbought"
+          placeholder="80">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="maPeriod"
+          label="MA Period"
+          placeholder="30">
+      </app-indicator-input>
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="movingAverageType"
+          label="MA Type">
+      </app-moving-average-type-picker>
+      <app-price-type-picker
+          [configForm]="configForm"
+          key="maPriceType"
+          label="MA Price Type">
+      </app-price-type-picker>
+      <app-position-picker
+          (onPositionSelected)="positionsSelected($event, 'positions')"
+          [onlyEntries]="true"
+          [positions]="configForm.get('positions').value">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'stochFastStochasticColor')"
+          [color]="drawConfigForm.get('stochFastStochasticColor').value"
+          [label]="'Fast Stochastic'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'stochSlowStochasticColor')"
+          [color]="drawConfigForm.get('stochSlowStochasticColor').value"
+          [label]="'Slow Stochastic'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'maLineColor')"
+          [color]="drawConfigForm.get('maLineColor').value"
+          [label]="'MA'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [label]="'Buy marker'"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [label]="'Sell marker'"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>
