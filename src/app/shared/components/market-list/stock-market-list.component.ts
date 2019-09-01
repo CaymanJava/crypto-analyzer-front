@@ -87,7 +87,7 @@ export class StockMarketListComponent implements OnInit, OnDestroy {
   getDefaultPageableParams() {
     return {
       page: 0,
-      sort: {order: 'marketName', direction: 'desc'},
+      sort: {order: 'priceDiff', direction: 'desc'},
       size: 20
     };
   }

@@ -39,6 +39,9 @@ import { PivotRsiMacdMaSignalsComponent } from './type/pivot-rsi-macd-ma/signals
 import { RsiEisMaComponent } from "./type/rsi-eis-ma/rsi-eis-ma.component";
 import { RsiEisMaConfigComponent } from './type/rsi-eis-ma/config/rsi-eis-ma-config.component';
 import { RsiEisMaSignalsComponent } from './type/rsi-eis-ma/signals/rsi-eis-ma-signals.component';
+import { StcMaMacdComponent } from './type/stc-ma-macd/stc-ma-macd.component';
+import { StcMaMacdConfigComponent } from './type/stc-ma-macd/config/stc-ma-macd-config.component';
+import { StcMaMacdSignalsComponent } from './type/stc-ma-macd/signals/stc-ma-macd-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -55,7 +58,8 @@ const components = [
   MacdCciComponent,
   LrsiMaPsarComponent,
   PivotRsiMacdMaComponent,
-  RsiEisMaComponent
+  RsiEisMaComponent,
+  StcMaMacdComponent
 ];
 
 const modalConfigs = [
@@ -66,7 +70,8 @@ const modalConfigs = [
   LrsiMaPsarConfigComponent,
   MacdCciConfigComponent,
   PivotRsiMacdMaConfigComponent,
-  RsiEisMaConfigComponent
+  RsiEisMaConfigComponent,
+  StcMaMacdConfigComponent
 ];
 
 const modalSignals = [
@@ -77,7 +82,8 @@ const modalSignals = [
   LrsiMaPsarSignalsComponent,
   MacdCciSignalsComponent,
   PivotRsiMacdMaSignalsComponent,
-  RsiEisMaSignalsComponent
+  RsiEisMaSignalsComponent,
+  StcMaMacdSignalsComponent
 ];
 
 @NgModule({
