@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from "../navigation.service";
 import { SearchService } from "../../search/search.service";
-import { AuthService } from "../../../auth/auth.service";
+import { AuthService } from "../../auth/auth.service";
 
 
 @Component({
@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signout() {
-    this.auth.signout();
+    this.auth.logout();
   }
 
 }

@@ -1,0 +1,85 @@
+<div [@animate]="animationConfig" class="row">
+  <div class="col-md-6 text-center sign-in-block">
+    <div class="pl-3 auth-right">
+      <div class="auth-logo text-center mt-4">
+        <img alt="" src="assets/images/logo.png">
+      </div>
+      <div class="flex-grow-1"></div>
+      <div class="w-100 mb-4">
+        <button class="btn btn-outline-primary btn-outline-email btn-block btn-icon-text btn-rounded" routerLink="/sessions/signin">
+          <i class="i-Mail-with-At-Sign"></i>
+          Sign in with Email
+        </button>
+        <button class="btn btn-outline-primary btn-outline-google btn-block btn-icon-text btn-rounded">
+          <i class="i-Google-Plus"></i>
+          Sign in with Google
+        </button>
+        <button class="btn btn-outline-primary btn-outline-facebook btn-block btn-icon-text btn-rounded">
+          <i class="i-Facebook-2"></i>
+          Sign in with Facebook
+        </button>
+      </div>
+      <div class="flex-grow-1"></div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="p-4">
+      <h1 class="mb-3 text-18">Register</h1>
+      <form [formGroup]="registerForm" action="">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input [class.form-control-danger]="!registerForm.controls['name'].valid && registerForm.controls['name'].touched"
+                 [formControl]="registerForm.get('name')"
+                 class="form-control form-control-rounded"
+                 id="name"
+                 type="text">
+        </div>
+        <div class="form-group">
+          <label for="surname">Your surname</label>
+          <input [class.form-control-danger]="!registerForm.controls['surname'].valid && registerForm.controls['surname'].touched"
+                 [formControl]="registerForm.get('surname')"
+                 class="form-control form-control-rounded"
+                 id="surname"
+                 type="text">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input [class.form-control-danger]="!registerForm.controls['phone'].valid && registerForm.controls['phone'].touched"
+                 [formControl]="registerForm.get('phone')"
+                 class="form-control form-control-rounded"
+                 id="phone">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input [class.form-control-danger]="!registerForm.controls['email'].valid && registerForm.controls['email'].touched"
+                 [formControl]="registerForm.get('email')"
+                 class="form-control form-control-rounded"
+                 id="email"
+                 type="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input [class.form-control-danger]="!registerForm.controls['password'].valid && registerForm.controls['password'].touched"
+                 [formControl]="registerForm.get('password')"
+                 class="form-control form-control-rounded"
+                 id="password"
+                 type="password">
+        </div>
+        <div class="form-group">
+          <label for="passwordRepeat">Retype password</label>
+          <input [class.form-control-danger]="!registerForm.controls['passwordRepeat'].valid && registerForm.controls['passwordRepeat'].touched"
+                 [formControl]="registerForm.get('passwordRepeat')"
+                 class="form-control form-control-rounded"
+                 id="passwordRepeat"
+                 type="password">
+        </div>
+        <button (click)="onSubmit()"
+                [disabled]="!registerForm.valid || submitted"
+                class="btn btn-primary btn-block btn-rounded mt-3">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

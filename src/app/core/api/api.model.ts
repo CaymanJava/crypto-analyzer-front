@@ -1,3 +1,5 @@
+import { HttpErrorResponse } from "@angular/common/http";
+
 export interface QuerySort {
   order?: string;
   direction?: string;
@@ -19,4 +21,26 @@ export interface PageSlice {
   sort: any;
   size: number;
   number: number;
+}
+
+export class ApiError {
+  status: number;
+  violations: Violation[];
+  params: any;
+
+  constructor(httpErrorResponse: HttpErrorResponse) {
+    this.status = httpErrorResponse.status;
+    if (httpErrorResponse.status === 422) {
+      if (httpErrorResponse.error) {
+        this.violations = httpErrorResponse.error.violations;
+        this.params = httpErrorResponse.error.params;
+      }
+    }
+  }
+
+}
+
+export interface Violation {
+  field: string;
+  message: string;
 }

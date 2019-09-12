@@ -1,113 +1,64 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { RefreshToken, TokenInfo } from './auth.model';
+import { LoginCredentials, RegisterData, TokenInfo } from './auth.model';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { LoggerService } from "@ngx-toolkit/logger";
-import { LoginCredentials } from "../login/login.model";
-import { catchError, finalize, map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
+import { AppUser, Member } from "../member/member.model";
+import { TokenService } from "./token.service";
+import { MemberService } from "../member/member.service";
+import { ApiService } from "../api/api.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-  refreshTokenString = 'refresh_token';
-  accessTokenString = 'access_token';
-  loginState: any = {
-    loggedInSuccessfulUrl: '/membership',
-    params: null
-  };
-  private tokenEndpoint = '/tokens';
-  private refreshEndpoint = '/tokens/refreshes';
-  private apiUrl = environment.apiUrl;
-  private hasLoggedInSubject = new Subject();
-  hasLoggedIn = this.hasLoggedInSubject.asObservable();
+  private tokenApi = environment.apiUrl.concat('/tokens');
+  private registerApi = environment.apiUrl.concat('/registration');
 
   constructor(public http: HttpClient,
               private log: LoggerService,
-              // private loaderService: LoaderService,
-              private router: Router,
-              // private notificationService: NotificationService,
-              private modalService: NgbModal) {
+              private tokenService: TokenService,
+              private memberService: MemberService,
+              private api: ApiService,
+              private router: Router) {
   }
 
-  getToken(value: LoginCredentials): void {
-    this.getTokenInfo(value)
-      .pipe(finalize(() => this.onTokenRequestEnd()))
-      .subscribe(
-        (tokenInfo: TokenInfo) => {
-          this.log.debug('Get token success');
-          this.saveTokensInStorage(tokenInfo);
-          this.router.navigate([this.loginState.loggedInSuccessfulUrl], {queryParams: this.loginState.params});
-        },
-        (err: any) => {
-          if (err.status === 403) {
-            // this.notificationService.error(this.translateService.instant('core.error.loginUnavailable'));
-            return;
-          }
-          // this.notificationService.error(this.translateService.instant('core.error.wrongLoginOrPassword'));
-          this.log.debug('Get token error');
-        }
+  getAppUser(): Observable<AppUser> {
+    if (this.tokenService.getAccessToken() != undefined) {
+      return this.memberService.getMember().pipe(map(member => AppUser.loggedUser(member)))
+    }
+    return of(AppUser.anonymousUser());
+  }
+
+  register(data: RegisterData): Observable<Member> {
+    return this.api.post(this.registerApi, data, false)
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          return <Member>response.body;
+        })
       );
   }
 
-  removeToken(): void {
-    localStorage.removeItem(this.refreshTokenString);
-    localStorage.removeItem(this.accessTokenString);
-  }
-
-  refreshToken(): Observable<TokenInfo> {
-    this.log.debug('Refreshing token');
-    const request = new RefreshToken();
-    request.refreshToken = localStorage.getItem(this.refreshTokenString);
-    return this.http.post(`${this.apiUrl}${this.refreshEndpoint}`, request)
+  login(data: LoginCredentials): Observable<void> {
+    return this.api.post(this.tokenApi, data, false)
       .pipe(
-        map(
-          (response: TokenInfo) => {
-            this.log.debug('Got token info', {response: response});
-            return response;
-          }),
-        catchError((error: any) => {
-          if (error.status === 401 || error.status === 422 || error.status === 403) {
-            this.removeToken();
-            this.router.navigate(['/login']);
-          }
-          return throwError(error);
-        }));
+        tap(token => this.tokenService.setTokens(token.body))
+      );
   }
 
-  saveTokensInStorage(tokenInfo: TokenInfo) {
-    localStorage.setItem(this.refreshTokenString, tokenInfo.refreshToken);
-    localStorage.setItem(this.accessTokenString, tokenInfo.accessToken);
-    this.hasLoggedInSubject.next();
+  refreshAccess(): Observable<TokenInfo> {
+    return this.api.post(`${this.tokenApi}/refresh`, {refreshToken: this.tokenService.getRefreshToken()}, false)
+      .pipe(tap(token =>
+        this.tokenService.setTokens(token.body))
+      );
   }
 
-  isLoggedIn() {
-    return localStorage.getItem(this.accessTokenString) != null;
+  logout() {
+    this.tokenService.removeTokens();
+    this.router.navigate(['/session/login']);
   }
 
-  setUnauthorizedUrl(url: string, params: {}) {
-    this.loginState.loggedInSuccessfulUrl = url;
-    this.loginState.params = params;
-  }
-
-  private getTokenInfo(value: LoginCredentials): Observable<TokenInfo> {
-    this.log.debug('Getting token', {value: value, apiUrl: this.apiUrl});
-    this.onTokenRequestStart();
-    return this.http.post(`${this.apiUrl}${this.tokenEndpoint}`, value)
-      .pipe(map((response: TokenInfo) => {
-        this.log.debug('Got token info', {response: response});
-        return response;
-      }));
-  }
-
-  private onTokenRequestStart() {
-    // this.loaderService.show();
-  }
-
-  private onTokenRequestEnd() {
-    // this.loaderService.hide();
-  }
 }
