@@ -45,6 +45,9 @@ import { StcMaMacdSignalsComponent } from './type/stc-ma-macd/signals/stc-ma-mac
 import { StochAcMaComponent } from './type/stoch-ac-ma/stoch-ac-ma.component';
 import { StochAcMaConfigComponent } from './type/stoch-ac-ma/config/stoch-ac-ma-config.component';
 import { StochAcMaSignalsComponent } from './type/stoch-ac-ma/signals/stoch-ac-ma-signals.component';
+import { StochAdxMaComponent } from './type/stoch-adx-ma/stoch-adx-ma.component';
+import { StochAdxMaConfigComponent } from './type/stoch-adx-ma/config/stoch-adx-ma-config.component';
+import { StochAdxMaSignalsComponent } from './type/stoch-adx-ma/stoch-adx-ma-signals/stoch-adx-ma-signals.component';
 
 const components = [
   BaseStrategyTypeComponent,
@@ -76,7 +79,8 @@ const modalConfigs = [
   PivotRsiMacdMaConfigComponent,
   RsiEisMaConfigComponent,
   StcMaMacdConfigComponent,
-  StochAcMaConfigComponent
+  StochAcMaConfigComponent,
+  StochAdxMaConfigComponent
 ];
 
 const modalSignals = [
@@ -89,7 +93,9 @@ const modalSignals = [
   PivotRsiMacdMaSignalsComponent,
   RsiEisMaSignalsComponent,
   StcMaMacdSignalsComponent,
-  StochAcMaSignalsComponent
+  StochAcMaSignalsComponent,
+  StochAdxMaComponent,
+  StochAdxMaSignalsComponent
 ];
 
 @NgModule({

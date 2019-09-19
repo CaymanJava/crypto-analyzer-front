@@ -1,0 +1,162 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{name}}</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6">
+      <app-moving-average-type-picker
+          [configForm]="configForm"
+          key="stochMovingAverageType"
+          label="Stoch Moving Average Type">
+      </app-moving-average-type-picker>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochFastPeriod"
+          label="Stoch Fast Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochSlowPeriod"
+          label="Stoch Slow Period"
+          placeholder="3">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="stochasticSignalLine"
+          label="Stoch Signal Line Period"
+          placeholder="50">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="adxPeriod"
+          label="ADX Period"
+          placeholder="14">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="adxSignalLine"
+          label="ADX Signal Line Period"
+          placeholder="20">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="firstMaPeriod"
+          label="First MA Period"
+          placeholder="5">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="secondMaPeriod"
+          label="Second MA Period"
+          placeholder="15">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="configForm"
+          key="thirdMaPeriod"
+          label="Third MA Period"
+          placeholder="30">
+      </app-indicator-input>
+      <app-position-picker
+          (onPositionSelected)="positionsSelected($event, 'positions')"
+          [onlyEntries]="true"
+          [positions]="configForm.get('positions').value">
+      </app-position-picker>
+    </div>
+    <div class="col-6">
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'stochFastStochasticColor')"
+          [color]="drawConfigForm.get('stochFastStochasticColor').value"
+          [label]="'Fast Stochastic'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'stochSlowStochasticColor')"
+          [color]="drawConfigForm.get('stochSlowStochasticColor').value"
+          [label]="'Slow Stochastic'">
+      </app-color-picker>
+      <app-indicator-input
+          [form]="drawConfigForm"
+          key="stochOverboughtLevel"
+          label="Stoch Overbought"
+          placeholder="80">
+      </app-indicator-input>
+      <app-indicator-input
+          [form]="drawConfigForm"
+          key="stochOversoldLevel"
+          label="Stoch Oversold"
+          placeholder="20">
+      </app-indicator-input>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'adxPositiveDiLineColor')"
+          [color]="drawConfigForm.get('adxPositiveDiLineColor').value"
+          [label]="'+DI'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'adxNegativeDiLineColor')"
+          [color]="drawConfigForm.get('adxNegativeDiLineColor').value"
+          [label]="'-DI'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'adxIndicatorLineColor')"
+          [color]="drawConfigForm.get('adxIndicatorLineColor').value"
+          [label]="'ADX'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'firstMaLineColor')"
+          [color]="drawConfigForm.get('firstMaLineColor').value"
+          [label]="'First MA'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'secondMaLineColor')"
+          [color]="drawConfigForm.get('secondMaLineColor').value"
+          [label]="'Second MA'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'thirdMaLineColor')"
+          [color]="drawConfigForm.get('thirdMaLineColor').value"
+          [label]="'Third MA'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryLongColor')"
+          [color]="drawConfigForm.get('entryLongColor').value"
+          [label]="'Entry Long'">
+      </app-color-picker>
+      <app-color-picker
+          (onColorChange)="onColorPickerChange($event, 'entryShortColor')"
+          [color]="drawConfigForm.get('entryShortColor').value"
+          [label]="'Entry Short'">
+      </app-color-picker>
+      <app-marker-size-slider
+          (onValueChange)="onMarkerSizeChange($event, 'signalMarkerSize')"
+          [label]="'Signal size'"
+          [value]="drawConfigForm.get('signalMarkerSize').value">
+      </app-marker-size-slider>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'buyMarker')"
+          [label]="'Buy marker'"
+          [marker]="drawConfigForm.get('buyMarker').value">
+      </app-indicator-marker-picker>
+      <app-indicator-marker-picker
+          (onMarkerChange)="onMarkerChange($event, 'sellMarker')"
+          [label]="'Sell marker'"
+          [marker]="drawConfigForm.get('sellMarker').value">
+      </app-indicator-marker-picker>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button (click)="onSubmit()"
+          [disabled]="!configForm.valid || !drawConfigForm.valid"
+          class="btn btn-outline-success btn-rounded"
+          type="button">
+    Update
+  </button>
+</div>
