@@ -3,7 +3,7 @@ import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { StochAdxMaConfigComponent } from "./config/stoch-adx-ma-config.component";
-import { StochAdxMaSignalsComponent } from "./stoch-adx-ma-signals/stoch-adx-ma-signals.component";
+import { StochAdxMaSignalsComponent } from "./signals/stoch-adx-ma-signals.component";
 
 @Component({
   selector: 'app-stoch-adx-ma',
