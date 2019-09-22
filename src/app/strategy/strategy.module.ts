@@ -51,8 +51,11 @@ import { StochAdxMaSignalsComponent } from './type/stoch-adx-ma/signals/stoch-ad
 import { StochCciComponent } from './type/stoch-cci/stoch-cci.component';
 import { StochCciConfigComponent } from './type/stoch-cci/config/stoch-cci-config.component';
 import { StochCciSignalsComponent } from './type/stoch-cci/signals/stoch-cci-signals.component';
+import { StochHaComponent } from './type/stoch-ha/stoch-ha.component';
+import { StochHaConfigComponent } from './type/stoch-ha/config/stoch-ha-config.component';
+import { StochHaSignalsComponent } from './type/stoch-ha/signals/stoch-ha-signals.component';
 
-const components = [
+const strategyComponents = [
   BaseStrategyTypeComponent,
   BaseStrategyConfigComponent,
   BaseStrategySignalComponent,
@@ -70,7 +73,8 @@ const components = [
   RsiEisMaComponent,
   StcMaMacdComponent,
   StochAcMaComponent,
-  StochCciComponent
+  StochCciComponent,
+  StochHaComponent
 ];
 
 const modalConfigs = [
@@ -85,7 +89,8 @@ const modalConfigs = [
   StcMaMacdConfigComponent,
   StochAcMaConfigComponent,
   StochAdxMaConfigComponent,
-  StochCciConfigComponent
+  StochCciConfigComponent,
+  StochHaConfigComponent
 ];
 
 const modalSignals = [
@@ -101,7 +106,8 @@ const modalSignals = [
   StochAcMaSignalsComponent,
   StochAdxMaComponent,
   StochAdxMaSignalsComponent,
-  StochCciSignalsComponent
+  StochCciSignalsComponent,
+  StochHaSignalsComponent
 ];
 
 @NgModule({
@@ -119,7 +125,7 @@ const modalSignals = [
     NgbTooltipModule
   ],
   declarations: [
-    components,
+    strategyComponents,
     modalConfigs,
     modalSignals
   ],
