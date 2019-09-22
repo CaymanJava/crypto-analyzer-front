@@ -59,9 +59,6 @@ export class DrawingToolsComponent implements OnInit {
   }
 
   removeSelected() {
-    this.marker = null;
-    this.drawType = null;
-    this.refreshButtons();
     this.removeSelectedTool.emit();
   }
 
@@ -71,6 +68,7 @@ export class DrawingToolsComponent implements OnInit {
 
   emitMarkerConfigChange() {
     if (this.marker !== null) {
+      console.log(this.marker);
       this.markerSelected.emit({
         marker: this.marker,
         color: this.markerColor,
