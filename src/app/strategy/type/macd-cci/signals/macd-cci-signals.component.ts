@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseStrategySignalComponent } from "../../base-strategy-signal.component";
+import { BaseStrategySignalComponent } from "../../../../shared/components/strategy/base/base-strategy-signal.component";
 
 @Component({
   selector: 'app-macd-cci-signals',

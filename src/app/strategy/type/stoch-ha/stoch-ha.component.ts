@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { StochHaConfigComponent } from "./config/stoch-ha-config.component";
 import { StochHaSignalsComponent } from "./signals/stoch-ha-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-stoch-ha',
@@ -13,8 +13,6 @@ import { StochHaSignalsComponent } from "./signals/stoch-ha-signals.component";
   ]
 })
 export class StochHaComponent extends BaseStrategyTypeComponent {
-
-  type = 'STOCH_HA';
 
   drawStrategyResult() {
     this.drawHa();

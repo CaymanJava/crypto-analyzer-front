@@ -34,6 +34,11 @@ const routes: Routes = [
         path: 'strategy',
         canActivate: [AuthGuard],
         loadChildren: () => import('./strategy/strategy.module').then(m => m.StrategyModule),
+      },
+      {
+        path: 'monitoring',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./monitoring/monitoring.module').then(m => m.MonitoringModule),
       }
     ]
   },

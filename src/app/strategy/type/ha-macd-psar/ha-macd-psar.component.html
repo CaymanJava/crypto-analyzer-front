@@ -12,7 +12,8 @@
     (onTimeFrameChange)="timeFrameChange($event)"
     *ngIf="!inProgress"
     [dateTimeRange]="dateTimeRange"
-    [timeFrame]="timeFrame">
+    [timeFrame]="timeFrame"
+    (onMonitorClick)="monitorClick()">
 </app-strategy-config-header>
 
 <div [hidden]="inProgress" class="row">

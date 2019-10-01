@@ -11,13 +11,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StrategyConfigComponent } from './strategy-config/strategy-config.component';
 import { BillWilliamsStrategyComponent } from './type/bill-williams-strategy/bill-williams-strategy.component';
 import { StrategyConfigHeaderComponent } from './strategy-config/header/strategy-config-header.component';
-import { BaseStrategyTypeComponent } from "./type/base-strategy-type.component";
 import { BwsConfigComponent } from './type/bill-williams-strategy/config/bws-config.component';
-import { BaseStrategyConfigComponent } from "./type/base-strategy-config.component";
 import { IndicatorModule } from "../indicator/indicator.module";
 import { SharedDirectivesModule } from "../shared/directives/shared-directives.module";
 import { BwsSignalsComponent } from './type/bill-williams-strategy/signals/bws-signals.component';
-import { BaseStrategySignalComponent } from "./type/base-strategy-signal.component";
 import { CciRsiAtrComponent } from "./type/cci-rsi-atr/cci.rsi.atr.component";
 import { CciRsiAtrConfigComponent } from './type/cci-rsi-atr/config/cci-rsi-atr-config.component';
 import { CciRsiAtrSignalsComponent } from './type/cci-rsi-atr/signals/cci-rsi-atr-signals.component';
@@ -54,11 +51,10 @@ import { StochCciSignalsComponent } from './type/stoch-cci/signals/stoch-cci-sig
 import { StochHaComponent } from './type/stoch-ha/stoch-ha.component';
 import { StochHaConfigComponent } from './type/stoch-ha/config/stoch-ha-config.component';
 import { StochHaSignalsComponent } from './type/stoch-ha/signals/stoch-ha-signals.component';
+import { StrategyViewComponent } from './strategy-view/strategy-view.component';
 
 const strategyComponents = [
-  BaseStrategyTypeComponent,
-  BaseStrategyConfigComponent,
-  BaseStrategySignalComponent,
+  StrategyViewComponent,
   StrategyListComponent,
   StrategyMarketComponent,
   StrategyConfigComponent,
@@ -133,7 +129,9 @@ const modalSignals = [
     modalConfigs,
     modalSignals
   ],
-  providers: []
+  exports: [
+    strategyComponents
+  ]
 })
 export class StrategyModule {
 

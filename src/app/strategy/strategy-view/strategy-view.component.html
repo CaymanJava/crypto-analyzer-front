@@ -1,0 +1,15 @@
+<div *ngIf="strategy" [ngSwitch]="strategy.type">
+  <app-bill-williams-strategy *ngSwitchCase="'BILL_WILLIAMS_STRATEGY'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-bill-williams-strategy>
+  <app-cci-rsi-atr *ngSwitchCase="'CCI_RSI_ATR'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-cci-rsi-atr>
+  <app-double-parabolic-strategy *ngSwitchCase="'DOUBLE_PARABOLIC'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-double-parabolic-strategy>
+  <app-ha-macd-psar *ngSwitchCase="'HA_MACD_PSAR'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-ha-macd-psar>
+  <app-lrsi-ma-psar *ngSwitchCase="'LRSI_MA_PSAR'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-lrsi-ma-psar>
+  <app-macd-cci *ngSwitchCase="'MACD_CCI'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-macd-cci>
+  <app-pivot-rsi-macd-ma *ngSwitchCase="'PIVOT_RSI_MACD_MA'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-pivot-rsi-macd-ma>
+  <app-rsi-eis-ma *ngSwitchCase="'RSI_EIS_MA'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-rsi-eis-ma>
+  <app-stc-ma-macd *ngSwitchCase="'STC_MA_MACD'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-stc-ma-macd>
+  <app-stoch-ac-ma *ngSwitchCase="'STOCH_AC_MA'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-stoch-ac-ma>
+  <app-stoch-adx-ma *ngSwitchCase="'STOCH_ADX_MA'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-stoch-adx-ma>
+  <app-stoch-cci *ngSwitchCase="'STOCH_CCI'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-stoch-cci>
+  <app-stoch-ha *ngSwitchCase="'STOCH_HA'" [market]="market" [memberStrategy]="memberStrategy" [strategy]="strategy"></app-stoch-ha>
+</div>

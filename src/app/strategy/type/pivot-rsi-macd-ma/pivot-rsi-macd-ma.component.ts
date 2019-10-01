@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { PivotRsiMacdMaConfigComponent } from "./config/pivot-rsi-macd-ma-config.component";
 import { PivotRsiMacdMaSignalsComponent } from "./signals/pivot-rsi-macd-ma-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-pivot-rsi-macd-ma',
@@ -13,8 +13,6 @@ import { PivotRsiMacdMaSignalsComponent } from "./signals/pivot-rsi-macd-ma-sign
   ]
 })
 export class PivotRsiMacdMaComponent extends BaseStrategyTypeComponent {
-
-  type = 'PIVOT_RSI_MACD_MA';
 
   drawStrategyResult() {
     this.drawPivotPoints();

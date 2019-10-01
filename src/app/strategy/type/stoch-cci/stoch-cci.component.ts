@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { StochCciConfigComponent } from "./config/stoch-cci-config.component";
 import { StochCciSignalsComponent } from "./signals/stoch-cci-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-stoch-cci',
@@ -13,8 +13,6 @@ import { StochCciSignalsComponent } from "./signals/stoch-cci-signals.component"
   ]
 })
 export class StochCciComponent extends BaseStrategyTypeComponent {
-
-  type = 'STOCH_CCI';
 
   drawStrategyResult() {
     this.drawStochastic();

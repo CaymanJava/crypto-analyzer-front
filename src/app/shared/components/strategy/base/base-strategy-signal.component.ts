@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
-import { Signal } from "../../core/signal/signal.model";
-import { PageSlice } from "../../core/api/api.model";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { PageSlice } from "../../../../core/api/api.model";
+import { Signal } from "../../../../core/signal/signal.model";
 
 @Component({
   moduleId: module.id,
@@ -13,7 +13,7 @@ export class BaseStrategySignalComponent {
   @Input() name: string;
   modal: NgbActiveModal;
 
-  constructor(modal: NgbActiveModal){
+  constructor(modal: NgbActiveModal) {
     this.modal = modal;
   }
 

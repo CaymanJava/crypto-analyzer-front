@@ -75,8 +75,21 @@ export class StrategyService {
     },
   ];
 
+  private strategyMap: Map<string, Strategy> = new Map();
+
+  constructor() {
+    this.initStrategyMap();
+  }
+
   public getStrategies(): Observable<Strategy[]> {
     return new Observable(observer => observer.next(this.strategies));
   }
 
+  public getStrategy(type: string) {
+    return this.strategyMap.get(type);
+  }
+
+  private initStrategyMap() {
+    this.strategies.forEach(strategy => this.strategyMap.set(strategy.type, strategy));
+  }
 }

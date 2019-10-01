@@ -1,0 +1,128 @@
+<spinner *ngIf="!data"></spinner>
+<div [hidden]="!data">
+  <div class="breadcrumb">
+    <h1>My strategies</h1>
+  </div>
+
+  <div class="separator-breadcrumb border-top"></div>
+
+  <div class="row">
+
+    <div class="col-md-3 form-group mb-4">
+      <div class="input-group">
+        <div class="search-bar">
+          <input [(ngModel)]="filterParams.query" placeholder="Search" type="text">
+          <div class="input-group-append">
+            <button (click)="onFilter()" class="btn btn-secondary search-button" type="button">
+              <i class="icon-regular i-Magnifi-Glass1"></i>
+            </button>
+          </div>
+          <div class="input-group-append">
+            <button (click)="onClear()" class="btn btn-secondary cancel-filter-button" type="button">
+              <i class="icon-regular i-Close"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 form-group mb-4">
+      <div class="input-group">
+        <div class="text-center input-group-append form-group mb-3"
+             style="display: inline-block">
+          <select [(ngModel)]="filterParams.stock"
+                  [title]="'Stock'"
+                  bootstrapSelect
+                  class="selectpicker form-control left-side-rounded right-side-rounded"
+                  data-style="btn-sm"
+                  data-width="150">
+            <option value="">---</option>
+            <option *ngFor="let stock of stocks" value="{{stock.id}}"> {{stock.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 form-group mb-4">
+      <div class="input-group">
+        <div class="text-center input-group-append form-group mb-3"
+             style="display: inline-block">
+          <select [(ngModel)]="filterParams.type"
+                  [title]="'Strategy'"
+                  bootstrapSelect
+                  class="selectpicker form-control left-side-rounded right-side-rounded"
+                  data-style="btn-sm"
+                  data-width="150">
+            <option value="">---</option>
+            <option *ngFor="let strategy of strategies" selected value="{{strategy.type}}"> {{strategy.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 form-group mb-4">
+      <div class="input-group">
+        <div class="text-center input-group-append form-group mb-3"
+             style="display: inline-block">
+          <select [(ngModel)]="filterParams.timeFrame"
+                  [title]="'Time Frame'"
+                  bootstrapSelect
+                  class="selectpicker form-control left-side-rounded right-side-rounded"
+                  data-style="btn-sm"
+                  data-width="150">
+            <option value="">---</option>
+            <option selected value="FIVE_MIN">5 Min</option>
+            <option selected value="FIFTEEN_MIN">15 Min</option>
+            <option selected value="THIRTY_MIN">30 Min</option>
+            <option selected value="ONE_HOUR">1 Hour</option>
+            <option selected value="FOUR_HOURS">4 Hours</option>
+            <option selected value="ONE_DAY">1 Day</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2 form-group mb-4">
+      <div class="input-group">
+        <div class="text-center input-group-append form-group mb-3"
+             style="display: inline-block">
+          <select [(ngModel)]="filterParams.status"
+                  [title]="'Status'"
+                  bootstrapSelect
+                  class="selectpicker form-control left-side-rounded right-side-rounded"
+                  data-style="btn-sm"
+                  data-width="150">
+            <option value="">---</option>
+            <option value="ACTIVE">Active</option>
+            <option value="PAUSED">Paused</option>
+            <option value="STOPPED">Stopped</option>
+            <option value="FAILED">Failed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <app-grid (actionClick)="onActionClick($event)"
+                (pageableParamsChange)="onPageChange($event)"
+                (sortChange)="onSortChange($event)"
+                [data]="data"
+                [sort]="pageableParams.sort">
+        <app-grid-column [image]='true' key="logoUrl" title="Logo"></app-grid-column>
+        <app-grid-column [sorted]='true' key="stock" title="Stock"></app-grid-column>
+        <app-grid-column [sorted]='true' key="marketName" title="Market"></app-grid-column>
+        <app-grid-column [sorted]='true' key="strategyName" title="Strategy name"></app-grid-column>
+        <app-grid-column [sorted]='true' key="customStrategyName" title="Custom name"></app-grid-column>
+        <app-grid-column [color-fn]="defineColor" [sorted]='true' key="status" title="Status"></app-grid-column>
+        <app-grid-column key="baseVolume" title="Day Volume (Base)"></app-grid-column>
+        <app-grid-column [arrow]='true' dataType="number" key="priceDiff" title="%Change"></app-grid-column>
+        <app-grid-column [sorted]='true' key="timeFrame" title="Time Frame"></app-grid-column>
+        <app-grid-action key="selectStrategy" title='View'></app-grid-action>
+      </app-grid>
+    </div>
+  </div>
+
+</div>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { StochAcMaConfigComponent } from "./config/stoch-ac-ma-config.component";
 import { StochAcMaSignalsComponent } from "./signals/stoch-ac-ma-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-stoch-ac-ma',
@@ -13,8 +13,6 @@ import { StochAcMaSignalsComponent } from "./signals/stoch-ac-ma-signals.compone
   ]
 })
 export class StochAcMaComponent extends BaseStrategyTypeComponent {
-
-  type = 'STOCH_AC_MA';
 
   drawStrategyResult() {
     this.drawAc();

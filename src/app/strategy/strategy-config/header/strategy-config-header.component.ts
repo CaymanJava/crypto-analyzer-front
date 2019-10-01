@@ -19,6 +19,7 @@ export class StrategyConfigHeaderComponent implements OnInit {
   @Output() onSelectedRemove: EventEmitter<void> = new EventEmitter();
   @Output() onConfigClick: EventEmitter<void> = new EventEmitter();
   @Output() onSignalsClick: EventEmitter<void> = new EventEmitter();
+  @Output() onMonitorClick: EventEmitter<void> = new EventEmitter();
 
   hideDrawingTools = true;
 
@@ -68,6 +69,10 @@ export class StrategyConfigHeaderComponent implements OnInit {
 
   signalsClick() {
     this.onSignalsClick.emit();
+  }
+
+  monitorClick() {
+    this.onMonitorClick.emit();
   }
 
 }

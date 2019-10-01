@@ -35,6 +35,11 @@ import { VolumeIndexTypePickerComponent } from "./indicator/volume-index-type-pi
 import { MarkerSizeSliderComponent } from "./indicator/marker-size-slider/marker-size-slider.component";
 import { IndicatorMarkerPickerComponent } from "./indicator/indicator-marker-picker/indicator-marker-picker.component";
 import { PositionPickerComponent } from './indicator/position-picker/position-picker.component';
+import { BaseStrategySignalComponent } from "./strategy/base/base-strategy-signal.component";
+import { BaseStrategyConfigComponent } from "./strategy/base/base-strategy-config.component";
+import { BaseStrategyTypeComponent } from "./strategy/base/base-strategy-type.component";
+import { MemberStrategyConfigComponent } from './strategy/member-strategy-config/member-strategy-config.component';
+import { TimeUnitPickerComponent } from './strategy/time-unut-picker/time-unit-picker.component';
 
 const components = [
   BtnLoadingComponent,
@@ -59,7 +64,10 @@ const components = [
   VolumeIndexTypePickerComponent,
   MarkerSizeSliderComponent,
   IndicatorMarkerPickerComponent,
-  PositionPickerComponent
+  PositionPickerComponent,
+  BaseStrategyTypeComponent,
+  BaseStrategyConfigComponent,
+  BaseStrategySignalComponent
 ];
 
 const gridComponents = [
@@ -67,6 +75,10 @@ const gridComponents = [
   GridColumnComponent,
   GridActionComponent,
   GridHeaderComponent
+];
+
+const modalComponents = [
+  MemberStrategyConfigComponent
 ];
 
 @NgModule({
@@ -86,7 +98,8 @@ const gridComponents = [
     ColorPickerModule,
     MatSliderModule
   ],
-  declarations: [components, gridComponents],
+  declarations: [components, gridComponents, modalComponents, TimeUnitPickerComponent],
+  entryComponents: [modalComponents],
   exports: [components, gridComponents]
 })
 export class SharedComponentsModule {

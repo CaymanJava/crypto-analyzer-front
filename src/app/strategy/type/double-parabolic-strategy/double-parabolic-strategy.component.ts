@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { DpsarConfigComponent } from "./config/dpsar-config.component";
 import { DpsarSignalsComponent } from "./signals/dpsar-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-double-parabolic-strategy',
@@ -13,8 +13,6 @@ import { DpsarSignalsComponent } from "./signals/dpsar-signals.component";
   ]
 })
 export class DoubleParabolicStrategyComponent extends BaseStrategyTypeComponent {
-
-  type = 'DOUBLE_PARABOLIC';
 
   drawStrategyResult() {
     this.drawMa();

@@ -68,7 +68,6 @@ export class DrawingToolsComponent implements OnInit {
 
   emitMarkerConfigChange() {
     if (this.marker !== null) {
-      console.log(this.marker);
       this.markerSelected.emit({
         marker: this.marker,
         color: this.markerColor,

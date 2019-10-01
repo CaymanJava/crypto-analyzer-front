@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+    <label for="updateTimeUnit">{{label}}</label>
+  </div>
+  <div class="text-center input-group-append col-6 form-group mb-3 custom-slider">
+    <select (ngModelChange)="onChange($event)"
+            [attr.disabled]="disabled ? '' : null"
+            [ngModel]="form.get(key).value"
+            [title]="label"
+            bootstrapSelect
+            class="selectpicker form-control col-form-label-sm custom-select"
+            data-style="btn-sm"
+            id='updateTimeUnit'>
+      <option data-settings="type" selected value="MINUTE">Minute</option>
+      <option data-settings="type" selected value="HOUR">Hour</option>
+      <option data-settings="type" selected value="DAY">Day</option>
+    </select>
+  </div>
+</div>

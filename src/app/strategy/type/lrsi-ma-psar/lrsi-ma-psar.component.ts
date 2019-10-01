@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { LrsiMaPsarConfigComponent } from "./config/lrsi-ma-psar-config.component";
 import { LrsiMaPsarSignalsComponent } from "./signals/lrsi-ma-psar-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-lrsi-ma-psar',
@@ -13,8 +13,6 @@ import { LrsiMaPsarSignalsComponent } from "./signals/lrsi-ma-psar-signals.compo
   ]
 })
 export class LrsiMaPsarComponent extends BaseStrategyTypeComponent {
-
-  type = 'LRSI_MA_PSAR';
 
   drawStrategyResult() {
     this.drawLrsi();

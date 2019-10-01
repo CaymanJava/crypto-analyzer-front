@@ -4,6 +4,7 @@ import { GridActionComponent } from './grid-action.component';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import * as moment from 'moment';
 import { PageableParams, PageSlice, QuerySort } from "../../../core/api/api.model";
+import { Color } from "./grid.model";
 
 
 @Component({
@@ -99,6 +100,21 @@ export class GridComponent implements OnInit {
     } else {
       return 'text-danger';
     }
+  }
+
+  defineTextColor(color: Color) {
+    if (Color.red(color)) {
+      return 'text-danger';
+    }
+
+    if (Color.green(color)) {
+      return 'text-success';
+    }
+
+    if (Color.blue(color)) {
+      return 'text-info';
+    }
+
   }
 
 }

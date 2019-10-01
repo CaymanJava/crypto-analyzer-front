@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyConfigComponent } from "../../base-strategy-config.component";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormBuilder, Validators } from "@angular/forms";
 import { NotDecimalValidator } from "../../../../shared/validators/not-decimal-validator";
 import { ArraySizeValidator } from "../../../../shared/validators/array-size-validator";
+import { BaseStrategyConfigComponent } from "../../../../shared/components/strategy/base/base-strategy-config.component";
 
 @Component({
   selector: 'app-ha-macd-psar-config',

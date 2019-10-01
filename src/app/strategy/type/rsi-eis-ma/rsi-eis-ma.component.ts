@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { RsiEisMaConfigComponent } from "./config/rsi-eis-ma-config.component";
 import { RsiEisMaSignalsComponent } from "./signals/rsi-eis-ma-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-rsi-eis-ma',
@@ -13,8 +13,6 @@ import { RsiEisMaSignalsComponent } from "./signals/rsi-eis-ma-signals.component
   ]
 })
 export class RsiEisMaComponent extends BaseStrategyTypeComponent {
-
-  type = 'RSI_EIS_MA';
 
   drawStrategyResult() {
     this.drawRsi();

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { DatePipe } from "@angular/common";
 import { CciRsiAtrConfigComponent } from "./config/cci-rsi-atr-config.component";
 import { CciRsiAtrSignalsComponent } from "./signals/cci-rsi-atr-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-cci-rsi-atr',
@@ -13,8 +13,6 @@ import { CciRsiAtrSignalsComponent } from "./signals/cci-rsi-atr-signals.compone
   ]
 })
 export class CciRsiAtrComponent extends BaseStrategyTypeComponent {
-
-  type = 'CCI_RSI_ATR';
 
   drawStrategyResult() {
     this.drawCci();

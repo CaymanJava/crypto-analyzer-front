@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { BwsConfigComponent } from "./config/bws-config.component";
 import { BwsSignalsComponent } from "./signals/bws-signals.component";
 import { DatePipe } from "@angular/common";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-bill-williams-strategy',
@@ -13,8 +13,6 @@ import { DatePipe } from "@angular/common";
   ]
 })
 export class BillWilliamsStrategyComponent extends BaseStrategyTypeComponent {
-
-  type = 'BILL_WILLIAMS_STRATEGY';
 
   drawStrategyResult() {
     this.drawAc();

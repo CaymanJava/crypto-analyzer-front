@@ -1,0 +1,93 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{strategyName}}</h4>
+  <h4 *ngIf="isDisabled()" class="modal-title">&nbsp;(stopped)</h4>
+  <button (click)="modal.close('close')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <app-time-unit-picker
+      [disabled]="isDisabled()"
+      [form]="memberStrategyForm"
+      key="updateTimeUnit"
+      label="Update time unit">
+  </app-time-unit-picker>
+
+  <div class="row">
+    <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+      <label for="updateTimeValue">Update time value</label>
+    </div>
+    <div class="col-6 form-group mb-3">
+      <input [attr.disabled]="isDisabled() ? '' : null"
+             [class.form-control-danger]="!memberStrategyForm.controls['updateTimeValue'].valid && memberStrategyForm.controls['updateTimeValue'].touched"
+             [formControl]="memberStrategyForm.get('updateTimeValue')"
+             class="form-control"
+             id="updateTimeValue"
+             placeholder="Update time value"
+             type="number">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+      <label for="customStrategyName">Custom name</label>
+    </div>
+    <div class="col-6 form-group mb-3">
+      <input [attr.disabled]="isDisabled() ? '' : null"
+             [class.form-control-danger]="!memberStrategyForm.controls['customStrategyName'].valid && memberStrategyForm.controls['customStrategyName'].touched"
+             [formControl]="memberStrategyForm.get('customStrategyName')"
+             class="form-control"
+             id="customStrategyName"
+             placeholder="Custom Name"
+             type="text">
+    </div>
+  </div>
+
+  <div *ngIf="memberStrategy == null" class="row" style="text-align: center">
+    <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+      <label for="immediatelyStart">Immediately start</label>
+    </div>
+    <div class="col-6 form-group mb-3" style="display: inline-block">
+      <label class="switch switch-primary mr-3">
+        <input [attr.disabled]="isDisabled() ? '' : null"
+               [class.form-control-danger]="!memberStrategyForm.controls['immediatelyStart'].valid && memberStrategyForm.controls['immediatelyStart'].touched"
+               [formControl]="memberStrategyForm.get('immediatelyStart')"
+               id="immediatelyStart"
+               type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="memberStrategy != null && !isDisabled()" class="row" style="text-align: center">
+    <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
+      <label for="active">Active</label>
+    </div>
+    <div class="col-6 form-group mb-3" style="display: inline-block">
+      <label class="switch switch-primary mr-3">
+        <input [class.form-control-danger]="!memberStrategyForm.controls['active'].valid && memberStrategyForm.controls['active'].touched"
+               [formControl]="memberStrategyForm.get('active')"
+               id="active"
+               type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button (click)="modal.close('close')"
+          class="btn btn-outline-warning btn-rounded"
+          type="button">
+    Close
+  </button>
+  <button
+      (click)="onSubmit()"
+      *ngIf="!isDisabled()"
+      [disabled]="!memberStrategyForm.valid"
+      class="btn btn-outline-success btn-rounded"
+      type="button">
+    {{ memberStrategy == null ? 'Save' : 'Update' }}
+  </button>
+
+</div>

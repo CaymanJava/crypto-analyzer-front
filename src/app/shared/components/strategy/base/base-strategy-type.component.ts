@@ -1,18 +1,22 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from "@angular/core";
 import { Subject, Subscription } from "rxjs";
-import { Market } from "../../core/market/market.model";
-import { TickData, TimeFrame } from "../../core/tick/tick.model";
-import { StrategyCalculationService } from "../../core/strategy/strategy-calculation.service";
-import { ChartDrawService } from "../../core/chart/chart-draw.service";
-import { DatePipe } from "@angular/common";
-import { Strategy, StrategyCalculationRequest } from "../../core/strategy/strategy.model";
-import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
-import { SignalDrawService } from "../../core/signal/signal-draw.service";
-import { ChartSaveService } from "../../core/chart/chart.save.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Signal } from "../../core/signal/signal.model";
-import { SignalBuilderService } from "../../core/signal/signal-builder.service";
 import * as moment from 'moment';
+import { Market } from "../../../../core/market/market.model";
+import { Signal } from "../../../../core/signal/signal.model";
+import { Strategy, StrategyCalculationRequest } from "../../../../core/strategy/strategy.model";
+import { StrategyCalculationService } from "../../../../core/strategy/strategy-calculation.service";
+import { ChartDrawService } from "../../../../core/chart/chart-draw.service";
+import { IndicatorDrawService } from "../../../../core/indicator/indicator-draw.service";
+import { SignalDrawService } from "../../../../core/signal/signal-draw.service";
+import { SignalBuilderService } from "../../../../core/signal/signal-builder.service";
+import { ChartSaveService } from "../../../../core/chart/chart.save.service";
+import { DatePipe } from "@angular/common";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { TickData, TimeFrame } from "../../../../core/tick/tick.model";
+import { MemberStrategyConfigComponent } from "../member-strategy-config/member-strategy-config.component";
+import { MemberStrategy, MemberStrategyCreateRequest, MemberStrategyRequest, MemberStrategyUpdateRequest } from "../../../../core/member-strategy/member-strategy.model";
+import { MemberStrategyService } from "../../../../core/member-strategy/member-strategy.service";
+import { Router } from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -22,21 +26,25 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   @Input() market: Market;
   @Input() strategy: Strategy;
+  @Input() memberStrategy: MemberStrategy;
 
   signals: Signal[];
 
   dialogConfig: any = {backdrop: 'static', keyboard: false, size: 'lg'};
   dialogSignalConfig: any = {backdrop: 'static', keyboard: false, windowClass: 'xl'};
+  dialogMemberStrategyConfig: any = {backdrop: 'static', keyboard: false, size: 'lg'};
 
   inProgress = true;
-  dateTimeRange: Date[];
-  timeFrame = 'ONE_HOUR';
-  formatter = 'yyyy-MM-ddTHH:mm';
-  type;
+
   configuration: any;
+  timeFrame = 'ONE_HOUR';
+
+  dateTimeRange: Date[];
+  formatter = 'yyyy-MM-ddTHH:mm';
 
   strategyCalculationSubscription: Subscription;
   componentSubscription: Subscription;
+
   changes: Subject<any> = new Subject();
 
   strategyCalculationService: StrategyCalculationService;
@@ -44,7 +52,9 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   indicatorDrawService: IndicatorDrawService;
   signalDrawService: SignalDrawService;
   signalBuildService: SignalBuilderService;
+  memberStrategyService: MemberStrategyService;
   chartSaveService: ChartSaveService;
+
   datePipe: DatePipe;
 
   @ViewChild('chartContainer', {static: false}) container: ElementRef;
@@ -57,23 +67,27 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
                         signalDrawService: SignalDrawService,
                         chartSaveService: ChartSaveService,
                         signalBuildService: SignalBuilderService,
+                        memberStrategyService: MemberStrategyService,
                         datePipe: DatePipe,
                         private modalService: NgbModal,
-                        private renderer: Renderer2) {
+                        private renderer: Renderer2,
+                        private route: Router) {
     this.strategyCalculationService = strategyCalculationService;
     this.chartDrawService = chartDrawService;
     this.indicatorDrawService = indicatorDrawService;
     this.signalDrawService = signalDrawService;
     this.signalBuildService = signalBuildService;
     this.chartSaveService = chartSaveService;
+    this.memberStrategyService = memberStrategyService;
     this.datePipe = datePipe;
   }
 
   ngOnInit() {
-    this.initDateTimeRange();
-    this.configuration = this.getDefaultConfig();
-    this.subscribeToStrategyCalculation();
-    this.changes.next();
+    if (this.memberStrategy == null) {
+      this.initDefaultStrategyConfiguration();
+    } else {
+      this.initMemberStrategyConfiguration();
+    }
   }
 
   abstract drawStrategyResult();
@@ -133,6 +147,18 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     dialog.componentInstance.data = this.buildSignalsPageSlice();
   }
 
+  monitorClick() {
+    const dialog = this.modalService.open(MemberStrategyConfigComponent, this.dialogMemberStrategyConfig);
+    dialog.componentInstance.strategyName = this.strategy.name;
+    dialog.componentInstance.memberStrategy = this.memberStrategy;
+    dialog.result.then((result) => {
+      if (result == 'close') {
+        return;
+      }
+      this.handleMonitorResult(result);
+    });
+  }
+
   ngOnDestroy() {
     this.strategyCalculationSubscription.unsubscribe();
     this.componentSubscription.unsubscribe();
@@ -146,6 +172,77 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     this.signals = this.signalBuildService.buildSignals(this.strategyResults);
     this.signalDrawService.draw(this.signals, this.configuration.drawConfiguration.signalConfiguration,
       this.chart, this.configuration.strategyConfiguration.positions);
+  }
+
+  private handleMonitorResult(result) {
+    if (result.update) {
+      this.handleUpdateMonitor(result);
+    } else {
+      this.handleCreateMonitor(result);
+    }
+  }
+
+  private handleCreateMonitor(result) {
+    const request = this.prepareMemberStrategyCreateRequest(result);
+    this.memberStrategyService.create(request)
+      .subscribe(memberStrategyId => {
+        this.route.navigate(['monitoring/strategy', memberStrategyId]);
+      })
+  }
+
+  private handleUpdateMonitor(result) {
+    const request = this.prepareMemberStrategyUpdateRequest(result);
+    this.memberStrategyService.update(this.memberStrategy.id, request)
+      .subscribe((memberStrategy) => {
+        // TODO notification
+        this.memberStrategy = memberStrategy;
+      })
+  }
+
+  private initMemberStrategyConfiguration() {
+    this.initDateTimeRange();
+    this.timeFrame = this.memberStrategy.timeFrame;
+    this.configuration = {
+      strategyConfiguration: JSON.parse(this.memberStrategy.strategyConfiguration),
+      drawConfiguration: JSON.parse(this.memberStrategy.drawConfiguration)
+    };
+    this.subscribeToStrategyCalculation();
+    this.changes.next();
+  }
+
+  private initDefaultStrategyConfiguration() {
+    this.initDateTimeRange();
+    this.configuration = this.getDefaultConfig();
+    this.subscribeToStrategyCalculation();
+    this.changes.next();
+  }
+
+  private prepareMemberStrategyCreateRequest(result): MemberStrategyRequest {
+    const request = new MemberStrategyCreateRequest();
+    this.prepareRequest(request, result);
+    request.immediatelyStart = result.config.immediatelyStart;
+    return request;
+  }
+
+  private prepareRequest(request, result) {
+    request.marketId = this.market.id;
+    request.setStrategyConfiguration(this.configuration.strategyConfiguration);
+    request.setDrawConfiguration(this.configuration.drawConfiguration);
+    request.strategyType = this.strategy.type;
+    request.timeFrame = this.timeFrame;
+    request.updateTimeUnit = result.config.updateTimeUnit;
+    request.updateTimeValue = result.config.updateTimeValue;
+    request.marketName = this.market.marketName;
+    request.stock = this.market.stock;
+    request.strategyName = this.strategy.name;
+    request.customStrategyName = result.config.customStrategyName;
+  }
+
+  private prepareMemberStrategyUpdateRequest(result): MemberStrategyRequest {
+    const request = new MemberStrategyUpdateRequest();
+    this.prepareRequest(request, result);
+    request.status = result.config.active ? 'ACTIVE' : 'PAUSED';
+    return request;
   }
 
   private getMarketName() {
@@ -194,14 +291,14 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     request.timeFrame = this.timeFrame;
     request.from = dateFrom;
     request.to = dateTo;
-    request.strategyType = this.type;
+    request.strategyType = this.strategy.type;
     request.setConfiguration(this.configuration.strategyConfiguration);
 
     return request;
   }
 
   private addTimeFrame() {
-    if (this.type == 'BILL_WILLIAMS_STRATEGY') {
+    if (this.strategy.type == 'BILL_WILLIAMS_STRATEGY') {
       this.configuration.strategyConfiguration.alligatorTimeFrame = this.timeFrame;
     }
   }

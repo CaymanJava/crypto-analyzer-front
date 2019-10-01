@@ -13,6 +13,7 @@ export class GridColumnComponent implements OnInit {
   @Input() arrow = false;
   @Input() image = false;
   @Input('value-fn') valueFn: any;
+  @Input('color-fn') colorFn: any;
   @Input() clickAction = false;
   @Input() tooltipKey = null;
 

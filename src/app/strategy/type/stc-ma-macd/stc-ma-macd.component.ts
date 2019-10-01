@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { DatePipe } from "@angular/common";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { StcMaMacdConfigComponent } from "./config/stc-ma-macd-config.component";
 import { StcMaMacdSignalsComponent } from "./signals/stc-ma-macd-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-stc-ma-macd',
@@ -13,8 +13,6 @@ import { StcMaMacdSignalsComponent } from "./signals/stc-ma-macd-signals.compone
   ]
 })
 export class StcMaMacdComponent extends BaseStrategyTypeComponent {
-
-  type = 'STC_MA_MACD';
 
   drawStrategyResult() {
     this.drawStc();

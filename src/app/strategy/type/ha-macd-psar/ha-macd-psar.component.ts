@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { DatePipe } from "@angular/common";
-import { BaseStrategyTypeComponent } from "../base-strategy-type.component";
 import { IndicatorItem, IndicatorSettings } from "../../../core/indicator/indicator.model";
 import { HaMacdPsarConfigComponent } from "./config/ha-macd-psar-config.component";
 import { HaMacdPsarSignalsComponent } from "./signals/ha-macd-psar-signals.component";
+import { BaseStrategyTypeComponent } from "../../../shared/components/strategy/base/base-strategy-type.component";
 
 @Component({
   selector: 'app-ha-macd-psar',
@@ -13,8 +13,6 @@ import { HaMacdPsarSignalsComponent } from "./signals/ha-macd-psar-signals.compo
   ]
 })
 export class HaMacdPsarComponent extends BaseStrategyTypeComponent {
-
-  type = 'HA_MACD_PSAR';
 
   drawStrategyResult() {
     this.drawHa();
