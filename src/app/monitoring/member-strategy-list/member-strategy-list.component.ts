@@ -78,6 +78,36 @@ export class MemberStrategyListComponent implements OnInit, OnDestroy {
     }
   }
 
+  getStatus(raw) {
+    switch (raw.status) {
+      case 'ACTIVE':
+        return 'Active';
+      case 'PAUSED':
+        return 'Paused';
+      case 'STOPPED':
+        return 'Stopped';
+      default:
+        return 'Failed';
+    }
+  }
+
+  getTimeFrame(raw) {
+    switch (raw.timeFrame) {
+      case 'FIVE_MIN':
+        return '5 Min';
+      case 'FIFTEEN_MIN':
+        return '15 Min';
+      case 'THIRTY_MIN':
+        return '30 Min';
+      case 'ONE_HOUR':
+        return '1 Hour';
+      case 'FOUR_HOURS':
+        return '4 Hours';
+      default:
+        return '1 Day';
+    }
+  }
+
   onFilter() {
     this.pageableParams = this.getDefaultPageableParams();
     this.changes.next();

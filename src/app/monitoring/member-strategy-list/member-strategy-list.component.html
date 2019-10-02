@@ -116,10 +116,10 @@
         <app-grid-column [sorted]='true' key="marketName" title="Market"></app-grid-column>
         <app-grid-column [sorted]='true' key="strategyName" title="Strategy name"></app-grid-column>
         <app-grid-column [sorted]='true' key="customStrategyName" title="Custom name"></app-grid-column>
-        <app-grid-column [color-fn]="defineColor" [sorted]='true' key="status" title="Status"></app-grid-column>
+        <app-grid-column [color-fn]="defineColor" [value-fn]="getStatus" [sorted]='true' title="Status"></app-grid-column>
         <app-grid-column key="baseVolume" title="Day Volume (Base)"></app-grid-column>
         <app-grid-column [arrow]='true' dataType="number" key="priceDiff" title="%Change"></app-grid-column>
-        <app-grid-column [sorted]='true' key="timeFrame" title="Time Frame"></app-grid-column>
+        <app-grid-column [sorted]='true' [value-fn]="getTimeFrame" title="Time Frame"></app-grid-column>
         <app-grid-action key="selectStrategy" title='View'></app-grid-action>
       </app-grid>
     </div>

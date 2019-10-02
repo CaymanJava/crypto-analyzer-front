@@ -11,6 +11,7 @@ import { ChartDrawService } from "../../core/chart/chart-draw.service";
 import { ChartSaveService } from "../../core/chart/chart.save.service";
 import { IndicatorDrawService } from "../../core/indicator/indicator-draw.service";
 import { IndicatorTypeProviderService } from "../../core/indicator/indicator-type-provider.service";
+import { NotificationService } from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-stock-market',
@@ -51,6 +52,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
               private indicatorDrawService: IndicatorDrawService,
               private indicatorConfigProvider: IndicatorConfigService,
               private indicatorTypeProviderService: IndicatorTypeProviderService,
+              private notificationService: NotificationService,
               private datePipe: DatePipe,
               private renderer: Renderer2) {
     this.currentMarketSubscription = activatedRoute.params.subscribe(params => {
@@ -106,6 +108,7 @@ export class StockMarketComponent implements OnInit, OnDestroy {
 
   onSave(type: string) {
     this.chartSaveService.save(type, this.chart, this.getMarketName());
+    this.notificationService.info('Saving file');
   }
 
   onIndicatorSelected(indicatorItem: IndicatorItem) {
@@ -279,21 +282,21 @@ export class StockMarketComponent implements OnInit, OnDestroy {
     const dateTo = this.datePipe.transform(this.dateTimeRange[1], this.formatter);
     this.tickDataSubscription = this.tickService.getTicksByTime(new TickTimeRequest(this.marketId, this.timeFrame, dateFrom, dateTo))
       .subscribe(tickData => {
-        this.clearChart();
-        this.tickData = tickData;
-        this.drawChart();
-        this.refreshAddedIndicatorsValues();
-      });
+          this.clearChart();
+          this.tickData = tickData;
+          this.drawChart();
+          this.refreshAddedIndicatorsValues();
+        });
   }
 
   private subscribeToTickByPeriod() {
     this.tickDataSubscription = this.tickService.getTicksByPeriod(TickPeriodRequest.defaultCountRequest(this.marketId, this.timeFrame))
       .subscribe(tickData => {
-        this.clearChart();
-        this.tickData = tickData;
-        this.drawChart();
-        this.refreshAddedIndicatorsValues();
-      });
+          this.clearChart();
+          this.tickData = tickData;
+          this.drawChart();
+          this.refreshAddedIndicatorsValues();
+        });
   }
 
   private drawChart() {

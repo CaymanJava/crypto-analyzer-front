@@ -5,6 +5,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError, share } from "rxjs/operators";
 import { LoggerService } from "@ngx-toolkit/logger";
 import { TokenService } from "../auth/token.service";
+import { NotificationService } from "../../shared/services/notification.service";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,8 @@ export class ApiService {
 
   constructor(private http: HttpClient,
               private log: LoggerService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private notificationService: NotificationService) {
   }
 
   get(url: string, pageableParams?: PageableParams, filterParams?: any, withAuth: boolean = true): Observable<HttpResponse<any>> {
@@ -126,6 +128,7 @@ export class ApiService {
       .subscribe((result: any) => {
           this.log.debug(`Got response from api [${method}]`, {url: url});
         }, (err: any) => {
+          this.notificationService.error('Got error from api');
           this.log.error(`Got error from api [${method}]`, {error: err});
         }
       );

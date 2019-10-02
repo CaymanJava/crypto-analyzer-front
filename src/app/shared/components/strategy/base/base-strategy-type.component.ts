@@ -17,6 +17,7 @@ import { MemberStrategyConfigComponent } from "../member-strategy-config/member-
 import { MemberStrategy, MemberStrategyCreateRequest, MemberStrategyRequest, MemberStrategyUpdateRequest } from "../../../../core/member-strategy/member-strategy.model";
 import { MemberStrategyService } from "../../../../core/member-strategy/member-strategy.service";
 import { Router } from "@angular/router";
+import { NotificationService } from "../../../services/notification.service";
 
 @Component({
   moduleId: module.id,
@@ -71,7 +72,8 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
                         datePipe: DatePipe,
                         private modalService: NgbModal,
                         private renderer: Renderer2,
-                        private route: Router) {
+                        private route: Router,
+                        private notificationService: NotificationService) {
     this.strategyCalculationService = strategyCalculationService;
     this.chartDrawService = chartDrawService;
     this.indicatorDrawService = indicatorDrawService;
@@ -110,6 +112,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   save(type: string) {
     this.chartSaveService.save(type, this.chart, this.getMarketName())
+    this.notificationService.info('Save file');
   }
 
   clearDrawing() {
@@ -194,7 +197,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     const request = this.prepareMemberStrategyUpdateRequest(result);
     this.memberStrategyService.update(this.memberStrategy.id, request)
       .subscribe((memberStrategy) => {
-        // TODO notification
+        this.notificationService.success('Monitor updated');
         this.memberStrategy = memberStrategy;
       })
   }

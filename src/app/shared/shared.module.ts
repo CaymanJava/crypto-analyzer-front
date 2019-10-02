@@ -17,10 +17,10 @@ import { SharedPipesModule } from './pipes/shared-pipes.module';
     SharedComponentsModule,
     SharedDirectivesModule,
     SharedPipesModule,
-    RouterModule,
+    RouterModule
   ],
   exports: [
-    PerfectScrollbarModule,
+    PerfectScrollbarModule
   ]
 })
 export class SharedModule {
