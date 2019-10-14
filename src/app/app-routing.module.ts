@@ -39,6 +39,11 @@ const routes: Routes = [
         path: 'monitoring',
         canActivate: [AuthGuard],
         loadChildren: () => import('./monitoring/monitoring.module').then(m => m.MonitoringModule),
+      },
+      {
+        path: 'signal',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./signal/signal.module').then(m => m.SignalModule),
       }
     ]
   },

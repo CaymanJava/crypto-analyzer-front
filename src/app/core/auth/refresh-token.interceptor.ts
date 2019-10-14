@@ -82,7 +82,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
   }
 
   private handleRequestWithTokens(request: HttpRequest<any>, error) {
-    if (request.url.includes("tokens/refreshes")) {
+    if (request.url.includes("tokens/refresh")) {
       this.logOut();
     }
     return throwError(error);

@@ -34,6 +34,7 @@ export class MemberStrategyConfigComponent implements OnInit {
       config: {
         updateTimeUnit: this.memberStrategyForm.get('updateTimeUnit').value,
         updateTimeValue: this.memberStrategyForm.get('updateTimeValue').value,
+        notificationDestination: this.memberStrategyForm.get('notificationDestination').value,
         customStrategyName: this.memberStrategyForm.get('customStrategyName').value,
         immediatelyStart: this.memberStrategyForm.get('immediatelyStart').value,
         active: this.memberStrategyForm.get('active').value,
@@ -45,6 +46,7 @@ export class MemberStrategyConfigComponent implements OnInit {
     this.memberStrategyForm = this.fb.group({
       'updateTimeUnit': ['', Validators.required],
       'updateTimeValue': ['', [Validators.required, Validators.min(1)]],
+      'notificationDestination': ['', Validators.required],
       'customStrategyName': ['', Validators.required],
       'active': [''],
       'immediatelyStart': [true]
@@ -53,6 +55,7 @@ export class MemberStrategyConfigComponent implements OnInit {
       this.memberStrategyForm.setValue({
         updateTimeUnit: this.memberStrategy.updateTimeUnit,
         updateTimeValue: this.memberStrategy.updateTimeValue,
+        notificationDestination: this.memberStrategy.notificationDestination,
         customStrategyName: this.memberStrategy.customStrategyName,
         active: MemberStrategyStatus.isActive(this.memberStrategy.status),
         immediatelyStart: false

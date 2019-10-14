@@ -40,6 +40,7 @@ import { BaseStrategyConfigComponent } from "./strategy/base/base-strategy-confi
 import { BaseStrategyTypeComponent } from "./strategy/base/base-strategy-type.component";
 import { MemberStrategyConfigComponent } from './strategy/member-strategy-config/member-strategy-config.component';
 import { TimeUnitPickerComponent } from './strategy/time-unut-picker/time-unit-picker.component';
+import { NotificationDestinationComponent } from './strategy/notification-destination/notification-destination.component';
 
 const components = [
   BtnLoadingComponent,
@@ -67,7 +68,9 @@ const components = [
   PositionPickerComponent,
   BaseStrategyTypeComponent,
   BaseStrategyConfigComponent,
-  BaseStrategySignalComponent
+  BaseStrategySignalComponent,
+  TimeUnitPickerComponent,
+  NotificationDestinationComponent
 ];
 
 const gridComponents = [
@@ -98,7 +101,7 @@ const modalComponents = [
     ColorPickerModule,
     MatSliderModule
   ],
-  declarations: [components, gridComponents, modalComponents, TimeUnitPickerComponent],
+  declarations: [components, gridComponents, modalComponents],
   entryComponents: [modalComponents],
   exports: [components, gridComponents]
 })

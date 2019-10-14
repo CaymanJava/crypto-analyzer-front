@@ -50,3 +50,35 @@
 .rounded-button {
   border-radius: 3.25rem !important;
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  position: relative;
+  width: 230px;
+
+  input {
+    background: transparent;
+    border: 0;
+    color: #212121;
+    font-size: .8rem;
+    line-height: 2;
+    height: 100%;
+    outline: initial !important;
+    padding: .5rem 1rem;
+    width: calc(100% - 32px);
+  }
+}
+
+.search-button {
+  border-radius: 0;
+}
+
+.cancel-filter-button {
+  border-top-right-radius: 3.25rem;
+  border-bottom-right-radius: 3.25rem;
+}

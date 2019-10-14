@@ -42,13 +42,21 @@ export class NavigationService {
       },
       {
         name: 'Strategies',
-        type: 'dropDown',
+        // type: 'dropDown',
+        type: 'link',
         icon: 'i-Financial',
-        sub: [
-          {icon: 'i-Money-2', name: 'Strategies', state: '/strategy', type: 'link'},
-          {icon: 'i-Fingerprint-2', name: 'Monitoring', state: '/monitoring', type: 'link'},
-          {icon: 'i-Left---Right', name: 'Strategy tester', state: '/strategy/tester', type: 'link'}
-        ]
+        state: '/strategy'
+        // sub: [
+        //   {icon: 'i-Money-2', name: 'Strategies', state: '/strategy', type: 'link'},
+        //   {icon: 'i-Fingerprint-2', name: 'Monitoring', state: '/monitoring', type: 'link'},
+        //   {icon: 'i-Left---Right', name: 'Strategy tester', state: '/strategy/tester', type: 'link'}
+        // ]
+      },
+      {
+        name: 'Monitoring',
+        type: 'link',
+        icon: 'i-Fingerprint-2',
+        state: '/monitoring'
       },
       {
         name: 'Signals',

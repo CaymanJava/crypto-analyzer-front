@@ -9,18 +9,12 @@ export class MemberStrategy {
   timeFrame: TimeFrame;
   updateTimeUnit: TimeUnit;
   updateTimeValue: number;
+  notificationDestination: Destination;
   marketName: string;
   stock: string;
   strategyName: string;
   customStrategyName: string;
   status: MemberStrategyStatus;
-  cycleCount: number;
-  failedCount: number;
-  stoppedReason: string;
-  nextExecutionTime: string;
-  lastExecutionTime: string;
-  lastSignalTickTime: string;
-  lastSignalPosition: string;
 }
 
 export class MemberStrategyRequest {
@@ -31,6 +25,7 @@ export class MemberStrategyRequest {
   timeFrame: string;
   updateTimeUnit: string;
   updateTimeValue: number;
+  notificationDestination: string;
   marketName: string;
   stock: string;
   strategyName: string;
@@ -57,6 +52,13 @@ export enum TimeUnit {
   MINUTE,
   HOUR,
   DAY
+}
+
+export enum Destination {
+  EMAIL,
+  SMS,
+  ALL,
+  NONE
 }
 
 export enum MemberStrategyStatus {

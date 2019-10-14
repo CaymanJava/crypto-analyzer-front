@@ -8,10 +8,3 @@ export class Signal {
   firstTakeProfit: number;
   secondTakeProfit: number;
 }
-
-export enum Position {
-  ENTRY_LONG,
-  EXIT_LONG,
-  ENTRY_SHORT,
-  EXIT_SHORT
-}

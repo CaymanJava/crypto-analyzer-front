@@ -68,7 +68,7 @@ export class GridComponent implements OnInit {
       case ('boolean'):
         return value;
       case ('date-time'):
-        return this.datePipe.transform(value, 'yyyy-MM-dd HH:mm');
+        return this.datePipe.transform(value, 'HH:mm, dd/MM/yyyy');
       case ('date'):
         return this.datePipe.transform(value, 'dd/MM/yyyy');
       case ('time'):
@@ -103,6 +103,10 @@ export class GridComponent implements OnInit {
   }
 
   defineTextColor(color: Color) {
+    if (color == null) {
+      return '';
+    }
+
     if (Color.red(color)) {
       return 'text-danger';
     }
@@ -113,6 +117,10 @@ export class GridComponent implements OnInit {
 
     if (Color.blue(color)) {
       return 'text-info';
+    }
+
+    if (Color.orange(color)) {
+      return 'text-warning';
     }
 
   }

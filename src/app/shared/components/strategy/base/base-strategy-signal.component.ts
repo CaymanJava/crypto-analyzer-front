@@ -18,7 +18,22 @@ export class BaseStrategySignalComponent {
   }
 
   getPositions(signal: Signal) {
-    return Array.from(signal.positions).join(', ');
+    return Array.from(signal.positions).map(position => getSinglePosition(position)).join(', ');
+
+    function getSinglePosition(position) {
+      switch (position) {
+        case 'ENTRY_LONG':
+          return 'Entry Long';
+        case 'EXIT_LONG':
+          return 'Exit Long';
+        case 'ENTRY_SHORT':
+          return 'Entry Short';
+        case 'EXIT_SHORT':
+          return 'Exit Short';
+        default:
+          return '';
+      }
+    }
   }
 
   getTime(signal: Signal) {

@@ -8,7 +8,8 @@ export interface Sort {
 export enum Color {
   GREEN,
   BLUE,
-  RED
+  RED,
+  ORANGE
 }
 
 export namespace Color {
@@ -22,6 +23,10 @@ export namespace Color {
 
   export function red(color: Color) {
     return Color.comparePaymentStatuses(color, Color.RED);
+  }
+
+  export function orange(color: Color) {
+    return Color.comparePaymentStatuses(color, Color.ORANGE);
   }
 
   export function comparePaymentStatuses(first, second) {

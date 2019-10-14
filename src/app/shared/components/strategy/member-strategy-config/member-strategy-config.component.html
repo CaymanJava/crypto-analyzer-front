@@ -28,6 +28,12 @@
     </div>
   </div>
 
+  <app-notification-destination
+      [disabled]="isDisabled()"
+      [form]="memberStrategyForm"
+      key="notificationDestination">
+  </app-notification-destination>
+
   <div class="row">
     <div class="col-6 col-form-label col-form-label-sm text-left form-group mb-3">
       <label for="customStrategyName">Custom name</label>

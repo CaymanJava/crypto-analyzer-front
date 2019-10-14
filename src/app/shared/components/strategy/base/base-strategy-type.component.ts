@@ -203,12 +203,12 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
   }
 
   private initMemberStrategyConfiguration() {
-    this.initDateTimeRange();
     this.timeFrame = this.memberStrategy.timeFrame;
     this.configuration = {
       strategyConfiguration: JSON.parse(this.memberStrategy.strategyConfiguration),
       drawConfiguration: JSON.parse(this.memberStrategy.drawConfiguration)
     };
+    this.initDateTimeRange();
     this.subscribeToStrategyCalculation();
     this.changes.next();
   }
@@ -235,6 +235,7 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
     request.timeFrame = this.timeFrame;
     request.updateTimeUnit = result.config.updateTimeUnit;
     request.updateTimeValue = result.config.updateTimeValue;
+    request.notificationDestination = result.config.notificationDestination;
     request.marketName = this.market.marketName;
     request.stock = this.market.stock;
     request.strategyName = this.strategy.name;
@@ -261,8 +262,19 @@ export abstract class BaseStrategyTypeComponent implements OnInit, OnDestroy {
 
   private initDateTimeRange() {
     const now = new Date();
-    const dateFrom = moment(now).subtract(2, 'months').toDate();
+    const dateFrom = this.defineDateFrom(now);
     this.dateTimeRange = [dateFrom, now];
+  }
+
+  private defineDateFrom(now) {
+    switch (this.timeFrame) {
+      case 'FOUR_HOURS':
+        return moment(now).subtract(3, 'months').toDate();
+      case 'ONE_DAY':
+        return moment(now).subtract(4, 'months').toDate();
+      default:
+        return moment(now).subtract(2, 'months').toDate();
+    }
   }
 
   private subscribeToStrategyCalculation() {
