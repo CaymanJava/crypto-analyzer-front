@@ -12,7 +12,7 @@ import { HttpResponse } from "@angular/common/http";
 })
 export class MonitoringService {
 
-  private apiUrl = environment.apiUrl.concat('/me/signal');
+  private apiUrl = environment.apiUrl.concat('/me/signals');
 
   constructor(private apiService: ApiService,
               private log: LoggerService) {

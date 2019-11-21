@@ -13,7 +13,7 @@ import { PageableParams, PageSlice } from "../api/api.model";
 })
 export class MemberStrategyService {
 
-  private apiUrl = environment.apiUrl.concat('/me/strategy');
+  private apiUrl = environment.apiUrl.concat('/me/strategies');
 
   constructor(private apiService: ApiService,
               private log: LoggerService) {

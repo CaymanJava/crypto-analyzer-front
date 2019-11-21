@@ -44,7 +44,7 @@ export class SignalListComponent implements OnInit {
   getDefaultPageableParams() {
     return {
       page: 0,
-      sort: {order: 'tickTime', direction: 'desc'},
+      sort: {order: 'creationTime', direction: 'desc'},
       size: 20
     };
   }

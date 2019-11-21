@@ -12,7 +12,7 @@ import { StrategyCalculationRequest } from "./strategy.model";
 })
 export class StrategyCalculationService {
 
-  private apiUrl = environment.apiUrl.concat('/strategy');
+  private apiUrl = environment.apiUrl.concat('/strategies');
 
   constructor(private api: ApiService,
               private log: LoggerService) {

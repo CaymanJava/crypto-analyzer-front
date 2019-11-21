@@ -13,7 +13,7 @@ import { Market } from "./market.model";
 })
 export class MarketService {
 
-  private apiUrl = environment.apiUrl.concat('/market');
+  private apiUrl = environment.apiUrl.concat('/markets');
 
   constructor(private api: ApiService,
               private log: LoggerService) {

@@ -99,7 +99,8 @@
         <app-grid-column key="baseVolume" title="Day Volume (Base)"></app-grid-column>
         <app-grid-column [arrow]='true' dataType="number" key="priceDiff" title="%Change"></app-grid-column>
         <app-grid-column [sorted]='true' [value-fn]="getTimeFrame" title="Time Frame"></app-grid-column>
-        <app-grid-column [sorted]='true' dataType="date-time" key="tickTime" title="Tick time"></app-grid-column>
+        <app-grid-column [sorted]='true' dataType="date-time" key="tickTime" title="Tick time (UTC)"></app-grid-column>
+        <app-grid-column [sorted]='true' dataType="date-time" key="creationTime" title="Creation time(UTC+2)"></app-grid-column>
         <app-grid-action key="selectStrategy" title='View'></app-grid-action>
       </app-grid>
     </div>
