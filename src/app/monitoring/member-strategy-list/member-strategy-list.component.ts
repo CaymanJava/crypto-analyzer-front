@@ -78,6 +78,17 @@ export class MemberStrategyListComponent implements OnInit, OnDestroy {
     }
   }
 
+  getDestination(raw) {
+    switch (raw.notificationDestination) {
+      case 'SMS':
+        return 'SMS';
+      case 'EMAIL':
+        return 'Email';
+      default:
+        return 'All';
+    }
+  }
+
   getStatus(raw) {
     switch (raw.status) {
       case 'ACTIVE':
