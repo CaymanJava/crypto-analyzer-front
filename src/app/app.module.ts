@@ -9,27 +9,13 @@ import { SharedModule } from "./shared/shared.module";
 import { CoreModule } from "./core/core.module";
 import { Level, LoggerModule } from "@ngx-toolkit/logger";
 import { GestureConfig } from "@angular/material";
-import { ActionReducer, MetaReducer, StoreModule } from "@ngrx/store";
-import { StoreRouterConnectingModule } from "@ngrx/router-store";
-import { environment } from "../environments/environment";
-import { EffectsModule } from "@ngrx/effects";
-import { reducers } from "./session/store/reducer/reducer";
-import { AuthEffects } from "./session/store/effect/auth.effects";
+import { StoreModule } from "@ngrx/store";
+import * as fromFeature from "./session/store/reducer/reducer";
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { SessionLayoutComponent } from './layout/session-layout/session-layout.component';
 import { SharedComponentsModule } from "./shared/components/shared-components.module";
 
 const LOG_LEVEL: Level = isDevMode() ? Level.INFO : Level.ERROR;
-
-export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
-  return function (state, action) {
-    console.log('[STORE] action ', action.type);
-
-    return reducer(state, action);
-  };
-}
-
-const metaReducers: MetaReducer<any>[] = [debug];
 
 @NgModule({
   declarations: [
@@ -46,9 +32,7 @@ const metaReducers: MetaReducer<any>[] = [debug];
     SharedComponentsModule,
     CoreModule,
     LoggerModule.forRoot(LOG_LEVEL),
-    StoreModule.forRoot(reducers, environment.production == true ? {} : {metaReducers}),
-    EffectsModule.forRoot([AuthEffects]),
-    StoreRouterConnectingModule.forRoot()
+    StoreModule.forFeature('auth', fromFeature.reducers),
   ],
   providers: [{provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig}],
   bootstrap: [AppComponent]

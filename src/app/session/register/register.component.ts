@@ -5,6 +5,9 @@ import { RegisterState } from "../store/reducer/register.reducer";
 import { Store } from "@ngrx/store";
 import { MustMatch } from "../../shared/validators/must-match.validator";
 import * as registerActions from '../store/action/auth.actions';
+import { SocialAuthService } from "../../core/auth/social.auth.service";
+import { Router } from "@angular/router";
+import { TokenService } from "../../core/auth/token.service";
 
 @Component({
   selector: 'app-register',
@@ -27,6 +30,9 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder,
+              private router: Router,
+              private socialAuthService: SocialAuthService,
+              private tokenService: TokenService,
               private store$: Store<RegisterState>) {
   }
 
@@ -37,6 +43,14 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.store$.dispatch(registerActions.register({registerData: this.registerForm.value}));
+  }
+
+  signUpWithGoogle(): void {
+    this.socialAuthService.signInWithGoogle();
+  }
+
+  signUpWithFb() {
+    this.socialAuthService.signInWithFB();
   }
 
   private initForm() {

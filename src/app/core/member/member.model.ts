@@ -7,11 +7,19 @@ export interface Member {
   status: string;
   registrationDate: string;
   lastLoggedIn: string;
+  avatarUrl: string;
 }
 
 export class MemberPasswordChange {
   newPassword: string;
   oldPassword: string;
+}
+
+export class MemberUpdateRequest {
+  email: string;
+  phone: string;
+  name: string;
+  surname: string;
 }
 
 export class AppUser {

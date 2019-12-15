@@ -1,17 +1,17 @@
 <div class="main-header">
   <div class="logo">
-    <img src="./assets/images/logo.png" alt="">
+    <img alt="" src="./assets/images/logo.png">
   </div>
 
-  <div class="menu-toggle" (click)="toggelSidebar()">
+  <div (click)="toggelSidebar()" class="menu-toggle">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
   <div class="d-flex align-items-center">
-    <div ngbDropdown class="mega-menu d-none d-md-block">
-      <button ngbDropdownToggle href="#" class="btn text-muted dropdown-toggle mr-3">Mega Menu</button>
+    <div class="mega-menu d-none d-md-block" ngbDropdown>
+      <button class="btn text-muted dropdown-toggle mr-3" href="#" ngbDropdownToggle>Mega Menu</button>
       <div ngbDropdownMenu perfectScrollbar>
         <div class="row m-0">
           <div class="col-md-4 p-4 bg-img">
@@ -56,7 +56,7 @@
     </div>
     <!-- Search bar -->
     <div class="search-bar">
-      <input type="text" placeholder="Search" (focus)="searchService.searchOpen = true">
+      <input (focus)="searchService.searchOpen = true" placeholder="Search" type="text">
       <i class="search-icon text-muted i-Magnifi-Glass1"></i>
     </div>
   </div>
@@ -64,11 +64,11 @@
   <div style="margin: auto"></div>
 
   <div class="header-part-right">
-    <i class="i-Magnifi-Glass1 header-icon" role="button" (click)="searchService.searchOpen = true"></i>
-    <i fullScreenWindow class="i-Full-Screen header-icon d-none d-sm-inline-block" role="button"></i>
-    <div ngbDropdown [placement]="'bottom-right'" class="d-none d-sm-inline-block">
-      <i ngbDropdownToggle class="i-Gear text-muted header-icon" role="button"></i>
-      <div ngbDropdownMenu class="menu-icon-grid-dropdown">
+    <i (click)="searchService.searchOpen = true" class="i-Magnifi-Glass1 header-icon" role="button"></i>
+    <i class="i-Full-Screen header-icon d-none d-sm-inline-block" fullScreenWindow role="button"></i>
+    <div [placement]="'bottom-right'" class="d-none d-sm-inline-block" ngbDropdown>
+      <i class="i-Gear text-muted header-icon" ngbDropdownToggle role="button"></i>
+      <div class="menu-icon-grid-dropdown" ngbDropdownMenu>
         <div class="menu-icon-grid">
           <a href="#"><i class="i-Shop-4"></i> Home</a>
           <a href="#"><i class="i-Library"></i> UI Kits</a>
@@ -80,13 +80,13 @@
       </div>
     </div>
 
-    <div ngbDropdown [placement]="'bottom-right'">
+    <div [placement]="'bottom-right'" ngbDropdown>
       <div class="badge-top-container">
         <span class="badge badge-primary">{{notifications.length}}</span>
-        <i ngbDropdownToggle class="i-Bell text-muted header-icon" role="button"></i>
+        <i class="i-Bell text-muted header-icon" ngbDropdownToggle role="button"></i>
       </div>
-      <div ngbDropdownMenu class="notification-dropdown rtl-ps-none" perfectScrollbar>
-        <div class="dropdown-item d-flex" *ngFor="let item of notifications" [routerLink]="[item.link]">
+      <div class="notification-dropdown rtl-ps-none" ngbDropdownMenu perfectScrollbar>
+        <div *ngFor="let item of notifications" [routerLink]="[item.link]" class="dropdown-item d-flex">
           <div class="notification-icon">
             <i class="{{item.icon}} text-{{item.status}} mr-1"></i>
           </div>
@@ -103,16 +103,16 @@
       </div>
     </div>
 
-    <div ngbDropdown [placement]="'bottom-right'" class="user col align-self-end">
-      <img src="./assets/images/faces/1.jpg" id="userDropdown" ngbDropdownToggle alt="">
+    <div *ngIf="(appUser$ | async ) as loggedUser" [placement]="'bottom-right'" class="user col align-self-end" ngbDropdown>
+      <img *ngIf="!loggedUser.anonymous" alt="" id="userDropdown" ngbDropdownToggle [src]="loggedUser.details.avatarUrl == null ? './assets/images/no_image.png' : loggedUser.details.avatarUrl">
 
-      <div ngbDropdownMenu aria-labelledby="userDropdown" class="header-account-dropdown">
+      <div *ngIf="!loggedUser.anonymous" aria-labelledby="userDropdown" class="header-account-dropdown" ngbDropdownMenu>
         <div class="dropdown-header">
-          <i class="i-Lock-User mr-1"></i> Timothy Carlson
+          <i class="i-Lock-User mr-1"></i> {{ loggedUser.details.name + ' ' + loggedUser.details.surname }}
         </div>
         <button class="dropdown-item">Account settings</button>
         <button class="dropdown-item">Billing history</button>
-        <button class="dropdown-item" (click)="signout()">Sign out</button>
+        <button (click)="signout()" class="dropdown-item">Sign out</button>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { LoggerService } from "@ngx-toolkit/logger";
 import { map, tap } from "rxjs/operators";
-import { AppUser, Member } from "../member/member.model";
+import { AppUser, Member, MemberUpdateRequest } from "../member/member.model";
 import { TokenService } from "./token.service";
 import { MemberService } from "../member/member.service";
 import { ApiService } from "../api/api.service";
@@ -38,6 +38,24 @@ export class AuthService {
       .pipe(
         map((response: HttpResponse<any>) => {
           return <Member>response.body;
+        })
+      );
+  }
+
+  processSocialAccess(provider: string, authCode: string) {
+    return this.api.post(`${this.tokenApi}/social`, {provider: provider, authCode: authCode}, false)
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          return response.body;
+        })
+      );
+  }
+
+  completeSocialTokenProcess(memberId: number, request: MemberUpdateRequest) {
+    return this.api.post(`${this.tokenApi}/social/complete/${memberId}`, request, false)
+      .pipe(
+        map((response: HttpResponse<any>) => {
+          return response.body;
         })
       );
   }

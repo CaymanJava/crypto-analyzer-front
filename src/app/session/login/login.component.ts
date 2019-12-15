@@ -7,6 +7,8 @@ import { AuthModuleState } from "../store/reducer/reducer";
 import * as loginActions from '../store/action/auth.actions';
 import { Store } from "@ngrx/store";
 import { Subscription } from "rxjs";
+import { SocialAuthService } from "../../core/auth/social.auth.service";
+import { TokenService } from "../../core/auth/token.service";
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,7 @@ import { Subscription } from "rxjs";
   animations: [SharedAnimations]
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
   loading: boolean;
   loadingText: string;
   signInForm: FormGroup;
@@ -32,8 +35,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder,
               private auth: AuthService,
               private store$: Store<AuthModuleState>,
-              private router: Router) {
-
+              private router: Router,
+              private tokenService: TokenService,
+              private socialAuthService: SocialAuthService) {
   }
 
   ngOnInit() {
@@ -49,6 +53,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routerSubscription.unsubscribe();
+  }
+
+  signInWithFB(): void {
+    this.socialAuthService.signInWithFB();
+  }
+
+  signInWithGoogle(): void {
+    this.socialAuthService.signInWithGoogle();
   }
 
   private initForm() {

@@ -1,0 +1,55 @@
+<spinner *ngIf="!completeDataMode"></spinner>
+<div *ngIf="completeDataMode" class="row">
+  <div class="col-md-6 text-center sign-in-block">
+    <div class="pl-3 auth-right">
+      <div class="avatar box-shadow-2">
+        <img [src]="completeDataForm.get('avatarUrl').value == null ? './assets/images/no_image.png' : completeDataForm.get('avatarUrl').value" alt="">
+      </div>
+    </div>
+    <div class="flex-grow-1"></div>
+  </div>
+
+  <div *ngIf="completeDataMode" class="col-md-6">
+    <div class="p-4">
+      <h1 class="mb-3 text-18">Complete data</h1>
+      <form [formGroup]="completeDataForm" action="">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input [class.form-control-danger]="!completeDataForm.controls['name'].valid && completeDataForm.controls['name'].touched"
+                 [formControl]="completeDataForm.get('name')"
+                 class="form-control form-control-rounded"
+                 id="name"
+                 type="text">
+        </div>
+        <div class="form-group">
+          <label for="surname">Your surname</label>
+          <input [class.form-control-danger]="!completeDataForm.controls['surname'].valid && completeDataForm.controls['surname'].touched"
+                 [formControl]="completeDataForm.get('surname')"
+                 class="form-control form-control-rounded"
+                 id="surname"
+                 type="text">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input [class.form-control-danger]="!completeDataForm.controls['email'].valid && completeDataForm.controls['email'].touched"
+                 [formControl]="completeDataForm.get('email')"
+                 class="form-control form-control-rounded"
+                 id="email"
+                 type="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input [class.form-control-danger]="!completeDataForm.controls['phone'].valid && completeDataForm.controls['phone'].touched"
+                 [formControl]="completeDataForm.get('phone')"
+                 class="form-control form-control-rounded"
+                 id="phone">
+        </div>
+        <button (click)="onSubmit()"
+                [disabled]="!completeDataForm.valid || submitted"
+                class="btn btn-primary btn-block btn-rounded mt-3">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

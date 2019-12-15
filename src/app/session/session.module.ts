@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
+import { AuthCallbackComponent } from './social/auth-callback/auth-callback.component';
 
 @NgModule({
   imports: [
@@ -13,9 +14,9 @@ import { SharedComponentsModule } from 'src/app/shared/components/shared-compone
     FormsModule,
     ReactiveFormsModule,
     SharedComponentsModule,
-    SessionRoutingModule
+    SessionRoutingModule,
   ],
-  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent]
+  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent, AuthCallbackComponent]
 })
 export class SessionModule {
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from "./core/auth/auth.guard";
 import { ContentLayoutComponent } from "./layout/content-layout/content-layout.component";
 import { SessionLayoutComponent } from "./layout/session-layout/session-layout.component";
+import { NoAuthGuard } from "./core/auth/no-auth.guard";
 
 const routes: Routes = [
   {
@@ -53,6 +54,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        canActivate: [NoAuthGuard],
         loadChildren: () => import('./session/session.module').then(m => m.SessionModule),
       }
     ]

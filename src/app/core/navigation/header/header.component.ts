@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from "../navigation.service";
 import { SearchService } from "../../search/search.service";
 import { AuthService } from "../../auth/auth.service";
+import { Observable } from "rxjs";
+import { AppUser } from "../../member/member.model";
+import { Store } from "@ngrx/store";
+import { AppUserState } from "../../../session/store/reducer/app-user.reducer";
+import * as fromAuth from '../../../session/store/selector/app-user.selector';
+import * as authActions from '../../../session/store/action/auth.actions';
 
 
 @Component({
@@ -11,9 +17,12 @@ import { AuthService } from "../../auth/auth.service";
 export class HeaderComponent implements OnInit {
 
   notifications: any[];
+  loggedUser;
+  appUser$: Observable<AppUser> = this.store.select(fromAuth.selectUser)
 
   constructor(private navService: NavigationService,
               public searchService: SearchService,
+              private store: Store<AppUserState>,
               private auth: AuthService) {
     this.notifications = [
       {
@@ -63,6 +72,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(authActions.loadUser());
+    this.appUser$.subscribe(user => {
+      this.loggedUser = user;
+    })
   }
 
   toggelSidebar() {
